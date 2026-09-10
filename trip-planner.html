@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GoMigo - Plan Your Perfect Trip</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="trip-planner.css">
+</head>
+
+
+<body>
+
+    <div class="page">
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+        <aside class="sidebar">
+
+            <!-- Logo -->
+            <div class="sidebar-logo">
+                <img src="trip-planner-assets/gomigo-logo.png" alt="GoMigo Logo">
+            </div>
+
+
+            <!-- Navigation -->
+            <nav class="sidebar-nav">
+
+                <a href="#" class="nav-button active">
+                    Plan Trip
+                </a>
+
+                <a href="#" class="nav-button">
+                    My Trips
+                </a>
+
+                <a href="#" class="nav-button">
+                    Explore
+                </a>
+
+                <a href="#" class="nav-button">
+                    Saved
+                </a>
+
+                <a href="#" class="nav-button">
+                    Travel Guide
+                </a>
+
+            </nav>
+
+
+            <!-- Quote -->
+            <div class="sidebar-quote">
+                Good<br>
+                Trips<br>
+                Happen<br>
+                Here ♡
+            </div>
+
+
+            <!-- Profile -->
+            <div class="sidebar-profile">
+
+                <img src="trip-planner-assets/profile.png" alt="Profile">
+
+                <div class="profile-text">
+                    <h4>Hey, Explorer!</h4>
+                    <p>Let's plan something amazing!</p>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+        ====================================================== -->
+
+        <main class="main-content">
+
+            <!-- =================================================
+                 HERO
+            ================================================== -->
+
+            <section class="hero">
+
+                <!-- Background image -->
+                <img
+                    src="trip-planner-assets/trip-planner-background.png"
+                    alt="Travel destination"
+                    class="hero-background"
+                >
+
+
+                <!-- Hero content -->
+                <div class="hero-content">
+
+                    <h1>
+                        Plan Your Perfect Trip
+                    </h1>
+
+                    <p>
+                        Tell us a few details, and we’ll create a personalized trip just for you.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     TRIP FORM
+                ================================================== -->
+
+                <div class="trip-form">
+
+
+                    <!-- Destination -->
+
+                    <div class="form-row destination-row">
+
+                        <div class="form-icon">
+                            📍
+                        </div>
+
+                        <div class="form-group full-width">
+
+                            <label>
+                                Destination
+                            </label>
+
+                            <div class="input-box">
+
+                                <input
+                                    type="text"
+                                    value="Jaipur, India"
+                                    placeholder="Enter a destination"
+                                >
+
+                                <button class="clear-button">
+                                    ×
+                                </button>
+
+                            </div>
+
+                            <span class="helper-text">
+                                Enter a city or country
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         DATE + DURATION
+                    ================================================== -->
+
+                    <div class="two-column-row">
+
+
+                        <!-- Travel Dates -->
+
+                        <div class="form-row">
+
+                            <div class="form-icon">
+                                ▣
+                            </div>
+
+                            <div class="form-group">
+
+                                <label>
+                                    Travel Dates
+                                </label>
+
+                                <div class="input-box">
+
+                                    <input
+                                        type="text"
+                                        value="Oct 15, 2025 — Oct 18, 2025"
+                                    >
+
+                                    <span class="input-icon">
+                                        ▣
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Trip Duration -->
+
+                        <div class="form-row">
+
+                            <div class="form-icon">
+                                ◷
+                            </div>
+
+                            <div class="form-group">
+
+                                <label>
+                                    Trip Duration
+                                </label>
+
+                                <div class="input-box select-box">
+
+                                    <select>
+                                        <option>4 Days</option>
+                                        <option>5 Days</option>
+                                        <option>6 Days</option>
+                                        <option>7 Days</option>
+                                    </select>
+
+                                    <span class="dropdown-arrow">
+                                        ˅
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         TRAVELERS + STYLE
+                    ================================================== -->
+
+                    <div class="two-column-row">
+
+
+                        <!-- Number of Travelers -->
+
+                        <div class="form-row">
+
+                            <div class="form-icon">
+                                ♟
+                            </div>
+
+                            <div class="form-group">
+
+                                <label>
+                                    Number of Travelers
+                                </label>
+
+                                <div class="input-box select-box">
+
+                                    <select>
+                                        <option>2 Travelers</option>
+                                        <option>1 Traveler</option>
+                                        <option>3 Travelers</option>
+                                        <option>4 Travelers</option>
+                                        <option>5+ Travelers</option>
+                                    </select>
+
+                                    <span class="dropdown-arrow">
+                                        ˅
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Travel Style -->
+
+                        <div class="form-row">
+
+                            <div class="form-icon heart-icon">
+                                ♡
+                            </div>
+
+                            <div class="form-group">
+
+                                <label>
+                                    Travel Style
+                                </label>
+
+                                <div class="input-box select-box">
+
+                                    <select>
+                                        <option>Balanced (Sightseeing + Relaxation)</option>
+                                        <option>Adventure</option>
+                                        <option>Relaxation</option>
+                                        <option>Luxury</option>
+                                        <option>Budget Friendly</option>
+                                    </select>
+
+                                    <span class="dropdown-arrow">
+                                        ˅
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         BUDGET
+                    ================================================== -->
+
+                    <div class="budget-section">
+
+                        <div class="budget-heading">
+
+                            <div class="form-icon">
+                                ▣
+                            </div>
+
+                            <label>
+                                Budget (per day)
+                            </label>
+
+                            <strong>
+                                ₹5,000/day
+                            </strong>
+
+                        </div>
+
+
+                        <input
+                            type="range"
+                            min="500"
+                            max="20000"
+                            value="5000"
+                            class="budget-slider"
+                        >
+
+
+                        <div class="budget-values">
+
+                            <span>
+                                ₹500
+                            </span>
+
+                            <span>
+                                ₹20,000
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         SPECIAL INTERESTS
+                    ================================================== -->
+
+                    <div class="interests-section">
+
+                        <div class="interest-heading">
+
+                            <span class="star-icon">
+                                ★
+                            </span>
+
+                            <label>
+                                Special Interests
+                                <span>(Optional)</span>
+                            </label>
+
+                        </div>
+
+
+                        <div class="interest-tags">
+
+                            <button>
+                                Culture & History
+                            </button>
+
+                            <button>
+                                Nature & Outdoors
+                            </button>
+
+                            <button class="selected">
+                                Food & Cuisine
+                            </button>
+
+                            <button>
+                                Adventure
+                            </button>
+
+                            <button>
+                                Beaches
+                            </button>
+
+                            <button>
+                                Shopping
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         SPECIFIC REQUESTS
+                    ================================================== -->
+
+                    <div class="request-section">
+
+                        <div class="request-heading">
+
+                            <span>
+                                ▰
+                            </span>
+
+                            <label>
+                                Any specific requests?
+                                <span>(Optional)</span>
+                            </label>
+
+                        </div>
+
+
+                        <textarea
+                            maxlength="300"
+                            placeholder="E.g., include local experiences, family-friendly places, fewer crowds, etc."
+                        ></textarea>
+
+
+                        <div class="character-count">
+                            0/300
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         CREATE TRIP BUTTON
+                    ================================================== -->
+
+                    <button class="create-trip-button">
+
+                        ✦ &nbsp; Create My Trip &nbsp; →
+
+                    </button>
+
+
+                    <!-- Security text -->
+
+                    <div class="security-text">
+
+                        🔒 &nbsp; Your travel plans are safe with us.
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        // Budget slider
+
+        const slider = document.querySelector(".budget-slider");
+
+        const budgetText = document.querySelector(".budget-heading strong");
+
+        slider.addEventListener("input", function () {
+
+            const value = Number(this.value).toLocaleString("en-IN");
+
+            budgetText.textContent = "₹" + value + "/day";
+
+        });
+
+
+        // Character counter
+
+        const textarea = document.querySelector("textarea");
+
+        const counter = document.querySelector(".character-count");
+
+        textarea.addEventListener("input", function () {
+
+            counter.textContent = this.value.length + "/300";
+
+        });
+
+
+        // Interest buttons
+
+        const interestButtons =
+            document.querySelectorAll(".interest-tags button");
+
+        interestButtons.forEach(button => {
+
+            button.addEventListener("click", function () {
+
+                this.classList.toggle("selected");
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

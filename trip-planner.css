@@ -1,0 +1,1177 @@
+/* =========================================================
+   GOMIGO - PLAN YOUR PERFECT TRIP
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background: #f8f1e9;
+
+    color: #07566b;
+
+    font-family: "K2D", sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+}
+
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 115px;
+    height: 100vh;
+
+    background: #edf8ef;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 18px 12px;
+
+    z-index: 100;
+}
+
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.sidebar-logo {
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 20px;
+}
+
+
+.sidebar-logo img {
+
+    width: 75px;
+    height: auto;
+
+}
+
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.sidebar-nav {
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+
+.nav-button {
+
+    width: 100%;
+
+    padding: 6px 4px;
+
+    border-radius: 20px;
+
+    background: #b9e1ed;
+
+    color: #23647a;
+
+    text-decoration: none;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    transition: 0.2s ease;
+}
+
+
+.nav-button:hover {
+
+    background: #a7d5e1;
+
+}
+
+
+.nav-button.active {
+
+    background: #b9e1ed;
+
+}
+
+
+
+/* =========================================================
+   SIDEBAR QUOTE
+========================================================= */
+
+.sidebar-quote {
+    margin-top: 110px;
+
+    text-align: center;
+
+    color: #246e7e;
+
+    font-family: 'Dancing Script', cursive; 
+
+    font-size: 17px;
+
+    font-style: italic;
+
+    line-height: 1.45;
+
+    transform: rotate(-12deg);
+}
+
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.sidebar-profile {
+
+    width: 100%;
+
+    margin-top: auto;
+
+    padding: 10px 5px;
+
+    background: #e9f8ef;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+
+.sidebar-profile img {
+
+    width: 32px;
+    height: 32px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    margin-bottom: 4px;
+}
+
+
+.profile-text h4 {
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    color: #07566b;
+}
+
+
+.profile-text p {
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 6px;
+
+    color: #477585;
+
+}
+
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content {
+
+    width: calc(100% - 115px);
+
+    margin-left: 115px;
+
+    min-height: 100vh;
+
+    background: #f8f1e9;
+}
+
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+}
+
+
+
+/* Background */
+
+.hero-background {
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    z-index: 0;
+}
+
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    padding-top: 28px;
+
+    text-align: center;
+}
+
+
+.hero-content h1 {
+
+    font-family: "K2D", sans-serif;
+
+    font-size: 34px;
+
+    line-height: 1.1;
+
+    font-weight: 600;
+
+    color: #07566b;
+
+    margin-bottom: 4px;
+}
+
+
+.hero-content p {
+
+    font-family: "K2D", sans-serif;
+
+    font-size: 12px;
+
+    color: #07566b;
+
+}
+
+
+
+/* =========================================================
+   TRIP FORM
+========================================================= */
+
+/* =========================================================
+   TRIP FORM
+========================================================= */
+
+.trip-form {
+    position: relative;
+    z-index: 5;
+
+    /* Make the form larger and proportional to the page */
+    width: 68%;
+    max-width: 920px;
+
+    margin: 18px auto 30px;
+
+    padding: 25px 38px 18px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.10);
+}
+
+
+
+/* =========================================================
+   FORM ROW
+========================================================= */
+
+.form-row {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 8px;
+
+}
+
+
+.form-icon {
+
+    width: 19px;
+
+    flex-shrink: 0;
+
+    padding-top: 16px;
+
+    color: #07566b;
+
+    font-size: 16px;
+
+    text-align: center;
+}
+
+
+.form-group {
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.full-width {
+
+    width: 100%;
+}
+
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+.form-group label,
+.budget-heading label,
+.interest-heading label,
+.request-heading label {
+
+    display: block;
+
+    color: #07566b;
+
+    font-family: "K2D", sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    margin-bottom: 5px;
+}
+
+
+
+/* =========================================================
+   INPUT BOX
+========================================================= */
+
+.input-box {
+    position: relative;
+
+    width: 100%;
+    height: 38px;
+
+    border: 1px solid #d6e3e5;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.input-box input,
+.input-box select {
+
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    padding: 0 12px;
+
+    color: #3d5960;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 11px;
+}
+
+
+.input-box select {
+
+    appearance: none;
+
+    cursor: pointer;
+}
+
+
+.clear-button {
+
+    border: none;
+
+    background: transparent;
+
+    color: #476b74;
+
+    font-size: 17px;
+
+    padding-right: 8px;
+}
+
+
+.input-icon {
+
+    position: absolute;
+
+    right: 8px;
+
+    color: #07566b;
+
+    font-size: 12px;
+
+}
+
+
+.dropdown-arrow {
+
+    position: absolute;
+
+    right: 10px;
+
+    pointer-events: none;
+
+    color: #07566b;
+
+    font-size: 14px;
+}
+
+
+
+/* =========================================================
+   HELPER TEXT
+========================================================= */
+
+.helper-text {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #8c9b9e;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 7px;
+}
+
+
+
+/* =========================================================
+   DESTINATION
+========================================================= */
+
+.destination-row {
+
+    margin-bottom: 16px;
+}
+
+
+
+/* =========================================================
+   TWO COLUMN
+========================================================= */
+
+.two-column-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    column-gap: 35px;
+
+    margin-bottom: 14px;
+}
+
+
+
+/* =========================================================
+   BUDGET
+========================================================= */
+
+.budget-section {
+
+    margin-top: 5px;
+
+    margin-bottom: 12px;
+}
+
+
+.budget-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 3px;
+}
+
+
+.budget-heading .form-icon {
+
+    padding: 0;
+
+    width: 19px;
+}
+
+
+.budget-heading label {
+
+    margin: 0;
+
+    flex: 1;
+}
+
+
+.budget-heading strong {
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    color: #47727d;
+}
+
+
+
+/* Slider */
+
+.budget-slider {
+
+    width: calc(100% - 28px);
+
+    margin-left: 28px;
+
+    height: 5px;
+
+    appearance: none;
+
+    border-radius: 5px;
+
+    background: #d6e3e6;
+
+    outline: none;
+}
+
+
+.budget-slider::-webkit-slider-thumb {
+
+    appearance: none;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: #07566b;
+
+    border: 2px solid #ffffff;
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+
+    cursor: pointer;
+}
+
+
+.budget-slider::-moz-range-thumb {
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: #07566b;
+
+    border: 2px solid #ffffff;
+
+    cursor: pointer;
+}
+
+
+.budget-values {
+
+    width: calc(100% - 28px);
+
+    margin-left: 28px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 5px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 8px;
+
+    color: #758b90;
+}
+
+
+
+/* =========================================================
+   SPECIAL INTERESTS
+========================================================= */
+
+.interests-section {
+
+    margin-top: 2px;
+
+    margin-bottom: 12px;
+}
+
+
+.interest-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 6px;
+}
+
+
+.interest-heading label {
+
+    margin: 0;
+}
+
+
+.interest-heading label span {
+
+    color: #8d9da0;
+
+    font-weight: 400;
+}
+
+
+.star-icon {
+
+    color: #07566b;
+
+    font-size: 14px;
+}
+
+
+.interest-tags {
+
+    margin-left: 26px;
+
+    display: flex;
+
+    gap: 6px;
+
+    flex-wrap: wrap;
+}
+
+
+.interest-tags button {
+
+    border: 1px solid #d4e1e3;
+
+    background: #ffffff;
+
+    color: #476b74;
+
+    border-radius: 15px;
+
+    padding: 4px 9px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 7px;
+
+    white-space: nowrap;
+
+    transition: 0.2s ease;
+}
+
+
+.interest-tags button:hover {
+
+    border-color: #07566b;
+
+}
+
+
+.interest-tags button.selected {
+
+    background: #07566b;
+
+    color: #ffffff;
+
+    border-color: #07566b;
+}
+
+
+
+/* =========================================================
+   SPECIFIC REQUESTS
+========================================================= */
+
+.request-section {
+
+    margin-bottom: 10px;
+}
+
+
+.request-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 5px;
+
+    margin-left: 0;
+}
+
+
+.request-heading > span {
+
+    width: 19px;
+
+    color: #07566b;
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+.request-heading label {
+
+    margin: 0;
+}
+
+
+.request-heading label span {
+
+    color: #8d9da0;
+
+    font-weight: 400;
+}
+
+
+textarea {
+
+    display: block;
+
+    width: calc(100% - 28px);
+
+    margin-left: 28px;
+
+    height: 52px;
+
+    resize: none;
+
+    border: 1px solid #d6e3e5;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    padding: 9px 11px;
+
+    background: #ffffff;
+
+    color: #3d5960;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 9px;
+}
+
+
+textarea::placeholder {
+
+    color: #9cabad;
+}
+
+
+.character-count {
+
+    width: calc(100% - 26px);
+
+    margin-left: 26px;
+
+    text-align: right;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 7px;
+
+    color: #8c9b9e;
+
+    margin-top: 2px;
+}
+
+
+
+/* =========================================================
+   CREATE TRIP BUTTON
+========================================================= */
+
+.create-trip-button {
+
+    display: block;
+
+    width: 230px;
+
+    height: 38px;
+
+    margin: 8px auto 8px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background: #07566b;
+
+    color: #ffffff;
+
+    font-family: "K2D", sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    transition: 0.2s ease;
+}
+
+
+.create-trip-button:hover {
+
+    background: #06495b;
+
+    transform: translateY(-1px);
+}
+
+
+
+/* =========================================================
+   SECURITY TEXT
+========================================================= */
+
+.security-text {
+
+    text-align: center;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 7px;
+
+    color: #91a1a4;
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+
+        width: 105px;
+
+    }
+
+
+    .main-content {
+
+        width: calc(100% - 105px);
+
+        margin-left: 105px;
+
+    }
+
+
+    .trip-form {
+
+        width: 75%;
+
+    }
+
+
+    .hero-content h1 {
+
+        font-size: 31px;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .page {
+
+        display: block;
+
+    }
+
+
+    /* Sidebar */
+
+    .sidebar {
+
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+
+        padding: 10px 15px;
+
+        flex-direction: row;
+
+        justify-content: space-between;
+
+    }
+
+
+    .sidebar-logo {
+
+        width: auto;
+
+        margin: 0;
+
+    }
+
+
+    .sidebar-logo img {
+
+        width: 65px;
+
+    }
+
+
+    .sidebar-nav {
+
+        flex-direction: row;
+
+        gap: 5px;
+
+        overflow-x: auto;
+
+    }
+
+
+    .nav-button {
+
+        min-width: 65px;
+
+        font-size: 8px;
+
+        padding: 5px;
+
+    }
+
+
+    .sidebar-quote,
+    .sidebar-profile {
+
+        display: none;
+
+    }
+
+
+    /* Main */
+
+    .main-content {
+
+        width: 100%;
+
+        margin-left: 0;
+
+    }
+
+
+    .hero {
+
+        min-height: 100vh;
+
+        padding-bottom: 20px;
+
+    }
+
+
+    .hero-content {
+
+        padding: 25px 15px 0;
+
+    }
+
+
+    .hero-content h1 {
+
+        font-size: 26px;
+
+    }
+
+
+    .hero-content p {
+
+        font-size: 10px;
+
+    }
+
+
+    /* Form */
+
+    .trip-form {
+
+        width: 92%;
+
+        padding: 15px;
+
+        margin-top: 18px;
+
+    }
+
+
+    .two-column-row {
+
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+
+    }
+
+
+    .interest-tags {
+
+        margin-left: 25px;
+
+    }
+
+
+    textarea {
+
+        width: calc(100% - 25px);
+
+    }
+
+
+    .create-trip-button {
+
+        width: 190px;
+
+    }
+
+}
