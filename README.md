@@ -1,4 +1,4 @@
-|# 🌍 GoMigo — Your Travel Companion
+# 🌍 GoMigo — Your Travel Companion
 
 ## ✈️ About GoMigo
 
