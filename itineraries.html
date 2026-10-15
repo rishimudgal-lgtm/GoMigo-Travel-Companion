@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#eaf8f0">
+  <title>My Trips &amp; Saved | GoMigo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="itineraries.css">
+</head>
+<body>
+  <div class="workspace">
+    <aside class="sidebar">
+      <a class="logo" href="main-menu.html" aria-label="GoMigo home"><img src="main-menu-assets/gomigo-logo.png" alt="GoMigo"></a>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a href="main-menu.html"><span>⌂</span>Home</a>
+        <a href="#plan" data-tab-link="plan"><span>⊙</span>Plan Trip</a>
+        <a href="#trips" data-tab-link="trips"><span>▣</span>My Trips</a>
+        <a href="explore.html"><span>⌕</span>Explore</a>
+        <a href="#saved" data-tab-link="saved"><span>♡</span>Saved</a>
+        <a href="profile.html"><span>♙</span>My Profile</a>
+      </nav>
+      <div class="sidebar-quote">Good trips<br>happen here <b>♡</b></div>
+      <a class="sidebar-profile" href="profile.html"><img src="main-menu-assets/profile.png" alt=""><span><strong>Hey, Explorer!</strong><small>Let’s plan something amazing.</small></span></a>
+    </aside>
+
+    <main class="main-panel">
+      <header class="welcome-row"><div><p class="eyebrow">YOUR JOURNEY, ALL IN ONE PLACE</p><h1>Trips &amp; itineraries</h1><p class="welcome-copy">Plan a new escape, keep your ideas close, and pick up where you left off.</p></div><a class="explore-link" href="explore.html">Find inspiration <span>↗</span></a></header>
+      <nav class="workspace-tabs" role="tablist" aria-label="Trip workspace">
+        <button id="tab-plan" class="tab-button" type="button" role="tab" aria-controls="panel-plan" data-tab="plan"><span>✧</span> Plan a trip</button>
+        <button id="tab-saved" class="tab-button" type="button" role="tab" aria-controls="panel-saved" data-tab="saved"><span>♡</span> Saved <b class="tab-count" id="saved-count">0</b></button>
+        <button id="tab-trips" class="tab-button" type="button" role="tab" aria-controls="panel-trips" data-tab="trips"><span>▣</span> My trips <b class="tab-count" id="trips-count">0</b></button>
+      </nav>
+
+      <section class="tab-panel" id="panel-plan" role="tabpanel" aria-labelledby="tab-plan" hidden>
+        <div class="panel-intro"><div><p class="eyebrow">LET’S MAKE A PLAN</p><h2>Where would you like to go?</h2><p>Share a few details and we’ll sketch out a simple itinerary you can keep on this device.</p></div><span class="intro-art" aria-hidden="true">✈</span></div>
+        <form id="plan-form" class="plan-form">
+          <label class="form-field destination-field"><span>Destination</span><span class="field-control"><span aria-hidden="true">⌖</span><input name="destination" list="destination-options" placeholder="City or country" required maxlength="80"><datalist id="destination-options"><option>Paris, France</option><option>Agra, India</option><option>Rome, Italy</option><option>Dubai, UAE</option><option>Santorini, Greece</option><option>Colombo, Sri Lanka</option><option>Jaipur, India</option><option>Tokyo, Japan</option></datalist></span></label>
+          <label class="form-field"><span>Start date</span><input name="startDate" type="date" required></label>
+          <label class="form-field"><span>End date</span><input name="endDate" type="date" required></label>
+          <label class="form-field"><span>Travelers</span><select name="travelers"><option value="1">1 traveler</option><option value="2">2 travelers</option><option value="3">3 travelers</option><option value="4">4 travelers</option><option value="5">5+ travelers</option></select></label>
+          <label class="form-field"><span>Travel style</span><select name="style"><option>Adventure</option><option>Relaxation</option><option>Culture</option><option>Food &amp; Dining</option><option>Nature</option><option>City break</option></select></label>
+          <label class="form-field"><span>Budget</span><select name="budget"><option>Budget-friendly</option><option selected>Moderate</option><option>Comfort</option><option>Luxury</option></select></label>
+          <label class="form-field notes-field"><span>Anything else you’d love to include? <small>Optional</small></span><textarea name="notes" rows="2" maxlength="180" placeholder="A local food tour, a quiet beach, a little adventure…"></textarea></label>
+          <div class="plan-submit"><p>✨ Your itinerary is created in your browser. No account or backend needed.</p><button class="primary-button" type="submit">Build my itinerary <span>→</span></button></div>
+        </form>
+        <div class="generated-plan" id="generated-plan" hidden aria-live="polite"></div>
+      </section>
+
+      <section class="tab-panel saved-panel" id="panel-saved" role="tabpanel" aria-labelledby="tab-saved" hidden>
+        <div class="panel-heading"><div><p class="eyebrow">YOUR LITTLE LIST OF MAYBES</p><h2>Saved for later</h2><p>Places you’ve bookmarked from Explore and your GoMigo home page.</p></div><a href="explore.html" class="outline-link">Explore places <span>↗</span></a></div>
+        <div class="saved-grid" id="saved-grid"></div>
+        <div class="empty-state" id="saved-empty"><span class="empty-icon">♡</span><h3>Your saved places will live here</h3><p>Tap the heart on a destination card to keep it close while you decide where to go.</p><a class="primary-button" href="explore.html">Explore destinations <span>→</span></a></div>
+      </section>
+
+      <section class="tab-panel trips-panel" id="panel-trips" role="tabpanel" aria-labelledby="tab-trips" hidden>
+        <div class="panel-heading"><div><p class="eyebrow">YOUR TRAVEL PLANS</p><h2>My trips</h2><p>Itineraries you’ve created are saved on this device.</p></div><button type="button" class="outline-link" data-switch="plan">+ Plan a trip</button></div>
+        <div class="trip-list" id="trip-list"></div>
+        <div class="empty-state" id="trips-empty"><span class="empty-icon">✈</span><h3>No trips planned yet</h3><p>Start with a destination and a few details. Your itinerary will be waiting here.</p><button type="button" class="primary-button" data-switch="plan">Plan your first trip <span>→</span></button></div>
+      </section>
+      <footer class="workspace-footer"><span>GoMigo · Plan less. Explore more.</span><span>Saved locally on this device</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      const SAVED_KEY='gomigo-saved-items-v1';
+      const TRIPS_KEY='gomigo-trips-v1';
+      const read=(key)=>{try{const value=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(value)?value:[]}catch{return[]}};
+      const write=(key,value)=>{try{localStorage.setItem(key,JSON.stringify(value));return true}catch{return false}};
+      const panels={plan:document.querySelector('#panel-plan'),saved:document.querySelector('#panel-saved'),trips:document.querySelector('#panel-trips')};
+      let saved=read(SAVED_KEY), trips=read(TRIPS_KEY), latestPlan=null, toastTimer;
+      const toast=document.querySelector('#toast');
+      function showToast(message){toast.textContent=message;toast.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('visible'),2600)}
+      function selectTab(name,updateHash=true){if(!panels[name])name='saved';Object.entries(panels).forEach(([key,panel])=>{const selected=key===name;panel.hidden=!selected;document.querySelector(`#tab-${key}`).classList.toggle('active',selected);document.querySelector(`#tab-${key}`).setAttribute('aria-selected',String(selected));document.querySelector(`#tab-${key}`).tabIndex=selected?0:-1});if(updateHash&&location.hash!==`#${name}`)history.replaceState(null,'',`#${name}`);if(name==='saved')renderSaved();if(name==='trips')renderTrips()}
+      function escapeText(text=''){return String(text).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]))}
+      function renderSaved(){const grid=document.querySelector('#saved-grid');grid.innerHTML='';saved.forEach(item=>{const card=document.createElement('article');card.className='saved-card';card.innerHTML=`<img src="${escapeText(item.image||'explore_assets/explore-hero.png')}" alt="${escapeText(item.title)}"><div class="saved-card-content"><span class="saved-country">${escapeText(item.country||'SAVED DESTINATION')}</span><h3>${escapeText(item.title)}</h3><p>${escapeText(item.description||'A place to keep in mind for your next journey.')}</p><div class="saved-actions"><button class="small-primary" type="button" data-plan-destination="${escapeText(item.title)}">Plan this trip <span>→</span></button><button class="remove-saved" type="button" data-remove-saved="${escapeText(item.id)}" aria-label="Remove ${escapeText(item.title)} from saved">♥</button></div></div>`;grid.append(card)});document.querySelector('#saved-empty').hidden=saved.length>0;document.querySelector('#saved-count').textContent=saved.length}
+      function renderTrips(){const list=document.querySelector('#trip-list');list.innerHTML='';trips.forEach(trip=>{const article=document.createElement('article');article.className='trip-card';article.innerHTML=`<div class="trip-card-top"><span class="trip-mark">✈</span><span class="trip-dates">${escapeText(formatDate(trip.startDate))} — ${escapeText(formatDate(trip.endDate))}</span></div><h3>${escapeText(trip.destination)}</h3><p>${escapeText(trip.travelers)} traveler${trip.travelers==='1'?'':'s'} · ${escapeText(trip.style)} · ${escapeText(trip.budget)}</p><div class="trip-days">${(trip.days||[]).map(day=>`<div><b>${escapeText(day.title)}</b><span>${escapeText(day.detail)}</span></div>`).join('')}</div><button class="remove-trip" type="button" data-remove-trip="${escapeText(trip.id)}">Remove itinerary</button>`;list.append(article)});document.querySelector('#trips-empty').hidden=trips.length>0;document.querySelector('#trips-count').textContent=trips.length}
+      function formatDate(value){if(!value)return 'Date flexible';const date=new Date(`${value}T12:00:00`);return new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',year:'numeric'}).format(date)}
+      function makeDays(destination,startDate,endDate,style,notes){const start=new Date(`${startDate}T12:00:00`),end=new Date(`${endDate}T12:00:00`),count=Math.max(1,Math.min(14,Math.ceil((end-start)/86400000)+1));const ideas=style.toLowerCase().includes('food')?['Find a local market and try a regional favorite.','Take a relaxed food walk through a neighborhood.','Save room for a memorable local dinner.']:style.toLowerCase().includes('culture')?['Get oriented with a walk through the historic center.','Spend time with a local museum, landmark, or neighborhood.','Leave room for an unhurried café and evening stroll.']:style.toLowerCase().includes('nature')||style.toLowerCase().includes('adventure')?['Arrive, get settled, and explore a nearby viewpoint.','Set aside the day for an outdoor highlight.','Keep a slower morning for a local trail or hidden spot.']:['Arrive and explore the neighborhood around your stay.','Choose one signature sight and leave time to wander.','Enjoy a relaxed final morning before heading home.'];return Array.from({length:count},(_,index)=>({title:`Day ${index+1}`,detail:index===0?`Arrive in ${destination} and settle in. ${notes?`Keep time for: ${notes}`:ideas[0]}`:ideas[index%ideas.length]}))}
+      function renderGenerated(trip){latestPlan=trip;const box=document.querySelector('#generated-plan');box.hidden=false;box.innerHTML=`<div class="generated-head"><div><p class="eyebrow">YOUR FIRST DRAFT</p><h3>${escapeText(trip.destination)}</h3><p>${escapeText(formatDate(trip.startDate))} — ${escapeText(formatDate(trip.endDate))} · ${escapeText(trip.style)}</p></div><button class="small-primary" type="button" id="save-generated">Save to My Trips <span>→</span></button></div><div class="generated-days">${trip.days.map(day=>`<article><span>${escapeText(day.title)}</span><p>${escapeText(day.detail)}</p></article>`).join('')}</div><p class="local-note">A flexible starter outline made in your browser. Adjust it as your plans take shape.</p>`;document.querySelector('#save-generated').addEventListener('click',()=>{trips.unshift({...latestPlan,id:crypto.randomUUID?.()||String(Date.now())});if(!write(TRIPS_KEY,trips)){trips.shift();showToast('Could not save. Browser storage may be full.');return}renderTrips();selectTab('trips');showToast('Itinerary saved to My Trips.')})}
+      document.querySelectorAll('.tab-button').forEach(button=>button.addEventListener('click',()=>selectTab(button.dataset.tab)));
+      document.querySelectorAll('[data-tab-link]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();selectTab(link.dataset.tabLink)}));
+      document.querySelectorAll('[data-switch]').forEach(button=>button.addEventListener('click',()=>selectTab(button.dataset.switch)));
+      document.querySelector('.workspace-tabs').addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight'].includes(event.key))return;event.preventDefault();const names=Object.keys(panels),current=names.findIndex(name=>!panels[name].hidden),next=(current+(event.key==='ArrowRight'?1:-1)+names.length)%names.length;selectTab(names[next]);document.querySelector(`#tab-${names[next]}`).focus()});
+      window.addEventListener('hashchange',()=>selectTab(location.hash.slice(1),false));
+      document.querySelector('#plan-form').addEventListener('submit',event=>{event.preventDefault();const form=event.currentTarget;if(!form.reportValidity())return;const data=Object.fromEntries(new FormData(form));if(data.endDate<data.startDate){form.elements.endDate.setCustomValidity('Choose an end date on or after the start date.');form.elements.endDate.reportValidity();return}form.elements.endDate.setCustomValidity('');const trip={...data,id:crypto.randomUUID?.()||String(Date.now()),days:makeDays(data.destination,data.startDate,data.endDate,data.style,data.notes)};renderGenerated(trip);document.querySelector('#generated-plan').scrollIntoView({behavior:'smooth',block:'nearest'})});
+      document.addEventListener('click',event=>{const planButton=event.target.closest('[data-plan-destination]');if(planButton){document.querySelector('#plan-form').elements.destination.value=planButton.dataset.planDestination;selectTab('plan');document.querySelector('#plan-form').elements.startDate.focus();return}const removeSaved=event.target.closest('[data-remove-saved]');if(removeSaved){saved=saved.filter(item=>item.id!==removeSaved.dataset.removeSaved);write(SAVED_KEY,saved);renderSaved();showToast('Removed from Saved.');return}const removeTrip=event.target.closest('[data-remove-trip]');if(removeTrip){trips=trips.filter(item=>item.id!==removeTrip.dataset.removeTrip);write(TRIPS_KEY,trips);renderTrips();showToast('Itinerary removed.')}});
+      renderSaved();renderTrips();const requestedDestination=new URLSearchParams(location.search).get('destination');if(requestedDestination){document.querySelector('#plan-form').elements.destination.value=requestedDestination;selectTab('plan',false)}else selectTab(location.hash.slice(1)||'saved',false);
+    })();
+  </script>
+</body>
+</html>

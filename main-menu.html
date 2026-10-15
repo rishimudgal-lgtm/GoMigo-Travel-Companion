@@ -34,19 +34,19 @@
         <!-- Navigation -->
         <nav class="sidebar-nav">
 
-            <a href="#" class="nav-button active">
+            <a href="itineraries.html#plan" class="nav-button active">
                 Plan Trip
             </a>
 
-            <a href="#" class="nav-button">
+            <a href="itineraries.html#trips" class="nav-button">
                 My Trips
             </a>
 
-            <a href="#" class="nav-button">
+            <a href="explore.html" class="nav-button">
                 Explore
             </a>
 
-            <a href="#" class="nav-button">
+            <a href="itineraries.html#saved" class="nav-button">
                 Saved
             </a>
 
@@ -67,16 +67,16 @@
 
 
         <!-- Profile -->
-        <div class="sidebar-profile">
+        <a class="sidebar-profile" href="profile.html" aria-label="Open your profile">
 
-            <img src="assets/profile.png" alt="Profile">
+            <img src="main-menu-assets/profile.png" alt="Profile">
 
             <div>
                 <h4>Hey, Explorer!</h4>
                 <p>Let’s plan something amazing!</p>
             </div>
 
-        </div>
+        </a>
 
     </aside>
 
@@ -212,7 +212,7 @@
                             alt="Greece"
                         >
 
-                        <button class="heart">
+                        <button class="heart" type="button" aria-label="Save Greece" aria-pressed="false">
                             ♡
                         </button>
 
@@ -241,7 +241,7 @@
                             alt="Switzerland"
                         >
 
-                        <button class="heart">
+                        <button class="heart" type="button" aria-label="Save Switzerland" aria-pressed="false">
                             ♡
                         </button>
 
@@ -270,7 +270,7 @@
                             alt="Japan"
                         >
 
-                        <button class="heart">
+                        <button class="heart" type="button" aria-label="Save Japan" aria-pressed="false">
                             ♡
                         </button>
 
@@ -299,7 +299,7 @@
                             alt="Jaipur"
                         >
 
-                        <button class="heart">
+                        <button class="heart" type="button" aria-label="Save Jaipur" aria-pressed="false">
                             ♡
                         </button>
 
@@ -373,5 +373,22 @@
 </div>
 
 
+<script>
+  (() => {
+    const key = 'gomigo-saved-items-v1';
+    const details = {Greece:['Greece · Europe','Islands, culture and sunsets'],Switzerland:['Switzerland · Europe','Mountains, lakes and more'],Japan:['Japan · Asia','Tradition meets modern'],Jaipur:['India · Asia','Royal charm and vibrant streets']};
+    const read = () => { try { const list=JSON.parse(localStorage.getItem(key)||'[]'); return Array.isArray(list)?list:[]; } catch { return []; } };
+    document.querySelectorAll('.destination-card').forEach(card => {
+      const title=card.querySelector('h3')?.textContent.trim(), button=card.querySelector('.heart');
+      if(!title||!button)return;
+      const id=title.toLowerCase().replace(/[^a-z0-9]+/g,'-');
+      const update=()=>{const active=read().some(item=>item.id===id);button.classList.toggle('is-saved',active);button.textContent=active?'♥':'♡';button.setAttribute('aria-pressed',String(active));button.setAttribute('aria-label',`${active?'Remove':'Save'} ${title}`)};
+      button.addEventListener('click',()=>{const list=read(),active=list.some(item=>item.id===id);const next=active?list.filter(item=>item.id!==id):[...list,{id,title,country:details[title]?.[0]||'SAVED DESTINATION',description:details[title]?.[1]||'',image:card.querySelector('img')?.getAttribute('src')}];try{localStorage.setItem(key,JSON.stringify(next));update()}catch{window.alert('Could not save this destination in browser storage.')}});
+      update();
+    });
+    document.querySelector('.start-planning')?.addEventListener('click',()=>location.href='itineraries.html#plan');
+    document.querySelector('.surprise-button')?.addEventListener('click',()=>location.href='itineraries.html#plan');
+  })();
+</script>
 </body>
 </html>
