@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eaf8f0">
+  <title>Explore Destinations | GoMigo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header class="hero" id="top">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="landing_page.html"><img src="landing_assets/GoMigo-removebg-preview 1.svg" alt="GoMigo"></a>
+      <div class="nav-links"><a class="current" href="explore.html">Explore</a><a href="#popular">Destinations</a><a href="landing_page.html#inspiration">Travel Guide</a><a href="itineraries.html#trips">My Trips</a></div>
+      <div class="nav-actions"><a class="login" href="profile.html">My Profile</a><a class="nav-cta" href="itineraries.html#plan">Get Started</a></div>
+    </nav>
+    <div class="hero-copy">
+      <h1>Explore Destinations</h1>
+      <p class="hero-subtitle">Find your next adventure, discover new places, and plan a trip you’ll love.</p>
+      <label class="search-box"><span aria-hidden="true">⌕</span><input id="destination-search" type="search" placeholder="Search destinations, cities or countries…" aria-label="Search destinations"><kbd>Ctrl K</kbd></label>
+      <div class="filters" role="group" aria-label="Filter destinations">
+        <button class="filter active" data-filter="all">Popular</button><button class="filter" data-filter="beach">Beach</button><button class="filter" data-filter="mountains">Mountains</button><button class="filter" data-filter="culture">Culture</button><button class="filter" data-filter="adventure">Adventure</button><button class="filter" data-filter="city">City</button>
+      </div>
+    </div>
+    <a class="scroll-cue" href="#popular" aria-label="Scroll to popular destinations">↓</a>
+  </header>
+
+  <main>
+    <section class="popular section-wrap" id="popular">
+      <div class="section-heading"><div><p class="eyebrow green">A LITTLE INSPIRATION</p><h2>Popular destinations</h2><p class="section-subtitle">The places travellers can’t stop dreaming about.</p></div><a class="text-link" href="#trending">See what’s trending <span>↗</span></a></div>
+      <div class="destination-grid" id="destination-grid">
+        <article class="destination-card" data-tags="city culture"><img src="explore_assets/paris.png" alt="Paris and the Eiffel Tower"><a class="destination-hitarea" href="itineraries.html?destination=Paris#plan" aria-label="Plan a trip to Paris"></a><button class="save-destination" type="button" data-id="paris" data-title="Paris" data-country="France · Europe" data-description="The city of light, art, and endless little cafés." aria-label="Save Paris" aria-pressed="false">♡</button></article>
+        <article class="destination-card" data-tags="culture city"><img src="explore_assets/india.png" alt="Taj Mahal in Agra"><a class="destination-hitarea" href="itineraries.html?destination=Agra#plan" aria-label="Plan a trip to Agra"></a><button class="save-destination" type="button" data-id="agra" data-title="Agra" data-country="India · Asia" data-description="Timeless architecture and stories carved in stone." aria-label="Save Agra" aria-pressed="false">♡</button></article>
+        <article class="destination-card" data-tags="culture city"><img src="explore_assets/colosseum.png" alt="The Colosseum in Rome"><a class="destination-hitarea" href="itineraries.html?destination=Rome#plan" aria-label="Plan a trip to Rome"></a><button class="save-destination" type="button" data-id="rome" data-title="Rome" data-country="Italy · Europe" data-description="Ancient wonders, lively piazzas, and la dolce vita." aria-label="Save Rome" aria-pressed="false">♡</button></article>
+        <article class="destination-card" data-tags="city adventure"><img src="explore_assets/burjKhalifa.png" alt="Burj Khalifa in Dubai"><a class="destination-hitarea" href="itineraries.html?destination=Dubai#plan" aria-label="Plan a trip to Dubai"></a><button class="save-destination" type="button" data-id="dubai" data-title="Dubai" data-country="UAE · Asia" data-description="A global city with iconic sights and desert adventures." aria-label="Save Dubai" aria-pressed="false">♡</button></article>
+        <article class="destination-card" data-tags="beach culture"><img src="explore_assets/santorini.png" alt="Santorini on the Aegean Sea"><a class="destination-hitarea" href="itineraries.html?destination=Santorini#plan" aria-label="Plan a trip to Santorini"></a><button class="save-destination" type="button" data-id="santorini" data-title="Santorini" data-country="Greece · Europe" data-description="Whitewashed villages above a brilliant blue sea." aria-label="Save Santorini" aria-pressed="false">♡</button></article>
+        <article class="destination-card" data-tags="city beach"><img src="explore_assets/colombo.png" alt="Colombo waterfront in Sri Lanka"><a class="destination-hitarea" href="itineraries.html?destination=Colombo#plan" aria-label="Plan a trip to Colombo"></a><button class="save-destination" type="button" data-id="colombo" data-title="Colombo" data-country="Sri Lanka · Asia" data-description="A lively coastal city with golden beaches and rich history." aria-label="Save Colombo" aria-pressed="false">♡</button></article>
+      </div>
+      <p class="empty-state" id="empty-state" hidden>No destinations match that search. Try a different place or category.</p>
+    </section>
+
+    <section class="planner-banner section-wrap">
+      <a class="banner-image-link" href="itineraries.html#plan" aria-label="Plan a trip with GoMigo"><img src="explore_assets/openwithAI.png" alt="Not sure where to go? Let GoMigo find your perfect destination. Plan with AI."></a>
+    </section>
+
+    <section class="inspiration section-wrap" id="trending">
+      <div class="section-heading"><div><p class="eyebrow green">MADE FOR YOUR MOOD</p><h2>Explore by travel style</h2><p class="section-subtitle">Find a place that feels like you.</p></div></div>
+      <div class="style-grid">
+        <a class="style-card" href="#popular" data-style="beach"><img src="explore_assets/beach.png" alt="Beach Escapes"></a>
+        <a class="style-card" href="#popular" data-style="mountains"><img src="explore_assets/mountain.png" alt="Mountain Adventures"></a>
+        <a class="style-card" href="#popular" data-style="culture"><img src="explore_assets/culture.png" alt="Cultural Getaways"></a>
+        <a class="style-card" href="#popular" data-style="adventure"><img src="explore_assets/dining.png" alt="Food and Dining"></a>
+        <a class="style-card adventure" href="#popular" data-style="adventure"><img src="explore_assets/adventure.png" alt="Adventure Trips"></a>
+      </div>
+    </section>
+    <section class="trending section-wrap">
+      <div class="section-heading"><div><p class="eyebrow green">ON EVERYONE’S LIST</p><h2>Trending right now</h2><p class="section-subtitle">Destinations everyone’s talking about.</p></div><a class="text-link" href="#popular">Explore all destinations <span>↗</span></a></div>
+      <div class="trending-grid">
+        <a href="itineraries.html#plan"><img src="explore_assets/japan.png" alt="Japan"></a>
+        <a href="itineraries.html#plan"><img src="explore_assets/greece.png" alt="Greece"></a>
+        <a href="itineraries.html#plan"><img src="explore_assets/canada.png" alt="Canada"></a>
+        <a href="itineraries.html#plan"><img src="explore_assets/iceland.png" alt="Iceland"></a>
+        <a href="itineraries.html#plan"><img src="explore_assets/portugal.png" alt="Portugal"></a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-columns">
+      <section class="footer-group">
+        <h2><span>for</span> Travellers</h2>
+        <a href="itineraries.html#plan">Plan Your Trip</a>
+        <a href="explore.html">Explore Destinations</a>
+        <a href="explore.html#trending">Find Experiences</a>
+        <a href="landing_page.html#travel-guide">Travel Tips</a>
+        <a href="#help">Help</a>
+      </section>
+      <div class="footer-middle">
+        <section class="footer-group">
+          <h2><span>for</span> Creators</h2>
+          <a href="#become-creator">Become a Creator</a>
+          <a href="#creator-academy">Creator Academy</a>
+        </section>
+        <section class="footer-group business-group">
+          <h2><span>for</span> Business</h2>
+          <a href="#business">Overview</a>
+          <a href="explore.html">Destinations</a>
+          <a href="#hotels">Hotels</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#packages">Packages*</a>
+          <a href="#book-a-demo">Book a demo</a>
+        </section>
+      </div>
+      <section class="footer-group">
+        <h2><span>for</span> Company</h2>
+        <a href="#about">About</a>
+        <a href="#team">Team</a>
+        <a href="#press">Press</a>
+        <a href="#media-kit">Media Kit</a>
+        <a href="#contact">Contact</a>
+        <a href="#resources">Resources</a>
+        <a href="#mindtrip-app">Mindtrip App</a>
+      </section>
+    </div>
+    <nav class="footer-socials" aria-label="Social media">
+      <a class="instagram" href="#instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="social-dot" cx="18" cy="6" r="1"/></svg></a>
+      <a class="facebook" href="#facebook" aria-label="Facebook"><span aria-hidden="true">f</span></a>
+      <a class="x-social" href="#x" aria-label="X"><span aria-hidden="true">𝕏</span></a>
+      <a class="youtube" href="#youtube" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg></a>
+      <a class="linkedin" href="#linkedin" aria-label="LinkedIn"><span aria-hidden="true">in</span></a>
+    </nav>
+  </footer>
+  <script>
+    const savedStorageKey = 'gomigo-saved-items-v1';
+    function readSavedItems() { try { const items = JSON.parse(localStorage.getItem(savedStorageKey) || '[]'); return Array.isArray(items) ? items : []; } catch { return []; } }
+    function updateSaveButtons() {
+      const ids = new Set(readSavedItems().map(item => item.id));
+      document.querySelectorAll('.save-destination').forEach(button => {
+        const isSaved = ids.has(button.dataset.id);
+        button.classList.toggle('is-saved', isSaved);
+        button.setAttribute('aria-pressed', String(isSaved));
+        button.setAttribute('aria-label', `${isSaved ? 'Remove' : 'Save'} ${button.dataset.title}`);
+        button.textContent = isSaved ? '♥' : '♡';
+      });
+    }
+    document.querySelectorAll('.save-destination').forEach(button => button.addEventListener('click', () => {
+      const items = readSavedItems();
+      const alreadySaved = items.some(item => item.id === button.dataset.id);
+      const next = alreadySaved ? items.filter(item => item.id !== button.dataset.id) : [...items, {id:button.dataset.id,title:button.dataset.title,country:button.dataset.country,description:button.dataset.description,image:button.parentElement.querySelector('img').getAttribute('src')}];
+      try { localStorage.setItem(savedStorageKey, JSON.stringify(next)); updateSaveButtons(); } catch { window.alert('Could not save this destination in browser storage.'); }
+    }));
+    updateSaveButtons();
+    const search = document.querySelector('#destination-search');
+    const cards = [...document.querySelectorAll('.destination-card')];
+    const filters = [...document.querySelectorAll('.filter')];
+    const empty = document.querySelector('#empty-state');
+    let activeFilter = 'all';
+    function updateCards() {
+      const query = search.value.trim().toLowerCase();
+      let visible = 0;
+      cards.forEach(card => {
+        const matchesText = (card.textContent + ' ' + card.querySelector('img').alt).toLowerCase().includes(query);
+        const matchesFilter = activeFilter === 'all' || card.dataset.tags.split(' ').includes(activeFilter);
+        card.hidden = !(matchesText && matchesFilter);
+        if (!card.hidden) visible++;
+      });
+      empty.hidden = visible > 0;
+    }
+    search.addEventListener('input', updateCards);
+    filters.forEach(button => button.addEventListener('click', () => {
+      activeFilter = button.dataset.filter;
+      filters.forEach(item => item.classList.toggle('active', item === button));
+      updateCards();
+    }));
+    document.querySelectorAll('.style-card').forEach(link => link.addEventListener('click', () => {
+      activeFilter = link.dataset.style;
+      filters.forEach(item => item.classList.toggle('active', item.dataset.filter === activeFilter));
+      updateCards();
+    }));
+    document.addEventListener('keydown', event => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); search.focus(); }
+    });
+  </script>
+</body>
+</html>

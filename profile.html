@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d9f0f7">
+  <title>My Profile | GoMigo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+  <main class="profile-layout">
+    <aside class="profile-sidebar" aria-label="Account navigation">
+      <a class="mini-logo" href="main-menu.html" aria-label="GoMigo home"><img src="main-menu-assets/gomigo-logo.png" alt="GoMigo"></a>
+      <nav class="side-nav">
+        <a href="main-menu.html"><span class="nav-icon" aria-hidden="true">⌂</span><span>Home</span></a>
+        <a href="itineraries.html#plan"><span class="nav-icon compass" aria-hidden="true">⊙</span><span>Plan Trip</span></a>
+        <a href="itineraries.html#trips"><span class="nav-icon" aria-hidden="true">▣</span><span>My Trips</span></a>
+        <a href="itineraries.html#saved"><span class="nav-icon heart" aria-hidden="true">♡</span><span>Saved</span></a>
+        <a class="selected" href="profile.html" aria-current="page"><span class="nav-icon" aria-hidden="true">♙</span><span>My Profile</span></a>
+        <button type="button" id="open-settings"><span class="nav-icon" aria-hidden="true">⚙</span><span>Settings</span></button>
+      </nav>
+      <div class="sidebar-note">Plan less.<br>Explore more. <span>✦</span></div>
+    </aside>
+
+    <section class="profile-panel" aria-labelledby="page-title">
+      <header class="page-header">
+        <div><p class="overline">YOUR TRAVEL SPACE</p><h1 id="page-title">My Profile</h1><p>Keep your travel details up to date</p></div>
+        <div class="edit-actions"><button class="button secondary" id="cancel-edit" type="button" hidden>Cancel</button><button class="button primary" id="edit-profile" type="button"><span aria-hidden="true">✎</span> Edit Profile</button></div>
+      </header>
+
+      <form id="profile-form" novalidate>
+        <section class="identity-card" aria-label="Profile summary">
+          <div class="avatar-wrap">
+            <div class="avatar" id="avatar-display" aria-label="Profile photo">
+              <svg class="avatar-placeholder" id="avatar-placeholder" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="49" fill="#82aaa7"/><circle cx="50" cy="34" r="16" fill="#f7fbf8"/><path d="M18 88c3-20 15-31 32-31s29 11 32 31" fill="#f7fbf8"/></svg><img id="avatar-photo" alt="Profile photo" hidden>
+            </div>
+            <button class="camera-button" id="change-photo" type="button" aria-label="Choose a profile photo">📷</button>
+            <input id="photo-input" type="file" accept="image/*" hidden>
+          </div>
+          <div class="identity-copy"><h2 id="display-name">Rishi Mudgal</h2><p id="display-email">rishi.mudgal@email.com</p><p class="motto">Exploring new places, one trip at a time <span>✈</span></p></div>
+          <span class="traveler-badge">✦ EXPLORER</span>
+        </section>
+
+        <section class="form-card" aria-labelledby="personal-title">
+          <div class="card-heading"><div><span class="section-number">01</span><h2 id="personal-title">Personal Information</h2></div><span class="card-hint">Your details</span></div>
+          <div class="field-grid">
+            <label class="field"><span>Full Name</span><input name="fullName" autocomplete="name" value="Rishi Mudgal" required maxlength="80"></label>
+            <label class="field"><span>Email Address</span><input name="email" type="email" autocomplete="email" value="rishi.mudgal@email.com" required maxlength="120"></label>
+            <label class="field"><span>Phone Number</span><input name="phone" type="tel" autocomplete="tel" value="+91 98765 43210" maxlength="30"></label>
+            <label class="field"><span>Date of Birth</span><input name="dateOfBirth" type="date" value="2003-03-15"></label>
+            <label class="field"><span>Location</span><span class="input-with-icon"><span aria-hidden="true">⌖</span><input name="location" autocomplete="address-level2" value="New Delhi, India" maxlength="100"></span></label>
+            <label class="field"><span>Nationality</span><select name="nationality"><option>Indian</option><option>American</option><option>British</option><option>Canadian</option><option>Australian</option><option>Other</option></select></label>
+          </div>
+        </section>
+
+        <section class="form-card" id="preferences" aria-labelledby="preferences-title">
+          <div class="card-heading"><div><span class="section-number">02</span><h2 id="preferences-title">Travel Preferences</h2></div><span class="card-hint">Make it your kind of trip</span></div>
+          <div class="preference-grid">
+            <label class="select-preference"><span class="preference-icon" aria-hidden="true">♧</span><span class="select-copy"><span>Travel Style</span><select name="travelStyle"><option>Adventure</option><option>Relaxation</option><option>Culture</option><option>Food &amp; Dining</option><option>Nature</option><option>City breaks</option></select></span></label>
+            <label class="select-preference"><span class="preference-icon" aria-hidden="true">▤</span><span class="select-copy"><span>Preferred Budget Range</span><select name="budget"><option>Budget-friendly</option><option>Moderate</option><option>Comfort</option><option>Luxury</option></select></span></label>
+          </div>
+          <fieldset class="trip-types"><legend>Type of Trips</legend>
+            <label><input type="checkbox" name="tripTypes" value="Solo Travel" checked><span>Solo Travel</span></label>
+            <label><input type="checkbox" name="tripTypes" value="Family"><span>Family</span></label>
+            <label><input type="checkbox" name="tripTypes" value="Couple"><span>Couple</span></label>
+            <label><input type="checkbox" name="tripTypes" value="Friends" checked><span>Friends</span></label>
+          </fieldset>
+        </section>
+
+        <section class="form-card about-card" aria-labelledby="about-title">
+          <div class="card-heading"><div><span class="section-number">03</span><h2 id="about-title">About Me</h2></div><span class="card-hint">Tell us what you love</span></div>
+          <label class="about-field"><span class="visually-hidden">About me</span><textarea name="about" maxlength="300" rows="3">I love exploring new cultures, trying local food, and capturing beautiful moments. Travel is my way to learn, grow, and experience the world!</textarea><span class="character-count" id="character-count">0/300</span></label>
+          <div class="save-row"><p class="save-note" id="save-note" role="status" aria-live="polite">Your profile is saved on this device.</p><button class="button primary save-button" id="save-profile" type="submit">Save Changes <span aria-hidden="true">→</span></button></div>
+        </section>
+      </form>
+    </section>
+  </main>
+
+  <dialog class="settings-dialog" id="settings-dialog" aria-labelledby="settings-title">
+    <form method="dialog"><button class="dialog-close" aria-label="Close settings">×</button></form>
+    <p class="overline">ACCOUNT</p><h2 id="settings-title">Profile settings</h2>
+    <p class="settings-copy">Your profile and photo are saved only in this browser on this device. There’s no account server connected.</p>
+    <button class="button secondary export-button" id="export-profile" type="button">Download profile backup</button>
+    <button class="button danger" id="reset-profile" type="button">Reset to sample profile</button>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      const STORAGE_KEY = 'gomigo-profile-v1';
+      const defaults = {fullName:'Rishi Mudgal',email:'rishi.mudgal@email.com',phone:'+91 98765 43210',dateOfBirth:'2003-03-15',location:'New Delhi, India',nationality:'Indian',travelStyle:'Adventure',budget:'Moderate',tripTypes:['Solo Travel','Friends'],about:'I love exploring new cultures, trying local food, and capturing beautiful moments. Travel is my way to learn, grow, and experience the world!',photo:''};
+      const form = document.querySelector('#profile-form');
+      const fields = [...form.querySelectorAll('input:not([type=checkbox]):not([type=file]),select,textarea')];
+      const editButton = document.querySelector('#edit-profile');
+      const cancelButton = document.querySelector('#cancel-edit');
+      const saveNote = document.querySelector('#save-note');
+      const toast = document.querySelector('#toast');
+      let savedProfile = loadProfile();
+      let toastTimer;
+
+      function loadProfile() {
+        try { return {...defaults, ...JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}')}; }
+        catch { return {...defaults}; }
+      }
+      function persist(profile) {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(profile)); return true; }
+        catch { return false; }
+      }
+      function readForm() {
+        const data = Object.fromEntries(new FormData(form).entries());
+        data.tripTypes = [...form.querySelectorAll('input[name="tripTypes"]:checked')].map(input => input.value);
+        data.photo = savedProfile.photo || '';
+        return data;
+      }
+      function fillForm(profile) {
+        fields.forEach(field => {
+          if (field.name in profile) field.value = profile[field.name];
+        });
+        form.querySelectorAll('input[name="tripTypes"]').forEach(input => { input.checked = (profile.tripTypes || []).includes(input.value); });
+        renderProfile(profile);
+        updateCount();
+      }
+      function renderProfile(profile) {
+        document.querySelector('#display-name').textContent = profile.fullName || defaults.fullName;
+        document.querySelector('#display-email').textContent = profile.email || defaults.email;
+        const photo = document.querySelector('#avatar-photo');
+        const hasPhoto = typeof profile.photo === 'string' && profile.photo.startsWith('data:image/jpeg;base64,');
+        photo.hidden = !hasPhoto;
+        photo.src = hasPhoto ? profile.photo : '';
+        document.querySelector('#avatar-placeholder').hidden = hasPhoto;
+      }
+      function setEditing(enabled) {
+        fields.forEach(field => { field.disabled = !enabled; });
+        form.querySelectorAll('input[name="tripTypes"]').forEach(input => { input.disabled = !enabled; });
+        editButton.hidden = enabled;
+        cancelButton.hidden = !enabled;
+        document.querySelector('#save-profile').hidden = !enabled;
+        saveNote.textContent = enabled ? 'Changes are saved when you select Save Changes.' : 'Your profile is saved on this device.';
+      }
+      function updateCount() {
+        const length = form.elements.about.value.length;
+        document.querySelector('#character-count').textContent = `${length}/300`;
+      }
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add('visible');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('visible'), 2800);
+      }
+      fillForm(savedProfile);
+      setEditing(false);
+      editButton.addEventListener('click', () => setEditing(true));
+      cancelButton.addEventListener('click', () => { fillForm(savedProfile); setEditing(false); });
+      form.elements.about.addEventListener('input', updateCount);
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        const next = readForm();
+        if (!persist(next)) { showToast('Could not save. Your browser storage may be full.'); return; }
+        savedProfile = next;
+        fillForm(savedProfile);
+        setEditing(false);
+        saveNote.textContent = 'Saved just now on this device.';
+        showToast('Profile saved on this device.');
+      });
+      document.querySelector('#change-photo').addEventListener('click', () => document.querySelector('#photo-input').click());
+      document.querySelector('#photo-input').addEventListener('change', event => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+        if (!file.type.startsWith('image/')) { showToast('Choose an image file for your profile photo.'); return; }
+        const reader = new FileReader();
+        reader.onload = () => {
+          const image = new Image();
+          image.onload = () => {
+            const canvas = document.createElement('canvas');
+            const size = 420;
+            const scale = Math.min(1, size / Math.max(image.width, image.height));
+            canvas.width = Math.round(image.width * scale);
+            canvas.height = Math.round(image.height * scale);
+            canvas.getContext('2d').drawImage(image, 0, 0, canvas.width, canvas.height);
+            const next = {...savedProfile, photo:canvas.toDataURL('image/jpeg',.82)};
+            if (!persist(next)) { showToast('Photo is too large to save in browser storage.'); return; }
+            savedProfile = next;
+            renderProfile(savedProfile);
+            showToast('Profile photo updated on this device.');
+          };
+          image.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      });
+      const settings = document.querySelector('#settings-dialog');
+      document.querySelector('#open-settings').addEventListener('click', () => settings.showModal());
+      document.querySelector('#export-profile').addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify(savedProfile, null, 2)], {type:'application/json'});
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url; link.download = 'gomigo-profile-backup.json'; link.click();
+        URL.revokeObjectURL(url);
+        showToast('Profile backup downloaded.');
+      });
+      document.querySelector('#reset-profile').addEventListener('click', () => {
+        if (!window.confirm('Reset this browser’s saved profile to the sample profile?')) return;
+        savedProfile = {...defaults};
+        persist(savedProfile);
+        fillForm(savedProfile);
+        setEditing(false);
+        settings.close();
+        showToast('Sample profile restored.');
+      });
+    })();
+  </script>
+</body>
+</html>
