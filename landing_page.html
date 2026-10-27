@@ -7,22 +7,22 @@
     <title>GoMigo — Travel Your Way</title>
 
     <!-- CSS file -->
-    <link rel="stylesheet" href="landing_page.css">
+    <link rel="stylesheet" href="site.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="site.js" defer></script>
 </head>
 
-<body>
+<body class="landing-page">
 
     <!-- =====================================================
          HERO SECTION
     ====================================================== -->
 
-    <section class="hero">
+    <section class="landing-hero">
 
         <!-- Navigation -->
         <nav class="navbar">
@@ -30,27 +30,27 @@
             <div class="nav-left">
 
                 <!-- Menu icon -->
-                <button class="menu-button" aria-label="Open menu">
+                <button class="menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="site-navigation">
                     <img src="landing_assets/Menu-vector.png" alt="Menu">
                 </button>
 
                 <!-- GoMigo Logo -->
-                <a href="index.html" class="logo-link">
+                <a href="landing_page.html" class="logo-link" aria-label="GoMigo home">
                     <img src="landing_assets/GoMigo-removebg-preview 1.svg" alt="GoMigo Logo" class="logo">
                 </a>
 
             </div>
 
             <!-- Navigation links -->
-            <div class="nav-links">
+            <div class="nav-links" id="site-navigation">
 
                 <a href="explore.html">Explore</a>
 
-                <a href="explore.html">Destinations</a>
+                <a href="destinations.html">Destinations</a>
 
-                <a href="#travel-guide">Travel Guide</a>
+                <a href="travel-guide-preview.html">Travel Guide</a>
 
-                <a href="itineraries.html#trips">My Trips</a>
+                <a href="login.html?next=my-trips.html">My Trips</a>
 
             </div>
 
@@ -61,7 +61,7 @@
                     Login
                 </a>
 
-                <a href="itineraries.html#plan" class="get-started-button">
+                <a href="signup.html" class="get-started-button">
                     Get Started
                 </a>
 
@@ -71,9 +71,9 @@
 
 
         <!-- Hero Content -->
-        <div class="hero-content">
+        <div class="landing-hero-content">
 
-            <div class="hero-text">
+            <div class="landing-hero-text">
 
                 <h1>
                     Go Beyond<br>
@@ -85,13 +85,13 @@
                     helps you create the perfect trip, your way..
                 </p>
 
-                <div class="hero-buttons">
+                <div class="landing-hero-buttons">
 
-                    <a href="itineraries.html#plan" class="hero-button">
+                    <a href="trip-planner.html" class="landing-hero-button">
                         Plan Your Trip
                     </a>
 
-                    <a href="#inspiration" class="hero-button">
+                    <a href="#explore" class="landing-hero-button">
                         Get Inspired
                     </a>
 
@@ -479,7 +479,7 @@
                     <span>for</span> Travellers
                 </h3>
 
-                <a href="itineraries.html#plan">
+                <a href="trip-planner.html">
                     Plan Your Trip
                 </a>
 
@@ -491,59 +491,34 @@
                     Find Experiences
                 </a>
 
-                <a href="#">
+                <a href="travel-guide-preview.html">
                     Travel Tips
                 </a>
 
-                <a href="#">
+                <a href="#how-it-works">
                     Help
                 </a>
 
             </div>
 
 
-            <!-- Creators -->
+            <!-- GoMigo -->
             <div class="footer-column">
 
                 <h3>
-                    <span>for</span> Creators
+                    Explore GoMigo
                 </h3>
 
-                <a href="#">
-                    Become a Creator
-                </a>
-
-                <a href="#">
-                    Creator Academy
-                </a>
-
-
-                <h3 class="business-heading">
-                    <span>for</span> Business
-                </h3>
-
-                <a href="#">
-                    Overview
-                </a>
-
-                <a href="#">
-                    Destinations
-                </a>
-
-                <a href="#">
-                    Hotels
-                </a>
-
-                <a href="#">
+                <a href="#how-it-works">
                     How It Works
                 </a>
 
-                <a href="#">
-                    Packages
+                <a href="#travel-guide">
+                    Travel Tools
                 </a>
 
-                <a href="#">
-                    Book a demo
+                <a href="my-trips.html">
+                    Organize Your Trip
                 </a>
 
             </div>
@@ -553,35 +528,23 @@
             <div class="footer-column">
 
                 <h3>
-                    <span>for</span> Company
+                    Your GoMigo
                 </h3>
 
-                <a href="#">
+                <a href="#how-it-works">
                     About
                 </a>
 
-                <a href="#">
-                    Team
+                <a href="destinations.html">
+                    Destinations
                 </a>
 
-                <a href="#">
-                    Press
+                <a href="#explore">
+                    Experiences
                 </a>
 
-                <a href="#">
-                    Media Kit
-                </a>
-
-                <a href="#">
-                    Contact
-                </a>
-
-                <a href="#">
-                    Resources
-                </a>
-
-                <a href="#">
-                    Mindtrip App
+                <a href="login.html">
+                    Sign In
                 </a>
 
             </div>
@@ -589,33 +552,7 @@
         </div>
 
 
-        <!-- Social media -->
-        <div class="social-links">
-
-            <a href="#" aria-label="Instagram">
-                <img src="landing_assets/Rectangle 1.svg" alt="Instagram">
-            </a>
-
-            <a href="#" aria-label="Facebook">
-                <img src="landing_assets/Rectangle 2.svg" alt="Facebook">
-            </a>
-
-            <a href="#" aria-label="X">
-                <img src="landing_assets/Rectangle 3.svg" alt="X">
-            </a>
-
-            <a href="#" aria-label="YouTube">
-                <img src="landing_assets/Rectangle 4.svg" alt="YouTube">
-            </a>
-
-            <a href="#" aria-label="LinkedIn">
-                <img src="landing_assets/Rectangle 5.svg" alt="LinkedIn">
-            </a>
-
-        </div>
-
     </footer>
-
 
 </body>
 </html>

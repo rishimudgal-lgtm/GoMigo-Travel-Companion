@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#eaf8f0">
+    <title>Travel Guide | GoMigo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
+    <script src="site.js" defer></script>
+</head>
+<body class="landing-page guide-preview-page" data-signed-in-page="travel-guide.html">
+    <header class="guide-preview-hero">
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="nav-left">
+                <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-navigation">
+                    <img src="landing_assets/Menu-vector.png" alt="">
+                </button>
+                <a href="landing_page.html" class="logo-link" aria-label="GoMigo home">
+                    <img src="landing_assets/GoMigo-removebg-preview 1.svg" alt="GoMigo Logo" class="logo">
+                </a>
+            </div>
+            <div class="nav-links" id="site-navigation">
+                <a href="explore.html">Explore</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="#guide-tips" aria-current="page">Travel Guide</a>
+                <a href="login.html?next=my-trips.html">My Trips</a>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html" class="login-link">Login</a>
+                <a href="signup.html" class="get-started-button">Get Started</a>
+            </div>
+        </nav>
+        <div class="guide-preview-hero-copy">
+            <p class="guide-preview-kicker">A LITTLE MORE READY, A LOT MORE PRESENT</p>
+            <h1>Travel well.<br>Make room for wonder.</h1>
+            <p>Simple ideas for planning a trip that feels thoughtful, comfortable, and like yours.</p>
+            <div class="guide-preview-actions">
+                <a href="#guide-tips" class="landing-hero-button">Read the guide</a>
+                <a href="login.html?next=trip-planner.html" class="guide-preview-text-link">Plan your trip <span aria-hidden="true">→</span></a>
+            </div>
+        </div>
+        <a class="guide-preview-scroll" href="#guide-tips" aria-label="Scroll to travel tips">↓</a>
+    </header>
+
+    <main id="guide-tips" class="guide-preview-main">
+        <header class="guide-preview-heading">
+            <p class="content-eyebrow">GOOD TRIPS START WITH A FEW GOOD CHOICES</p>
+            <h2>Keep the plan light.<br>Keep the good parts close.</h2>
+            <p>Use these as starting points, then make the trip your own.</p>
+        </header>
+        <section class="guide-preview-grid" aria-label="Travel planning tips">
+            <article class="guide-preview-card"><span>01 · FIND YOUR PACE</span><h3>Leave some room in the day</h3><p>Choose one or two things you care about most. A little open time makes room for a slower morning, a local café, or a discovery you didn't plan.</p></article>
+            <article class="guide-preview-card"><span>02 · PLAN YOUR SPENDING</span><h3>Give your budget a cushion</h3><p>Think about transport, stays, meals, and experiences. Keep a small amount unplanned for the moments that make a trip memorable.</p></article>
+            <article class="guide-preview-card"><span>03 · GET TO KNOW THE PLACE</span><h3>Look up local rhythms</h3><p>Check how people get around, when places open, and whether a popular stop needs a reservation. Small details can make your day flow better.</p></article>
+            <article class="guide-preview-card"><span>04 · PACK FOR YOUR DAYS</span><h3>Start with what you'll do</h3><p>Build your packing list around the weather and your plans. Comfortable shoes, layers, and a light day bag are useful on many kinds of trips.</p></article>
+            <article class="guide-preview-card"><span>05 · STAY FLEXIBLE</span><h3>Let the trip change a little</h3><p>Keep important details together, then adjust when your energy, the weather, or a new recommendation points you somewhere else.</p></article>
+            <article class="guide-preview-card guide-preview-callout"><span>YOUR TRIP, YOUR WAY</span><h3>Ready to turn ideas into a plan?</h3><p>GoMigo brings your destination, dates, budget, and interests together in one simple trip planner.</p><a href="login.html?next=trip-planner.html">Start planning <span aria-hidden="true">→</span></a></article>
+        </section>
+    </main>
+
+    <footer class="guide-preview-footer">
+        <a href="landing_page.html">GoMigo</a>
+        <span>Plan less. Explore more.</span>
+        <a href="signup.html">Get started <span aria-hidden="true">→</span></a>
+    </footer>
+</body>
+</html>

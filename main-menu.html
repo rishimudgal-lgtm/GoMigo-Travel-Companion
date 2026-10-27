@@ -9,14 +9,13 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">   
-    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="main-menu.css">
+    <link rel="stylesheet" href="site.css">
+    <script src="site.js" defer></script>
 </head>
 
-<body>
+<body class="app-page dashboard-page">
 
 <div class="page">
 
@@ -27,33 +26,19 @@
     <aside class="sidebar">
 
         <!-- Logo -->
-        <div class="sidebar-logo">
+        <a class="sidebar-logo" href="main-menu.html" aria-label="GoMigo home">
             <img src="main-menu-assets/gomigo-logo.png" alt="GoMigo">
-        </div>
+        </a>
 
         <!-- Navigation -->
-        <nav class="sidebar-nav">
-
-            <a href="itineraries.html#plan" class="nav-button active">
-                Plan Trip
-            </a>
-
-            <a href="itineraries.html#trips" class="nav-button">
-                My Trips
-            </a>
-
-            <a href="explore.html" class="nav-button">
-                Explore
-            </a>
-
-            <a href="itineraries.html#saved" class="nav-button">
-                Saved
-            </a>
-
-            <a href="#" class="nav-button">
-                Travel Guide
-            </a>
-
+        <nav class="sidebar-nav" aria-label="GoMigo navigation">
+            <a href="main-menu.html" class="nav-button active" data-nav="home">Home</a>
+            <a href="trip-planner.html" class="nav-button" data-nav="plan">Plan Trip</a>
+            <a href="my-trips.html" class="nav-button" data-nav="trips">My Trips</a>
+            <a href="explore-app.html" class="nav-button" data-nav="explore">Explore</a>
+            <a href="saved.html" class="nav-button" data-nav="saved">Saved</a>
+            <a href="travel-guide.html" class="nav-button" data-nav="guide">Travel Guide</a>
+            <a href="profile.html" class="nav-button" data-nav="profile">Profile</a>
         </nav>
 
 
@@ -67,16 +52,14 @@
 
 
         <!-- Profile -->
-        <a class="sidebar-profile" href="profile.html" aria-label="Open your profile">
-
-            <img src="main-menu-assets/profile.png" alt="Profile">
-
-            <div>
-                <h4>Hey, Explorer!</h4>
-                <p>Let’s plan something amazing!</p>
+        <a class="sidebar-profile" href="profile.html">
+            <img src="main-menu-assets/profile.png" alt="">
+            <div class="profile-text">
+                <h4 data-user-name>Hey, Explorer!</h4>
+                <p>Profile &amp; preferences</p>
             </div>
-
         </a>
+        <button class="sign-out-button" type="button" data-sign-out>Sign out</button>
 
     </aside>
 
@@ -92,16 +75,16 @@
              HERO
         ================================================== -->
 
-        <section class="hero">
+        <section class="dashboard-hero">
 
             <img
                 src="main-menu-assets/main-menu-hero.png"
                 alt="Travel destination"
-                class="hero-image"
+                class="dashboard-hero-image"
             >
 
             <!-- Hero text -->
-            <div class="hero-text">
+            <div class="dashboard-hero-text">
 
                 <div class="hello-text">
                     Hello there!
@@ -120,7 +103,7 @@
 
 
             <!-- Decorative text -->
-            <div class="hero-decoration">
+            <div class="dashboard-hero-decoration">
                 Same<br>
                 Planet<br>
                 A Kinder Way<br>
@@ -170,7 +153,7 @@
             </div>
 
 
-            <button class="start-planning">
+            <button class="start-planning" type="button" data-navigate-planner>
                 Start Planning →
             </button>
 
@@ -182,7 +165,7 @@
              INSPIRATION SECTION
         ================================================== -->
 
-        <section class="inspiration">
+        <section class="inspiration" id="explore">
 
             <div class="section-title">
 
@@ -193,6 +176,7 @@
                 <p>
                     Explore trending destinations or let GoMigo surprise you.
                 </p>
+                <a class="view-all-link" href="explore-app.html">View all destinations →</a>
 
             </div>
 
@@ -212,7 +196,7 @@
                             alt="Greece"
                         >
 
-                        <button class="heart" type="button" aria-label="Save Greece" aria-pressed="false">
+                        <button class="heart" type="button" aria-label="Save Greece" aria-pressed="false" data-favorite-toggle data-destination="Greece">
                             ♡
                         </button>
 
@@ -241,7 +225,7 @@
                             alt="Switzerland"
                         >
 
-                        <button class="heart" type="button" aria-label="Save Switzerland" aria-pressed="false">
+                        <button class="heart" type="button" aria-label="Save Switzerland" aria-pressed="false" data-favorite-toggle data-destination="Switzerland">
                             ♡
                         </button>
 
@@ -270,7 +254,7 @@
                             alt="Japan"
                         >
 
-                        <button class="heart" type="button" aria-label="Save Japan" aria-pressed="false">
+                        <button class="heart" type="button" aria-label="Save Japan" aria-pressed="false" data-favorite-toggle data-destination="Japan">
                             ♡
                         </button>
 
@@ -299,7 +283,7 @@
                             alt="Jaipur"
                         >
 
-                        <button class="heart" type="button" aria-label="Save Jaipur" aria-pressed="false">
+                        <button class="heart" type="button" aria-label="Save Jaipur" aria-pressed="false" data-favorite-toggle data-destination="Jaipur">
                             ♡
                         </button>
 
@@ -320,7 +304,6 @@
             </div>
 
         </section>
-
 
 
         <!-- =================================================
@@ -352,7 +335,7 @@
                     the perfect destination for you.
                 </p>
 
-                <button class="surprise-button">
+                <button class="surprise-button" type="button" data-surprise>
                     I’m Open to Ideas →
                 </button>
 
@@ -371,24 +354,5 @@
     </main>
 
 </div>
-
-
-<script>
-  (() => {
-    const key = 'gomigo-saved-items-v1';
-    const details = {Greece:['Greece · Europe','Islands, culture and sunsets'],Switzerland:['Switzerland · Europe','Mountains, lakes and more'],Japan:['Japan · Asia','Tradition meets modern'],Jaipur:['India · Asia','Royal charm and vibrant streets']};
-    const read = () => { try { const list=JSON.parse(localStorage.getItem(key)||'[]'); return Array.isArray(list)?list:[]; } catch { return []; } };
-    document.querySelectorAll('.destination-card').forEach(card => {
-      const title=card.querySelector('h3')?.textContent.trim(), button=card.querySelector('.heart');
-      if(!title||!button)return;
-      const id=title.toLowerCase().replace(/[^a-z0-9]+/g,'-');
-      const update=()=>{const active=read().some(item=>item.id===id);button.classList.toggle('is-saved',active);button.textContent=active?'♥':'♡';button.setAttribute('aria-pressed',String(active));button.setAttribute('aria-label',`${active?'Remove':'Save'} ${title}`)};
-      button.addEventListener('click',()=>{const list=read(),active=list.some(item=>item.id===id);const next=active?list.filter(item=>item.id!==id):[...list,{id,title,country:details[title]?.[0]||'SAVED DESTINATION',description:details[title]?.[1]||'',image:card.querySelector('img')?.getAttribute('src')}];try{localStorage.setItem(key,JSON.stringify(next));update()}catch{window.alert('Could not save this destination in browser storage.')}});
-      update();
-    });
-    document.querySelector('.start-planning')?.addEventListener('click',()=>location.href='itineraries.html#plan');
-    document.querySelector('.surprise-button')?.addEventListener('click',()=>location.href='itineraries.html#plan');
-  })();
-</script>
 </body>
 </html>

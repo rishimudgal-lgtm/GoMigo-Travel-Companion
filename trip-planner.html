@@ -4,23 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=itineraries.html#plan">
-
     <title>GoMigo - Plan Your Perfect Trip</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="trip-planner.css">
+    <link rel="stylesheet" href="site.css">
+    <script src="site.js" defer></script>
 </head>
 
 
-<body>
+<body class="app-page planner-page">
 
     <div class="page">
 
@@ -31,34 +26,20 @@
         <aside class="sidebar">
 
             <!-- Logo -->
-            <div class="sidebar-logo">
-                <img src="trip-planner-assets/gomigo-logo.png" alt="GoMigo Logo">
-            </div>
+            <a class="sidebar-logo" href="main-menu.html" aria-label="GoMigo home">
+                <img src="main-menu-assets/gomigo-logo.png" alt="GoMigo">
+            </a>
 
 
             <!-- Navigation -->
-            <nav class="sidebar-nav">
-
-                <a href="#" class="nav-button active">
-                    Plan Trip
-                </a>
-
-                <a href="#" class="nav-button">
-                    My Trips
-                </a>
-
-                <a href="#" class="nav-button">
-                    Explore
-                </a>
-
-                <a href="#" class="nav-button">
-                    Saved
-                </a>
-
-                <a href="#" class="nav-button">
-                    Travel Guide
-                </a>
-
+            <nav class="sidebar-nav" aria-label="GoMigo navigation">
+                <a href="main-menu.html" class="nav-button" data-nav="home">Home</a>
+                <a href="trip-planner.html" class="nav-button active" data-nav="plan">Plan Trip</a>
+                <a href="my-trips.html" class="nav-button" data-nav="trips">My Trips</a>
+                <a href="explore-app.html" class="nav-button" data-nav="explore">Explore</a>
+                <a href="saved.html" class="nav-button" data-nav="saved">Saved</a>
+                <a href="travel-guide.html" class="nav-button" data-nav="guide">Travel Guide</a>
+                <a href="profile.html" class="nav-button" data-nav="profile">Profile</a>
             </nav>
 
 
@@ -72,16 +53,14 @@
 
 
             <!-- Profile -->
-            <a class="sidebar-profile" href="profile.html" aria-label="Open your profile">
-
-                <img src="trip-planner-assets/profile.png" alt="Profile">
-
+            <a class="sidebar-profile" href="profile.html">
+                <img src="main-menu-assets/profile.png" alt="">
                 <div class="profile-text">
-                    <h4>Hey, Explorer!</h4>
-                    <p>Let's plan something amazing!</p>
+                    <h4 data-user-name>Hey, Explorer!</h4>
+                    <p>Profile &amp; preferences</p>
                 </div>
-
             </a>
+            <button class="sign-out-button" type="button" data-sign-out>Sign out</button>
 
         </aside>
 
@@ -96,18 +75,18 @@
                  HERO
             ================================================== -->
 
-            <section class="hero">
+            <section class="planner-hero">
 
                 <!-- Background image -->
                 <img
                     src="trip-planner-assets/trip-planner-background.png"
                     alt="Travel destination"
-                    class="hero-background"
+                    class="planner-hero-background"
                 >
 
 
                 <!-- Hero content -->
-                <div class="hero-content">
+                    <div class="planner-hero-content">
 
                     <h1>
                         Plan Your Perfect Trip
@@ -124,7 +103,7 @@
                      TRIP FORM
                 ================================================== -->
 
-                <div class="trip-form">
+                <form class="trip-form" id="trip-form">
 
 
                     <!-- Destination -->
@@ -137,7 +116,7 @@
 
                         <div class="form-group full-width">
 
-                            <label>
+                            <label for="destination">
                                 Destination
                             </label>
 
@@ -145,11 +124,13 @@
 
                                 <input
                                     type="text"
-                                    value="Jaipur, India"
+                                    id="destination"
+                                    name="destination"
                                     placeholder="Enter a destination"
+                                    required
                                 >
 
-                                <button class="clear-button">
+                                <button class="clear-button" type="button" data-clear-destination aria-label="Clear destination">
                                     ×
                                 </button>
 
@@ -182,7 +163,7 @@
 
                             <div class="form-group">
 
-                                <label>
+                                <label for="travel-dates">
                                     Travel Dates
                                 </label>
 
@@ -190,7 +171,9 @@
 
                                     <input
                                         type="text"
-                                        value="Oct 15, 2025 — Oct 18, 2025"
+                                        id="travel-dates"
+                                        name="dates"
+                                        placeholder="e.g. 15–18 Nov 2026"
                                     >
 
                                     <span class="input-icon">
@@ -214,13 +197,13 @@
 
                             <div class="form-group">
 
-                                <label>
+                                <label for="trip-duration">
                                     Trip Duration
                                 </label>
 
                                 <div class="input-box select-box">
 
-                                    <select>
+                                    <select id="trip-duration" name="duration">
                                         <option>4 Days</option>
                                         <option>5 Days</option>
                                         <option>6 Days</option>
@@ -258,13 +241,13 @@
 
                             <div class="form-group">
 
-                                <label>
+                                <label for="travelers">
                                     Number of Travelers
                                 </label>
 
                                 <div class="input-box select-box">
 
-                                    <select>
+                                    <select id="travelers" name="travelers">
                                         <option>2 Travelers</option>
                                         <option>1 Traveler</option>
                                         <option>3 Travelers</option>
@@ -293,13 +276,13 @@
 
                             <div class="form-group">
 
-                                <label>
+                                <label for="travel-style">
                                     Travel Style
                                 </label>
 
                                 <div class="input-box select-box">
 
-                                    <select>
+                                    <select id="travel-style" name="style">
                                         <option>Balanced (Sightseeing + Relaxation)</option>
                                         <option>Adventure</option>
                                         <option>Relaxation</option>
@@ -333,7 +316,7 @@
                                 ▣
                             </div>
 
-                            <label>
+                            <label for="daily-budget">
                                 Budget (per day)
                             </label>
 
@@ -346,10 +329,13 @@
 
                         <input
                             type="range"
+                            id="daily-budget"
+                            name="budget"
                             min="500"
                             max="20000"
                             value="5000"
                             class="budget-slider"
+                            aria-label="Daily budget"
                         >
 
 
@@ -391,27 +377,27 @@
 
                         <div class="interest-tags">
 
-                            <button>
+                            <button type="button" data-interest>
                                 Culture & History
                             </button>
 
-                            <button>
+                            <button type="button" data-interest>
                                 Nature & Outdoors
                             </button>
 
-                            <button class="selected">
+                            <button class="selected" type="button" data-interest aria-pressed="true">
                                 Food & Cuisine
                             </button>
 
-                            <button>
+                            <button type="button" data-interest>
                                 Adventure
                             </button>
 
-                            <button>
+                            <button type="button" data-interest>
                                 Beaches
                             </button>
 
-                            <button>
+                            <button type="button" data-interest>
                                 Shopping
                             </button>
 
@@ -433,7 +419,7 @@
                                 ▰
                             </span>
 
-                            <label>
+                            <label for="trip-requests">
                                 Any specific requests?
                                 <span>(Optional)</span>
                             </label>
@@ -443,6 +429,8 @@
 
                         <textarea
                             maxlength="300"
+                            id="trip-requests"
+                            name="requests"
                             placeholder="E.g., include local experiences, family-friendly places, fewer crowds, etc."
                         ></textarea>
 
@@ -459,7 +447,7 @@
                          CREATE TRIP BUTTON
                     ================================================== -->
 
-                    <button class="create-trip-button">
+                    <button class="create-trip-button" type="submit">
 
                         ✦ &nbsp; Create My Trip &nbsp; →
 
@@ -474,7 +462,7 @@
 
                     </div>
 
-                </div>
+                </form>
 
             </section>
 
@@ -482,57 +470,6 @@
 
     </div>
 
-
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
-
-    <script>
-
-        // Budget slider
-
-        const slider = document.querySelector(".budget-slider");
-
-        const budgetText = document.querySelector(".budget-heading strong");
-
-        slider.addEventListener("input", function () {
-
-            const value = Number(this.value).toLocaleString("en-IN");
-
-            budgetText.textContent = "₹" + value + "/day";
-
-        });
-
-
-        // Character counter
-
-        const textarea = document.querySelector("textarea");
-
-        const counter = document.querySelector(".character-count");
-
-        textarea.addEventListener("input", function () {
-
-            counter.textContent = this.value.length + "/300";
-
-        });
-
-
-        // Interest buttons
-
-        const interestButtons =
-            document.querySelectorAll(".interest-tags button");
-
-        interestButtons.forEach(button => {
-
-            button.addEventListener("click", function () {
-
-                this.classList.toggle("selected");
-
-            });
-
-        });
-
-    </script>
 
 </body>
 

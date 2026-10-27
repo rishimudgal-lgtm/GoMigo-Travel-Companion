@@ -27,62 +27,26 @@ The goal of GoMigo is to simplify the travel planning experience by providing us
 
 # 🔄 Website Flow
 
-The GoMigo website follows a simple and user-friendly journey:
+The current browser prototype follows this flow:
 
 ```text
-┌──────────────────┐
-│   🏠 HOME PAGE   │
-│                  │
-│ Introduction to  │
-│     GoMigo       │
-└────────┬─────────┘
-         │
-         ▼
-┌──────────────────┐
-│   🔐 LOGIN PAGE  │
-│                  │
-│ Sign in / Access │
-│     Account      │
-└────────┬─────────┘
-         │
-         ▼
-┌──────────────────────────┐
-│ 🧭 EXPLORE DESTINATIONS │
-│                          │
-│ Discover places, travel  │
-│ ideas & destinations     │
-└────────────┬─────────────┘
-             │
-             ▼
-┌──────────────────────────┐
-│     🗺️ TRIP PLANNER     │
-│                          │
-│ Destination              │
-│ Dates & Duration         │
-│ Budget                   │
-│ Preferences              │
-└────────────┬─────────────┘
-             │
-             ▼
-┌──────────────────────────┐
-│       🧳 MY TRIPS        │
-│                          │
-│ View and manage planned  │
-│       trips              │
-└────────────┬─────────────┘
-             │
-             ▼
-┌──────────────────────────┐
-│       👤 PROFILE         │
-│                          │
-│ Manage personal details  │
-│ & travel preferences     │
-└──────────────────────────┘
+Landing page ── Explore → public Explore Destinations page (no sign-in required)
+      ├─ Destinations → public destination discovery
+      ├─ Travel Guide → public travel guide preview
+      ├─ My Trips → Sign In → My Trips page
+      ├─ Login → Sign In page
+      ├─ Get Started → Create Account page
+      └─ Plan Your Trip → Trip Planner
+
+Signed-in sidebar: Home · Plan Trip · My Trips · Explore · Saved · Travel Guide · Profile
+Signed-in Explore opens a separate app page with 12 additional destinations; signed-in Travel Guide has its own app page.
 ```
 
 ---
 
 # 📄 Website Pages
+
+The page descriptions below outline the broader product vision. The current prototype gives the main signed-in tabs their own pages and shares one sidebar across them.
 
 ## 01 — 🏠 Home Page
 
@@ -220,75 +184,42 @@ The main purpose of this page is to answer:
 
 # 📁 Project Structure
 
-The GoMigo repository contains the complete website, with each major webpage organized into its own folder.
+The current prototype keeps its pages, shared styling, and shared interactions at the project root.
 
 ```text
 GoMigo/
 │
 ├── README.md
-│
-├── Home/
-│   ├── home.html
-│   ├── home.css
-│   └── assets/
-│       ├── images
-│       ├── icons
-│       └── other assets
-│
-├── Login/
-│   ├── login.html
-│   ├── login.css
-│   └── assets/
-│       ├── images
-│       ├── icons
-│       └── other assets
-│
-├── Explore/
-│   ├── explore.html
-│   ├── explore.css
-│   └── assets/
-│       ├── images
-│       ├── icons
-│       └── other assets
-│
-├── Trip-Planner/
-│   ├── planner.html
-│   ├── planner.css
-│   └── assets/
-│       ├── images
-│       ├── icons
-│       └── other assets
-│
-├── My-Trips/
-│   ├── mytrips.html
-│   ├── mytrips.css
-│   └── assets/
-│       ├── images
-│       ├── icons
-│       └── other assets
-│
-└── Profile/
-    ├── profile.html
-    ├── profile.css
-    └── assets/
-        ├── images
-        ├── icons
-        └── other assets
+├── landing_page.html
+├── login.html
+├── signup.html
+├── main-menu.html
+├── trip-planner.html
+├── destinations.html
+├── explore.html
+├── explore-app.html
+├── my-trips.html
+├── saved.html
+├── travel-guide.html
+├── travel-guide-preview.html
+├── profile.html
+├── site.css
+├── site.js
+├── landing_assets/
+├── main-menu-assets/
+└── trip-planner-assets/
 ```
 
 ### 📌 Asset Management
 
-Each webpage has its **own `assets` folder**.
+Page-specific images remain in their existing asset folders. All pages now load the shared `site.css` and `site.js` files.
 
 For example:
 
 ```text
-Home/assets/
-Login/assets/
-Explore/assets/
-Trip-Planner/assets/
-My-Trips/assets/
-Profile/assets/
+landing_assets/
+main-menu-assets/
+trip-planner-assets/
 ```
 
 Page-specific images, icons, illustrations, and other visual resources should be stored inside the corresponding folder.
@@ -302,7 +233,8 @@ This keeps the project organized and prevents assets from different pages from b
 The current frontend implementation uses:
 
 * **HTML5** — Structure and content
-* **CSS3** — Styling and page layouts
+* **CSS3** — Shared responsive styling in `site.css`
+* **JavaScript** — Client-side navigation, trip saving, favorites, and profile preferences in `site.js`
 * **Git** — Version control
 * **GitHub** — Team collaboration and code management
 * **Figma** — UI/UX design and prototyping
@@ -329,7 +261,7 @@ The visual design is kept consistent throughout the user journey so that users f
 
 # 🚀 How to Run the Website
 
-GoMigo currently uses HTML and CSS, so no complex installation is required.
+GoMigo uses HTML, CSS, and browser-side JavaScript. No package installation is needed.
 
 ### Clone the Repository
 
@@ -345,12 +277,12 @@ cd GoMigo
 
 ### Run Using a Browser
 
-Navigate to the desired page folder and open its HTML file.
+Open one of the page files from the project root.
 
 For example:
 
 ```text
-Home/home.html
+landing_page.html
 ```
 
 ### Run Using VS Code
@@ -359,10 +291,7 @@ For development, we recommend using **Visual Studio Code** with the **Live Serve
 
 1. Clone the repository.
 2. Open the GoMigo folder in VS Code.
-3. Select the webpage you want to work on.
-4. Open its HTML file.
-5. Right-click the file.
-6. Select **Open with Live Server**.
+3. Open `landing_page.html` in Live Server. The other pages are linked from the sign-in and app navigation.
 
 ---
 
@@ -440,11 +369,11 @@ GoMigo can be expanded with additional features in future versions, including:
 
 # 📌 Project Status
 
-🚧 **Currently in Development**
+🚧 **Connected front-end prototype in development**
 
-The GoMigo frontend is being developed collaboratively. The major website pages are being designed and implemented according to the planned user journey.
+The pages share one stylesheet and one JavaScript file. Demo sign-in, trip saving, saved destinations, and profile preferences use this browser's local storage; there is no real authentication service or backend yet.
 
-Future development will focus on connecting the pages, adding interactive functionality, integrating backend services, and making the travel experience more personalized.
+Future development can add itinerary generation, backend services, and persistent accounts when those features are in scope.
 
 ---
 
