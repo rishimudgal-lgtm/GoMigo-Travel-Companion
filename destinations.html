@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#eaf8f0">
+    <title>Destinations | GoMigo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
+    <script src="site.js" defer></script>
+</head>
+<body class="landing-page public-destinations-page" data-signed-in-page="explore-app.html">
+    <header class="public-destinations-hero">
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="nav-left">
+                <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-navigation">
+                    <img src="landing_assets/Menu-vector.png" alt="">
+                </button>
+                <a href="landing_page.html" class="logo-link" aria-label="GoMigo home">
+                    <img src="landing_assets/GoMigo-removebg-preview 1.svg" alt="GoMigo Logo" class="logo">
+                </a>
+            </div>
+            <div class="nav-links" id="site-navigation">
+                <a href="explore.html">Explore</a>
+                <a href="#destinations" aria-current="page">Destinations</a>
+                <a href="travel-guide-preview.html">Travel Guide</a>
+                <a href="login.html?next=my-trips.html">My Trips</a>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html" class="login-link">Login</a>
+                <a href="signup.html" class="get-started-button">Get Started</a>
+            </div>
+        </nav>
+        <div class="public-destinations-copy">
+            <p class="content-eyebrow">A FEW PLACES TO START DREAMING</p>
+            <h1>Find your next favorite place.</h1>
+            <p>Browse a little inspiration, then take the place you love into your own trip plan.</p>
+        </div>
+    </header>
+    <main class="public-destinations-main" id="destinations">
+        <label class="destination-search-label" for="destination-search">Search destinations</label>
+        <input class="destination-search" id="destination-search" type="search" placeholder="Try Japan, Greece, or Jaipur">
+        <section class="destination-page-grid public-destination-grid" aria-label="Featured destinations">
+            <article class="destination-card" data-destination-card>
+                <div class="destination-image"><img src="main-menu-assets/greece.png" alt="Greek island buildings overlooking the sea"><button class="heart" type="button" data-favorite-toggle data-destination="Greece" aria-label="Save Greece" aria-pressed="false">♡</button></div>
+                <div class="destination-info"><h2>Greece</h2><p>Islands, culture and sunsets</p><a href="login.html?next=trip-planner.html&amp;destination=Greece">Plan a trip →</a></div>
+            </article>
+            <article class="destination-card" data-destination-card>
+                <div class="destination-image"><img src="main-menu-assets/switzerland.png" alt="Swiss mountain lake and alpine village"><button class="heart" type="button" data-favorite-toggle data-destination="Switzerland" aria-label="Save Switzerland" aria-pressed="false">♡</button></div>
+                <div class="destination-info"><h2>Switzerland</h2><p>Mountains, lakes and more</p><a href="login.html?next=trip-planner.html&amp;destination=Switzerland">Plan a trip →</a></div>
+            </article>
+            <article class="destination-card" data-destination-card>
+                <div class="destination-image"><img src="main-menu-assets/japan.png" alt="Traditional Japanese street beneath mountain scenery"><button class="heart" type="button" data-favorite-toggle data-destination="Japan" aria-label="Save Japan" aria-pressed="false">♡</button></div>
+                <div class="destination-info"><h2>Japan</h2><p>Tradition meets modern</p><a href="login.html?next=trip-planner.html&amp;destination=Japan">Plan a trip →</a></div>
+            </article>
+            <article class="destination-card" data-destination-card>
+                <div class="destination-image"><img src="main-menu-assets/jaipur.png" alt="Jaipur palace architecture in warm evening light"><button class="heart" type="button" data-favorite-toggle data-destination="Jaipur" aria-label="Save Jaipur" aria-pressed="false">♡</button></div>
+                <div class="destination-info"><h2>Jaipur</h2><p>Royal charm, vibrant streets</p><a href="login.html?next=trip-planner.html&amp;destination=Jaipur">Plan a trip →</a></div>
+            </article>
+        </section>
+        <p class="public-destinations-note">Save a place on this device, or sign in to build your trip around it.</p>
+    </main>
+</body>
+</html>

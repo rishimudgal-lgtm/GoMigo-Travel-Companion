@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | GoMigo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
+    <script src="site.js" defer></script>
+</head>
+<body class="auth-page">
+    <header class="auth-topbar">
+        <a href="landing_page.html" class="auth-logo"><img src="landing_assets/GoMigo-removebg-preview 1.svg" alt="GoMigo"></a>
+        <a href="signup.html" class="auth-switch-link">Create account</a>
+    </header>
+    <main class="auth-layout">
+        <section class="auth-card">
+            <p class="content-eyebrow">WELCOME BACK</p>
+            <h1>Sign in to your travel space.</h1>
+            <p class="auth-intro">Pick up your plans, revisit saved places, and keep your travel details together.</p>
+            <form id="login-form" data-auth-form="login">
+                <label for="login-email">Email</label>
+                <input id="login-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+                <label for="login-password">Password</label>
+                <input id="login-password" name="password" type="password" autocomplete="current-password" minlength="4" placeholder="Enter your password" required>
+                <button class="auth-submit" type="submit">Sign in →</button>
+            </form>
+            <p class="auth-note">Course prototype: this demo stores your profile and trips in this browser only.</p>
+            <p class="auth-bottom-link">New to GoMigo? <a href="signup.html">Create an account</a></p>
+        </section>
+        <aside class="auth-art" aria-label="Travel inspiration">
+            <img src="main-menu-assets/main-menu-hero.png" alt="A peaceful travel landscape">
+            <div><span>GO AT YOUR PACE</span><h2>Your next story starts with a plan.</h2></div>
+        </aside>
+    </main>
+</body>
+</html>

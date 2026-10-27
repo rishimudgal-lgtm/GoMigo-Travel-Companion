@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | GoMigo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
+    <script src="site.js" defer></script>
+</head>
+<body class="auth-page">
+    <header class="auth-topbar">
+        <a href="landing_page.html" class="auth-logo"><img src="landing_assets/GoMigo-removebg-preview 1.svg" alt="GoMigo"></a>
+        <a href="login.html" class="auth-switch-link">Sign in</a>
+    </header>
+    <main class="auth-layout">
+        <section class="auth-card">
+            <p class="content-eyebrow">YOUR NEXT TRIP, YOUR WAY</p>
+            <h1>Create your GoMigo account.</h1>
+            <p class="auth-intro">Start saving your ideas and shape a trip around what matters to you.</p>
+            <form id="signup-form" data-auth-form="signup">
+                <label for="signup-name">Name</label>
+                <input id="signup-name" name="name" autocomplete="name" placeholder="Your name" required>
+                <label for="signup-email">Email</label>
+                <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+                <label for="signup-password">Password</label>
+                <input id="signup-password" name="password" type="password" autocomplete="new-password" minlength="4" placeholder="At least 4 characters" required>
+                <label for="signup-confirm">Confirm password</label>
+                <input id="signup-confirm" name="confirm" type="password" autocomplete="new-password" minlength="4" placeholder="Enter it once more" required>
+                <button class="auth-submit" type="submit">Create account →</button>
+            </form>
+            <p class="auth-note">Course prototype: account details are saved in this browser; no password is stored.</p>
+            <p class="auth-bottom-link">Already have an account? <a href="login.html">Sign in</a></p>
+        </section>
+        <aside class="auth-art" aria-label="Travel inspiration">
+            <img src="main-menu-assets/surprise.png" alt="A scenic destination to explore">
+            <div><span>MAKE SPACE FOR WONDER</span><h2>Start with the places you dream about.</h2></div>
+        </aside>
+    </main>
+</body>
+</html>

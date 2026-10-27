@@ -8,14 +8,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="explore.css">
+  <link rel="stylesheet" href="site.css">
+  <script src="site.js" defer></script>
 </head>
-<body>
+<body class="explore-page-theme">
   <header class="hero" id="top">
     <nav class="navbar" aria-label="Main navigation">
       <a class="brand" href="landing_page.html"><img src="landing_assets/GoMigo-removebg-preview 1.svg" alt="GoMigo"></a>
-      <div class="nav-links"><a class="current" href="explore.html">Explore</a><a href="#popular">Destinations</a><a href="landing_page.html#inspiration">Travel Guide</a><a href="itineraries.html#trips">My Trips</a></div>
-      <div class="nav-actions"><a class="login" href="profile.html">My Profile</a><a class="nav-cta" href="itineraries.html#plan">Get Started</a></div>
+      <div class="nav-links"><a class="current" href="explore.html">Explore</a><a href="#popular">Destinations</a><a href="travel-guide-preview.html">Travel Guide</a><a href="login.html?next=my-trips.html">My Trips</a></div>
+      <div class="nav-actions"><a class="login" href="login.html">Login</a><a class="nav-cta" href="signup.html">Get Started</a></div>
     </nav>
     <div class="hero-copy">
       <h1>Explore Destinations</h1>
@@ -32,18 +33,18 @@
     <section class="popular section-wrap" id="popular">
       <div class="section-heading"><div><p class="eyebrow green">A LITTLE INSPIRATION</p><h2>Popular destinations</h2><p class="section-subtitle">The places travellers can’t stop dreaming about.</p></div><a class="text-link" href="#trending">See what’s trending <span>↗</span></a></div>
       <div class="destination-grid" id="destination-grid">
-        <article class="destination-card" data-tags="city culture"><img src="explore_assets/paris.png" alt="Paris and the Eiffel Tower"><a class="destination-hitarea" href="itineraries.html?destination=Paris#plan" aria-label="Plan a trip to Paris"></a><button class="save-destination" type="button" data-id="paris" data-title="Paris" data-country="France · Europe" data-description="The city of light, art, and endless little cafés." aria-label="Save Paris" aria-pressed="false">♡</button></article>
-        <article class="destination-card" data-tags="culture city"><img src="explore_assets/india.png" alt="Taj Mahal in Agra"><a class="destination-hitarea" href="itineraries.html?destination=Agra#plan" aria-label="Plan a trip to Agra"></a><button class="save-destination" type="button" data-id="agra" data-title="Agra" data-country="India · Asia" data-description="Timeless architecture and stories carved in stone." aria-label="Save Agra" aria-pressed="false">♡</button></article>
-        <article class="destination-card" data-tags="culture city"><img src="explore_assets/colosseum.png" alt="The Colosseum in Rome"><a class="destination-hitarea" href="itineraries.html?destination=Rome#plan" aria-label="Plan a trip to Rome"></a><button class="save-destination" type="button" data-id="rome" data-title="Rome" data-country="Italy · Europe" data-description="Ancient wonders, lively piazzas, and la dolce vita." aria-label="Save Rome" aria-pressed="false">♡</button></article>
-        <article class="destination-card" data-tags="city adventure"><img src="explore_assets/burjKhalifa.png" alt="Burj Khalifa in Dubai"><a class="destination-hitarea" href="itineraries.html?destination=Dubai#plan" aria-label="Plan a trip to Dubai"></a><button class="save-destination" type="button" data-id="dubai" data-title="Dubai" data-country="UAE · Asia" data-description="A global city with iconic sights and desert adventures." aria-label="Save Dubai" aria-pressed="false">♡</button></article>
-        <article class="destination-card" data-tags="beach culture"><img src="explore_assets/santorini.png" alt="Santorini on the Aegean Sea"><a class="destination-hitarea" href="itineraries.html?destination=Santorini#plan" aria-label="Plan a trip to Santorini"></a><button class="save-destination" type="button" data-id="santorini" data-title="Santorini" data-country="Greece · Europe" data-description="Whitewashed villages above a brilliant blue sea." aria-label="Save Santorini" aria-pressed="false">♡</button></article>
-        <article class="destination-card" data-tags="city beach"><img src="explore_assets/colombo.png" alt="Colombo waterfront in Sri Lanka"><a class="destination-hitarea" href="itineraries.html?destination=Colombo#plan" aria-label="Plan a trip to Colombo"></a><button class="save-destination" type="button" data-id="colombo" data-title="Colombo" data-country="Sri Lanka · Asia" data-description="A lively coastal city with golden beaches and rich history." aria-label="Save Colombo" aria-pressed="false">♡</button></article>
+        <article class="destination-card" data-tags="city culture"><img src="explore_assets/paris.png" alt="Paris and the Eiffel Tower"><a class="destination-hitarea" href="login.html?next=trip-planner.html&amp;destination=Paris" aria-label="Plan a trip to Paris"></a><button class="save-destination" type="button" data-favorite-toggle data-destination="Paris" aria-label="Save Paris" aria-pressed="false">♡</button></article>
+        <article class="destination-card" data-tags="culture city"><img src="explore_assets/india.png" alt="Taj Mahal in Agra"><a class="destination-hitarea" href="login.html?next=trip-planner.html&amp;destination=Agra" aria-label="Plan a trip to Agra"></a><button class="save-destination" type="button" data-favorite-toggle data-destination="Agra" aria-label="Save Agra" aria-pressed="false">♡</button></article>
+        <article class="destination-card" data-tags="culture city"><img src="explore_assets/colosseum.png" alt="The Colosseum in Rome"><a class="destination-hitarea" href="login.html?next=trip-planner.html&amp;destination=Rome" aria-label="Plan a trip to Rome"></a><button class="save-destination" type="button" data-favorite-toggle data-destination="Rome" aria-label="Save Rome" aria-pressed="false">♡</button></article>
+        <article class="destination-card" data-tags="city adventure"><img src="explore_assets/burjKhalifa.png" alt="Burj Khalifa in Dubai"><a class="destination-hitarea" href="login.html?next=trip-planner.html&amp;destination=Dubai" aria-label="Plan a trip to Dubai"></a><button class="save-destination" type="button" data-favorite-toggle data-destination="Dubai" aria-label="Save Dubai" aria-pressed="false">♡</button></article>
+        <article class="destination-card" data-tags="beach culture"><img src="explore_assets/santorini.png" alt="Santorini on the Aegean Sea"><a class="destination-hitarea" href="login.html?next=trip-planner.html&amp;destination=Santorini" aria-label="Plan a trip to Santorini"></a><button class="save-destination" type="button" data-favorite-toggle data-destination="Santorini" aria-label="Save Santorini" aria-pressed="false">♡</button></article>
+        <article class="destination-card" data-tags="city beach"><img src="explore_assets/colombo.png" alt="Colombo waterfront in Sri Lanka"><a class="destination-hitarea" href="login.html?next=trip-planner.html&amp;destination=Colombo" aria-label="Plan a trip to Colombo"></a><button class="save-destination" type="button" data-favorite-toggle data-destination="Colombo" aria-label="Save Colombo" aria-pressed="false">♡</button></article>
       </div>
       <p class="empty-state" id="empty-state" hidden>No destinations match that search. Try a different place or category.</p>
     </section>
 
     <section class="planner-banner section-wrap">
-      <a class="banner-image-link" href="itineraries.html#plan" aria-label="Plan a trip with GoMigo"><img src="explore_assets/openwithAI.png" alt="Not sure where to go? Let GoMigo find your perfect destination. Plan with AI."></a>
+      <a class="banner-image-link" href="login.html?next=trip-planner.html" aria-label="Plan a trip with GoMigo"><img src="explore_assets/openwithAI.png" alt="Not sure where to go? Let GoMigo find your perfect destination. Plan with AI."></a>
     </section>
 
     <section class="inspiration section-wrap" id="trending">
@@ -59,11 +60,11 @@
     <section class="trending section-wrap">
       <div class="section-heading"><div><p class="eyebrow green">ON EVERYONE’S LIST</p><h2>Trending right now</h2><p class="section-subtitle">Destinations everyone’s talking about.</p></div><a class="text-link" href="#popular">Explore all destinations <span>↗</span></a></div>
       <div class="trending-grid">
-        <a href="itineraries.html#plan"><img src="explore_assets/japan.png" alt="Japan"></a>
-        <a href="itineraries.html#plan"><img src="explore_assets/greece.png" alt="Greece"></a>
-        <a href="itineraries.html#plan"><img src="explore_assets/canada.png" alt="Canada"></a>
-        <a href="itineraries.html#plan"><img src="explore_assets/iceland.png" alt="Iceland"></a>
-        <a href="itineraries.html#plan"><img src="explore_assets/portugal.png" alt="Portugal"></a>
+        <a href="login.html?next=trip-planner.html"><img src="explore_assets/japan.png" alt="Japan"></a>
+        <a href="login.html?next=trip-planner.html"><img src="explore_assets/greece.png" alt="Greece"></a>
+        <a href="login.html?next=trip-planner.html"><img src="explore_assets/canada.png" alt="Canada"></a>
+        <a href="login.html?next=trip-planner.html"><img src="explore_assets/iceland.png" alt="Iceland"></a>
+        <a href="login.html?next=trip-planner.html"><img src="explore_assets/portugal.png" alt="Portugal"></a>
       </div>
     </section>
   </main>
@@ -71,10 +72,10 @@
     <div class="footer-columns">
       <section class="footer-group">
         <h2><span>for</span> Travellers</h2>
-        <a href="itineraries.html#plan">Plan Your Trip</a>
+        <a href="login.html?next=trip-planner.html">Plan Your Trip</a>
         <a href="explore.html">Explore Destinations</a>
         <a href="explore.html#trending">Find Experiences</a>
-        <a href="landing_page.html#travel-guide">Travel Tips</a>
+        <a href="travel-guide-preview.html">Travel Tips</a>
         <a href="#help">Help</a>
       </section>
       <div class="footer-middle">
@@ -112,56 +113,5 @@
       <a class="linkedin" href="#linkedin" aria-label="LinkedIn"><span aria-hidden="true">in</span></a>
     </nav>
   </footer>
-  <script>
-    const savedStorageKey = 'gomigo-saved-items-v1';
-    function readSavedItems() { try { const items = JSON.parse(localStorage.getItem(savedStorageKey) || '[]'); return Array.isArray(items) ? items : []; } catch { return []; } }
-    function updateSaveButtons() {
-      const ids = new Set(readSavedItems().map(item => item.id));
-      document.querySelectorAll('.save-destination').forEach(button => {
-        const isSaved = ids.has(button.dataset.id);
-        button.classList.toggle('is-saved', isSaved);
-        button.setAttribute('aria-pressed', String(isSaved));
-        button.setAttribute('aria-label', `${isSaved ? 'Remove' : 'Save'} ${button.dataset.title}`);
-        button.textContent = isSaved ? '♥' : '♡';
-      });
-    }
-    document.querySelectorAll('.save-destination').forEach(button => button.addEventListener('click', () => {
-      const items = readSavedItems();
-      const alreadySaved = items.some(item => item.id === button.dataset.id);
-      const next = alreadySaved ? items.filter(item => item.id !== button.dataset.id) : [...items, {id:button.dataset.id,title:button.dataset.title,country:button.dataset.country,description:button.dataset.description,image:button.parentElement.querySelector('img').getAttribute('src')}];
-      try { localStorage.setItem(savedStorageKey, JSON.stringify(next)); updateSaveButtons(); } catch { window.alert('Could not save this destination in browser storage.'); }
-    }));
-    updateSaveButtons();
-    const search = document.querySelector('#destination-search');
-    const cards = [...document.querySelectorAll('.destination-card')];
-    const filters = [...document.querySelectorAll('.filter')];
-    const empty = document.querySelector('#empty-state');
-    let activeFilter = 'all';
-    function updateCards() {
-      const query = search.value.trim().toLowerCase();
-      let visible = 0;
-      cards.forEach(card => {
-        const matchesText = (card.textContent + ' ' + card.querySelector('img').alt).toLowerCase().includes(query);
-        const matchesFilter = activeFilter === 'all' || card.dataset.tags.split(' ').includes(activeFilter);
-        card.hidden = !(matchesText && matchesFilter);
-        if (!card.hidden) visible++;
-      });
-      empty.hidden = visible > 0;
-    }
-    search.addEventListener('input', updateCards);
-    filters.forEach(button => button.addEventListener('click', () => {
-      activeFilter = button.dataset.filter;
-      filters.forEach(item => item.classList.toggle('active', item === button));
-      updateCards();
-    }));
-    document.querySelectorAll('.style-card').forEach(link => link.addEventListener('click', () => {
-      activeFilter = link.dataset.style;
-      filters.forEach(item => item.classList.toggle('active', item.dataset.filter === activeFilter));
-      updateCards();
-    }));
-    document.addEventListener('keydown', event => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); search.focus(); }
-    });
-  </script>
 </body>
 </html>

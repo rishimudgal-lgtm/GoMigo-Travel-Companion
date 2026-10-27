@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eaf8f0">
+  <title>Explore | GoMigo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+  <script src="site.js" defer></script>
+</head>
+<body class="app-page explore-page-theme">
+  <div class="page">
+    <aside class="sidebar">
+      <a class="sidebar-logo" href="main-menu.html" aria-label="GoMigo home"><img src="main-menu-assets/gomigo-logo.png" alt="GoMigo"></a>
+      <nav class="sidebar-nav" aria-label="GoMigo navigation">
+        <a href="main-menu.html" class="nav-button" data-nav="home">Home</a>
+        <a href="trip-planner.html" class="nav-button" data-nav="plan">Plan Trip</a>
+        <a href="my-trips.html" class="nav-button" data-nav="trips">My Trips</a>
+        <a href="explore-app.html" class="nav-button" data-nav="explore">Explore</a>
+        <a href="saved.html" class="nav-button" data-nav="saved">Saved</a>
+        <a href="travel-guide.html" class="nav-button" data-nav="guide">Travel Guide</a>
+        <a href="profile.html" class="nav-button" data-nav="profile">Profile</a>
+      </nav>
+      <div class="sidebar-quote">Good<br>Trips<br>Happen<br>Here ♡</div>
+      <a class="sidebar-profile" href="profile.html"><img src="main-menu-assets/profile.png" alt=""><span class="profile-text"><strong data-user-name>Hey, Explorer!</strong><small>Profile &amp; preferences</small></span></a>
+      <button class="sign-out-button" type="button" data-sign-out>Sign out</button>
+    </aside>
+    <main class="main-content explore-app-main">
+      <header class="hero app-explore-hero" id="top">
+        <div class="hero-copy">
+          <p class="app-explore-kicker">A FRESH COLLECTION FOR YOUR NEXT ADVENTURE</p>
+          <h1>Explore somewhere new.</h1>
+          <p class="app-explore-intro">Twelve new places to spark your next GoMigo plan.</p>
+          <label class="search-box"><span aria-hidden="true">⌕</span><input id="destination-search" type="search" placeholder="Search destinations, cities or countries…" aria-label="Search destinations"><kbd>Ctrl K</kbd></label>
+          <div class="filters" role="group" aria-label="Filter destinations">
+            <button class="filter active" data-filter="all">All places</button><button class="filter" data-filter="beach">Beach</button><button class="filter" data-filter="mountains">Mountains</button><button class="filter" data-filter="culture">Culture</button><button class="filter" data-filter="adventure">Adventure</button><button class="filter" data-filter="city">City</button>
+          </div>
+        </div>
+      </header>
+      <section class="popular section-wrap app-destinations-section" id="popular">
+        <div class="section-heading"><div><p class="eyebrow green">YOUR NEXT CHAPTER</p><h2>12 places to discover</h2><p class="section-subtitle">Search, save a favorite, or start a trip plan.</p></div></div>
+        <div class="destination-grid app-destination-grid" id="destination-grid">
+        <article class="destination-card app-destination-card" data-tags="culture city">
+          <div class="app-destination-image"><img src="main-menu-assets/jaipur.png" alt="Jaipur palace architecture in warm evening light"><button class="save-destination" type="button" data-favorite-toggle data-destination="Jaipur" aria-label="Save Jaipur" aria-pressed="false">♡</button></div>
+          <div class="app-destination-copy"><p class="app-destination-country">India</p><h2>Jaipur</h2><p>Pink City palaces, lively bazaars, and colorful streets.</p><a href="trip-planner.html?destination=Jaipur">Plan a trip <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="destination-card app-destination-card" data-tags="culture city">
+          <div class="app-destination-image"><img src="explore_assets/japan.png" alt="A traditional Japanese street and mountain scenery"><button class="save-destination" type="button" data-favorite-toggle data-destination="Kyoto" aria-label="Save Kyoto" aria-pressed="false">♡</button></div>
+          <div class="app-destination-copy"><p class="app-destination-country">Japan</p><h2>Kyoto</h2><p>Quiet temples, gardens, and lanes rich with history.</p><a href="trip-planner.html?destination=Kyoto">Plan a trip <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="destination-card app-destination-card" data-tags="mountains culture">
+          <div class="app-destination-image"><img src="main-menu-assets/switzerland.png" alt="A Swiss alpine lake and mountain village"><button class="save-destination" type="button" data-favorite-toggle data-destination="Lucerne" aria-label="Save Lucerne" aria-pressed="false">♡</button></div>
+          <div class="app-destination-copy"><p class="app-destination-country">Switzerland</p><h2>Lucerne</h2><p>Lake views, mountain railways, and a charming old town.</p><a href="trip-planner.html?destination=Lucerne">Plan a trip <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="destination-card app-destination-card" data-tags="culture adventure">
+          <div class="app-destination-image"><img src="landing_assets/Pyramids.png" alt="The pyramids of Egypt"><button class="save-destination" type="button" data-favorite-toggle data-destination="Cairo" aria-label="Save Cairo" aria-pressed="false">♡</button></div>
+          <div class="app-destination-copy"><p class="app-destination-country">Egypt</p><h2>Cairo</h2><p>Ancient landmarks, Nile evenings, and bustling markets.</p><a href="trip-planner.html?destination=Cairo">Plan a trip <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="destination-card app-destination-card" data-tags="culture city">
+          <div class="app-destination-image"><img src="landing_assets/Tower Of Pisa.png" alt="The Leaning Tower of Pisa"><button class="save-destination" type="button" data-favorite-toggle data-destination="Pisa" aria-label="Save Pisa" aria-pressed="false">♡</button></div>
+          <div class="app-destination-copy"><p class="app-destination-country">Italy</p><h2>Pisa</h2><p>A beautiful Tuscan square and a landmark known around the world.</p><a href="trip-planner.html?destination=Pisa">Plan a trip <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="destination-card app-destination-card" data-tags="beach adventure">
+          <div class="app-destination-image"><img src="explore_assets/beach.png" alt="A tropical beach for a Bali getaway"><button class="save-destination" type="button" data-favorite-toggle data-destination="Bali" aria-label="Save Bali" aria-pressed="false">♡</button></div>
+          <div class="app-destination-copy"><p class="app-destination-country">Indonesia</p><h2>Bali</h2><p>Green rice terraces, coastal sunsets, and a slower island rhythm.</p><a href="trip-planner.html?destination=Bali">Plan a trip <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="destination-card app-destination-card" data-tags="culture adventure">
+          <div class="app-destination-image"><img src="explore_assets/culture.png" alt="Colorful cultural details for a Marrakech trip"><button class="save-destination" type="button" data-favorite-toggle data-destination="Marrakech" aria-label="Save Marrakech" aria-pressed="false">♡</button></div>
+          <div class="app-destination-copy"><p class="app-destination-country">Morocco</p><h2>Marrakech</h2><p>Garden courtyards, tiled architecture, and the old medina.</p><a href="trip-planner.html?destination=Marrakech">Plan a trip <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="destination-card app-destination-card" data-tags="city culture">
+          <div class="app-destination-image"><img src="explore_assets/dining.png" alt="Food and city inspiration for Bangkok"><button class="save-destination" type="button" data-favorite-toggle data-destination="Bangkok" aria-label="Save Bangkok" aria-pressed="false">♡</button></div>
+          <div class="app-destination-copy"><p class="app-destination-country">Thailand</p><h2>Bangkok</h2><p>Street food, river temples, and energetic neighborhoods.</p><a href="trip-planner.html?destination=Bangkok">Plan a trip <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="destination-card app-destination-card" data-tags="mountains adventure">
+          <div class="app-destination-image"><img src="explore_assets/adventure.png" alt="Mountain scenery for a Queenstown escape"><button class="save-destination" type="button" data-favorite-toggle data-destination="Queenstown" aria-label="Save Queenstown" aria-pressed="false">♡</button></div>
+          <div class="app-destination-copy"><p class="app-destination-country">New Zealand</p><h2>Queenstown</h2><p>Alpine lakes, dramatic peaks, and days made for the outdoors.</p><a href="trip-planner.html?destination=Queenstown">Plan a trip <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="destination-card app-destination-card" data-tags="beach adventure">
+          <div class="app-destination-image"><img src="explore_assets/colombo.png" alt="Coastal city scenery for Cape Town inspiration"><button class="save-destination" type="button" data-favorite-toggle data-destination="Cape Town" aria-label="Save Cape Town" aria-pressed="false">♡</button></div>
+          <div class="app-destination-copy"><p class="app-destination-country">South Africa</p><h2>Cape Town</h2><p>Ocean drives, mountain views, and a vibrant waterfront.</p><a href="trip-planner.html?destination=Cape%20Town">Plan a trip <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="destination-card app-destination-card" data-tags="mountains city">
+          <div class="app-destination-image"><img src="explore_assets/canada.png" alt="A Canadian landscape for Vancouver travel inspiration"><button class="save-destination" type="button" data-favorite-toggle data-destination="Vancouver" aria-label="Save Vancouver" aria-pressed="false">♡</button></div>
+          <div class="app-destination-copy"><p class="app-destination-country">Canada</p><h2>Vancouver</h2><p>A lively city framed by forest, water, and mountain trails.</p><a href="trip-planner.html?destination=Vancouver">Plan a trip <span aria-hidden="true">→</span></a></div>
+        </article>
+        <article class="destination-card app-destination-card" data-tags="culture city">
+          <div class="app-destination-image"><img src="explore_assets/portugal.png" alt="Colorful streets in Portugal"><button class="save-destination" type="button" data-favorite-toggle data-destination="Lisbon" aria-label="Save Lisbon" aria-pressed="false">♡</button></div>
+          <div class="app-destination-copy"><p class="app-destination-country">Portugal</p><h2>Lisbon</h2><p>Hillside viewpoints, tiled streets, and long, relaxed meals.</p><a href="trip-planner.html?destination=Lisbon">Plan a trip <span aria-hidden="true">→</span></a></div>
+        </article>
+        </div>
+        <p class="empty-state" id="empty-state" hidden>No destinations match that search. Try another place or category.</p>
+      </section>
+      <footer class="workspace-footer"><span>GoMigo · Plan less. Explore more.</span><span>Save any destination to your Saved page</span></footer>
+    </main>
+  </div>
+</body>
+</html>
