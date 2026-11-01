@@ -9,7 +9,7 @@ The Classic conversations also describe destination discovery, itinerary plannin
 ## Current scope and requirements
 
 - The September 10 Classic request set the initial implementation scope to **HTML and CSS only for 2–3 pages**. On October 27, 2026, the user expanded the scope to include vanilla JavaScript and asked to unify page navigation and styles.
-- The current prototype has separate Landing, Login, Sign Up, Home, Trip Planner, public Destinations, public Explore, signed-in Explore, My Trips, Saved, Travel Guide, and Profile pages. The landing page's Explore tab opens the public Explore page without requiring sign-in. Destinations and Travel Guide also have public pages. After sign-in, the app pages share the same sidebar and each sidebar tab opens its own page; signed-in Explore is a separate app page with 12 additional destinations. Signed-in visitors who open the public Destinations or Travel Guide URL are sent to the matching app page.
+- The current prototype has separate Landing, Login, Sign Up, Home, Trip Planner, public Destinations, public Explore, signed-in Explore, My Trips, Saved, Travel Guide, and Profile pages. The landing page's Explore tab opens the public Explore page without requiring sign-in. Destinations and Travel Guide also have public pages. After sign-in, the app pages share the same sidebar and each sidebar tab opens its own page; signed-in Explore is a separate app page with 12 additional destinations. The public Destinations and Travel Guide pages stay public and full-page even for signed-in visitors.
 - Keep scripts in the shared `site.js` and styling in the shared `site.css`. Do not add frameworks or backend code unless the user changes the scope.
 - The earlier Figma vision listed Landing, Login, Home, Explore, Trip Planner, Itinerary, and Profile. That is a longer-term design vision, not the current approved coding scope.
 - The site should be responsive for the course project. A later GoMigo design discussion says to focus on desktop Figma views first.
@@ -49,8 +49,9 @@ Demo sign-in, saved trips, saved destinations, and profile preferences use brows
 
 ## Current implementation notes
 
-- Landing-page Explore opens public `explore.html`, which can be browsed without sign-in. Login, Sign Up, Plan Your Trip, and Get Inspired each have distinct destinations.
-- The signed-in pages share one sidebar; its Explore item opens `explore-app.html` with 12 additional destinations. The public Travel Guide has its own preview page, and signed-in Explore/Travel Guide routes stay inside the app shell.
+- Landing-page Explore scrolls to `#how-it-works` on the landing page. The complete former public Explore design now lives at `destinations.html`; legacy `explore.html` sends visitors to the landing-page How it works section.
+- The signed-in pages share one sidebar; its Explore item opens `explore-app.html` with 12 additional destinations. The landing-page Travel Guide opens `travel-guide-preview.html` as a full public page even when signed in; it does not redirect into the sidebar workspace. The sidebar still has its separate signed-in Travel Guide page.
+- The public Destinations gallery has 100 searchable places with local Wikimedia photos and per-photo credits, plus three Adventure activity cards. See `docs/DESTINATION_CATALOG.md` for sources and maintenance.
 - The planner saves form submissions to browser storage and shows them on My Trips. Destination hearts populate Saved; profile preferences are also stored locally.
 - `CLASSIC_CONVERSATIONS.md` remains a historical archive. The user’s current requests and this updated handoff define active scope.
 

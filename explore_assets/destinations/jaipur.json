@@ -1,0 +1,15 @@
+{
+  "name": "Jaipur",
+  "country": "India",
+  "tags": "culture city",
+  "aliases": "Pink City Rajasthan",
+  "image": "explore_assets/destinations/jaipur.jpg",
+  "alt": "Jaipur, India: destination photograph",
+  "description": "Explore Jaipur, India.",
+  "source": "https://en.wikipedia.org/wiki/Jaipur",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:East_facade_Hawa_Mahal_Jaipur_from_ground_level_(July_2022)_-_img_01.jpg",
+  "author": "Chainwit.",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg/960px-East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

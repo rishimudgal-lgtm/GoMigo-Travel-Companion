@@ -1,0 +1,15 @@
+{
+  "name": "Phuket",
+  "country": "Thailand",
+  "tags": "beach adventure",
+  "aliases": "",
+  "image": "explore_assets/destinations/phuket.jpg",
+  "alt": "Phuket, Thailand: destination photograph",
+  "description": "Explore Phuket, Thailand.",
+  "source": "https://en.wikipedia.org/wiki/Patong",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Patong_Beach.jpg",
+  "author": "Thorfinn Stainforth",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Patong_Beach.jpg/960px-Patong_Beach.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

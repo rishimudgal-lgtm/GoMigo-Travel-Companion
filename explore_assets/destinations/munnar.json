@@ -1,0 +1,15 @@
+{
+  "name": "Munnar",
+  "country": "India",
+  "tags": "mountains adventure",
+  "aliases": "Kerala tea gardens",
+  "image": "explore_assets/destinations/munnar.jpg",
+  "alt": "Munnar, India: destination photograph",
+  "description": "Explore Munnar, India.",
+  "source": "https://en.wikipedia.org/wiki/Munnar",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Munnar_Overview.jpg",
+  "author": "Kondephy",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Munnar_Overview.jpg/960px-Munnar_Overview.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

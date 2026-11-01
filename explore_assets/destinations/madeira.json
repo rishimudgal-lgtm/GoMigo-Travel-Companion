@@ -1,0 +1,15 @@
+{
+  "name": "Madeira",
+  "country": "Portugal",
+  "tags": "mountains adventure beach",
+  "aliases": "",
+  "image": "explore_assets/destinations/madeira.jpg",
+  "alt": "Madeira, Portugal: destination photograph",
+  "description": "Explore Madeira, Portugal.",
+  "source": "https://en.wikipedia.org/wiki/Funchal",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Funchal,_Jardins_da_Quinta_Vigia_(lookout).jpg",
+  "author": "Dr. Thomas Liptak",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Funchal%2C_Jardins_da_Quinta_Vigia_%28lookout%29.jpg/960px-Funchal%2C_Jardins_da_Quinta_Vigia_%28lookout%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

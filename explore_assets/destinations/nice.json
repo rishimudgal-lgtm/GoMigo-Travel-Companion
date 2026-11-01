@@ -1,0 +1,15 @@
+{
+  "name": "Nice",
+  "country": "France",
+  "tags": "beach city",
+  "aliases": "French Riviera",
+  "image": "explore_assets/destinations/nice.jpg",
+  "alt": "Nice, France: destination photograph",
+  "description": "Explore Nice, France.",
+  "source": "https://en.wikipedia.org/wiki/Nice",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Promenade_des_Anglais_Nice_IMG_1255.jpg",
+  "author": "Alexander Migl",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Promenade_des_Anglais_Nice_IMG_1255.jpg/960px-Promenade_des_Anglais_Nice_IMG_1255.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

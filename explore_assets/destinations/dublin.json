@@ -1,0 +1,15 @@
+{
+  "name": "Dublin",
+  "country": "Ireland",
+  "tags": "city culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/dublin.jpg",
+  "alt": "Dublin, Ireland: destination photograph",
+  "description": "Explore Dublin, Ireland.",
+  "source": "https://en.wikipedia.org/wiki/Dublin",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Dublin_-_aerial_-_2025-07-07_01.jpg",
+  "author": "瑞丽江的河水",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Dublin_-_aerial_-_2025-07-07_01.jpg/960px-Dublin_-_aerial_-_2025-07-07_01.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

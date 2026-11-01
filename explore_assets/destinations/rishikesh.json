@@ -1,0 +1,15 @@
+{
+  "name": "Rishikesh",
+  "country": "India",
+  "tags": "adventure culture",
+  "aliases": "rafting Ganges Uttarakhand",
+  "image": "explore_assets/destinations/rishikesh.jpg",
+  "alt": "Rishikesh, India: destination photograph",
+  "description": "Explore Rishikesh, India.",
+  "source": "https://en.wikipedia.org/wiki/Rishikesh",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Trayambakeshwar_Temple_VK.jpg",
+  "author": "VK1983",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Trayambakeshwar_Temple_VK.jpg/960px-Trayambakeshwar_Temple_VK.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

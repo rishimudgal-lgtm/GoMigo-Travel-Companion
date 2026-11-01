@@ -1,0 +1,15 @@
+{
+  "name": "Banff",
+  "country": "Canada",
+  "tags": "mountains adventure",
+  "aliases": "Canadian Rockies",
+  "image": "explore_assets/destinations/banff.jpg",
+  "alt": "Banff, Canada: destination photograph",
+  "description": "Explore Banff, Canada.",
+  "source": "https://en.wikipedia.org/wiki/Banff%2C_Alberta",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Town_of_Banff_viewed_from_Sulphur_Mountain.jpg",
+  "author": "Ethan Sahagun",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Town_of_Banff_viewed_from_Sulphur_Mountain.jpg/960px-Town_of_Banff_viewed_from_Sulphur_Mountain.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

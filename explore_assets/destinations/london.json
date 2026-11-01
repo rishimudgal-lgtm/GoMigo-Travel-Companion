@@ -1,0 +1,15 @@
+{
+  "name": "London",
+  "country": "United Kingdom",
+  "tags": "city culture",
+  "aliases": "England UK",
+  "image": "explore_assets/destinations/london.jpg",
+  "alt": "London, United Kingdom: destination photograph",
+  "description": "Explore London, United Kingdom.",
+  "source": "https://en.wikipedia.org/wiki/London",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:London_Skyline_(125508655).jpeg",
+  "author": "Ilya Grigorik",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/London_Skyline_%28125508655%29.jpeg/960px-London_Skyline_%28125508655%29.jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

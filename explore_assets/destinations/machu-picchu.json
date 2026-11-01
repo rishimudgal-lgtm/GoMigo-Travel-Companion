@@ -1,0 +1,15 @@
+{
+  "name": "Machu Picchu",
+  "country": "Peru",
+  "tags": "mountains culture adventure",
+  "aliases": "",
+  "image": "explore_assets/destinations/machu-picchu.jpg",
+  "alt": "Machu Picchu, Peru: destination photograph",
+  "description": "Explore Machu Picchu, Peru.",
+  "source": "https://en.wikipedia.org/wiki/Machu_Picchu",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Machu_Picchu,_2023_(012).jpg",
+  "author": "Draceane",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Machu_Picchu%2C_2023_%28012%29.jpg/960px-Machu_Picchu%2C_2023_%28012%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Edinburgh",
+  "country": "United Kingdom",
+  "tags": "city culture",
+  "aliases": "Scotland",
+  "image": "explore_assets/destinations/edinburgh.jpg",
+  "alt": "Edinburgh, United Kingdom: destination photograph",
+  "description": "Explore Edinburgh, United Kingdom.",
+  "source": "https://en.wikipedia.org/wiki/Edinburgh",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Skyline_of_Edinburgh.jpg",
+  "author": "Andrew Colin",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Skyline_of_Edinburgh.jpg/960px-Skyline_of_Edinburgh.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

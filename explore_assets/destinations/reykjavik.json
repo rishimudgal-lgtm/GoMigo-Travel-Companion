@@ -1,0 +1,15 @@
+{
+  "name": "Reykjavik",
+  "country": "Iceland",
+  "tags": "city adventure",
+  "aliases": "Reykjavík",
+  "image": "explore_assets/destinations/reykjavik.jpg",
+  "alt": "Reykjavik, Iceland: destination photograph",
+  "description": "Explore Reykjavik, Iceland.",
+  "source": "https://en.wikipedia.org/wiki/Reykjav%C3%ADk",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Reykjav%C3%ADk,_view_from_Hallgr%C3%ADmskirkja_(2).jpg",
+  "author": "Olga Ernst",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Reykjav%C3%ADk%2C_view_from_Hallgr%C3%ADmskirkja_%282%29.jpg/960px-Reykjav%C3%ADk%2C_view_from_Hallgr%C3%ADmskirkja_%282%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

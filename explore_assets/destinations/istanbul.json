@@ -1,0 +1,15 @@
+{
+  "name": "Istanbul",
+  "country": "Turkey",
+  "tags": "city culture",
+  "aliases": "Turkiye",
+  "image": "explore_assets/destinations/istanbul.jpg",
+  "alt": "Istanbul, Turkey: destination photograph",
+  "description": "Explore Istanbul, Turkey.",
+  "source": "https://en.wikipedia.org/wiki/Istanbul",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Historical_peninsula_and_modern_skyline_of_Istanbul.jpg",
+  "author": "Hunanuk",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Historical_peninsula_and_modern_skyline_of_Istanbul.jpg/960px-Historical_peninsula_and_modern_skyline_of_Istanbul.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

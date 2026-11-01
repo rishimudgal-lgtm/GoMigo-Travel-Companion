@@ -1,0 +1,15 @@
+{
+  "name": "Quebec City",
+  "country": "Canada",
+  "tags": "city culture",
+  "aliases": "Québec",
+  "image": "explore_assets/destinations/quebec-city.jpg",
+  "alt": "Quebec City, Canada: destination photograph",
+  "description": "Explore Quebec City, Canada.",
+  "source": "https://en.wikipedia.org/wiki/Quebec_City",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Quebec_City_skyline_from_L%C3%A9vis.jpg",
+  "author": "Quintin Soloviev",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Quebec_City_skyline_from_L%C3%A9vis.jpg/960px-Quebec_City_skyline_from_L%C3%A9vis.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

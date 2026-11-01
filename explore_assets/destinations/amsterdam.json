@@ -1,0 +1,15 @@
+{
+  "name": "Amsterdam",
+  "country": "Netherlands",
+  "tags": "city culture",
+  "aliases": "Holland",
+  "image": "explore_assets/destinations/amsterdam.jpg",
+  "alt": "Amsterdam, Netherlands: destination photograph",
+  "description": "Explore Amsterdam, Netherlands.",
+  "source": "https://en.wikipedia.org/wiki/Amsterdam",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Amsterdam_Canals_(23585867048).jpg",
+  "author": "Billie Grace Ward from New York, USA",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Amsterdam_Canals_%2823585867048%29.jpg/960px-Amsterdam_Canals_%2823585867048%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Prague",
+  "country": "Czech Republic",
+  "tags": "city culture",
+  "aliases": "Czechia",
+  "image": "explore_assets/destinations/prague.jpg",
+  "alt": "Prague, Czech Republic: destination photograph",
+  "description": "Explore Prague, Czech Republic.",
+  "source": "https://en.wikipedia.org/wiki/Prague",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Prague_(6365119737).jpg",
+  "author": "Moyan Brenn from Italy",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Prague_%286365119737%29.jpg/960px-Prague_%286365119737%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

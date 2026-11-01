@@ -1,0 +1,15 @@
+{
+  "name": "Shanghai",
+  "country": "China",
+  "tags": "city",
+  "aliases": "",
+  "image": "explore_assets/destinations/shanghai.jpg",
+  "alt": "Shanghai, China: destination photograph",
+  "description": "Explore Shanghai, China.",
+  "source": "https://en.wikipedia.org/wiki/Shanghai",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Huangpu_Park_20124-Shanghai_(32208802494).jpg",
+  "author": "xiquinhosilva",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Huangpu_Park_20124-Shanghai_%2832208802494%29.jpg/960px-Huangpu_Park_20124-Shanghai_%2832208802494%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

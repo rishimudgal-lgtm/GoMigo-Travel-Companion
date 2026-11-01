@@ -1,0 +1,16 @@
+{
+  "name": "Bali",
+  "country": "Indonesia",
+  "tags": "beach culture adventure",
+  "aliases": "Denpasar",
+  "image": "explore_assets/destinations/bali.jpg",
+  "alt": "Bali, Indonesia: destination photograph",
+  "description": "Explore Bali, Indonesia.",
+  "source": "https://en.wikipedia.org/wiki/Pura_Ulun_Danu_Bratan",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Pura_Ulun_Danu_Bratan,_2022.jpg",
+  "author": "LukeTriton",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Pura_Ulun_Danu_Bratan%2C_2022.jpg/960px-Pura_Ulun_Danu_Bratan%2C_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+  "photoArticle": "Pura Ulun Danu Bratan"
+}

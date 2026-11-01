@@ -1,0 +1,15 @@
+{
+  "name": "Cape Town",
+  "country": "South Africa",
+  "tags": "mountains beach city",
+  "aliases": "",
+  "image": "explore_assets/destinations/cape-town.jpg",
+  "alt": "Cape Town, South Africa: destination photograph",
+  "description": "Explore Cape Town, South Africa.",
+  "source": "https://en.wikipedia.org/wiki/Cape_Town",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Camps_bay_(53460319478)_(cropped).jpg",
+  "author": "Der Berzerker from Washington, DC, USA",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Camps_bay_%2853460319478%29_%28cropped%29.jpg/960px-Camps_bay_%2853460319478%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

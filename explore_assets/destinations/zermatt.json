@@ -1,0 +1,15 @@
+{
+  "name": "Zermatt",
+  "country": "Switzerland",
+  "tags": "mountains adventure",
+  "aliases": "Matterhorn Swiss Alps",
+  "image": "explore_assets/destinations/zermatt.jpg",
+  "alt": "Zermatt, Switzerland: destination photograph",
+  "description": "Explore Zermatt, Switzerland.",
+  "source": "https://en.wikipedia.org/wiki/Zermatt",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:1_zermatt_evening_2022.jpg",
+  "author": "Chensiyuan",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/1_zermatt_evening_2022.jpg/960px-1_zermatt_evening_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

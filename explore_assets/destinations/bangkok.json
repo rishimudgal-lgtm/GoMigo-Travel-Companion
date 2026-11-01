@@ -1,0 +1,15 @@
+{
+  "name": "Bangkok",
+  "country": "Thailand",
+  "tags": "city culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/bangkok.jpg",
+  "alt": "Bangkok, Thailand: destination photograph",
+  "description": "Explore Bangkok, Thailand.",
+  "source": "https://en.wikipedia.org/wiki/Bangkok",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:4Y1A1159_Bangkok_(33536795515).jpg",
+  "author": "Ninara from Helsinki, Finland",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/4Y1A1159_Bangkok_%2833536795515%29.jpg/960px-4Y1A1159_Bangkok_%2833536795515%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

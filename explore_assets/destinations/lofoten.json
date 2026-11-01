@@ -1,0 +1,16 @@
+{
+  "name": "Lofoten",
+  "country": "Norway",
+  "tags": "mountains adventure",
+  "aliases": "",
+  "image": "explore_assets/destinations/lofoten.jpg",
+  "alt": "Lofoten, Norway: destination photograph",
+  "description": "Explore Lofoten, Norway.",
+  "source": "https://en.wikipedia.org/wiki/Reine%2C_Norway",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Reine_at_Reinefjorden,_2010_September.jpg",
+  "author": "Ximonic (Simo Räsänen)",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Reine_at_Reinefjorden%2C_2010_September.jpg/960px-Reine_at_Reinefjorden%2C_2010_September.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+  "photoArticle": "Reine, Norway"
+}

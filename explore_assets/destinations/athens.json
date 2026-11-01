@@ -1,0 +1,15 @@
+{
+  "name": "Athens",
+  "country": "Greece",
+  "tags": "city culture",
+  "aliases": "Acropolis",
+  "image": "explore_assets/destinations/athens.jpg",
+  "alt": "Athens, Greece: destination photograph",
+  "description": "Explore Athens, Greece.",
+  "source": "https://en.wikipedia.org/wiki/Athens",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Athens_Acropolis_at_Daybreak.jpg",
+  "author": "Andrew Parlette",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Athens_Acropolis_at_Daybreak.jpg/960px-Athens_Acropolis_at_Daybreak.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

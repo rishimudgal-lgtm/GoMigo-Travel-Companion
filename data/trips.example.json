@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "trips": [
+    {
+      "schemaVersion": 1,
+      "id": "example-trip-jaipur",
+      "destination": "Jaipur",
+      "dates": "15–18 Dec 2026",
+      "duration": "4 Days",
+      "travelers": "2 Travelers",
+      "style": "Balanced",
+      "budget": 5000,
+      "interests": ["Culture", "Food"],
+      "requests": "Leave some free time for local markets.",
+      "createdAt": "1 Nov 2026",
+      "createdAtISO": "2026-11-01T10:00:00.000Z"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Split",
+  "country": "Croatia",
+  "tags": "beach city",
+  "aliases": "",
+  "image": "explore_assets/destinations/split.jpg",
+  "alt": "Split, Croatia: destination photograph",
+  "description": "Explore Split, Croatia.",
+  "source": "https://en.wikipedia.org/wiki/Split%2C_Croatia",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Split_080620-133710-IMG_0968x.jpg",
+  "author": "Tatyana Peshkova",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Split_080620-133710-IMG_0968x.jpg/960px-Split_080620-133710-IMG_0968x.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

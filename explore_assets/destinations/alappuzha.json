@@ -1,0 +1,15 @@
+{
+  "name": "Alappuzha",
+  "country": "India",
+  "tags": "culture beach",
+  "aliases": "Alleppey Kerala backwaters",
+  "image": "explore_assets/destinations/alappuzha.jpg",
+  "alt": "Alappuzha, India: destination photograph",
+  "description": "Explore Alappuzha, India.",
+  "source": "https://en.wikipedia.org/wiki/Alappuzha",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Alappuzha_Boat_Beauty_W.jpg",
+  "author": "Augustus Binu/ facebook",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Alappuzha_Boat_Beauty_W.jpg/960px-Alappuzha_Boat_Beauty_W.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

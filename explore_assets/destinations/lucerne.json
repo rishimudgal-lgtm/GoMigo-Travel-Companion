@@ -1,0 +1,16 @@
+{
+  "name": "Lucerne",
+  "country": "Switzerland",
+  "tags": "mountains culture",
+  "aliases": "Luzern",
+  "image": "explore_assets/destinations/lucerne.jpg",
+  "alt": "Lucerne, Switzerland: destination photograph",
+  "description": "Explore Lucerne, Switzerland.",
+  "source": "https://en.wikipedia.org/wiki/Lake_Lucerne",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Vierwaldstaettersee.jpg",
+  "author": "Ttrainer",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Vierwaldstaettersee.jpg/960px-Vierwaldstaettersee.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+  "photoArticle": "Lake Lucerne"
+}

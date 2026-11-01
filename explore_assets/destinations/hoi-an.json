@@ -1,0 +1,16 @@
+{
+  "name": "Hoi An",
+  "country": "Vietnam",
+  "tags": "culture city",
+  "aliases": "Hoi An",
+  "image": "explore_assets/destinations/hoi-an.jpg",
+  "alt": "Hoi An, Vietnam: destination photograph",
+  "description": "Explore Hoi An, Vietnam.",
+  "source": "https://en.wikipedia.org/wiki/H%E1%BB%99i_An_Old_Town",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:10549-Hoi-An_(37621348460).jpg",
+  "author": "xiquinhosilva",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/10549-Hoi-An_%2837621348460%29.jpg/960px-10549-Hoi-An_%2837621348460%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+  "photoArticle": "Hội An Old Town"
+}

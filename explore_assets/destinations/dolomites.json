@@ -1,0 +1,15 @@
+{
+  "name": "Dolomites",
+  "country": "Italy",
+  "tags": "mountains adventure",
+  "aliases": "",
+  "image": "explore_assets/destinations/dolomites.jpg",
+  "alt": "Dolomites, Italy: destination photograph",
+  "description": "Explore Dolomites, Italy.",
+  "source": "https://en.wikipedia.org/wiki/Dolomites",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Faloria_Cortina_d%27Ampezzo_10.jpg",
+  "author": "kallerna",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Faloria_Cortina_d%27Ampezzo_10.jpg/960px-Faloria_Cortina_d%27Ampezzo_10.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

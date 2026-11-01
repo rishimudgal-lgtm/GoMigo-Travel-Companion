@@ -1,0 +1,16 @@
+{
+  "name": "Mykonos",
+  "country": "Greece",
+  "tags": "beach",
+  "aliases": "",
+  "image": "explore_assets/destinations/mykonos.jpg",
+  "alt": "Mykonos, Greece: destination photograph",
+  "description": "Explore Mykonos, Greece.",
+  "source": "https://en.wikipedia.org/wiki/Mykonos_windmills",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Against_Greek_skies,_one_of_the_Mykonos_Island_Windmills,_Chora._Cyclades,_Agean_Sea,_Greece.jpg",
+  "author": "Mstyslav Chernov",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Against_Greek_skies%2C_one_of_the_Mykonos_Island_Windmills%2C_Chora._Cyclades%2C_Agean_Sea%2C_Greece.jpg/960px-Against_Greek_skies%2C_one_of_the_Mykonos_Island_Windmills%2C_Chora._Cyclades%2C_Agean_Sea%2C_Greece.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+  "photoArticle": "Mykonos windmills"
+}

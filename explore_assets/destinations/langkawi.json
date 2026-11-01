@@ -1,0 +1,15 @@
+{
+  "name": "Langkawi",
+  "country": "Malaysia",
+  "tags": "beach adventure",
+  "aliases": "",
+  "image": "explore_assets/destinations/langkawi.jpg",
+  "alt": "Langkawi, Malaysia: destination photograph",
+  "description": "Explore Langkawi, Malaysia.",
+  "source": "https://en.wikipedia.org/wiki/Langkawi",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Eagle_square_at_Kuah_Langkawi.jpg",
+  "author": "Ttt.Osakanman",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Eagle_square_at_Kuah_Langkawi.jpg/960px-Eagle_square_at_Kuah_Langkawi.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

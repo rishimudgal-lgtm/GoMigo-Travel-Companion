@@ -1,0 +1,15 @@
+{
+  "name": "Amalfi",
+  "country": "Italy",
+  "tags": "beach culture",
+  "aliases": "Amalfi Coast",
+  "image": "explore_assets/destinations/amalfi.jpg",
+  "alt": "Amalfi, Italy: destination photograph",
+  "description": "Explore Amalfi, Italy.",
+  "source": "https://en.wikipedia.org/wiki/Amalfi",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Amalfi_sea_view_Italy.JPG",
+  "author": "No machine-readable author provided. Sudodana2048 assumed (based on copyright claims).",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Amalfi_sea_view_Italy.JPG/960px-Amalfi_sea_view_Italy.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

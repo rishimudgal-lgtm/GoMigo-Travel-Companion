@@ -1,0 +1,15 @@
+{
+  "name": "Osaka",
+  "country": "Japan",
+  "tags": "city culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/osaka.jpg",
+  "alt": "Osaka, Japan: destination photograph",
+  "description": "Explore Osaka, Japan.",
+  "source": "https://en.wikipedia.org/wiki/Osaka",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Osaka_Castle_03bs3200.jpg",
+  "author": "663highland",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Osaka_Castle_03bs3200.jpg/960px-Osaka_Castle_03bs3200.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

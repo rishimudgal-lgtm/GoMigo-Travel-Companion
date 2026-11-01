@@ -1,0 +1,15 @@
+{
+  "name": "Mount Fuji",
+  "country": "Japan",
+  "tags": "mountains adventure",
+  "aliases": "Fujisan",
+  "image": "explore_assets/destinations/mount-fuji.jpg",
+  "alt": "Mount Fuji, Japan: destination photograph",
+  "description": "Explore Mount Fuji, Japan.",
+  "source": "https://en.wikipedia.org/wiki/Mount_Fuji",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:View_of_Mount_Fuji_from_%C5%8Cwakudani_20211202.jpg",
+  "author": "Suicasmo",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/View_of_Mount_Fuji_from_%C5%8Cwakudani_20211202.jpg/960px-View_of_Mount_Fuji_from_%C5%8Cwakudani_20211202.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

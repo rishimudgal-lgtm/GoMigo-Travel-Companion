@@ -1,0 +1,15 @@
+{
+  "name": "Queenstown",
+  "country": "New Zealand",
+  "tags": "mountains adventure",
+  "aliases": "bungee skydiving",
+  "image": "explore_assets/destinations/queenstown.jpg",
+  "alt": "Queenstown, New Zealand: destination photograph",
+  "description": "Explore Queenstown, New Zealand.",
+  "source": "https://en.wikipedia.org/wiki/Queenstown%2C_New_Zealand",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Queenstown_1_(8168013172).jpg",
+  "author": "Bernard Spragg. NZ from Christchurch, New Zealand",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Queenstown_1_%288168013172%29.jpg/960px-Queenstown_1_%288168013172%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Kirkjufell",
+  "country": "Iceland",
+  "tags": "mountains adventure",
+  "aliases": "",
+  "image": "explore_assets/destinations/kirkjufell.jpg",
+  "alt": "Kirkjufell, Iceland: destination photograph",
+  "description": "Explore Kirkjufell, Iceland.",
+  "source": "https://en.wikipedia.org/wiki/Kirkjufell",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Kirkjufell_in_Iceland.jpg",
+  "author": "Anjali Kiggal",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Kirkjufell_in_Iceland.jpg/960px-Kirkjufell_in_Iceland.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

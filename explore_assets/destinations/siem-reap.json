@@ -1,0 +1,15 @@
+{
+  "name": "Siem Reap",
+  "country": "Cambodia",
+  "tags": "culture",
+  "aliases": "Angkor Wat",
+  "image": "explore_assets/destinations/siem-reap.jpg",
+  "alt": "Siem Reap, Cambodia: destination photograph",
+  "description": "Explore Siem Reap, Cambodia.",
+  "source": "https://en.wikipedia.org/wiki/Siem_Reap",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Front_porch_of_Wat_Damnak.jpg",
+  "author": "Willuconquer",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Front_porch_of_Wat_Damnak.jpg/960px-Front_porch_of_Wat_Damnak.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Singapore",
+  "country": "Singapore",
+  "tags": "city culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/singapore.jpg",
+  "alt": "Singapore, Singapore: destination photograph",
+  "description": "Explore Singapore, Singapore.",
+  "source": "https://en.wikipedia.org/wiki/Gardens_by_the_Bay",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Supertree_Grove,_Gardens_by_the_Bay,_Singapore_-_20120712-02.jpg",
+  "author": "Shiny Things.",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Supertree_Grove%2C_Gardens_by_the_Bay%2C_Singapore_-_20120712-02.jpg/960px-Supertree_Grove%2C_Gardens_by_the_Bay%2C_Singapore_-_20120712-02.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+  "photoArticle": "Gardens by the Bay"
+}

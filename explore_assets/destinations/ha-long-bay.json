@@ -1,0 +1,15 @@
+{
+  "name": "Ha Long Bay",
+  "country": "Vietnam",
+  "tags": "beach adventure",
+  "aliases": "Halong Ha Long",
+  "image": "explore_assets/destinations/ha-long-bay.jpg",
+  "alt": "Ha Long Bay, Vietnam: destination photograph",
+  "description": "Explore Ha Long Bay, Vietnam.",
+  "source": "https://en.wikipedia.org/wiki/H%E1%BA%A1_Long_Bay",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Ha_Long_Bay_in_2019.jpg",
+  "author": "Taewangkorea",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Ha_Long_Bay_in_2019.jpg/960px-Ha_Long_Bay_in_2019.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

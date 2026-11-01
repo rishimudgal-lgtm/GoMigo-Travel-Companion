@@ -1,0 +1,16 @@
+{
+  "name": "Hong Kong",
+  "country": "China",
+  "tags": "city adventure",
+  "aliases": "",
+  "image": "explore_assets/destinations/hong-kong.jpg",
+  "alt": "Hong Kong, China: destination photograph",
+  "description": "Explore Hong Kong, China.",
+  "source": "https://en.wikipedia.org/wiki/Victoria_Peak",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:High_West_and_Victoria_Peak_from_Victoria_Gap_(crop1).jpg",
+  "author": "Daniel Case",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/High_West_and_Victoria_Peak_from_Victoria_Gap_%28crop1%29.jpg/960px-High_West_and_Victoria_Peak_from_Victoria_Gap_%28crop1%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+  "photoArticle": "Victoria Peak"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Beijing",
+  "country": "China",
+  "tags": "city culture",
+  "aliases": "Peking",
+  "image": "explore_assets/destinations/beijing.jpg",
+  "alt": "Beijing, China: destination photograph",
+  "description": "Explore Beijing, China.",
+  "source": "https://en.wikipedia.org/wiki/Beijing",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Skyline_of_Beijing_CBD_with_B-5906_approaching_(20211016171955)_(1).jpg",
+  "author": "N509FZ",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Skyline_of_Beijing_CBD_with_B-5906_approaching_%2820211016171955%29_%281%29.jpg/960px-Skyline_of_Beijing_CBD_with_B-5906_approaching_%2820211016171955%29_%281%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

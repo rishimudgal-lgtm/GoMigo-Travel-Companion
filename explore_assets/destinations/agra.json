@@ -1,0 +1,15 @@
+{
+  "name": "Agra",
+  "country": "India",
+  "tags": "culture",
+  "aliases": "Taj Mahal",
+  "image": "explore_assets/destinations/agra.jpg",
+  "alt": "Agra, India: destination photograph",
+  "description": "Explore Agra, India.",
+  "source": "https://en.wikipedia.org/wiki/Agra",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Taj_Mahal,_Agra,_India.jpg",
+  "author": "Yann (talk)",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Taj_Mahal%2C_Agra%2C_India.jpg/960px-Taj_Mahal%2C_Agra%2C_India.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

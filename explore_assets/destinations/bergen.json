@@ -1,0 +1,15 @@
+{
+  "name": "Bergen",
+  "country": "Norway",
+  "tags": "city mountains",
+  "aliases": "",
+  "image": "explore_assets/destinations/bergen.jpg",
+  "alt": "Bergen, Norway: destination photograph",
+  "description": "Explore Bergen, Norway.",
+  "source": "https://en.wikipedia.org/wiki/Bergen",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Bergen_panorama_at_night_-_panoramio_(1).jpg",
+  "author": "TomasEE",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Bergen_panorama_at_night_-_panoramio_%281%29.jpg/960px-Bergen_panorama_at_night_-_panoramio_%281%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

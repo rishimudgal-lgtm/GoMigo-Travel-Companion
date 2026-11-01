@@ -1,0 +1,15 @@
+{
+  "name": "Rio de Janeiro",
+  "country": "Brazil",
+  "tags": "beach city adventure",
+  "aliases": "",
+  "image": "explore_assets/destinations/rio-de-janeiro.jpg",
+  "alt": "Rio de Janeiro, Brazil: destination photograph",
+  "description": "Explore Rio de Janeiro, Brazil.",
+  "source": "https://en.wikipedia.org/wiki/Rio_de_Janeiro",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Cidade_Maravilhosa.jpg",
+  "author": "Rafael Rabello de Barros",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Cidade_Maravilhosa.jpg/960px-Cidade_Maravilhosa.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}
