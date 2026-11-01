@@ -1,0 +1,15 @@
+{
+  "name": "Varanasi",
+  "country": "India",
+  "tags": "culture city",
+  "aliases": "Banaras Kashi",
+  "image": "explore_assets/destinations/varanasi.jpg",
+  "alt": "Varanasi, India: destination photograph",
+  "description": "Explore Varanasi, India.",
+  "source": "https://en.wikipedia.org/wiki/Varanasi",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Varanasi,_India,_Ghats,_Cremation_ceremony_in_progress.jpg",
+  "author": "Vyacheslav Argenberg",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Varanasi%2C_India%2C_Ghats%2C_Cremation_ceremony_in_progress.jpg/960px-Varanasi%2C_India%2C_Ghats%2C_Cremation_ceremony_in_progress.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

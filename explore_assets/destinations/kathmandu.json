@@ -1,0 +1,15 @@
+{
+  "name": "Kathmandu",
+  "country": "Nepal",
+  "tags": "culture city",
+  "aliases": "",
+  "image": "explore_assets/destinations/kathmandu.jpg",
+  "alt": "Kathmandu, Nepal: destination photograph",
+  "description": "Explore Kathmandu, Nepal.",
+  "source": "https://en.wikipedia.org/wiki/Kathmandu",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Kathmandu-Durbar_Square-06-Mahavishnu-Kuh-Vishnu-Pratapamalla-Jagannath-2007-gje.jpg",
+  "author": "Gerd Eichmann",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Kathmandu-Durbar_Square-06-Mahavishnu-Kuh-Vishnu-Pratapamalla-Jagannath-2007-gje.jpg/960px-Kathmandu-Durbar_Square-06-Mahavishnu-Kuh-Vishnu-Pratapamalla-Jagannath-2007-gje.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

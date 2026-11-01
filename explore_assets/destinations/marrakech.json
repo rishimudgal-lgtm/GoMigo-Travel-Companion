@@ -1,0 +1,15 @@
+{
+  "name": "Marrakech",
+  "country": "Morocco",
+  "tags": "city culture",
+  "aliases": "Marrakesh",
+  "image": "explore_assets/destinations/marrakech.jpg",
+  "alt": "Marrakech, Morocco: destination photograph",
+  "description": "Explore Marrakech, Morocco.",
+  "source": "https://en.wikipedia.org/wiki/Marrakesh",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Marrakech,_Morocco_(5421595453)_(5).jpg",
+  "author": "YoTuT from United States",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Marrakech%2C_Morocco_%285421595453%29_%285%29.jpg/960px-Marrakech%2C_Morocco_%285421595453%29_%285%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

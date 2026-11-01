@@ -1,0 +1,16 @@
+{
+  "name": "Santorini",
+  "country": "Greece",
+  "tags": "beach culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/santorini.jpg",
+  "alt": "Santorini, Greece: destination photograph",
+  "description": "Explore Santorini, Greece.",
+  "source": "https://en.wikipedia.org/wiki/Oia%2C_Greece",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Oia_sunset_-_panoramio_(2).jpg",
+  "author": "TomasEE",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Oia_sunset_-_panoramio_%282%29.jpg/960px-Oia_sunset_-_panoramio_%282%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+  "photoArticle": "Oia, Greece"
+}

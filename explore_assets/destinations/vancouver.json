@@ -1,0 +1,15 @@
+{
+  "name": "Vancouver",
+  "country": "Canada",
+  "tags": "city mountains",
+  "aliases": "",
+  "image": "explore_assets/destinations/vancouver.jpg",
+  "alt": "Vancouver, Canada: destination photograph",
+  "description": "Explore Vancouver, Canada.",
+  "source": "https://en.wikipedia.org/wiki/Vancouver",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Skyline_of_Vancouver,_Canada.jpg",
+  "author": "Quintin Soloviev",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Skyline_of_Vancouver%2C_Canada.jpg/960px-Skyline_of_Vancouver%2C_Canada.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

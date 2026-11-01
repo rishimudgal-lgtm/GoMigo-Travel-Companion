@@ -1,0 +1,15 @@
+{
+  "name": "Kuala Lumpur",
+  "country": "Malaysia",
+  "tags": "city culture",
+  "aliases": "KL",
+  "image": "explore_assets/destinations/kuala-lumpur.jpg",
+  "alt": "Kuala Lumpur, Malaysia: destination photograph",
+  "description": "Explore Kuala Lumpur, Malaysia.",
+  "source": "https://en.wikipedia.org/wiki/Kuala_Lumpur",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Bukit_Bintang_junction_in_2024_2.jpg",
+  "author": "Renek78",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Bukit_Bintang_junction_in_2024_2.jpg/960px-Bukit_Bintang_junction_in_2024_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

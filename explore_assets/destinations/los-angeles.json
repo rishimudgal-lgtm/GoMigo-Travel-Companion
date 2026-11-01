@@ -1,0 +1,15 @@
+{
+  "name": "Los Angeles",
+  "country": "United States",
+  "tags": "city beach",
+  "aliases": "LA California USA",
+  "image": "explore_assets/destinations/los-angeles.jpg",
+  "alt": "Los Angeles, United States: destination photograph",
+  "description": "Explore Los Angeles, United States.",
+  "source": "https://en.wikipedia.org/wiki/Los_Angeles",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Hollywood_sign_(8485145044).jpg",
+  "author": "Gnaphron",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Hollywood_sign_%288485145044%29.jpg/960px-Hollywood_sign_%288485145044%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Porto",
+  "country": "Portugal",
+  "tags": "city culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/porto.jpg",
+  "alt": "Porto, Portugal: destination photograph",
+  "description": "Explore Porto, Portugal.",
+  "source": "https://en.wikipedia.org/wiki/Porto",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Puente_Don_Luis_I,_Oporto,_Portugal,_2012-05-09,_DD_13.JPG",
+  "author": "Diego Delso",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Puente_Don_Luis_I%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_13.JPG/960px-Puente_Don_Luis_I%2C_Oporto%2C_Portugal%2C_2012-05-09%2C_DD_13.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

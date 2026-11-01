@@ -1,0 +1,15 @@
+{
+  "name": "Melbourne",
+  "country": "Australia",
+  "tags": "city culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/melbourne.jpg",
+  "alt": "Melbourne, Australia: destination photograph",
+  "description": "Explore Melbourne, Australia.",
+  "source": "https://en.wikipedia.org/wiki/Melbourne",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Melbourne_skyline_sor.jpg",
+  "author": "Melbpal",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Melbourne_skyline_sor.jpg/960px-Melbourne_skyline_sor.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

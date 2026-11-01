@@ -1,0 +1,15 @@
+{
+  "name": "Cairo",
+  "country": "Egypt",
+  "tags": "city culture",
+  "aliases": "Giza Pyramids",
+  "image": "explore_assets/destinations/cairo.jpg",
+  "alt": "Cairo, Egypt: destination photograph",
+  "description": "Explore Cairo, Egypt.",
+  "source": "https://en.wikipedia.org/wiki/Cairo",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Cairo_From_Tower_(cropped).jpg",
+  "author": "Wael El Sisi",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Cairo_From_Tower_%28cropped%29.jpg/960px-Cairo_From_Tower_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

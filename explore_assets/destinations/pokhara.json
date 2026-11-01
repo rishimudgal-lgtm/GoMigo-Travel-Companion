@@ -1,0 +1,15 @@
+{
+  "name": "Pokhara",
+  "country": "Nepal",
+  "tags": "mountains adventure",
+  "aliases": "Himalayas",
+  "image": "explore_assets/destinations/pokhara.jpg",
+  "alt": "Pokhara, Nepal: destination photograph",
+  "description": "Explore Pokhara, Nepal.",
+  "source": "https://en.wikipedia.org/wiki/Pokhara",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Pokhara_Valley.jpg",
+  "author": "Utsab Raj Giri",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Pokhara_Valley.jpg/960px-Pokhara_Valley.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

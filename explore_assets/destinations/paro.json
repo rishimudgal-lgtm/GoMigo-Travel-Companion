@@ -1,0 +1,15 @@
+{
+  "name": "Paro",
+  "country": "Bhutan",
+  "tags": "mountains culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/paro.jpg",
+  "alt": "Paro, Bhutan: destination photograph",
+  "description": "Explore Paro, Bhutan.",
+  "source": "https://en.wikipedia.org/wiki/Paro%2C_Bhutan",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Paro,_Paro,_Bhutan_(8026008882).jpg",
+  "author": "Christopher Michel",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Paro%2C_Paro%2C_Bhutan_%288026008882%29.jpg/960px-Paro%2C_Paro%2C_Bhutan_%288026008882%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

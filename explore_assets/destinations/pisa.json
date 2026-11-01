@@ -1,0 +1,16 @@
+{
+  "name": "Pisa",
+  "country": "Italy",
+  "tags": "culture city",
+  "aliases": "Tuscany",
+  "image": "explore_assets/destinations/pisa.jpg",
+  "alt": "Pisa, Italy: destination photograph",
+  "description": "Explore Pisa, Italy.",
+  "source": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Italy_-_Pisa_-_Leaning_Tower.jpg",
+  "author": "Arne Müseler",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Italy_-_Pisa_-_Leaning_Tower.jpg/960px-Italy_-_Pisa_-_Leaning_Tower.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+  "photoArticle": "Leaning Tower of Pisa"
+}

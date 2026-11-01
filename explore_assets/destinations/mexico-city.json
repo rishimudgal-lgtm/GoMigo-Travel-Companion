@@ -1,0 +1,15 @@
+{
+  "name": "Mexico City",
+  "country": "Mexico",
+  "tags": "city culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/mexico-city.jpg",
+  "alt": "Mexico City, Mexico: destination photograph",
+  "description": "Explore Mexico City, Mexico.",
+  "source": "https://en.wikipedia.org/wiki/Mexico_City",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Sobrevuelos_CDMX_HJ2A4913_(25514321687)_(cropped).jpg",
+  "author": "Gobierno CDMX",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Sobrevuelos_CDMX_HJ2A4913_%2825514321687%29_%28cropped%29.jpg/960px-Sobrevuelos_CDMX_HJ2A4913_%2825514321687%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

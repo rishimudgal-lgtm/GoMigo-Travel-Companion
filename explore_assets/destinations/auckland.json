@@ -1,0 +1,15 @@
+{
+  "name": "Auckland",
+  "country": "New Zealand",
+  "tags": "city beach",
+  "aliases": "",
+  "image": "explore_assets/destinations/auckland.jpg",
+  "alt": "Auckland, New Zealand: destination photograph",
+  "description": "Explore Auckland, New Zealand.",
+  "source": "https://en.wikipedia.org/wiki/Auckland",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Auckland_skyline_-_May_2024_(2).jpg",
+  "author": "elpinto007",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Auckland_skyline_-_May_2024_%282%29.jpg/960px-Auckland_skyline_-_May_2024_%282%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

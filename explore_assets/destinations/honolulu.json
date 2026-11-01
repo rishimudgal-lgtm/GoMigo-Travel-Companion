@@ -1,0 +1,15 @@
+{
+  "name": "Honolulu",
+  "country": "United States",
+  "tags": "beach adventure",
+  "aliases": "Hawaii USA",
+  "image": "explore_assets/destinations/honolulu.jpg",
+  "alt": "Honolulu, United States: destination photograph",
+  "description": "Explore Honolulu, United States.",
+  "source": "https://en.wikipedia.org/wiki/Honolulu",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:2022_Views_from_Diamond_Head_02.jpg",
+  "author": "Farragutful",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/2022_Views_from_Diamond_Head_02.jpg/960px-2022_Views_from_Diamond_Head_02.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

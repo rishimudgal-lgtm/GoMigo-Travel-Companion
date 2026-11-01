@@ -3103,3 +3103,340 @@ body.explore-page-theme .app-destinations-section { padding-top: 38px; }
 @media (max-width: 600px) { body.explore-page-theme .app-destination-grid { grid-template-columns: 1fr; } body.explore-page-theme .app-destination-copy > p:not(.app-destination-country) { min-height: 0; } }
 
 body.explore-page-theme .app-explore-kicker { margin: 0 auto 12px; color: #d6f4e7; font-size: 10px; font-weight: 800; letter-spacing: .18em; text-shadow: 0 2px 8px #102d2980; }
+
+/* Public Explore has its own landscape within the shared teal palette. */
+body.public-explore-page .hero {
+    background: linear-gradient(100deg, rgba(4, 55, 70, .38), rgba(6, 82, 91, .18)), url("explore_assets/explore-teal-lagoon.png") center 48% / cover no-repeat;
+}
+body.public-explore-page .explore-place-name {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 36px 18px 16px;
+    background: linear-gradient(transparent, #043746d9);
+    color: #fff;
+    font-size: 26px;
+    font-weight: 800;
+    pointer-events: none;
+}
+
+body.public-explore-page .explore-place-name small {
+    display: block;
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Travel Guide uses its own landscape in GoMigo's teal-green palette. */
+body.guide-preview-page { background: #eaf8f0; }
+body.guide-preview-page .guide-preview-hero {
+    background-image: linear-gradient(100deg, rgba(4, 55, 70, .76), rgba(6, 82, 91, .20)), url("explore_assets/travel-guide-background.png");
+}
+body.guide-page .main-content {
+    background: linear-gradient(180deg, rgba(4, 55, 70, .60), rgba(6, 82, 91, .24)), url("explore_assets/travel-guide-background.png") center / cover no-repeat;
+}
+body.guide-page .content-page-header h1,
+body.guide-page .content-page-header .content-eyebrow,
+body.guide-page .content-page-header > p:not(.content-eyebrow) {
+    color: #eaf8f0;
+    text-shadow: 0 2px 8px rgba(4, 55, 70, .35);
+}
+
+/* Profile's lakeside background follows the shared teal-green palette. */
+body.profile-page .main-content {
+    background: linear-gradient(180deg, rgba(4, 55, 70, .60), rgba(6, 82, 91, .24)), url("explore_assets/profile-background.png") center / cover no-repeat;
+}
+body.profile-page .content-page-header h1,
+body.profile-page .content-page-header .content-eyebrow,
+body.profile-page .content-page-header > p:not(.content-eyebrow) {
+    color: #eaf8f0;
+    text-shadow: 0 2px 8px rgba(4, 55, 70, .35);
+}
+body.profile-page .profile-page-form {
+    background: #f4fbf7;
+}
+
+/* Saved Places has a distinct coastal background in the shared teal palette. */
+body.saved-page .main-content {
+    background: linear-gradient(180deg, rgba(4, 55, 70, .60), rgba(6, 82, 91, .24)), url("explore_assets/saved-background.png") center / cover no-repeat;
+}
+body.saved-page .content-page-header h1,
+body.saved-page .content-page-header .content-eyebrow,
+body.saved-page .content-page-header > p:not(.content-eyebrow),
+body.saved-page .content-page-header .content-primary-link {
+    color: #eaf8f0;
+    text-shadow: 0 2px 8px rgba(4, 55, 70, .35);
+}
+
+/* Shared typography follows the landing page's roles. Family overrides are
+   intentional: page-level font shorthands still control size, weight and spacing. */
+:root {
+    --font-display: "K2D", sans-serif;
+    --font-body: "Manrope", sans-serif;
+    --font-detail: "Inter", sans-serif;
+}
+body:is(.app-page, .auth-page, .explore-page-theme, .guide-preview-page) {
+    font-family: var(--font-body) !important;
+}
+body:is(.app-page, .auth-page, .explore-page-theme, .guide-preview-page) :is(
+    h1, button, .nav-links, .nav-actions, .nav-button, .sidebar-nav a,
+    .landing-hero-button, .content-primary-link, .guide-preview-text-link,
+    .sidebar-quote, .hello-text, .dashboard-hero-decoration, .surprise-decoration,
+    .quote, blockquote, .hero-subtitle,
+    .hero-copy > p, .app-explore-intro, .content-page-header > p,
+    .guide-preview-hero-copy > p, .guide-preview-heading > p,
+    .welcome-copy, .auth-intro, .auth-art h2, .dashboard-hero-text > p
+) {
+    font-family: var(--font-display) !important;
+}
+body:is(.app-page, .auth-page, .explore-page-theme, .guide-preview-page) :is(
+    h2, h3, h4, h5, h6, label, input, select, textarea,
+    .destination-info p, .app-destination-copy p, .guide-card p,
+    .guide-preview-card p, .trip-card p, .saved-card p, .empty-state,
+    .explore-place-name, .profile-text, .site-toast
+) {
+    font-family: var(--font-body) !important;
+}
+body:is(.app-page, .auth-page, .explore-page-theme, .guide-preview-page) :is(
+    .site-footer a, .footer-links a, .guide-preview-footer, .workspace-footer,
+    .auth-note, .local-note
+) {
+    font-family: var(--font-detail) !important;
+}
+/* Preserve the landing page's italic serif accent in footer headings. */
+body.explore-page-theme .footer-group h2 span { font-family: Georgia, serif; }
+
+body.auth-page .auth-art h2 { font-family: var(--font-display) !important; }
+
+/* A gentle lower curve frames the Destinations hero. */
+body.public-explore-page .hero { border-radius: 0 0 72px 72px; }
+@media (max-width: 600px) {
+    body.public-explore-page .hero { border-radius: 0 0 36px 36px; }
+}
+
+body.public-explore-page .destination-photo-credits {
+    margin-top: 24px;
+    color: #456e68;
+    font: 12px/1.6 var(--font-body);
+}
+body.public-explore-page .destination-photo-credits summary { cursor: pointer; font-weight: 700; }
+body.public-explore-page .destination-photo-credits ul { padding: 14px 0 0 20px; }
+body.public-explore-page .destination-photo-credits a { text-decoration: underline; }
+body.public-explore-page .destination-photo-credits li { margin-bottom: 8px; overflow-wrap: anywhere; }
+
+.destination-photo-credit { margin-top: 10px; color: #55747a; font-size: 11px; overflow-wrap: anywhere; }
+.destination-photo-credit summary { cursor: pointer; }
+.destination-page-grid .destination-photo-credit a { font-size: 11px; text-decoration: underline; }
+
+/* Signed-in Home: banners fill the space beside the sidebar. */
+body.dashboard-page .main-content { padding: 0 0 40px; }
+body.dashboard-page .dashboard-hero,
+body.dashboard-page .surprise-section { width: 100%; }
+body.dashboard-page .dashboard-hero-image,
+body.dashboard-page .surprise-image { display: block; width: 100%; height: 100%; object-fit: cover; }
+body.dashboard-page .inspiration { padding: 24px clamp(20px, 3vw, 40px) 0; }
+body.dashboard-page .destination-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+body.dashboard-page .destination-image { height: auto; aspect-ratio: 1.85; }
+body.dashboard-page .destination-info { padding: 12px 14px; }
+body.dashboard-page .destination-photo-credit { font-size: 10px; }
+@media (max-width: 1100px) {
+    body.dashboard-page .destination-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+    body.dashboard-page .destination-grid { grid-template-columns: 1fr; }
+    body.dashboard-page .inspiration { padding: 22px 16px 0; }
+}
+
+/* Blend the closing landscape into the cards' background. */
+body.dashboard-page .main-content { padding-bottom: 0; }
+body.dashboard-page .inspiration { padding-bottom: 32px; }
+body.dashboard-page .surprise-section {
+    height: 75vh;
+    height: 75svh;
+    min-height: 380px;
+    margin-top: 0;
+    border-radius: 0;
+    background: #FCF5ED;
+}
+body.dashboard-page .surprise-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(to bottom, #FCF5ED 0%, rgba(252, 245, 237, .85) 5%, rgba(252, 245, 237, .35) 13%, transparent 25%);
+}
+body.dashboard-page .surprise-content {
+    top: 50%;
+    transform: translateY(-50%);
+}
+body.dashboard-page .surprise-decoration { top: 30%; }
+@media (max-width: 680px) {
+    body.dashboard-page .surprise-content { left: 6%; right: 6%; }
+}
+
+/* My Trips shares the teal travel palette with a distinct railway landscape. */
+body.trips-page .main-content {
+    background: linear-gradient(180deg, rgba(4, 55, 70, .65), rgba(6, 82, 91, .25)), url("explore_assets/my-trips-background.png") center / cover no-repeat;
+}
+body.trips-page .content-page-header h1,
+body.trips-page .content-page-header .content-eyebrow,
+body.trips-page .content-page-header > p:not(.content-eyebrow),
+body.trips-page .content-page-header .content-primary-link {
+    color: #eaf8f0;
+    text-shadow: 0 2px 8px rgba(4, 55, 70, .35);
+}
+body.trips-page .trip-card { overflow-wrap: anywhere; }
+
+/* Saved Places uses one alignment for the heading, empty state and card grid. */
+body.saved-page .content-page-header,
+body.saved-page #saved-grid {
+    width: 100%;
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+body.saved-page .content-page-header { margin-bottom: 32px; }
+body.saved-page #saved-grid { align-items: stretch; }
+body.saved-page #saved-grid > .empty-state {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 620px;
+    margin: 0;
+}
+body.saved-page #saved-grid .destination-card { display: flex; flex-direction: column; }
+body.saved-page #saved-grid .destination-image { flex-shrink: 0; }
+body.saved-page #saved-grid .destination-info { display: flex; flex-direction: column; flex: 1; }
+body.saved-page #saved-grid .destination-info > p { min-height: 3em; }
+body.saved-page #saved-grid .destination-info > a { margin-top: auto; align-self: flex-start; }
+
+/* Signed-in Explore: a land-based travel illustration, distinct from Destinations. */
+body.app-page.explore-page-theme .app-explore-hero {
+    background: linear-gradient(100deg, rgba(4, 55, 70, .22), rgba(6, 82, 91, .30)), url("explore_assets/explore-app-hills-hero.png") center / cover no-repeat;
+}
+body.app-page.explore-page-theme .app-destination-copy .destination-photo-credit a { font-size: 10px; }
+
+/* Explore's hero fills the available width beside the shared menu. */
+body.app-page.explore-page-theme .explore-app-main {
+    padding-left: 0;
+    padding-right: 0;
+}
+body.app-page.explore-page-theme .app-explore-hero { width: 100%; }
+/* Match Saved Places to the pale mint Explore kicker. */
+body.saved-page .content-page-header h1 { color: #d6f4e7; }
+
+/* Match the signed-in Explore heading to Saved Places. */
+body.app-page.explore-page-theme .app-explore-hero h1 { color: #d6f4e7; }
+/* Keep profile names and preferences compact and on separate lines. */
+body.app-page .sidebar-profile .profile-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+}
+body.app-page .sidebar-profile .profile-text :is(strong, h4) {
+    display: block;
+    font-size: 10px;
+    line-height: 1.35;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+body.app-page .sidebar-profile .profile-text :is(small, p) {
+    display: block;
+    font-size: 8px;
+    line-height: 1.4;
+    color: #477585;
+}
+
+/* Sign-up reuses its travel artwork as an immersive full-page background. */
+body.signup-page {
+    min-height: 100vh;
+    min-height: 100svh;
+    background: linear-gradient(110deg, rgba(4, 55, 70, .58), rgba(4, 55, 70, .30) 52%, rgba(4, 55, 70, .48)), url("main-menu-assets/surprise.png") center / cover no-repeat;
+}
+body.signup-page .auth-topbar { background: transparent; }
+body.signup-page .auth-logo img { filter: drop-shadow(0 2px 6px #04374666); }
+body.signup-page .auth-switch-link { background: #eaf8f0; border-color: #eaf8f0; }
+body.signup-page .auth-card {
+    background: rgba(255, 253, 249, .96);
+    box-shadow: 0 18px 55px rgba(4, 55, 70, .22);
+}
+body.signup-page .auth-art {
+    align-self: stretch;
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+}
+body.signup-page .auth-art::after { display: none; }
+body.signup-page .auth-art div {
+    position: static;
+    width: 100%;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(4, 35, 45, .65);
+}
+body.signup-page .auth-art {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+body.signup-page .auth-art h2 { margin-left: auto; margin-right: auto; }
+@media (max-width: 700px) {
+    body.signup-page .auth-art { min-height: 200px; }
+    body.signup-page .auth-art { padding: 20px 16px; }
+}
+
+/* Fine-tune the sign-up composition on wider screens. */
+@media (min-width: 701px) {
+    body.signup-page .auth-card { margin-top: 32px; }
+    body.signup-page .auth-art div { transform: translateY(-28px); }
+}
+
+/* Login uses its existing artwork across the full page, without a header bar. */
+body.login-page {
+    min-height: 100vh;
+    min-height: 100svh;
+    background: linear-gradient(110deg, rgba(4, 55, 70, .14), rgba(4, 55, 70, .03) 52%, rgba(4, 55, 70, .08)), url("main-menu-assets/main-menu-hero.png") center / cover no-repeat;
+}
+body.login-page .auth-topbar { background: transparent; }
+body.login-page .auth-logo img { filter: drop-shadow(0 2px 6px #04374666); }
+body.login-page .auth-switch-link { background: #eaf8f0; border-color: #eaf8f0; }
+body.login-page .auth-card {
+    background: rgba(255, 253, 249, .96);
+    box-shadow: 0 18px 55px rgba(4, 55, 70, .22);
+}
+body.login-page .auth-art {
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+}
+body.login-page .auth-art::after { display: none; }
+body.login-page .auth-art div { text-shadow: 0 2px 10px rgba(4, 35, 45, .65); }
+
+/* Balance the login form and its companion text. */
+body.login-page .auth-art {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+body.login-page .auth-art div {
+    position: static;
+    width: 100%;
+    text-align: center;
+}
+body.login-page .auth-art h2 { margin-left: auto; margin-right: auto; }
+@media (min-width: 701px) {
+    body.login-page .auth-card { margin-top: 32px; }
+    body.login-page .auth-art div { transform: translateY(-28px); }
+}
+@media (max-width: 700px) {
+    body.login-page .auth-art { min-height: 200px; padding: 20px 16px; }
+}
+
+/* Keep the brighter login artwork readable without dimming the whole page. */
+body.login-page .auth-logo img { filter: brightness(0) saturate(100%) invert(23%) sepia(40%) saturate(1350%) hue-rotate(148deg) brightness(90%) contrast(96%); }
+body.login-page .auth-art div { color: #07566b; text-shadow: 0 1px 8px rgba(255, 253, 249, .7); }

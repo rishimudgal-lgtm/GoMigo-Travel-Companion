@@ -1,0 +1,15 @@
+{
+  "name": "Dubrovnik",
+  "country": "Croatia",
+  "tags": "beach culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/dubrovnik.jpg",
+  "alt": "Dubrovnik, Croatia: destination photograph",
+  "description": "Explore Dubrovnik, Croatia.",
+  "source": "https://en.wikipedia.org/wiki/Dubrovnik",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:The_walls_of_the_fortress_and_View_of_the_old_city._panorama.jpg",
+  "author": "Zysko serhii",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/The_walls_of_the_fortress_and_View_of_the_old_city._panorama.jpg/960px-The_walls_of_the_fortress_and_View_of_the_old_city._panorama.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

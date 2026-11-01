@@ -1,0 +1,15 @@
+{
+  "name": "Mumbai",
+  "country": "India",
+  "tags": "city culture",
+  "aliases": "Bombay",
+  "image": "explore_assets/destinations/mumbai.jpg",
+  "alt": "Mumbai, India: destination photograph",
+  "description": "Explore Mumbai, India.",
+  "source": "https://en.wikipedia.org/wiki/Mumbai",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Mumbai_Bandra-Worli_Sea_Link.jpg",
+  "author": "Rutiknatekar",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Mumbai_Bandra-Worli_Sea_Link.jpg/960px-Mumbai_Bandra-Worli_Sea_Link.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

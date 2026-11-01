@@ -1,0 +1,15 @@
+{
+  "name": "Barcelona",
+  "country": "Spain",
+  "tags": "city beach culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/barcelona.jpg",
+  "alt": "Barcelona, Spain: destination photograph",
+  "description": "Explore Barcelona, Spain.",
+  "source": "https://en.wikipedia.org/wiki/Barcelona",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Evening_light_over_Barcelona.jpg",
+  "author": "M McBey",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Evening_light_over_Barcelona.jpg/960px-Evening_light_over_Barcelona.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

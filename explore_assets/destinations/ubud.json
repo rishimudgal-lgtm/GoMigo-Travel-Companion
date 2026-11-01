@@ -1,0 +1,15 @@
+{
+  "name": "Ubud",
+  "country": "Indonesia",
+  "tags": "culture adventure",
+  "aliases": "Bali",
+  "image": "explore_assets/destinations/ubud.jpg",
+  "alt": "Ubud, Indonesia: destination photograph",
+  "description": "Explore Ubud, Indonesia.",
+  "source": "https://en.wikipedia.org/wiki/Ubud",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Ubud_(49818456887).jpg",
+  "author": "Jorge Franganillo",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Ubud_%2849818456887%29.jpg/960px-Ubud_%2849818456887%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

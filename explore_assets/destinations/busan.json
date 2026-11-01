@@ -1,0 +1,15 @@
+{
+  "name": "Busan",
+  "country": "South Korea",
+  "tags": "beach city",
+  "aliases": "",
+  "image": "explore_assets/destinations/busan.jpg",
+  "alt": "Busan, South Korea: destination photograph",
+  "description": "Explore Busan, South Korea.",
+  "source": "https://en.wikipedia.org/wiki/Busan",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Busan_City_Haeundae_District_(01).jpg",
+  "author": "부산광역시",
+  "license": "KOGL Type 1",
+  "licenseUrl": "http://www.kogl.or.kr/info/licenseType1.do",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Busan_City_Haeundae_District_%2801%29.jpg/960px-Busan_City_Haeundae_District_%2801%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

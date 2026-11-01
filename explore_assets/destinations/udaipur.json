@@ -1,0 +1,15 @@
+{
+  "name": "Udaipur",
+  "country": "India",
+  "tags": "culture city",
+  "aliases": "Rajasthan",
+  "image": "explore_assets/destinations/udaipur.jpg",
+  "alt": "Udaipur, India: destination photograph",
+  "description": "Explore Udaipur, India.",
+  "source": "https://en.wikipedia.org/wiki/Udaipur",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Evening_view,_City_Palace,_Udaipur.jpg",
+  "author": "Geri from Biel/Bienne, Schweiz",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Evening_view%2C_City_Palace%2C_Udaipur.jpg/960px-Evening_view%2C_City_Palace%2C_Udaipur.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

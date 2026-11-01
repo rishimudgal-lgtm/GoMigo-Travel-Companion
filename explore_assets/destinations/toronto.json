@@ -1,0 +1,15 @@
+{
+  "name": "Toronto",
+  "country": "Canada",
+  "tags": "city culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/toronto.jpg",
+  "alt": "Toronto, Canada: destination photograph",
+  "description": "Explore Toronto, Canada.",
+  "source": "https://en.wikipedia.org/wiki/Toronto",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Toronto_Skyline_from_Snake_Island,_September_11_2026_(01).jpg",
+  "author": "Dillan Payne",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Toronto_Skyline_from_Snake_Island%2C_September_11_2026_%2801%29.jpg/960px-Toronto_Skyline_from_Snake_Island%2C_September_11_2026_%2801%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

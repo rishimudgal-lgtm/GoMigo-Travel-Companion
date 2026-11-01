@@ -1,0 +1,15 @@
+{
+  "name": "Lombok",
+  "country": "Indonesia",
+  "tags": "beach adventure",
+  "aliases": "",
+  "image": "explore_assets/destinations/lombok.jpg",
+  "alt": "Lombok, Indonesia: destination photograph",
+  "description": "Explore Lombok, Indonesia.",
+  "source": "https://en.wikipedia.org/wiki/Mount_Rinjani",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:KAGAGAHAN_RIJANI.jpg",
+  "author": "Suryanata budi",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/KAGAGAHAN_RIJANI.jpg/960px-KAGAGAHAN_RIJANI.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

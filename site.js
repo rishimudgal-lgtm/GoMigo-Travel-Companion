@@ -10,6 +10,7 @@
     };
 
     const destinations = [
+        { name: "Rishikesh", image: "explore_assets/adventure-rafting.png", description: "Whitewater rafting on the Ganges beneath green Himalayan foothills.", alt: "Whitewater rafting in Rishikesh" },
         { name: "Greece", image: "main-menu-assets/greece.png", description: "Islands, culture and sunsets" },
         { name: "Switzerland", image: "main-menu-assets/switzerland.png", description: "Mountains, lakes and more" },
         { name: "Japan", image: "main-menu-assets/japan.png", description: "Tradition meets modern" },
@@ -26,7 +27,7 @@
         { name: "Kyoto", image: "explore_assets/japan.png", description: "Quiet temples, gardens, and lanes rich with history.", alt: "Traditional Japanese streets and mountain scenery" },
         { name: "Lucerne", image: "main-menu-assets/switzerland.png", description: "Lake views, mountain railways, and a charming old town.", alt: "A Swiss alpine lake and mountain village" },
         { name: "Cairo", image: "landing_assets/Pyramids.png", description: "Ancient landmarks, Nile evenings, and bustling markets.", alt: "The pyramids of Egypt" },
-        { name: "Pisa", image: "landing_assets/Tower Of Pisa.png", description: "A beautiful Tuscan square and a landmark known around the world.", alt: "The Leaning Tower of Pisa" },
+        {"name": "Pisa", "image": "explore_assets/destinations/pisa.jpg", "description": "Explore Pisa, Italy.", "alt": "Pisa, Italy: destination photograph", "photoSource": "https://commons.wikimedia.org/wiki/File:Italy_-_Pisa_-_Leaning_Tower.jpg", "author": "Arne Müseler", "license": "CC BY-SA 3.0 de", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en"},
         { name: "Bali", image: "explore_assets/beach.png", description: "Green rice terraces, coastal sunsets, and a slower island rhythm.", alt: "A tropical beach for a Bali getaway" },
         { name: "Marrakech", image: "explore_assets/culture.png", description: "Garden courtyards, tiled architecture, and the old medina.", alt: "Cultural details for a Marrakech trip" },
         { name: "Bangkok", image: "explore_assets/dining.png", description: "Street food, river temples, and energetic neighborhoods.", alt: "Food and city inspiration for Bangkok" },
@@ -35,6 +36,1115 @@
         { name: "Vancouver", image: "explore_assets/canada.png", description: "A lively city framed by forest, water, and mountain trails.", alt: "A Canadian landscape for Vancouver travel inspiration" },
         { name: "Lisbon", image: "explore_assets/portugal.png", description: "Hillside viewpoints, tiled streets, and long, relaxed meals.", alt: "Colorful streets in Portugal" }
     ];
+    // Local Wikimedia destination catalog; photo credits live in destinations.html.
+    const destinationCatalog = [
+    {
+        "name": "Paris",
+        "country": "France",
+        "image": "explore_assets/destinations/paris.jpg",
+        "alt": "Paris, France: destination photograph",
+        "description": "Explore Paris, France.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques,_Paris_ao%C3%BBt_2014_(2).jpg",
+        "author": "Yann Caradec from Paris, France",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+    },
+    {
+        "name": "Agra",
+        "country": "India",
+        "image": "explore_assets/destinations/agra.jpg",
+        "alt": "Agra, India: destination photograph",
+        "description": "Explore Agra, India.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Taj_Mahal,_Agra,_India.jpg",
+        "author": "Yann (talk)",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Rome",
+        "country": "Italy",
+        "image": "explore_assets/destinations/rome.jpg",
+        "alt": "Rome, Italy: destination photograph",
+        "description": "Explore Rome, Italy.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Trevi_Fountain,_Rome,_Italy_2_-_May_2007.jpg",
+        "author": "Diliff",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+    },
+    {
+        "name": "Dubai",
+        "country": "United Arab Emirates",
+        "image": "explore_assets/destinations/dubai.jpg",
+        "alt": "Dubai, United Arab Emirates: destination photograph",
+        "description": "Explore Dubai, United Arab Emirates.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Dubai_Marina_Skyline.jpg",
+        "author": "Norlando Pobre",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Santorini",
+        "country": "Greece",
+        "image": "explore_assets/destinations/santorini.jpg",
+        "alt": "Santorini, Greece: destination photograph",
+        "description": "Explore Santorini, Greece.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Oia_sunset_-_panoramio_(2).jpg",
+        "author": "TomasEE",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+    },
+    {
+        "name": "Colombo",
+        "country": "Sri Lanka",
+        "image": "explore_assets/destinations/colombo.jpg",
+        "alt": "Colombo, Sri Lanka: destination photograph",
+        "description": "Explore Colombo, Sri Lanka.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Colombo_city_skyline_at_night.png",
+        "author": "Gihanud2001",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+        "name": "London",
+        "country": "United Kingdom",
+        "image": "explore_assets/destinations/london.jpg",
+        "alt": "London, United Kingdom: destination photograph",
+        "description": "Explore London, United Kingdom.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:London_Skyline_(125508655).jpeg",
+        "author": "Ilya Grigorik",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+        "name": "Barcelona",
+        "country": "Spain",
+        "image": "explore_assets/destinations/barcelona.jpg",
+        "alt": "Barcelona, Spain: destination photograph",
+        "description": "Explore Barcelona, Spain.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Evening_light_over_Barcelona.jpg",
+        "author": "M McBey",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Madrid",
+        "country": "Spain",
+        "image": "explore_assets/destinations/madrid.jpg",
+        "alt": "Madrid, Spain: destination photograph",
+        "description": "Explore Madrid, Spain.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Madrid_-_Sky_Bar_360%C2%BA_(Hotel_Riu_Plaza_Espa%C3%B1a),_vistas_19.jpg",
+        "author": "Zarateman",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+        "name": "Lisbon",
+        "country": "Portugal",
+        "image": "explore_assets/destinations/lisbon.jpg",
+        "alt": "Lisbon, Portugal: destination photograph",
+        "description": "Explore Lisbon, Portugal.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Lisboa_-_Portugal_(52597836992).jpg",
+        "author": "Vitor Oliveira from Torres Vedras, PORTUGAL",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+    },
+    {
+        "name": "Porto",
+        "country": "Portugal",
+        "image": "explore_assets/destinations/porto.jpg",
+        "alt": "Porto, Portugal: destination photograph",
+        "description": "Explore Porto, Portugal.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Puente_Don_Luis_I,_Oporto,_Portugal,_2012-05-09,_DD_13.JPG",
+        "author": "Diego Delso",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+        "name": "Amsterdam",
+        "country": "Netherlands",
+        "image": "explore_assets/destinations/amsterdam.jpg",
+        "alt": "Amsterdam, Netherlands: destination photograph",
+        "description": "Explore Amsterdam, Netherlands.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Amsterdam_Canals_(23585867048).jpg",
+        "author": "Billie Grace Ward from New York, USA",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Prague",
+        "country": "Czech Republic",
+        "image": "explore_assets/destinations/prague.jpg",
+        "alt": "Prague, Czech Republic: destination photograph",
+        "description": "Explore Prague, Czech Republic.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Prague_(6365119737).jpg",
+        "author": "Moyan Brenn from Italy",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Vienna",
+        "country": "Austria",
+        "image": "explore_assets/destinations/vienna.jpg",
+        "alt": "Vienna, Austria: destination photograph",
+        "description": "Explore Vienna, Austria.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Schoenbrunn_philharmoniker_2012.jpg",
+        "author": "Superbass",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+        "name": "Budapest",
+        "country": "Hungary",
+        "image": "explore_assets/destinations/budapest.jpg",
+        "alt": "Budapest, Hungary: destination photograph",
+        "description": "Explore Budapest, Hungary.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:View_from_Gell%C3%A9rt_Hill_to_the_Danube,_Hungary_-_Budapest_(28493220635).jpg",
+        "author": "Visions of Domino",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Venice",
+        "country": "Italy",
+        "image": "explore_assets/destinations/venice.jpg",
+        "alt": "Venice, Italy: destination photograph",
+        "description": "Explore Venice, Italy.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Venezia_aerial_view.jpg",
+        "author": "kallerna",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Florence",
+        "country": "Italy",
+        "image": "explore_assets/destinations/florence.jpg",
+        "alt": "Florence, Italy: destination photograph",
+        "description": "Explore Florence, Italy.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Firenze_-_Piazzale_Michelangelo,_Firenze,_Italy_-_April_6,_2015_02.jpg",
+        "author": "Giorgio Galeotti",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+    },
+    {
+        "name": "Athens",
+        "country": "Greece",
+        "image": "explore_assets/destinations/athens.jpg",
+        "alt": "Athens, Greece: destination photograph",
+        "description": "Explore Athens, Greece.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Athens_Acropolis_at_Daybreak.jpg",
+        "author": "Andrew Parlette",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+    },
+    {
+        "name": "Istanbul",
+        "country": "Turkey",
+        "image": "explore_assets/destinations/istanbul.jpg",
+        "alt": "Istanbul, Turkey: destination photograph",
+        "description": "Explore Istanbul, Turkey.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Historical_peninsula_and_modern_skyline_of_Istanbul.jpg",
+        "author": "Hunanuk",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+        "name": "Cappadocia",
+        "country": "Turkey",
+        "image": "explore_assets/destinations/cappadocia.jpg",
+        "alt": "Cappadocia, Turkey: destination photograph",
+        "description": "Explore Cappadocia, Turkey.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Cappadocia_balloon_trip,_Ortahisar_Castle_(11893715185).jpg",
+        "author": "Arian Zwegers from Brussels, Belgium",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Reykjavik",
+        "country": "Iceland",
+        "image": "explore_assets/destinations/reykjavik.jpg",
+        "alt": "Reykjavik, Iceland: destination photograph",
+        "description": "Explore Reykjavik, Iceland.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Reykjav%C3%ADk,_view_from_Hallgr%C3%ADmskirkja_(2).jpg",
+        "author": "Olga Ernst",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Kirkjufell",
+        "country": "Iceland",
+        "image": "explore_assets/destinations/kirkjufell.jpg",
+        "alt": "Kirkjufell, Iceland: destination photograph",
+        "description": "Explore Kirkjufell, Iceland.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Kirkjufell_in_Iceland.jpg",
+        "author": "Anjali Kiggal",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Zermatt",
+        "country": "Switzerland",
+        "image": "explore_assets/destinations/zermatt.jpg",
+        "alt": "Zermatt, Switzerland: destination photograph",
+        "description": "Explore Zermatt, Switzerland.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:1_zermatt_evening_2022.jpg",
+        "author": "Chensiyuan",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Interlaken",
+        "country": "Switzerland",
+        "image": "explore_assets/destinations/interlaken.jpg",
+        "alt": "Interlaken, Switzerland: destination photograph",
+        "description": "Explore Interlaken, Switzerland.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Goldswil-Viadukt_Panorama_mit_Interlaken_im_Hintergrund_2.jpg",
+        "author": "Rectilinium",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+        "name": "Lucerne",
+        "country": "Switzerland",
+        "image": "explore_assets/destinations/lucerne.jpg",
+        "alt": "Lucerne, Switzerland: destination photograph",
+        "description": "Explore Lucerne, Switzerland.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Vierwaldstaettersee.jpg",
+        "author": "Ttrainer",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+        "name": "Grindelwald",
+        "country": "Switzerland",
+        "image": "explore_assets/destinations/grindelwald.jpg",
+        "alt": "Grindelwald, Switzerland: destination photograph",
+        "description": "Explore Grindelwald, Switzerland.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Grindelwald_View_02.jpg",
+        "author": "Cristo Vlahos",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+        "name": "Chamonix",
+        "country": "France",
+        "image": "explore_assets/destinations/chamonix.jpg",
+        "alt": "Chamonix, France: destination photograph",
+        "description": "Explore Chamonix, France.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Chamonix_valley_from_la_Fl%C3%A9g%C3%A8re,2010_07.JPG",
+        "author": "Ximonic, Simo Räsänen",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+        "name": "Dolomites",
+        "country": "Italy",
+        "image": "explore_assets/destinations/dolomites.jpg",
+        "alt": "Dolomites, Italy: destination photograph",
+        "description": "Explore Dolomites, Italy.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Faloria_Cortina_d%27Ampezzo_10.jpg",
+        "author": "kallerna",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Bergen",
+        "country": "Norway",
+        "image": "explore_assets/destinations/bergen.jpg",
+        "alt": "Bergen, Norway: destination photograph",
+        "description": "Explore Bergen, Norway.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Bergen_panorama_at_night_-_panoramio_(1).jpg",
+        "author": "TomasEE",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+    },
+    {
+        "name": "Lofoten",
+        "country": "Norway",
+        "image": "explore_assets/destinations/lofoten.jpg",
+        "alt": "Lofoten, Norway: destination photograph",
+        "description": "Explore Lofoten, Norway.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Reine_at_Reinefjorden,_2010_September.jpg",
+        "author": "Ximonic (Simo Räsänen)",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+        "name": "Stockholm",
+        "country": "Sweden",
+        "image": "explore_assets/destinations/stockholm.jpg",
+        "alt": "Stockholm, Sweden: destination photograph",
+        "description": "Explore Stockholm, Sweden.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Munkbroleden_with_Kornhamstorg_at_Gamla_Stan,_Stockholm,_Sweden_01.jpg",
+        "author": "OleNeitzel",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+    },
+    {
+        "name": "Copenhagen",
+        "country": "Denmark",
+        "image": "explore_assets/destinations/copenhagen.jpg",
+        "alt": "Copenhagen, Denmark: destination photograph",
+        "description": "Explore Copenhagen, Denmark.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:2018_-_Christiansborg_from_the_Marble_Bridge.jpg",
+        "author": "Moahim",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Edinburgh",
+        "country": "United Kingdom",
+        "image": "explore_assets/destinations/edinburgh.jpg",
+        "alt": "Edinburgh, United Kingdom: destination photograph",
+        "description": "Explore Edinburgh, United Kingdom.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Skyline_of_Edinburgh.jpg",
+        "author": "Andrew Colin",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Dublin",
+        "country": "Ireland",
+        "image": "explore_assets/destinations/dublin.jpg",
+        "alt": "Dublin, Ireland: destination photograph",
+        "description": "Explore Dublin, Ireland.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Dublin_-_aerial_-_2025-07-07_01.jpg",
+        "author": "瑞丽江的河水",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Dubrovnik",
+        "country": "Croatia",
+        "image": "explore_assets/destinations/dubrovnik.jpg",
+        "alt": "Dubrovnik, Croatia: destination photograph",
+        "description": "Explore Dubrovnik, Croatia.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:The_walls_of_the_fortress_and_View_of_the_old_city._panorama.jpg",
+        "author": "Zysko serhii",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Split",
+        "country": "Croatia",
+        "image": "explore_assets/destinations/split.jpg",
+        "alt": "Split, Croatia: destination photograph",
+        "description": "Explore Split, Croatia.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Split_080620-133710-IMG_0968x.jpg",
+        "author": "Tatyana Peshkova",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Nice",
+        "country": "France",
+        "image": "explore_assets/destinations/nice.jpg",
+        "alt": "Nice, France: destination photograph",
+        "description": "Explore Nice, France.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Promenade_des_Anglais_Nice_IMG_1255.jpg",
+        "author": "Alexander Migl",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Amalfi",
+        "country": "Italy",
+        "image": "explore_assets/destinations/amalfi.jpg",
+        "alt": "Amalfi, Italy: destination photograph",
+        "description": "Explore Amalfi, Italy.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Amalfi_sea_view_Italy.JPG",
+        "author": "No machine-readable author provided. Sudodana2048 assumed (based on copyright claims).",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+    },
+    {
+        "name": "Mykonos",
+        "country": "Greece",
+        "image": "explore_assets/destinations/mykonos.jpg",
+        "alt": "Mykonos, Greece: destination photograph",
+        "description": "Explore Mykonos, Greece.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Against_Greek_skies,_one_of_the_Mykonos_Island_Windmills,_Chora._Cyclades,_Agean_Sea,_Greece.jpg",
+        "author": "Mstyslav Chernov",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+        "name": "Madeira",
+        "country": "Portugal",
+        "image": "explore_assets/destinations/madeira.jpg",
+        "alt": "Madeira, Portugal: destination photograph",
+        "description": "Explore Madeira, Portugal.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Funchal,_Jardins_da_Quinta_Vigia_(lookout).jpg",
+        "author": "Dr. Thomas Liptak",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Tokyo",
+        "country": "Japan",
+        "image": "explore_assets/destinations/tokyo.jpg",
+        "alt": "Tokyo, Japan: destination photograph",
+        "description": "Explore Tokyo, Japan.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Skyscrapers_of_Shinjuku_2009_January.jpg",
+        "author": "Morio",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+    },
+    {
+        "name": "Kyoto",
+        "country": "Japan",
+        "image": "explore_assets/destinations/kyoto.jpg",
+        "alt": "Kyoto, Japan: destination photograph",
+        "description": "Explore Kyoto, Japan.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Kiyomizu-dera,_Kyoto,_November_2016_-02.jpg",
+        "author": "Martin Falbisoner",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Osaka",
+        "country": "Japan",
+        "image": "explore_assets/destinations/osaka.jpg",
+        "alt": "Osaka, Japan: destination photograph",
+        "description": "Explore Osaka, Japan.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Osaka_Castle_03bs3200.jpg",
+        "author": "663highland",
+        "license": "CC BY 2.5",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
+    },
+    {
+        "name": "Mount Fuji",
+        "country": "Japan",
+        "image": "explore_assets/destinations/mount-fuji.jpg",
+        "alt": "Mount Fuji, Japan: destination photograph",
+        "description": "Explore Mount Fuji, Japan.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:View_of_Mount_Fuji_from_%C5%8Cwakudani_20211202.jpg",
+        "author": "Suicasmo",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Seoul",
+        "country": "South Korea",
+        "image": "explore_assets/destinations/seoul.jpg",
+        "alt": "Seoul, South Korea: destination photograph",
+        "description": "Explore Seoul, South Korea.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:%EC%A4%91%ED%99%94%EC%A0%84%EC%9D%98_%EB%82%AE.jpg",
+        "author": "Eunmi Park",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Busan",
+        "country": "South Korea",
+        "image": "explore_assets/destinations/busan.jpg",
+        "alt": "Busan, South Korea: destination photograph",
+        "description": "Explore Busan, South Korea.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Busan_City_Haeundae_District_(01).jpg",
+        "author": "부산광역시",
+        "license": "KOGL Type 1",
+        "licenseUrl": "http://www.kogl.or.kr/info/licenseType1.do"
+    },
+    {
+        "name": "Beijing",
+        "country": "China",
+        "image": "explore_assets/destinations/beijing.jpg",
+        "alt": "Beijing, China: destination photograph",
+        "description": "Explore Beijing, China.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Skyline_of_Beijing_CBD_with_B-5906_approaching_(20211016171955)_(1).jpg",
+        "author": "N509FZ",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+    },
+    {
+        "name": "Shanghai",
+        "country": "China",
+        "image": "explore_assets/destinations/shanghai.jpg",
+        "alt": "Shanghai, China: destination photograph",
+        "description": "Explore Shanghai, China.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Huangpu_Park_20124-Shanghai_(32208802494).jpg",
+        "author": "xiquinhosilva",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Hong Kong",
+        "country": "China",
+        "image": "explore_assets/destinations/hong-kong.jpg",
+        "alt": "Hong Kong, China: destination photograph",
+        "description": "Explore Hong Kong, China.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:High_West_and_Victoria_Peak_from_Victoria_Gap_(crop1).jpg",
+        "author": "Daniel Case",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+        "name": "Singapore",
+        "country": "Singapore",
+        "image": "explore_assets/destinations/singapore.jpg",
+        "alt": "Singapore, Singapore: destination photograph",
+        "description": "Explore Singapore, Singapore.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Supertree_Grove,_Gardens_by_the_Bay,_Singapore_-_20120712-02.jpg",
+        "author": "Shiny Things.",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Bangkok",
+        "country": "Thailand",
+        "image": "explore_assets/destinations/bangkok.jpg",
+        "alt": "Bangkok, Thailand: destination photograph",
+        "description": "Explore Bangkok, Thailand.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:4Y1A1159_Bangkok_(33536795515).jpg",
+        "author": "Ninara from Helsinki, Finland",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Phuket",
+        "country": "Thailand",
+        "image": "explore_assets/destinations/phuket.jpg",
+        "alt": "Phuket, Thailand: destination photograph",
+        "description": "Explore Phuket, Thailand.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Patong_Beach.jpg",
+        "author": "Thorfinn Stainforth",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+    },
+    {
+        "name": "Krabi",
+        "country": "Thailand",
+        "image": "explore_assets/destinations/krabi.jpg",
+        "alt": "Krabi, Thailand: destination photograph",
+        "description": "Explore Krabi, Thailand.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Railay_Beach_5.jpg",
+        "author": "kallerna",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+        "name": "Chiang Mai",
+        "country": "Thailand",
+        "image": "explore_assets/destinations/chiang-mai.jpg",
+        "alt": "Chiang Mai, Thailand: destination photograph",
+        "description": "Explore Chiang Mai, Thailand.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:0020-%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B9%8C%E0%B8%A7%E0%B8%A3%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%A7%E0%B8%B4%E0%B8%AB%E0%B8%B2%E0%B8%A3.jpg",
+        "author": "Nawit science",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Bali",
+        "country": "Indonesia",
+        "image": "explore_assets/destinations/bali.jpg",
+        "alt": "Bali, Indonesia: destination photograph",
+        "description": "Explore Bali, Indonesia.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Pura_Ulun_Danu_Bratan,_2022.jpg",
+        "author": "LukeTriton",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Ubud",
+        "country": "Indonesia",
+        "image": "explore_assets/destinations/ubud.jpg",
+        "alt": "Ubud, Indonesia: destination photograph",
+        "description": "Explore Ubud, Indonesia.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Ubud_(49818456887).jpg",
+        "author": "Jorge Franganillo",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Lombok",
+        "country": "Indonesia",
+        "image": "explore_assets/destinations/lombok.jpg",
+        "alt": "Lombok, Indonesia: destination photograph",
+        "description": "Explore Lombok, Indonesia.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:KAGAGAHAN_RIJANI.jpg",
+        "author": "Suryanata budi",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Hanoi",
+        "country": "Vietnam",
+        "image": "explore_assets/destinations/hanoi.jpg",
+        "alt": "Hanoi, Vietnam: destination photograph",
+        "description": "Explore Hanoi, Vietnam.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Hanoi_skyline_with_Ba_Vi_Mountain.jpg",
+        "author": "Quangnlnhe182394",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+        "name": "Ha Long Bay",
+        "country": "Vietnam",
+        "image": "explore_assets/destinations/ha-long-bay.jpg",
+        "alt": "Ha Long Bay, Vietnam: destination photograph",
+        "description": "Explore Ha Long Bay, Vietnam.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Ha_Long_Bay_in_2019.jpg",
+        "author": "Taewangkorea",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Hoi An",
+        "country": "Vietnam",
+        "image": "explore_assets/destinations/hoi-an.jpg",
+        "alt": "Hoi An, Vietnam: destination photograph",
+        "description": "Explore Hoi An, Vietnam.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:10549-Hoi-An_(37621348460).jpg",
+        "author": "xiquinhosilva",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Siem Reap",
+        "country": "Cambodia",
+        "image": "explore_assets/destinations/siem-reap.jpg",
+        "alt": "Siem Reap, Cambodia: destination photograph",
+        "description": "Explore Siem Reap, Cambodia.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Front_porch_of_Wat_Damnak.jpg",
+        "author": "Willuconquer",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Kuala Lumpur",
+        "country": "Malaysia",
+        "image": "explore_assets/destinations/kuala-lumpur.jpg",
+        "alt": "Kuala Lumpur, Malaysia: destination photograph",
+        "description": "Explore Kuala Lumpur, Malaysia.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Bukit_Bintang_junction_in_2024_2.jpg",
+        "author": "Renek78",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+        "name": "Langkawi",
+        "country": "Malaysia",
+        "image": "explore_assets/destinations/langkawi.jpg",
+        "alt": "Langkawi, Malaysia: destination photograph",
+        "description": "Explore Langkawi, Malaysia.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Eagle_square_at_Kuah_Langkawi.jpg",
+        "author": "Ttt.Osakanman",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Maldives",
+        "country": "Maldives",
+        "image": "explore_assets/destinations/maldives.jpg",
+        "alt": "Maldives, Maldives: destination photograph",
+        "description": "Explore Maldives, Maldives.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Mal%C3%A9.jpg",
+        "author": "Shahee Ilyas",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+        "name": "Kathmandu",
+        "country": "Nepal",
+        "image": "explore_assets/destinations/kathmandu.jpg",
+        "alt": "Kathmandu, Nepal: destination photograph",
+        "description": "Explore Kathmandu, Nepal.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Kathmandu-Durbar_Square-06-Mahavishnu-Kuh-Vishnu-Pratapamalla-Jagannath-2007-gje.jpg",
+        "author": "Gerd Eichmann",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Pokhara",
+        "country": "Nepal",
+        "image": "explore_assets/destinations/pokhara.jpg",
+        "alt": "Pokhara, Nepal: destination photograph",
+        "description": "Explore Pokhara, Nepal.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Pokhara_Valley.jpg",
+        "author": "Utsab Raj Giri",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Paro",
+        "country": "Bhutan",
+        "image": "explore_assets/destinations/paro.jpg",
+        "alt": "Paro, Bhutan: destination photograph",
+        "description": "Explore Paro, Bhutan.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Paro,_Paro,_Bhutan_(8026008882).jpg",
+        "author": "Christopher Michel",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Jaipur",
+        "country": "India",
+        "image": "explore_assets/destinations/jaipur.jpg",
+        "alt": "Jaipur, India: destination photograph",
+        "description": "Explore Jaipur, India.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:East_facade_Hawa_Mahal_Jaipur_from_ground_level_(July_2022)_-_img_01.jpg",
+        "author": "Chainwit.",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Udaipur",
+        "country": "India",
+        "image": "explore_assets/destinations/udaipur.jpg",
+        "alt": "Udaipur, India: destination photograph",
+        "description": "Explore Udaipur, India.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Evening_view,_City_Palace,_Udaipur.jpg",
+        "author": "Geri from Biel/Bienne, Schweiz",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+    },
+    {
+        "name": "Delhi",
+        "country": "India",
+        "image": "explore_assets/destinations/delhi.jpg",
+        "alt": "Delhi, India: destination photograph",
+        "description": "Explore Delhi, India.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Jama_Masjid_2011.jpg",
+        "author": "Marcin Białek",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Mumbai",
+        "country": "India",
+        "image": "explore_assets/destinations/mumbai.jpg",
+        "alt": "Mumbai, India: destination photograph",
+        "description": "Explore Mumbai, India.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Mumbai_Bandra-Worli_Sea_Link.jpg",
+        "author": "Rutiknatekar",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Goa",
+        "country": "India",
+        "image": "explore_assets/destinations/goa.jpg",
+        "alt": "Goa, India: destination photograph",
+        "description": "Explore Goa, India.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Palolem_Beach,_South_Goa.jpg",
+        "author": "iMahesh",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Manali",
+        "country": "India",
+        "image": "explore_assets/destinations/manali.jpg",
+        "alt": "Manali, India: destination photograph",
+        "description": "Explore Manali, India.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Manali_City.jpg",
+        "author": "Neerajsinghazm",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Shimla",
+        "country": "India",
+        "image": "explore_assets/destinations/shimla.jpg",
+        "alt": "Shimla, India: destination photograph",
+        "description": "Explore Shimla, India.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Landscape_of_Shimla_,_Himachal_Pradesh.jpg",
+        "author": "Navneet Sharma",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Leh",
+        "country": "India",
+        "image": "explore_assets/destinations/leh.jpg",
+        "alt": "Leh, India: destination photograph",
+        "description": "Explore Leh, India.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Leh_City_seen_from_Shanti_Stupa.JPG",
+        "author": "Anirvan Shukla",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+        "name": "Rishikesh",
+        "country": "India",
+        "image": "explore_assets/destinations/rishikesh.jpg",
+        "alt": "Rishikesh, India: destination photograph",
+        "description": "Explore Rishikesh, India.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Trayambakeshwar_Temple_VK.jpg",
+        "author": "VK1983",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Munnar",
+        "country": "India",
+        "image": "explore_assets/destinations/munnar.jpg",
+        "alt": "Munnar, India: destination photograph",
+        "description": "Explore Munnar, India.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Munnar_Overview.jpg",
+        "author": "Kondephy",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Alappuzha",
+        "country": "India",
+        "image": "explore_assets/destinations/alappuzha.jpg",
+        "alt": "Alappuzha, India: destination photograph",
+        "description": "Explore Alappuzha, India.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Alappuzha_Boat_Beauty_W.jpg",
+        "author": "Augustus Binu/ facebook",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+        "name": "Varanasi",
+        "country": "India",
+        "image": "explore_assets/destinations/varanasi.jpg",
+        "alt": "Varanasi, India: destination photograph",
+        "description": "Explore Varanasi, India.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Varanasi,_India,_Ghats,_Cremation_ceremony_in_progress.jpg",
+        "author": "Vyacheslav Argenberg",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+    },
+    {
+        "name": "Darjeeling",
+        "country": "India",
+        "image": "explore_assets/destinations/darjeeling.jpg",
+        "alt": "Darjeeling, India: destination photograph",
+        "description": "Explore Darjeeling, India.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:DarjeelingTrainFruitshop_(2).jpg",
+        "author": "Arne Hückelheim\n\n2010-09-21 12:41:53 This is a cropped in which the glare has been lessened",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "New York City",
+        "country": "United States",
+        "image": "explore_assets/destinations/new-york-city.jpg",
+        "alt": "New York City, United States: destination photograph",
+        "description": "Explore New York City, United States.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_(cropped).jpg",
+        "author": "Dllu",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "San Francisco",
+        "country": "United States",
+        "image": "explore_assets/destinations/san-francisco.jpg",
+        "alt": "San Francisco, United States: destination photograph",
+        "description": "Explore San Francisco, United States.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Zeppelin-ride-020100925-195_(5029394846).jpg",
+        "author": "Craig Howell from San Carlos, CA, USA",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Los Angeles",
+        "country": "United States",
+        "image": "explore_assets/destinations/los-angeles.jpg",
+        "alt": "Los Angeles, United States: destination photograph",
+        "description": "Explore Los Angeles, United States.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Hollywood_sign_(8485145044).jpg",
+        "author": "Gnaphron",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+    },
+    {
+        "name": "Honolulu",
+        "country": "United States",
+        "image": "explore_assets/destinations/honolulu.jpg",
+        "alt": "Honolulu, United States: destination photograph",
+        "description": "Explore Honolulu, United States.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:2022_Views_from_Diamond_Head_02.jpg",
+        "author": "Farragutful",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Banff",
+        "country": "Canada",
+        "image": "explore_assets/destinations/banff.jpg",
+        "alt": "Banff, Canada: destination photograph",
+        "description": "Explore Banff, Canada.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Town_of_Banff_viewed_from_Sulphur_Mountain.jpg",
+        "author": "Ethan Sahagun",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Vancouver",
+        "country": "Canada",
+        "image": "explore_assets/destinations/vancouver.jpg",
+        "alt": "Vancouver, Canada: destination photograph",
+        "description": "Explore Vancouver, Canada.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Skyline_of_Vancouver,_Canada.jpg",
+        "author": "Quintin Soloviev",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+    },
+    {
+        "name": "Toronto",
+        "country": "Canada",
+        "image": "explore_assets/destinations/toronto.jpg",
+        "alt": "Toronto, Canada: destination photograph",
+        "description": "Explore Toronto, Canada.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Toronto_Skyline_from_Snake_Island,_September_11_2026_(01).jpg",
+        "author": "Dillan Payne",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Quebec City",
+        "country": "Canada",
+        "image": "explore_assets/destinations/quebec-city.jpg",
+        "alt": "Quebec City, Canada: destination photograph",
+        "description": "Explore Quebec City, Canada.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Quebec_City_skyline_from_L%C3%A9vis.jpg",
+        "author": "Quintin Soloviev",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+    },
+    {
+        "name": "Cancun",
+        "country": "Mexico",
+        "image": "explore_assets/destinations/cancun.jpg",
+        "alt": "Cancun, Mexico: destination photograph",
+        "description": "Explore Cancun, Mexico.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Cancun_Strand_Luftbild_(22143397586).jpg",
+        "author": "dronepicr",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Mexico City",
+        "country": "Mexico",
+        "image": "explore_assets/destinations/mexico-city.jpg",
+        "alt": "Mexico City, Mexico: destination photograph",
+        "description": "Explore Mexico City, Mexico.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Sobrevuelos_CDMX_HJ2A4913_(25514321687)_(cropped).jpg",
+        "author": "Gobierno CDMX",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+        "name": "Rio de Janeiro",
+        "country": "Brazil",
+        "image": "explore_assets/destinations/rio-de-janeiro.jpg",
+        "alt": "Rio de Janeiro, Brazil: destination photograph",
+        "description": "Explore Rio de Janeiro, Brazil.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Cidade_Maravilhosa.jpg",
+        "author": "Rafael Rabello de Barros",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+        "name": "Cusco",
+        "country": "Peru",
+        "image": "explore_assets/destinations/cusco.jpg",
+        "alt": "Cusco, Peru: destination photograph",
+        "description": "Explore Cusco, Peru.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Vista_Calle_Suecia.jpg",
+        "author": "tomscoffin",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Machu Picchu",
+        "country": "Peru",
+        "image": "explore_assets/destinations/machu-picchu.jpg",
+        "alt": "Machu Picchu, Peru: destination photograph",
+        "description": "Explore Machu Picchu, Peru.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Machu_Picchu,_2023_(012).jpg",
+        "author": "Draceane",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Cape Town",
+        "country": "South Africa",
+        "image": "explore_assets/destinations/cape-town.jpg",
+        "alt": "Cape Town, South Africa: destination photograph",
+        "description": "Explore Cape Town, South Africa.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Camps_bay_(53460319478)_(cropped).jpg",
+        "author": "Der Berzerker from Washington, DC, USA",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+    },
+    {
+        "name": "Marrakech",
+        "country": "Morocco",
+        "image": "explore_assets/destinations/marrakech.jpg",
+        "alt": "Marrakech, Morocco: destination photograph",
+        "description": "Explore Marrakech, Morocco.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Marrakech,_Morocco_(5421595453)_(5).jpg",
+        "author": "YoTuT from United States",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+        "name": "Cairo",
+        "country": "Egypt",
+        "image": "explore_assets/destinations/cairo.jpg",
+        "alt": "Cairo, Egypt: destination photograph",
+        "description": "Explore Cairo, Egypt.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Cairo_From_Tower_(cropped).jpg",
+        "author": "Wael El Sisi",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    {
+        "name": "Sydney",
+        "country": "Australia",
+        "image": "explore_assets/destinations/sydney.jpg",
+        "alt": "Sydney, Australia: destination photograph",
+        "description": "Explore Sydney, Australia.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Sydney_Opera_House_and_Harbour_Bridge_Dusk_(2)_2019-06-21.jpg",
+        "author": "Benh LIEU SONG (Flickr)",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Melbourne",
+        "country": "Australia",
+        "image": "explore_assets/destinations/melbourne.jpg",
+        "alt": "Melbourne, Australia: destination photograph",
+        "description": "Explore Melbourne, Australia.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Melbourne_skyline_sor.jpg",
+        "author": "Melbpal",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+        "name": "Queenstown",
+        "country": "New Zealand",
+        "image": "explore_assets/destinations/queenstown.jpg",
+        "alt": "Queenstown, New Zealand: destination photograph",
+        "description": "Explore Queenstown, New Zealand.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Queenstown_1_(8168013172).jpg",
+        "author": "Bernard Spragg. NZ from Christchurch, New Zealand",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    },
+    {
+        "name": "Auckland",
+        "country": "New Zealand",
+        "image": "explore_assets/destinations/auckland.jpg",
+        "alt": "Auckland, New Zealand: destination photograph",
+        "description": "Explore Auckland, New Zealand.",
+        "photoSource": "https://commons.wikimedia.org/wiki/File:Auckland_skyline_-_May_2024_(2).jpg",
+        "author": "elpinto007",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+    }
+];
+    destinationCatalog.forEach((place) => {
+        const existing = destinations.find((item) => item.name === place.name);
+        if (existing) Object.assign(existing, place);
+        else destinations.push(place);
+    });
+
     const memoryStore = new Map();
 
     function readJSON(key, fallback) {
@@ -55,8 +1165,10 @@
         memoryStore.set(key, value);
         try {
             window.localStorage.setItem(key, JSON.stringify(value));
+            return true;
         } catch {
             // Keep the value in memory for this page if browser storage is unavailable.
+            return false;
         }
     }
 
@@ -251,6 +1363,7 @@
             if (!form.reportValidity()) return;
             const data = new FormData(form);
             const trip = {
+                schemaVersion: 1,
                 id: Date.now() + "-" + Math.random().toString(16).slice(2),
                 destination: String(data.get("destination") || "").trim(),
                 dates: String(data.get("dates") || "").trim(),
@@ -260,11 +1373,15 @@
                 budget: Number(data.get("budget") || 0),
                 interests: Array.from(form.querySelectorAll("[data-interest].selected"), (button) => button.textContent.trim()),
                 requests: String(data.get("requests") || "").trim(),
-                createdAt: new Date().toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })
+                createdAt: new Date().toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }),
+                createdAtISO: new Date().toISOString()
             };
             const trips = readArray(keys.trips);
             trips.unshift(trip);
-            writeJSON(keys.trips, trips);
+            if (!writeJSON(keys.trips, trips)) {
+                showToast("Your trip could not be saved. Allow browser storage or free some space, then try again.");
+                return;
+            }
             writeJSON(keys.flash, "Your " + trip.destination + " trip is saved in My Trips.");
             window.location.href = "my-trips.html";
         });
@@ -301,6 +1418,19 @@
         planLink.href = "trip-planner.html?destination=" + encodeURIComponent(destination.name);
         planLink.textContent = "Plan a trip →";
         info.append(heading, description, planLink);
+        if (destination.photoSource) {
+            const credit = document.createElement("details");
+            credit.className = "destination-photo-credit";
+            const summary = document.createElement("summary");
+            summary.textContent = "Photo credit";
+            const source = document.createElement("a");
+            source.href = destination.photoSource;
+            source.target = "_blank";
+            source.rel = "noopener noreferrer";
+            source.textContent = (destination.author || "Wikimedia Commons") + " · " + destination.license;
+            credit.append(summary, source);
+            info.append(credit);
+        }
         card.append(imageWrap, info);
         return card;
     }
@@ -377,9 +1507,13 @@
                 let visibleCount = 0;
                 publicCards.forEach((card) => {
                     const imageAlt = card.querySelector("img")?.alt || "";
-                    const matchesText = (card.textContent + " " + imageAlt).toLocaleLowerCase().includes(query);
+                    const normalize = (value) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase();
+                    const haystack = normalize(card.textContent + " " + imageAlt + " " + (card.dataset.search || ""));
+                    const matchesText = normalize(query).split(/\s+/).every((term) => haystack.includes(term));
                     const tags = (card.dataset.tags || "").split(/\s+/);
-                    const matchesFilter = activeFilter === "all" || tags.includes(activeFilter);
+                    const matchesFilter = activeFilter === "all"
+                        ? !card.hasAttribute("data-category-only") || query.length > 0
+                        : tags.includes(activeFilter);
                     card.hidden = !(matchesText && matchesFilter);
                     if (!card.hidden) visibleCount += 1;
                 });
@@ -460,6 +1594,11 @@
                     interests.textContent = "Interests: " + trip.interests.join(", ");
                     card.append(interests);
                 }
+                if (trip.requests) {
+                    const requests = document.createElement("p");
+                    requests.textContent = "Special requests: " + trip.requests;
+                    card.append(requests);
+                }
                 if (trip.createdAt) {
                     const created = document.createElement("p");
                     created.className = "trip-created-at";
@@ -480,10 +1619,17 @@
             const button = event.target.closest("[data-remove-trip]");
             if (!button) return;
             const remaining = readArray(keys.trips).filter((trip) => trip.id !== button.dataset.removeTrip);
-            writeJSON(keys.trips, remaining);
+            if (!writeJSON(keys.trips, remaining)) {
+                showToast("Your trip could not be removed from browser storage. Please try again.");
+                return;
+            }
             showToast("Trip removed from My Trips.");
             render();
         });
+        window.addEventListener("storage", (event) => {
+            if (event.key === keys.trips || event.key === null) render();
+        });
+        window.addEventListener("pageshow", render);
         render();
     }
 

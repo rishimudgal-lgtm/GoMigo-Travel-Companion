@@ -1,0 +1,15 @@
+{
+  "name": "Goa",
+  "country": "India",
+  "tags": "beach culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/goa.jpg",
+  "alt": "Goa, India: destination photograph",
+  "description": "Explore Goa, India.",
+  "source": "https://en.wikipedia.org/wiki/Palolem_Beach",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Palolem_Beach,_South_Goa.jpg",
+  "author": "iMahesh",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Palolem_Beach%2C_South_Goa.jpg/960px-Palolem_Beach%2C_South_Goa.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

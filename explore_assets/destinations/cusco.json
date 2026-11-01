@@ -1,0 +1,15 @@
+{
+  "name": "Cusco",
+  "country": "Peru",
+  "tags": "mountains culture",
+  "aliases": "Cuzco",
+  "image": "explore_assets/destinations/cusco.jpg",
+  "alt": "Cusco, Peru: destination photograph",
+  "description": "Explore Cusco, Peru.",
+  "source": "https://en.wikipedia.org/wiki/Cusco",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Vista_Calle_Suecia.jpg",
+  "author": "tomscoffin",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Vista_Calle_Suecia.jpg/960px-Vista_Calle_Suecia.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Stockholm",
+  "country": "Sweden",
+  "tags": "city culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/stockholm.jpg",
+  "alt": "Stockholm, Sweden: destination photograph",
+  "description": "Explore Stockholm, Sweden.",
+  "source": "https://en.wikipedia.org/wiki/Stockholm",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Munkbroleden_with_Kornhamstorg_at_Gamla_Stan,_Stockholm,_Sweden_01.jpg",
+  "author": "OleNeitzel",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Munkbroleden_with_Kornhamstorg_at_Gamla_Stan%2C_Stockholm%2C_Sweden_01.jpg/960px-Munkbroleden_with_Kornhamstorg_at_Gamla_Stan%2C_Stockholm%2C_Sweden_01.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

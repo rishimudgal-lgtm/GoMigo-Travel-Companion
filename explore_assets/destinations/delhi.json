@@ -1,0 +1,15 @@
+{
+  "name": "Delhi",
+  "country": "India",
+  "tags": "city culture",
+  "aliases": "New Delhi",
+  "image": "explore_assets/destinations/delhi.jpg",
+  "alt": "Delhi, India: destination photograph",
+  "description": "Explore Delhi, India.",
+  "source": "https://en.wikipedia.org/wiki/Delhi",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Jama_Masjid_2011.jpg",
+  "author": "Marcin Białek",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Jama_Masjid_2011.jpg/960px-Jama_Masjid_2011.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Interlaken",
+  "country": "Switzerland",
+  "tags": "mountains adventure",
+  "aliases": "Swiss Alps",
+  "image": "explore_assets/destinations/interlaken.jpg",
+  "alt": "Interlaken, Switzerland: destination photograph",
+  "description": "Explore Interlaken, Switzerland.",
+  "source": "https://en.wikipedia.org/wiki/Interlaken",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Goldswil-Viadukt_Panorama_mit_Interlaken_im_Hintergrund_2.jpg",
+  "author": "Rectilinium",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Goldswil-Viadukt_Panorama_mit_Interlaken_im_Hintergrund_2.jpg/960px-Goldswil-Viadukt_Panorama_mit_Interlaken_im_Hintergrund_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

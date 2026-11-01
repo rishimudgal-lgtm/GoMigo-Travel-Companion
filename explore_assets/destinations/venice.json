@@ -1,0 +1,15 @@
+{
+  "name": "Venice",
+  "country": "Italy",
+  "tags": "city culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/venice.jpg",
+  "alt": "Venice, Italy: destination photograph",
+  "description": "Explore Venice, Italy.",
+  "source": "https://en.wikipedia.org/wiki/Venice",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Venezia_aerial_view.jpg",
+  "author": "kallerna",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Venezia_aerial_view.jpg/960px-Venezia_aerial_view.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

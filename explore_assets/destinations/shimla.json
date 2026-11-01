@@ -1,0 +1,15 @@
+{
+  "name": "Shimla",
+  "country": "India",
+  "tags": "mountains culture",
+  "aliases": "Himachal Pradesh",
+  "image": "explore_assets/destinations/shimla.jpg",
+  "alt": "Shimla, India: destination photograph",
+  "description": "Explore Shimla, India.",
+  "source": "https://en.wikipedia.org/wiki/Shimla",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Landscape_of_Shimla_,_Himachal_Pradesh.jpg",
+  "author": "Navneet Sharma",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Landscape_of_Shimla_%2C_Himachal_Pradesh.jpg/960px-Landscape_of_Shimla_%2C_Himachal_Pradesh.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

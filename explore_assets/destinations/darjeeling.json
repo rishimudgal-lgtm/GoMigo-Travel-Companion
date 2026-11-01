@@ -1,0 +1,15 @@
+{
+  "name": "Darjeeling",
+  "country": "India",
+  "tags": "mountains culture",
+  "aliases": "West Bengal",
+  "image": "explore_assets/destinations/darjeeling.jpg",
+  "alt": "Darjeeling, India: destination photograph",
+  "description": "Explore Darjeeling, India.",
+  "source": "https://en.wikipedia.org/wiki/Darjeeling",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:DarjeelingTrainFruitshop_(2).jpg",
+  "author": "Arne Hückelheim\n\n2010-09-21 12:41:53 This is a cropped in which the glare has been lessened",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/DarjeelingTrainFruitshop_%282%29.jpg/960px-DarjeelingTrainFruitshop_%282%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

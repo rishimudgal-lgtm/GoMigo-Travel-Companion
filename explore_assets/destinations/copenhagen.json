@@ -1,0 +1,15 @@
+{
+  "name": "Copenhagen",
+  "country": "Denmark",
+  "tags": "city culture",
+  "aliases": "",
+  "image": "explore_assets/destinations/copenhagen.jpg",
+  "alt": "Copenhagen, Denmark: destination photograph",
+  "description": "Explore Copenhagen, Denmark.",
+  "source": "https://en.wikipedia.org/wiki/Copenhagen",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:2018_-_Christiansborg_from_the_Marble_Bridge.jpg",
+  "author": "Moahim",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/2018_-_Christiansborg_from_the_Marble_Bridge.jpg/960px-2018_-_Christiansborg_from_the_Marble_Bridge.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}

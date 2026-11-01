@@ -1,0 +1,15 @@
+{
+  "name": "San Francisco",
+  "country": "United States",
+  "tags": "city culture",
+  "aliases": "California USA",
+  "image": "explore_assets/destinations/san-francisco.jpg",
+  "alt": "San Francisco, United States: destination photograph",
+  "description": "Explore San Francisco, United States.",
+  "source": "https://en.wikipedia.org/wiki/San_Francisco",
+  "photoSource": "https://commons.wikimedia.org/wiki/File:Zeppelin-ride-020100925-195_(5029394846).jpg",
+  "author": "Craig Howell from San Carlos, CA, USA",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "remoteImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Zeppelin-ride-020100925-195_%285029394846%29.jpg/960px-Zeppelin-ride-020100925-195_%285029394846%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail"
+}
