@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#eaf8f0"><title>Your day plan | GoMigo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css"><script src="site.js" defer></script>
+</head>
+<body class="app-page itinerary-detail-page">
+  <div class="page">
+    <aside class="sidebar">
+      <a class="sidebar-logo" href="main-menu.html" aria-label="GoMigo home"><img src="main-menu-assets/gomigo-logo.png" alt="GoMigo"></a>
+      <nav class="sidebar-nav" aria-label="GoMigo navigation">
+        <a href="main-menu.html" class="nav-button" data-nav="home">Home</a><a href="trip-planner.html" class="nav-button" data-nav="plan">Plan Trip</a>
+        <a href="my-trips.html" class="nav-button" data-nav="trips">My Trips</a><a href="explore-app.html" class="nav-button" data-nav="explore">Explore</a>
+        <a href="saved.html" class="nav-button" data-nav="saved">Saved</a><a href="travel-guide.html" class="nav-button" data-nav="guide">Travel Guide</a><a href="profile.html" class="nav-button" data-nav="profile">Profile</a>
+      </nav>
+      <div class="sidebar-quote">Good<br>Trips<br>Happen<br>Here ♡</div>
+      <a class="sidebar-profile" href="profile.html"><img src="main-menu-assets/profile.png" alt=""><div class="profile-text"><h4 data-user-name>Hey, Explorer!</h4><p>Profile &amp; preferences</p></div></a>
+      <button class="sign-out-button" type="button" data-sign-out>Sign out</button>
+    </aside>
+    <main class="main-content content-page itinerary-detail-main">
+      <a class="itinerary-back-link" href="saved.html">← Back to Saved</a>
+      <header class="itinerary-detail-header"><p class="content-eyebrow">YOUR GO MIGO DAY</p><h1 id="itinerary-title">Your personalized itinerary</h1><p id="itinerary-summary">A full day shaped around your destination and daily budget.</p></header>
+      <div id="itinerary-content" aria-live="polite"></div>
+      <p class="itinerary-estimate-note">Stay, meals and transport are INR budget estimates, not live hotel quotes. Ticket prices shown with a source link are the published rates we found and may change; confirm them before visiting. Other venues may charge admission, so check their official ticket page or counter.</p>
+    </main>
+  </div>
+</body>
+</html>
