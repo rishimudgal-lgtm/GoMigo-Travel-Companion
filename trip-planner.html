@@ -127,7 +127,10 @@
                                     name="destination"
                                     placeholder="Enter a destination"
                                     required
+                                    autocomplete="off"
+                                    list="destination-suggestions"
                                 >
+                                <datalist id="destination-suggestions"></datalist>
 
                                 <button class="clear-button" type="button" data-clear-destination aria-label="Clear destination">
                                     ×
@@ -169,10 +172,9 @@
                                 <div class="input-box">
 
                                     <input
-                                        type="text"
+                                        type="date"
                                         id="travel-dates"
                                         name="dates"
-                                        placeholder="e.g. 15–18 Nov 2026"
                                     >
 
                                     <span class="input-icon">
@@ -202,12 +204,7 @@
 
                                 <div class="input-box select-box">
 
-                                    <select id="trip-duration" name="duration">
-                                        <option>4 Days</option>
-                                        <option>5 Days</option>
-                                        <option>6 Days</option>
-                                        <option>7 Days</option>
-                                    </select>
+                                    <input type="number" id="trip-duration" name="duration" placeholder="Enter days" aria-label="Trip duration in days">
 
                                     <span class="dropdown-arrow">
                                         ˅
