@@ -1596,16 +1596,31 @@
 
         const appGrid = document.querySelector("#destination-grid.app-destination-grid");
         if (appGrid) {
-            appGrid.replaceChildren(...destinationCatalog.map((place) => {
+            const categoryNames = { beach: "Beach escapes", mountains: "Mountain retreats", adventure: "Adventure destinations", culture: "Culture & heritage", city: "City breaks" };
+            const categoryOrder = ["beach", "mountains", "adventure", "culture", "city"];
+            const categoryHints = {
+                beach: new Set(["Santorini", "Dubrovnik", "Split", "Nice", "Amalfi", "Mykonos", "Madeira", "Busan", "Phuket", "Krabi", "Bali", "Lombok", "Ha Long Bay", "Langkawi", "Maldives", "Mumbai", "Goa", "Alappuzha", "Honolulu", "Cancun", "Rio de Janeiro", "Cape Town", "Sydney"]),
+                mountains: new Set(["Cappadocia", "Kirkjufell", "Zermatt", "Interlaken", "Lucerne", "Grindelwald", "Chamonix", "Dolomites", "Bergen", "Lofoten", "Reykjavik", "Mount Fuji", "Kathmandu", "Pokhara", "Paro", "Manali", "Shimla", "Leh", "Munnar", "Darjeeling", "Banff", "Queenstown", "Machu Picchu"]),
+                adventure: new Set(["Rishikesh", "Queenstown", "Pokhara", "Leh", "Banff", "Interlaken", "Grindelwald", "Chamonix", "Dolomites", "Mount Fuji", "Machu Picchu"]),
+                culture: new Set(["Agra", "Rome", "Jaipur", "Udaipur", "Varanasi", "Kyoto", "Osaka", "Beijing", "Hanoi", "Hoi An", "Siem Reap", "Marrakech", "Cairo", "Cusco", "Athens", "Istanbul", "Florence", "Venice", "Prague", "Vienna", "Edinburgh", "Dublin", "Mexico City", "Delhi", "Tokyo", "Seoul"])
+            };
+            const cardsByCategory = new Map(categoryOrder.map((category) => [category, []]));
+            destinationCatalog.forEach((place) => {
                 const card = document.createElement("article");
                 card.className = "destination-card app-destination-card";
                 const searchableDetails = `${place.name} ${place.country} ${place.description || ""}`.toLowerCase();
-                const tags = ["city"];
+                const tags = [];
                 if (/beach|coast|island|sea|bay|lagoon/.test(searchableDetails)) tags.push("beach");
                 if (/mountain|alpine|hill|himalaya|peak|valley|glacier/.test(searchableDetails)) tags.push("mountains");
                 if (/culture|historic|history|temple|palace|heritage|architecture|old town/.test(searchableDetails)) tags.push("culture");
                 if (/adventure|hiking|trek|rafting|ski|outdoor|climb/.test(searchableDetails)) tags.push("adventure");
+                const hintedCategory = categoryOrder.find((item) => categoryHints[item]?.has(place.name));
+                const category = hintedCategory || categoryOrder.find((item) => tags.includes(item)) || "city";
+                if (!tags.includes(category)) tags.push(category);
+                // Every Explore entry is a city or named destination, so it belongs in the City filter too.
+                if (!tags.includes("city")) tags.push("city");
                 card.dataset.tags = tags.join(" ");
+                card.dataset.group = category;
                 card.dataset.search = place.name + " " + place.country;
                 const imageWrap = document.createElement("div"); imageWrap.className = "app-destination-image";
                 const image = document.createElement("img"); image.src = place.image; image.alt = place.alt || `${place.name}, ${place.country}`; image.loading = "lazy"; image.decoding = "async";
@@ -1616,8 +1631,20 @@
                 const heading = document.createElement("h2"); heading.textContent = place.name;
                 const description = document.createElement("p"); description.textContent = place.description || `Explore ${place.name}, ${place.country}.`;
                 const link = document.createElement("a"); link.href = "trip-planner.html?destination=" + encodeURIComponent(place.name); link.textContent = "Plan a trip →";
-                copy.append(country, heading, description, link); card.append(imageWrap, copy); return card;
-            }));
+                copy.append(country, heading, description, link); card.append(imageWrap, copy);
+                cardsByCategory.get(category).push(card);
+            });
+            const groupedItems = [];
+            categoryOrder.forEach((category) => {
+                const cards = cardsByCategory.get(category);
+                if (!cards.length) return;
+                const heading = document.createElement("h3");
+                heading.className = "destination-category-heading";
+                heading.dataset.groupHeading = category;
+                heading.textContent = categoryNames[category];
+                groupedItems.push(heading, ...cards);
+            });
+            appGrid.replaceChildren(...groupedItems);
             appGrid.classList.add("is-ready");
             const count = document.querySelector(".app-destinations-section h2");
             if (count) count.textContent = `${destinationCatalog.length} places to discover`;
@@ -1654,6 +1681,7 @@
             const empty = document.querySelector("#empty-state");
             const exploreMore = document.querySelector("#explore-more");
             const exploreProgress = document.querySelector("#explore-progress");
+            const categoryHeadings = Array.from(document.querySelectorAll(".destination-category-heading"));
             const incrementalExplore = Boolean(exploreMore);
             let visibleLimit = 9;
             let activeFilter = "all";
@@ -1676,6 +1704,9 @@
                     if (isMatch) matchIndex += 1;
                     if (!card.hidden) visibleCount += 1;
                 });
+                categoryHeadings.forEach((heading) => {
+                    heading.hidden = !publicCards.some((card) => card.dataset.group === heading.dataset.groupHeading && !card.hidden);
+                });
                 if (empty) empty.hidden = visibleCount > 0;
                 if (incrementalExplore) {
                     const totalMatches = matchIndex;
@@ -1683,6 +1714,12 @@
                     exploreMore.hidden = query.length > 0 || visibleLimit >= totalMatches;
                     exploreMore.innerHTML = visibleLimit >= totalMatches ? "All places shown" : 'Explore more <span aria-hidden="true">↓</span>';
                 }
+            };
+            const scrollToActiveCategory = () => {
+                // City is the broad all-destination view; the other filters jump to their matching themed section.
+                if (activeFilter === "all" || activeFilter === "city") return;
+                const heading = document.querySelector(`.destination-category-heading[data-group-heading="${activeFilter}"]`);
+                if (heading && !heading.hidden) requestAnimationFrame(() => heading.scrollIntoView({ behavior: "smooth", block: "start" }));
             };
             exploreMore?.addEventListener("click", () => {
                 visibleLimit = Math.min(visibleLimit + 9, publicCards.length);
@@ -1693,11 +1730,13 @@
                 activeFilter = button.dataset.filter || "all";
                 filters.forEach((item) => item.classList.toggle("active", item === button));
                 updatePublicCards();
+                scrollToActiveCategory();
             }));
             document.querySelectorAll(".style-card[data-style]").forEach((link) => link.addEventListener("click", () => {
                 activeFilter = link.dataset.style || "all";
                 filters.forEach((item) => item.classList.toggle("active", item.dataset.filter === activeFilter));
                 updatePublicCards();
+                scrollToActiveCategory();
             }));
             document.addEventListener("keydown", (event) => {
                 if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
