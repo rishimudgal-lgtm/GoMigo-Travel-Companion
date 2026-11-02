@@ -2946,6 +2946,38 @@ body.app-page .content-page {
 .destination-page-grid .destination-info a { color: #07566B; font: 600 12px "Manrope", sans-serif; }
 .destination-page-grid [hidden] { display: none; }
 .trips-page .trip-list { max-width: 950px; margin: 0 auto; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.trips-page .content-page-header {
+    width: min(100%, 950px);
+    max-width: none;
+    margin: 0 auto 32px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto auto;
+    align-items: center;
+    column-gap: 28px;
+    text-align: left;
+}
+.trips-page .content-page-header .content-eyebrow,
+.trips-page .content-page-header h1,
+.trips-page .content-page-header > p:not(.content-eyebrow) { grid-column: 1; }
+.trips-page .content-page-header .content-primary-link {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    justify-self: end;
+    margin: 0;
+    padding: 13px 18px;
+    border: 1px solid rgba(234, 248, 240, .72);
+    border-radius: 24px;
+    white-space: nowrap;
+}
+.destination-category-heading {
+    grid-column: 1 / -1;
+    margin: 15px 0 -7px;
+    color: #07566b;
+    font: 700 clamp(20px, 2.3vw, 28px)/1.2 "Manrope", sans-serif;
+    letter-spacing: -.035em;
+}
+.destination-category-heading[hidden] { display: none; }
 .trip-card h2 { margin-bottom: 9px; color: #07566B; font: 600 21px "K2D", sans-serif; }
 .trip-created-at { color: #789094 !important; font-size: 11px !important; }
 .guide-page-grid { max-width: 1050px; margin: 0 auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -3401,6 +3433,10 @@ body.itinerary-detail-page .itinerary-budget-balance { padding: 17px 20px; borde
 body.itinerary-detail-page .itinerary-day-budget { margin: 16px 0 0; padding: 12px 15px; border-radius: 12px; background: #f0f7f1; color: #54746e; font: 12px/1.6 Manrope, sans-serif; }
 body.itinerary-detail-page .itinerary-estimate-note { margin-top: 22px; color: #718782; font: 12px/1.6 Manrope, sans-serif; }
 @media (max-width: 760px) { body.saved-page .saved-trip-list, body.itinerary-detail-page .itinerary-hotel-grid { grid-template-columns: 1fr; } body.itinerary-detail-page .itinerary-timeline-item { grid-template-columns: 1fr auto; gap: 8px 14px; } body.itinerary-detail-page .itinerary-timeline-item time { grid-column: 1 / -1; } body.itinerary-detail-page .itinerary-day-heading { align-items: flex-start; } body.itinerary-detail-page .itinerary-day-spend { padding: 8px 10px; font-size: 12px; } }
+@media (max-width: 700px) {
+    .trips-page .content-page-header { grid-template-columns: 1fr; grid-template-rows: auto; row-gap: 0; }
+    .trips-page .content-page-header .content-primary-link { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 16px; }
+}
 
 /* Explore's hero fills the available width beside the shared menu. */
 body.app-page.explore-page-theme .explore-app-main {
@@ -3526,3 +3562,5 @@ body.login-page .auth-art h2 { margin-left: auto; margin-right: auto; }
 /* Keep the brighter login artwork readable without dimming the whole page. */
 body.login-page .auth-logo img { filter: brightness(0) saturate(100%) invert(23%) sepia(40%) saturate(1350%) hue-rotate(148deg) brightness(90%) contrast(96%); }
 body.login-page .auth-art div { color: #07566b; text-shadow: 0 1px 8px rgba(255, 253, 249, .7); }
+
+.inspiration-view-all { display: flex; width: fit-content; margin: 18px 0 0 auto; }
