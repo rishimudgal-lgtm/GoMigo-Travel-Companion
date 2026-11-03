@@ -323,27 +323,36 @@
                         </div>
 
 
-                        <input
-                            type="range"
-                            id="daily-budget"
-                            name="budget"
-                            min="500"
-                            max="20000"
-                            value="5000"
-                            class="budget-slider"
-                            aria-label="Daily budget"
-                        >
+                        <div class="budget-controls-row">
+                            <input
+                                type="range"
+                                id="daily-budget-slider"
+                                min="100"
+                                max="100000"
+                                step="1"
+                                value="5000"
+                                class="budget-slider"
+                                aria-label="Adjust daily budget with slider"
+                                data-enter-skip
+                            >
+                            <input
+                                type="number"
+                                id="daily-budget"
+                                name="budget"
+                                min="100"
+                                step="1"
+                                value="5000"
+                                class="budget-amount-input"
+                                aria-label="Daily budget"
+                                required
+                            >
+                        </div>
 
 
                         <div class="budget-values">
 
-                            <span>
-                                ₹500
-                            </span>
-
-                            <span>
-                                ₹20,000
-                            </span>
+                            <span data-budget-min>₹100</span>
+                            <span data-budget-max>₹1,00,000+</span>
 
                         </div>
 
