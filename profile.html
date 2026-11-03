@@ -38,6 +38,14 @@
             <p>Save a few preferences to make planning feel more personal.</p>
         </header>
         <form class="profile-form profile-page-form" id="profile-form">
+            <div class="profile-photo-field">
+                <img id="profile-photo-preview" src="main-menu-assets/profile.png" alt="Profile photo preview">
+                <div class="profile-photo-copy">
+                    <label for="profile-photo-input">Profile photo</label>
+                    <input id="profile-photo-input" name="photoFile" type="file" accept="image/*">
+                    <small>Choose a photo to personalize your profile.</small>
+                </div>
+            </div>
             <label for="profile-name">Name</label>
             <input id="profile-name" name="name" autocomplete="name" required>
             <label for="profile-email">Email</label>

@@ -6,7 +6,8 @@
         profile: "gomigo.profile",
         trips: "gomigo.trips",
         saved: "gomigo.saved-destinations",
-        flash: "gomigo.flash-message"
+        flash: "gomigo.flash-message",
+        plannerDraft: "gomigo.planner-draft"
     };
 
     const destinations = [
@@ -1278,6 +1279,35 @@
         return Array.isArray(value) ? value : [];
     }
 
+    function formatDateForInput(date) {
+        const year = String(date.getFullYear()).padStart(4, "0");
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+    }
+
+    function getTripDateRange() {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const futureYear = today.getFullYear() + 2;
+        const lastDayOfFutureMonth = new Date(futureYear, today.getMonth() + 1, 0).getDate();
+        const latest = new Date(futureYear, today.getMonth(), Math.min(today.getDate(), lastDayOfFutureMonth));
+        return { min: formatDateForInput(today), max: formatDateForInput(latest) };
+    }
+
+    function constrainTripDateField(field) {
+        if (!field) return getTripDateRange();
+        const range = getTripDateRange();
+        field.min = range.min;
+        field.max = range.max;
+        if (field.value && (field.value < range.min || field.value > range.max)) field.value = "";
+        return range;
+    }
+
+    function isTripDateAllowed(value, range) {
+        return !value || (value >= range.min && value <= range.max);
+    }
+
     function writeJSON(key, value) {
         memoryStore.set(key, value);
         try {
@@ -1312,6 +1342,14 @@
         const text = name ? "Hey, " + name + "!" : "Hey, Explorer!";
         document.querySelectorAll("[data-user-name]").forEach((element) => {
             element.textContent = text;
+        });
+    }
+
+    function setSidebarProfilePhoto(source) {
+        if (!source) return;
+        document.querySelectorAll(".sidebar-profile img").forEach((image) => {
+            image.src = source;
+            image.alt = "Profile photo";
         });
     }
 
@@ -1407,6 +1445,7 @@
 
         const profile = Object.assign({}, readJSON(keys.profile, {}), readJSON(keys.user, {}));
         setUserName(profile.name);
+        setSidebarProfilePhoto(profile.photo || profile.photoData);
 
         const pageMap = {
             "main-menu.html": "home",
@@ -1441,24 +1480,78 @@
         const form = document.querySelector("#trip-form");
         if (!form) return;
 
-        const budget = form.querySelector(".budget-slider");
+        const budget = form.querySelector("#daily-budget");
+        const budgetSlider = form.querySelector("#daily-budget-slider");
         const budgetText = form.querySelector(".budget-heading strong");
+        const budgetMinLabel = form.querySelector("[data-budget-min]");
+        const budgetMaxLabel = form.querySelector("[data-budget-max]");
         const requests = form.querySelector("textarea");
         const counter = form.querySelector(".character-count");
         const destinationField = form.querySelector("#destination");
         const suggestedDestination = new URLSearchParams(window.location.search).get("destination");
         const requestedDate = new URLSearchParams(window.location.search).get("date");
+        const requestedTravelers = new URLSearchParams(window.location.search).get("travelers");
+        const plannerDraft = readJSON(keys.plannerDraft, {});
+        const travelersField = form.querySelector("#travelers");
+        const travelDateField = form.querySelector("#travel-dates");
+        const tripDateRange = constrainTripDateField(travelDateField);
 
         populateDestinationSuggestions(form.querySelector("#destination-suggestions"));
 
-        if (suggestedDestination && destinationField) destinationField.value = suggestedDestination;
-        if (requestedDate) form.querySelector("#travel-dates").value = requestedDate;
-        if (budget && budgetText) {
-            const updateBudget = () => {
-                budgetText.textContent = "₹" + Number(budget.value).toLocaleString("en-IN") + "/day";
+        if (destinationField) destinationField.value = suggestedDestination || plannerDraft.destination || "";
+        if (travelDateField) {
+            travelDateField.value = requestedDate || plannerDraft.date || "";
+            // Ignore old or out-of-range dates passed through a URL or saved draft.
+            constrainTripDateField(travelDateField);
+        }
+        if (travelersField) {
+            const travelersValue = requestedTravelers || plannerDraft.travelers;
+            if (travelersValue && Array.from(travelersField.options).some((option) => option.value === travelersValue || option.textContent.trim() === travelersValue)) {
+                travelersField.value = travelersValue;
+            }
+        }
+        const savePlannerDraft = () => writeJSON(keys.plannerDraft, {
+            destination: destinationField?.value.trim() || "",
+            date: form.querySelector("#travel-dates")?.value || "",
+            travelers: travelersField?.value || ""
+        });
+        form.addEventListener("input", savePlannerDraft);
+        form.addEventListener("change", savePlannerDraft);
+        if (budget && budgetText && budgetSlider) {
+            const formatRupees = (value) => "₹" + Number(value).toLocaleString("en-IN");
+            const updateBudgetLabels = () => {
+                if (budgetMinLabel) budgetMinLabel.textContent = formatRupees(budgetSlider.min);
+                if (budgetMaxLabel) budgetMaxLabel.textContent = formatRupees(budgetSlider.max) + "+";
+                const range = Number(budgetSlider.max) - Number(budgetSlider.min);
+                const progress = range > 0 ? ((Number(budgetSlider.value) - Number(budgetSlider.min)) / range) * 100 : 0;
+                budgetSlider.style.setProperty("--budget-progress", `${Math.max(0, Math.min(100, progress))}%`);
             };
-            budget.addEventListener("input", updateBudget);
-            updateBudget();
+            const updateBudgetText = () => {
+                budgetText.textContent = budget.value ? formatRupees(budget.value) + "/day" : "Enter budget";
+            };
+            const expandBudgetSlider = (amount) => {
+                const currentMax = Number(budgetSlider.max);
+                if (amount > currentMax) {
+                    budgetSlider.max = String(Math.max(100000, Math.ceil(amount * 1.2 / 10000) * 10000));
+                    updateBudgetLabels();
+                }
+            };
+            budget.addEventListener("input", () => {
+                const amount = Number(budget.value);
+                if (Number.isFinite(amount) && Number.isInteger(amount) && amount >= Number(budget.min || 100)) {
+                    expandBudgetSlider(amount);
+                    budgetSlider.value = String(amount);
+                    updateBudgetLabels();
+                }
+                updateBudgetText();
+            });
+            budgetSlider.addEventListener("input", () => {
+                budget.value = budgetSlider.value;
+                updateBudgetText();
+                updateBudgetLabels();
+            });
+            updateBudgetLabels();
+            updateBudgetText();
         }
         if (requests && counter) {
             const updateCounter = () => {
@@ -1480,8 +1573,44 @@
             destinationField.focus();
         });
 
+        form.addEventListener("keydown", (event) => {
+            if (event.key !== "Enter") return;
+            const fields = Array.from(form.querySelectorAll('input:not([type="hidden"]), select, textarea, button[type="submit"]'))
+                .filter((field) => !field.disabled && !field.hasAttribute("data-enter-skip"));
+            const moveToNextField = () => {
+                const currentIndex = fields.indexOf(event.target);
+                const nextField = currentIndex >= 0 ? fields[currentIndex + 1] : null;
+                nextField?.focus();
+            };
+
+            if (event.target instanceof HTMLTextAreaElement) {
+                if (event.ctrlKey) {
+                    event.preventDefault();
+                    moveToNextField();
+                }
+                return;
+            }
+            if (event.target instanceof HTMLInputElement) {
+                event.preventDefault();
+                moveToNextField();
+                return;
+            }
+            if (event.target instanceof HTMLSelectElement) {
+                // Let the native select commit its chosen option before moving on.
+                window.setTimeout(moveToNextField, 0);
+            }
+        });
+
         form.addEventListener("submit", (event) => {
             event.preventDefault();
+            if (travelDateField?.value && !isTripDateAllowed(travelDateField.value, tripDateRange)) {
+                travelDateField.setCustomValidity("Choose a date from today through the next two years.");
+                travelDateField.reportValidity();
+                showToast("Trip dates must be between today and two years from now.");
+                travelDateField.focus();
+                return;
+            }
+            travelDateField?.setCustomValidity("");
             if (!form.reportValidity()) return;
             const data = new FormData(form);
             const trip = {
@@ -1504,6 +1633,7 @@
                 showToast("Your trip could not be saved. Allow browser storage or free some space, then try again.");
                 return;
             }
+            removeStored(keys.plannerDraft);
             writeJSON(keys.flash, "Your " + trip.destination + " trip is saved in My Trips.");
             window.location.href = "itinerary.html?id=" + encodeURIComponent(trip.id);
         });
@@ -1577,18 +1707,60 @@
 
         const tripList = document.querySelector("#saved-trip-list");
         const tripEmpty = document.querySelector("#saved-trip-empty");
+        const budgetRangeForm = document.querySelector("#saved-budget-range");
         if (!tripList) return;
         const trips = readArray(keys.trips);
-        tripList.replaceChildren(...trips.map((trip) => {
+        const minimumBudget = Number(document.querySelector("#saved-budget-min")?.value || 0);
+        const maximumInput = document.querySelector("#saved-budget-max")?.value;
+        const maximumBudget = maximumInput === "" || maximumInput === undefined ? Number.POSITIVE_INFINITY : Number(maximumInput);
+        const visibleTrips = trips.filter((trip) => {
+            const budget = Number(trip.budget) || 0;
+            return budget >= minimumBudget && budget <= maximumBudget;
+        });
+        tripList.replaceChildren(...visibleTrips.map((trip) => {
             const card = document.createElement("article");
             card.className = "saved-trip-card";
             const title = document.createElement("h3"); title.textContent = trip.destination;
+            const remove = document.createElement("button");
+            remove.type = "button";
+            remove.className = "saved-trip-remove";
+            remove.dataset.removeSavedTrip = trip.id;
+            remove.setAttribute("aria-label", `Delete ${trip.destination} trip plan`);
+            remove.title = "Delete saved trip plan";
+            remove.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3m3 0-.8 13H6.8L6 7m4 3v7m4-7v7" /></svg>';
+            const cardTop = document.createElement("div");
+            cardTop.className = "saved-trip-card-top";
+            cardTop.append(title, remove);
             const details = document.createElement("p");
             details.textContent = [trip.dates, trip.duration ? `${trip.duration} days` : "", `₹${Number(trip.budget || 0).toLocaleString("en-IN")}/day`].filter(Boolean).join(" · ");
             const link = document.createElement("a"); link.href = "itinerary.html?id=" + encodeURIComponent(trip.id); link.className = "content-primary-link"; link.textContent = "View itinerary →";
-            card.append(title, details, link); return card;
+            card.append(cardTop, details, link); return card;
         }));
-        if (tripEmpty) tripEmpty.hidden = trips.length > 0;
+        if (tripEmpty) {
+            tripEmpty.textContent = trips.length ? "No saved plans match this daily budget range." : "Your trip plans will appear here after you create one.";
+            tripEmpty.hidden = visibleTrips.length > 0;
+        }
+        if (budgetRangeForm) budgetRangeForm.onsubmit = (event) => {
+            event.preventDefault();
+            const min = Number(document.querySelector("#saved-budget-min").value || 0);
+            const maxValue = document.querySelector("#saved-budget-max").value;
+            if (maxValue !== "" && min > Number(maxValue)) {
+                showToast("The minimum daily budget should be below the maximum.");
+                return;
+            }
+            renderSavedPage();
+        };
+        tripList.onclick = (event) => {
+            const removeButton = event.target.closest("[data-remove-saved-trip]");
+            if (!removeButton) return;
+            const remainingTrips = readArray(keys.trips).filter((trip) => trip.id !== removeButton.dataset.removeSavedTrip);
+            if (!writeJSON(keys.trips, remainingTrips)) {
+                showToast("This trip plan could not be deleted. Please try again.");
+                return;
+            }
+            renderSavedPage();
+            showToast("Saved trip plan deleted.");
+        };
     }
 
     function initDestinationPages() {
@@ -1647,9 +1819,9 @@
             appGrid.replaceChildren(...groupedItems);
             appGrid.classList.add("is-ready");
             const count = document.querySelector(".app-destinations-section h2");
-            if (count) count.textContent = `${destinationCatalog.length} places to discover`;
+            if (count) count.textContent = "Places to discover";
             const intro = document.querySelector(".app-explore-intro");
-            if (intro) intro.textContent = `${destinationCatalog.length} places to spark your next GoMigo plan.`;
+            if (intro) intro.textContent = "Discover places to spark your next GoMigo plan.";
         }
 
         const legacySavedItems = readJSON("gomigo-saved-items-v1", []);
@@ -1710,7 +1882,7 @@
                 if (empty) empty.hidden = visibleCount > 0;
                 if (incrementalExplore) {
                     const totalMatches = matchIndex;
-                    exploreProgress.textContent = query ? `Showing ${visibleCount} matching places` : `Showing ${Math.min(visibleLimit, totalMatches)} of ${totalMatches} places`;
+                    exploreProgress.textContent = query ? `Showing ${visibleCount} matching places` : `Showing ${Math.min(visibleLimit, totalMatches)} places`;
                     exploreMore.hidden = query.length > 0 || visibleLimit >= totalMatches;
                     exploreMore.innerHTML = visibleLimit >= totalMatches ? "All places shown" : 'Explore more <span aria-hidden="true">↓</span>';
                 }
@@ -1851,10 +2023,41 @@
         const form = document.querySelector("#profile-form");
         if (!form) return;
         const profile = Object.assign({}, readJSON(keys.user, {}), readJSON(keys.profile, {}));
+        const photoInput = form.querySelector("#profile-photo-input");
+        const photoPreview = form.querySelector("#profile-photo-preview");
+        let photoData = profile.photo || profile.photoData || "";
         form.elements.namedItem("name").value = profile.name || "";
         form.elements.namedItem("email").value = profile.email || "";
         form.elements.namedItem("home").value = profile.home || "";
         form.elements.namedItem("style").value = profile.style || "Balanced";
+        if (photoData && photoPreview) photoPreview.src = photoData;
+
+        photoInput?.addEventListener("change", () => {
+            const file = photoInput.files?.[0];
+            if (!file) return;
+            if (!file.type.startsWith("image/")) {
+                showToast("Choose an image file for your profile photo.");
+                photoInput.value = "";
+                return;
+            }
+            const reader = new FileReader();
+            reader.addEventListener("load", () => {
+                const image = new Image();
+                image.addEventListener("load", () => {
+                    const maxDimension = 512;
+                    const scale = Math.min(1, maxDimension / Math.max(image.naturalWidth, image.naturalHeight));
+                    const canvas = document.createElement("canvas");
+                    canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
+                    canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
+                    canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
+                    photoData = canvas.toDataURL("image/jpeg", 0.82);
+                    if (photoPreview) photoPreview.src = photoData;
+                    showToast("Photo ready. Save preferences to keep it on your profile.");
+                }, { once: true });
+                image.src = String(reader.result || "");
+            }, { once: true });
+            reader.readAsDataURL(file);
+        });
 
         form.addEventListener("submit", (event) => {
             event.preventDefault();
@@ -1864,11 +2067,13 @@
                 name: String(data.get("name") || "").trim(),
                 email: String(data.get("email") || "").trim(),
                 home: String(data.get("home") || "").trim(),
-                style: String(data.get("style") || "Balanced")
+                style: String(data.get("style") || "Balanced"),
+                photo: photoData
             });
             writeJSON(keys.profile, updated);
             writeJSON(keys.user, { name: updated.name, email: updated.email });
             setUserName(updated.name);
+            setSidebarProfilePhoto(updated.photo);
             showToast("Your travel preferences are saved.");
         });
     }
@@ -1886,6 +2091,7 @@
         }
         const place = destinationCatalog.find((item) => item.name.toLowerCase() === trip.destination.trim().toLowerCase())
             || destinationCatalog.find((item) => trip.destination.trim().toLowerCase().startsWith(item.name.toLowerCase() + ","));
+        document.body.style.setProperty("--itinerary-backdrop", `url("${place?.image || "explore_assets/destinations/udaipur.jpg"}")`);
         const routeName = place?.name || trip.destination;
         const budget = Math.max(0, Number(trip.budget) || 0);
         const dayCount = Math.max(1, Number.parseInt(trip.duration, 10) || 1);
@@ -1987,6 +2193,33 @@
             trips: document.querySelector("#panel-trips")
         };
         if (!panels.plan) return;
+
+        const legacyPlanForm = document.querySelector("#plan-form");
+        const startDateField = legacyPlanForm?.elements.namedItem("startDate");
+        const endDateField = legacyPlanForm?.elements.namedItem("endDate");
+        const legacyDateRange = constrainTripDateField(startDateField);
+        constrainTripDateField(endDateField);
+        const syncEndDateBounds = () => {
+            if (!endDateField) return;
+            endDateField.min = startDateField?.value && startDateField.value > legacyDateRange.min
+                ? startDateField.value
+                : legacyDateRange.min;
+            endDateField.max = legacyDateRange.max;
+            if (endDateField.value && (endDateField.value < endDateField.min || endDateField.value > endDateField.max)) {
+                endDateField.value = "";
+            }
+        };
+        [startDateField, endDateField].filter(Boolean).forEach((field) => {
+            field.addEventListener("input", () => {
+                field.setCustomValidity("");
+                syncEndDateBounds();
+            });
+            field.addEventListener("change", () => {
+                field.setCustomValidity("");
+                syncEndDateBounds();
+            });
+        });
+        syncEndDateBounds();
 
         const savedKey = "gomigo-saved-items-v1";
         const tripsKey = "gomigo-trips-v1";
@@ -2122,9 +2355,10 @@
             document.querySelector(`#tab-${names[next]}`).focus();
         });
         window.addEventListener("hashchange", () => selectTab(window.location.hash.slice(1), false));
-        document.querySelector("#plan-form").addEventListener("submit", (event) => {
+        legacyPlanForm.addEventListener("submit", (event) => {
             event.preventDefault();
             const form = event.currentTarget;
+            syncEndDateBounds();
             if (!form.reportValidity()) return;
             const data = Object.fromEntries(new FormData(form));
             if (data.endDate < data.startDate) {
@@ -2174,17 +2408,43 @@
     }
 
     function initDashboard() {
+        const destinationField = document.querySelector("#home-destination");
+        const dateField = document.querySelector("#home-travel-date");
+        const travelersField = document.querySelector("#home-travelers");
+        if (!destinationField && !dateField && !travelersField) return;
         populateDestinationSuggestions(document.querySelector("#home-destination-suggestions"));
-        document.querySelector("#home-destination")?.addEventListener("change", (event) => {
-            const value = event.currentTarget.value.trim();
-            if (value) window.location.href = "trip-planner.html?destination=" + encodeURIComponent(value);
+        const draft = readJSON(keys.plannerDraft, {});
+        if (destinationField && !destinationField.value) destinationField.value = draft.destination || "";
+        if (dateField && !dateField.value) dateField.value = draft.date || "";
+        if (travelersField && draft.travelers && Array.from(travelersField.options).some((option) => option.value === draft.travelers)) {
+            travelersField.value = draft.travelers;
+        }
+        const tripDateRange = constrainTripDateField(dateField);
+        const saveHomeDraft = () => writeJSON(keys.plannerDraft, {
+            destination: destinationField?.value.trim() || "",
+            date: dateField?.value || "",
+            travelers: travelersField?.value || ""
         });
-        document.querySelector("#home-travel-date")?.addEventListener("change", (event) => {
-            const date = event.currentTarget.value;
-            if (date) window.location.href = "trip-planner.html?date=" + encodeURIComponent(date);
+        [destinationField, dateField, travelersField].filter(Boolean).forEach((field) => {
+            field.addEventListener("input", saveHomeDraft);
+            field.addEventListener("change", saveHomeDraft);
         });
         document.querySelector("[data-navigate-planner]")?.addEventListener("click", () => {
-            window.location.href = "trip-planner.html";
+            saveHomeDraft();
+            if (dateField?.value && !isTripDateAllowed(dateField.value, tripDateRange)) {
+                dateField.setCustomValidity("Choose a date from today through the next two years.");
+                dateField.reportValidity();
+                showToast("Trip dates must be between today and two years from now.");
+                dateField.focus();
+                return;
+            }
+            dateField?.setCustomValidity("");
+            const values = new URLSearchParams();
+            if (destinationField?.value.trim()) values.set("destination", destinationField.value.trim());
+            if (dateField?.value) values.set("date", dateField.value);
+            if (travelersField?.value) values.set("travelers", travelersField.value);
+            const query = values.toString();
+            window.location.href = "trip-planner.html" + (query ? "?" + query : "");
         });
 
         document.querySelector("[data-surprise]")?.addEventListener("click", () => {
