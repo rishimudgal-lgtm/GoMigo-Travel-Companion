@@ -737,18 +737,6 @@ img {
 }
 
 
-/* Card icon */
-
-.organize-card > img {
-    width: 65px;
-    height: 65px;
-
-    object-fit: contain;
-
-    flex-shrink: 0;
-}
-
-
 /* =========================================================
    ORGANIZE CARD COLORS
 ========================================================= */
@@ -3439,6 +3427,86 @@ body.saved-page .saved-trip-card h3 { margin: 0 0 8px; color: #07566b; font: 700
 body.saved-page .saved-trip-card p { margin: 0 0 14px; color: #68817e; font: 13px/1.5 Manrope, sans-serif; }
 body.saved-page .saved-trip-empty { color: #708985; font: 14px Manrope, sans-serif; }
 body.saved-page .saved-trip-empty[hidden] { display: none; }
+body.saved-page .saved-trip-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+body.saved-page .saved-trip-edit { color: #28786e; font: 700 13px Manrope, sans-serif; text-decoration: underline; text-underline-offset: 3px; }
+body.saved-page .saved-trip-edit:hover { color: #07566b; }
+body.trips-page .trip-card-actions { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+body.trips-page .trip-edit-link { color: #28786e; font: 700 13px Manrope, sans-serif; text-decoration: underline; text-underline-offset: 3px; }
+body.trips-page .trip-edit-link:hover { color: #07566b; }
+
+body.planner-page .edit-existing-trip-control {
+    display: grid;
+    gap: 8px;
+    margin: 0 0 20px 28px;
+    padding: 14px 16px;
+    border: 1px solid rgba(204, 227, 218, .9);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .62);
+}
+body.planner-page .edit-existing-trip-control[hidden] { display: none; }
+body.planner-page .edit-existing-trip-control > label { color: #07566b; font: 700 13px Manrope, sans-serif; }
+body.planner-page .edit-existing-trip-row { display: flex; align-items: center; gap: 10px; }
+body.planner-page .edit-existing-trip-row select {
+    flex: 1;
+    min-width: 0;
+    min-height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #d3e1e3;
+    border-radius: 10px;
+    background: #fffefa;
+    color: #31565f;
+    font: 13px Manrope, sans-serif;
+}
+body.planner-page .edit-existing-trip-row button {
+    min-height: 40px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 22px;
+    background: #e3f3e9;
+    color: #07566b;
+    font: 800 12px Manrope, sans-serif;
+    cursor: pointer;
+}
+body.planner-page .edit-existing-trip-row button:hover { background: #d0eadb; }
+
+body.profile-page .profile-email-field { display: grid; gap: 5px; }
+body.profile-page .profile-email-field input[readonly] { background: #f4f8f5; color: #67817e; }
+body.profile-page .profile-email-note { color: #718b85; font: 10px/1.4 Manrope, sans-serif; }
+
+body.landing-page .organize-card > .card-content { width: 100%; }
+body.landing-page .footer-content {
+    width: min(900px, 100%);
+    margin: 0 auto;
+    padding-left: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: center;
+    justify-items: center;
+    gap: clamp(24px, 5vw, 70px);
+}
+body.landing-page .footer-column { align-items: center; text-align: center; }
+
+body.explore-page-theme .explore-more-wrap { display: flex; flex-direction: column; align-items: center; gap: 9px; padding: 28px 0 12px; }
+body.explore-page-theme #explore-more {
+    min-height: 46px;
+    padding: 0 24px;
+    border: 0;
+    border-radius: 24px;
+    background: #087653;
+    color: #fff;
+    font: 800 13px Manrope, sans-serif;
+    box-shadow: 0 8px 22px #075c4828;
+    cursor: pointer;
+    transition: background-color .18s ease, transform .18s ease;
+}
+body.explore-page-theme #explore-more:hover { background: #066247; transform: translateY(-1px); }
+body.explore-page-theme #explore-more span { margin-left: 8px; font-size: 17px; }
+body.explore-page-theme #explore-progress { margin: 0; color: #648078; font: 12px Manrope, sans-serif; }
+body.explore-page-theme #explore-more[hidden] { display: none; }
+@media (max-width: 600px) {
+    body.landing-page .footer-content { grid-template-columns: 1fr; gap: 32px; }
+    body.planner-page .edit-existing-trip-control { margin-left: 0; }
+    body.planner-page .edit-existing-trip-row { align-items: stretch; flex-direction: column; }
+}
 
 body.itinerary-detail-page { --itinerary-teal: #07566b; background: #f4f7f1; }
 body.itinerary-detail-page .itinerary-detail-main { padding: clamp(24px, 5vw, 60px); }

@@ -37,6 +37,10 @@
         { name: "Vancouver", image: "explore_assets/canada.png", description: "A lively city framed by forest, water, and mountain trails.", alt: "A Canadian landscape for Vancouver travel inspiration" },
         { name: "Lisbon", image: "explore_assets/portugal.png", description: "Hillside viewpoints, tiled streets, and long, relaxed meals.", alt: "Colorful streets in Portugal" }
     ];
+    let accountDataReady = false;
+    let accountWriteQueue = Promise.resolve();
+    let accountWriteSequence = 0;
+    const accountWriteErrors = [];
     // Local destination catalog shared by search suggestions and Explore.
     const destinationCatalog = [
     {
@@ -1265,6 +1269,66 @@
 
     const memoryStore = new Map();
 
+    async function apiRequest(path, options = {}) {
+        const headers = new Headers(options.headers || {});
+        if (options.body !== undefined) headers.set("Content-Type", "application/json");
+        const response = await fetch(path, { credentials: "same-origin", ...options, headers });
+        if (!String(response.headers.get("content-type") || "").includes("application/json")) {
+            throw new Error("The GoMigo account server is not running. Start it with npm start.");
+        }
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.error || "The request could not be completed.");
+        return result;
+    }
+
+    function writeLocalJSON(key, value) {
+        memoryStore.set(key, value);
+        try {
+            window.localStorage.setItem(key, JSON.stringify(value));
+            return true;
+        } catch {
+            return false;
+        }
+    }
+
+    function queueAccountWrite(key, value) {
+        let path = "";
+        let method = "PUT";
+        let payload;
+        if (key === keys.profile) {
+            path = "/api/account/profile";
+            method = "PATCH";
+            payload = value;
+        } else if (key === keys.trips) {
+            path = "/api/account/trips";
+            payload = { trips: value };
+        } else if (key === keys.saved) {
+            path = "/api/account/saved";
+            payload = { saved: value };
+        }
+        if (!path) return;
+        const sequence = ++accountWriteSequence;
+        accountWriteQueue = accountWriteQueue
+            .catch(() => {})
+            .then(() => apiRequest(path, { method, body: JSON.stringify(payload) }))
+            .catch(() => { accountWriteErrors.push(sequence); });
+    }
+
+    async function flushAccountWrites() {
+        const sequence = accountWriteSequence;
+        await accountWriteQueue;
+        const failed = accountWriteErrors.some((failedSequence) => failedSequence <= sequence);
+        for (let index = accountWriteErrors.length - 1; index >= 0; index -= 1) {
+            if (accountWriteErrors[index] <= sequence) accountWriteErrors.splice(index, 1);
+        }
+        return !failed;
+    }
+
+    function clearAccountCache() {
+        [keys.user, keys.profile, keys.trips, keys.saved, keys.plannerDraft].forEach(removeStored);
+        accountDataReady = false;
+    }
+
     function readJSON(key, fallback) {
         try {
             const value = window.localStorage.getItem(key);
@@ -1309,14 +1373,9 @@
     }
 
     function writeJSON(key, value) {
-        memoryStore.set(key, value);
-        try {
-            window.localStorage.setItem(key, JSON.stringify(value));
-            return true;
-        } catch {
-            // Keep the value in memory for this page if browser storage is unavailable.
-            return false;
-        }
+        const stored = writeLocalJSON(key, value);
+        if (accountDataReady) queueAccountWrite(key, value);
+        return stored || accountDataReady;
     }
 
     function removeStored(key) {
@@ -1375,66 +1434,94 @@
         });
     }
 
-    function redirectSignedInPublicPage() {
-        const appPage = document.body.dataset.signedInPage;
-        const user = readJSON(keys.user, null);
-        if (!appPage || !user || !user.email) return false;
-        window.location.replace(appPage);
-        return true;
-    }
-
     function initAuthForms() {
         const loginForm = document.querySelector("#login-form");
         const signupForm = document.querySelector("#signup-form");
         if (!loginForm && !signupForm) return;
 
-        function continueIntoGoMigo(user) {
-            writeJSON(keys.user, user);
-            writeJSON(keys.profile, Object.assign({}, readJSON(keys.profile, {}), user));
-            writeJSON(keys.flash, "Welcome to GoMigo, " + user.name + ".");
-
+        function postAuthDestination() {
             const redirectParams = new URLSearchParams(window.location.search);
             const requestedTarget = redirectParams.get("next") || "";
             const requestedPage = requestedTarget.split("?", 1)[0];
-            const safePages = ["main-menu.html", "my-trips.html", "trip-planner.html", "explore-app.html", "destinations.html", "saved.html", "travel-guide.html", "profile.html"];
+            const safePages = ["main-menu.html", "my-trips.html", "trip-planner.html", "itinerary.html", "itineraries.html", "explore-app.html", "destinations.html", "saved.html", "travel-guide.html", "profile.html"];
             let destination = safePages.includes(requestedPage) ? requestedPage : "main-menu.html";
-            const targetQuery = new URLSearchParams(requestedTarget.split("?").slice(1).join("?"));
-            const requestedDestination = redirectParams.get("destination") || targetQuery.get("destination");
-            if (destination === "trip-planner.html" && requestedDestination) {
-                destination += "?destination=" + encodeURIComponent(requestedDestination.slice(0, 100));
-            }
-            window.location.href = destination;
+            if (requestedTarget.includes("?")) destination += "?" + requestedTarget.split("?").slice(1).join("?");
+            return destination;
+        }
+
+        function setBusy(form, busy) {
+            const button = form.querySelector("button[type=submit]");
+            if (!button) return;
+            button.disabled = busy;
+            button.setAttribute("aria-busy", String(busy));
+        }
+
+        function showServerError(error) {
+            const message = error instanceof TypeError
+                ? "The account server is unavailable. Start GoMigo with npm start and try again."
+                : error.message;
+            showToast(message || "Sign in could not be completed.");
         }
 
         if (loginForm) {
-            loginForm.addEventListener("submit", (event) => {
+            loginForm.addEventListener("submit", async (event) => {
                 event.preventDefault();
                 if (!loginForm.reportValidity()) return;
                 const data = new FormData(loginForm);
-                const email = String(data.get("email") || "").trim();
-                const existing = Object.assign({}, readJSON(keys.profile, {}), readJSON(keys.user, {}));
-                const fallbackName = email.split("@")[0].replace(/[._-]+/g, " ");
-                const name = existing.name || fallbackName || "Explorer";
-                continueIntoGoMigo({ name, email });
+                setBusy(loginForm, true);
+                try {
+                    await apiRequest("/api/auth/login", {
+                        method: "POST",
+                        body: JSON.stringify({
+                            email: String(data.get("email") || "").trim(),
+                            password: String(data.get("password") || "")
+                        })
+                    });
+                    window.location.href = postAuthDestination();
+                } catch (error) {
+                    showServerError(error);
+                    setBusy(loginForm, false);
+                }
             });
         }
 
         if (signupForm) {
-            signupForm.addEventListener("submit", (event) => {
+            signupForm.addEventListener("submit", async (event) => {
                 event.preventDefault();
                 if (!signupForm.reportValidity()) return;
                 const data = new FormData(signupForm);
                 const password = String(data.get("password") || "");
                 const confirmation = String(data.get("confirm") || "");
+                if (password.length < 8) {
+                    showToast("Use a password with at least 8 characters.");
+                    signupForm.elements.namedItem("password").focus();
+                    return;
+                }
                 if (password !== confirmation) {
                     showToast("Those passwords don’t match yet.");
                     signupForm.elements.namedItem("confirm").focus();
                     return;
                 }
-                continueIntoGoMigo({
-                    name: String(data.get("name") || "Explorer").trim(),
-                    email: String(data.get("email") || "").trim()
-                });
+                setBusy(signupForm, true);
+                try {
+                    await apiRequest("/api/auth/signup", {
+                        method: "POST",
+                        body: JSON.stringify({
+                            name: String(data.get("name") || "").trim(),
+                            email: String(data.get("email") || "").trim(),
+                            password,
+                            legacy: {
+                                trips: readArray(keys.trips),
+                                saved: readArray(keys.saved),
+                                profile: readJSON(keys.profile, {})
+                            }
+                        })
+                    });
+                    window.location.href = postAuthDestination();
+                } catch (error) {
+                    showServerError(error);
+                    setBusy(signupForm, false);
+                }
             });
         }
     }
@@ -1468,8 +1555,10 @@
         });
 
         document.querySelectorAll("[data-sign-out]").forEach((button) => {
-            button.addEventListener("click", () => {
-                removeStored(keys.user);
+            button.addEventListener("click", async () => {
+                button.disabled = true;
+                try { await apiRequest("/api/auth/logout", { method: "POST", body: "{}" }); } catch { /* Clear this browser's cached account data either way. */ }
+                clearAccountCache();
                 window.location.href = "landing_page.html";
             });
         });
@@ -1491,25 +1580,60 @@
         const suggestedDestination = new URLSearchParams(window.location.search).get("destination");
         const requestedDate = new URLSearchParams(window.location.search).get("date");
         const requestedTravelers = new URLSearchParams(window.location.search).get("travelers");
+        const editTripId = new URLSearchParams(window.location.search).get("edit");
+        const accountTrips = readArray(keys.trips);
+        const editingTrip = editTripId ? accountTrips.find((trip) => trip.id === editTripId) : null;
         const plannerDraft = readJSON(keys.plannerDraft, {});
         const travelersField = form.querySelector("#travelers");
+        const styleField = form.querySelector("#travel-style");
+        const durationField = form.querySelector("#trip-duration");
         const travelDateField = form.querySelector("#travel-dates");
         const tripDateRange = constrainTripDateField(travelDateField);
+        const submitButton = form.querySelector(".create-trip-button");
+        const existingTripControl = form.querySelector("#edit-existing-trip-control");
+        const existingTripSelect = form.querySelector("#edit-existing-trip");
+
+        if (existingTripControl && existingTripSelect && accountTrips.length) {
+            existingTripControl.hidden = false;
+            accountTrips.forEach((trip) => {
+                const option = document.createElement("option");
+                option.value = trip.id;
+                option.textContent = trip.destination + (trip.dates ? " · " + trip.dates : "");
+                existingTripSelect.append(option);
+            });
+            if (editingTrip) existingTripSelect.value = editingTrip.id;
+            form.querySelector("#load-existing-trip")?.addEventListener("click", () => {
+                if (!existingTripSelect.value) {
+                    existingTripSelect.focus();
+                    return;
+                }
+                window.location.href = "trip-planner.html?edit=" + encodeURIComponent(existingTripSelect.value);
+            });
+        }
 
         populateDestinationSuggestions(form.querySelector("#destination-suggestions"));
 
-        if (destinationField) destinationField.value = suggestedDestination || plannerDraft.destination || "";
+        if (destinationField) destinationField.value = editingTrip ? editingTrip.destination : suggestedDestination || plannerDraft.destination || "";
         if (travelDateField) {
-            travelDateField.value = requestedDate || plannerDraft.date || "";
+            travelDateField.value = editingTrip ? editingTrip.dates || "" : requestedDate || plannerDraft.date || "";
             // Ignore old or out-of-range dates passed through a URL or saved draft.
             constrainTripDateField(travelDateField);
         }
         if (travelersField) {
-            const travelersValue = requestedTravelers || plannerDraft.travelers;
+            const travelersValue = editingTrip ? editingTrip.travelers : requestedTravelers || plannerDraft.travelers;
             if (travelersValue && Array.from(travelersField.options).some((option) => option.value === travelersValue || option.textContent.trim() === travelersValue)) {
                 travelersField.value = travelersValue;
             }
         }
+        if (durationField && editingTrip) durationField.value = editingTrip.duration || "";
+        if (styleField && editingTrip && Array.from(styleField.options).some((option) => option.value === editingTrip.style || option.textContent.trim() === editingTrip.style)) {
+            styleField.value = editingTrip.style;
+        }
+        if (budget && editingTrip && Number.isInteger(Number(editingTrip.budget)) && Number(editingTrip.budget) >= Number(budget.min || 100)) {
+            budget.value = String(Number(editingTrip.budget));
+        }
+        if (requests && editingTrip) requests.value = editingTrip.requests || "";
+        if (editingTrip && submitButton) submitButton.textContent = "✦  Update My Trip  →";
         const savePlannerDraft = () => writeJSON(keys.plannerDraft, {
             destination: destinationField?.value.trim() || "",
             date: form.querySelector("#travel-dates")?.value || "",
@@ -1536,6 +1660,11 @@
                     updateBudgetLabels();
                 }
             };
+            const startingBudget = Number(budget.value);
+            if (Number.isFinite(startingBudget) && startingBudget >= Number(budget.min || 100)) {
+                expandBudgetSlider(startingBudget);
+                budgetSlider.value = String(startingBudget);
+            }
             budget.addEventListener("input", () => {
                 const amount = Number(budget.value);
                 if (Number.isFinite(amount) && Number.isInteger(amount) && amount >= Number(budget.min || 100)) {
@@ -1562,6 +1691,9 @@
         }
 
         form.querySelectorAll("[data-interest]").forEach((button) => {
+            if (editingTrip && Array.isArray(editingTrip.interests)) {
+                button.classList.toggle("selected", editingTrip.interests.includes(button.textContent.trim()));
+            }
             button.setAttribute("aria-pressed", String(button.classList.contains("selected")));
             button.addEventListener("click", () => {
                 const selected = button.classList.toggle("selected");
@@ -1601,7 +1733,7 @@
             }
         });
 
-        form.addEventListener("submit", (event) => {
+        form.addEventListener("submit", async (event) => {
             event.preventDefault();
             if (travelDateField?.value && !isTripDateAllowed(travelDateField.value, tripDateRange)) {
                 travelDateField.setCustomValidity("Choose a date from today through the next two years.");
@@ -1613,9 +1745,10 @@
             travelDateField?.setCustomValidity("");
             if (!form.reportValidity()) return;
             const data = new FormData(form);
-            const trip = {
+            const now = new Date();
+            const trip = Object.assign({}, editingTrip || {}, {
                 schemaVersion: 1,
-                id: Date.now() + "-" + Math.random().toString(16).slice(2),
+                id: editingTrip?.id || Date.now() + "-" + Math.random().toString(16).slice(2),
                 destination: String(data.get("destination") || "").trim(),
                 dates: String(data.get("dates") || "").trim(),
                 duration: String(data.get("duration") || ""),
@@ -1624,17 +1757,30 @@
                 budget: Number(data.get("budget") || 0),
                 interests: Array.from(form.querySelectorAll("[data-interest].selected"), (button) => button.textContent.trim()),
                 requests: String(data.get("requests") || "").trim(),
-                createdAt: new Date().toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }),
-                createdAtISO: new Date().toISOString()
-            };
+                createdAt: editingTrip?.createdAt || now.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }),
+                createdAtISO: editingTrip?.createdAtISO || now.toISOString()
+            });
             const trips = readArray(keys.trips);
-            trips.unshift(trip);
+            const previousTrips = trips.slice();
+            if (editingTrip) {
+                const editIndex = trips.findIndex((item) => item.id === editingTrip.id);
+                if (editIndex < 0) {
+                    showToast("This trip plan is no longer available to edit.");
+                    return;
+                }
+                trips[editIndex] = trip;
+            } else trips.unshift(trip);
             if (!writeJSON(keys.trips, trips)) {
                 showToast("Your trip could not be saved. Allow browser storage or free some space, then try again.");
                 return;
             }
+            if (!(await flushAccountWrites())) {
+                writeLocalJSON(keys.trips, previousTrips);
+                showToast("Your trip could not be saved to your account. Please try again.");
+                return;
+            }
             removeStored(keys.plannerDraft);
-            writeJSON(keys.flash, "Your " + trip.destination + " trip is saved in My Trips.");
+            writeJSON(keys.flash, editingTrip ? trip.destination + " trip changes are saved." : "Your " + trip.destination + " trip is saved in My Trips.");
             window.location.href = "itinerary.html?id=" + encodeURIComponent(trip.id);
         });
     }
@@ -1733,8 +1879,11 @@
             cardTop.append(title, remove);
             const details = document.createElement("p");
             details.textContent = [trip.dates, trip.duration ? `${trip.duration} days` : "", `₹${Number(trip.budget || 0).toLocaleString("en-IN")}/day`].filter(Boolean).join(" · ");
+            const actions = document.createElement("div"); actions.className = "saved-trip-actions";
             const link = document.createElement("a"); link.href = "itinerary.html?id=" + encodeURIComponent(trip.id); link.className = "content-primary-link"; link.textContent = "View itinerary →";
-            card.append(cardTop, details, link); return card;
+            const edit = document.createElement("a"); edit.href = "trip-planner.html?edit=" + encodeURIComponent(trip.id); edit.className = "saved-trip-edit"; edit.textContent = "Edit trip";
+            actions.append(link, edit);
+            card.append(cardTop, details, actions); return card;
         }));
         if (tripEmpty) {
             tripEmpty.textContent = trips.length ? "No saved plans match this daily budget range." : "Your trip plans will appear here after you create one.";
@@ -1750,12 +1899,19 @@
             }
             renderSavedPage();
         };
-        tripList.onclick = (event) => {
+        tripList.onclick = async (event) => {
             const removeButton = event.target.closest("[data-remove-saved-trip]");
             if (!removeButton) return;
-            const remainingTrips = readArray(keys.trips).filter((trip) => trip.id !== removeButton.dataset.removeSavedTrip);
+            const previousTrips = readArray(keys.trips);
+            const remainingTrips = previousTrips.filter((trip) => trip.id !== removeButton.dataset.removeSavedTrip);
             if (!writeJSON(keys.trips, remainingTrips)) {
                 showToast("This trip plan could not be deleted. Please try again.");
+                return;
+            }
+            if (!(await flushAccountWrites())) {
+                writeLocalJSON(keys.trips, previousTrips);
+                renderSavedPage();
+                showToast("This trip plan could not be deleted from your account. Please try again.");
                 return;
             }
             renderSavedPage();
@@ -1834,13 +1990,19 @@
         updateFavoriteButtons();
         renderSavedPage();
 
-        document.addEventListener("click", (event) => {
+        document.addEventListener("click", async (event) => {
             const button = event.target.closest("[data-favorite-toggle]");
             if (!button) return;
             const name = button.dataset.destination;
             const saved = readArray(keys.saved);
             const next = saved.includes(name) ? saved.filter((item) => item !== name) : saved.concat(name);
             writeJSON(keys.saved, next);
+            if (!(await flushAccountWrites())) {
+                writeLocalJSON(keys.saved, saved);
+                updateFavoriteButtons();
+                showToast("That change could not be saved to your account. Please try again.");
+                return;
+            }
             updateFavoriteButtons();
             renderSavedPage();
             showToast(next.includes(name) ? name + " saved to your places." : name + " removed from saved places.");
@@ -1990,7 +2152,14 @@
                 itineraryLink.href = "itinerary.html?id=" + encodeURIComponent(trip.id);
                 itineraryLink.className = "content-primary-link";
                 itineraryLink.textContent = "View day itinerary →";
-                card.append(itineraryLink);
+                const editLink = document.createElement("a");
+                editLink.href = "trip-planner.html?edit=" + encodeURIComponent(trip.id);
+                editLink.className = "trip-edit-link";
+                editLink.textContent = "Edit trip";
+                const tripActions = document.createElement("div");
+                tripActions.className = "trip-card-actions";
+                tripActions.append(itineraryLink, editLink);
+                card.append(tripActions);
 
                 const remove = document.createElement("button");
                 remove.type = "button";
@@ -2001,12 +2170,19 @@
             });
         }
 
-        list.addEventListener("click", (event) => {
+        list.addEventListener("click", async (event) => {
             const button = event.target.closest("[data-remove-trip]");
             if (!button) return;
-            const remaining = readArray(keys.trips).filter((trip) => trip.id !== button.dataset.removeTrip);
+            const previousTrips = readArray(keys.trips);
+            const remaining = previousTrips.filter((trip) => trip.id !== button.dataset.removeTrip);
             if (!writeJSON(keys.trips, remaining)) {
                 showToast("Your trip could not be removed from browser storage. Please try again.");
+                return;
+            }
+            if (!(await flushAccountWrites())) {
+                writeLocalJSON(keys.trips, previousTrips);
+                render();
+                showToast("Your trip could not be removed from your account. Please try again.");
                 return;
             }
             showToast("Trip removed from My Trips.");
@@ -2059,10 +2235,11 @@
             reader.readAsDataURL(file);
         });
 
-        form.addEventListener("submit", (event) => {
+        form.addEventListener("submit", async (event) => {
             event.preventDefault();
             if (!form.reportValidity()) return;
             const data = new FormData(form);
+            const oldProfile = readJSON(keys.profile, {});
             const updated = Object.assign({}, readJSON(keys.profile, {}), {
                 name: String(data.get("name") || "").trim(),
                 email: String(data.get("email") || "").trim(),
@@ -2072,6 +2249,14 @@
             });
             writeJSON(keys.profile, updated);
             writeJSON(keys.user, { name: updated.name, email: updated.email });
+            if (!(await flushAccountWrites())) {
+                writeLocalJSON(keys.profile, oldProfile);
+                writeLocalJSON(keys.user, { name: oldProfile.name, email: oldProfile.email });
+                setUserName(oldProfile.name);
+                setSidebarProfilePhoto(oldProfile.photo);
+                showToast("Your preferences could not be saved to your account. Please try again.");
+                return;
+            }
             setUserName(updated.name);
             setSidebarProfilePhoto(updated.photo);
             showToast("Your travel preferences are saved.");
@@ -2479,8 +2664,63 @@
         list.replaceChildren(...options);
     }
 
-    if (!redirectSignedInPublicPage()) {
+    function destinationAfterSignIn() {
+        const safePages = new Set(["main-menu.html", "my-trips.html", "trip-planner.html", "itinerary.html", "itineraries.html", "explore-app.html", "destinations.html", "saved.html", "travel-guide.html", "profile.html"]);
+        const requested = new URLSearchParams(window.location.search).get("next") || "main-menu.html";
+        const requestedUrl = new URL(requested, window.location.href);
+        const page = requestedUrl.pathname.split("/").pop();
+        if (!safePages.has(page)) return "main-menu.html";
+        return page + requestedUrl.search;
+    }
+
+    async function startSite() {
         initLandingNavigation();
+        const body = document.body;
+        const isAppPage = body.classList.contains("app-page");
+        const isAuthPage = Boolean(document.querySelector("#login-form, #signup-form"));
+        const redirectPage = body.dataset.signedInPage;
+        let session = null;
+
+        if (isAppPage || isAuthPage || redirectPage) {
+            try {
+                session = await apiRequest("/api/auth/session");
+            } catch (error) {
+                if (isAppPage) {
+                    showToast("The account server is unavailable. Start GoMigo with npm start, then reload this page.");
+                    return;
+                }
+            }
+        }
+
+        if (session?.authenticated) {
+            if (redirectPage) {
+                window.location.replace(redirectPage);
+                return;
+            }
+            if (isAuthPage) {
+                window.location.replace(destinationAfterSignIn());
+                return;
+            }
+            if (isAppPage) {
+                try {
+                    const account = await apiRequest("/api/account");
+                    writeLocalJSON(keys.user, session.user);
+                    writeLocalJSON(keys.profile, account.profile);
+                    writeLocalJSON(keys.trips, account.trips);
+                    writeLocalJSON(keys.saved, account.saved);
+                    accountDataReady = true;
+                } catch {
+                    showToast("Your account data could not be loaded. Please reload the page.");
+                    return;
+                }
+            }
+        } else if (isAppPage) {
+            clearAccountCache();
+            const currentPath = window.location.pathname.split("/").pop() + window.location.search;
+            window.location.replace("login.html?next=" + encodeURIComponent(currentPath));
+            return;
+        }
+
         initAuthForms();
         initAppNavigation();
         initPlanner();
@@ -2489,6 +2729,8 @@
         initProfilePage();
         initDashboard();
         initItineraryDetail();
-        if (document.body.classList.contains("itineraries-page")) initLegacyItinerariesPage();
+        if (body.classList.contains("itineraries-page")) initLegacyItinerariesPage();
     }
+
+    void startSite();
 })();

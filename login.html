@@ -31,10 +31,10 @@
                 <label for="login-email">Email</label>
                 <input id="login-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
                 <label for="login-password">Password</label>
-                <input id="login-password" name="password" type="password" autocomplete="current-password" minlength="4" placeholder="Enter your password" required>
+                <input id="login-password" name="password" type="password" autocomplete="current-password" minlength="8" maxlength="128" placeholder="Enter your password" required>
                 <button class="auth-submit" type="submit">Sign in →</button>
             </form>
-            <p class="auth-note">Course prototype: this demo stores your profile and trips in this browser only.</p>
+            <p class="auth-note">Your account is stored on the GoMigo server. Passwords are protected with salted password hashing.</p>
             <p class="auth-bottom-link">New to GoMigo? <a href="signup.html">Create an account</a></p>
         </section>
         <aside class="auth-art" aria-label="Travel inspiration">
