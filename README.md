@@ -234,7 +234,8 @@ The current frontend implementation uses:
 
 * **HTML5** — Structure and content
 * **CSS3** — Shared responsive styling in `site.css`
-* **JavaScript** — Client-side navigation, trip saving, favorites, and profile preferences in `site.js`
+* **JavaScript** — Client-side interactions in `site.js` and a small Node.js account API in `server.js`
+* **Node.js built-ins** — Password hashing, session cookies, and account data storage without runtime packages
 * **Git** — Version control
 * **GitHub** — Team collaboration and code management
 * **Figma** — UI/UX design and prototyping
@@ -261,7 +262,7 @@ The visual design is kept consistent throughout the user journey so that users f
 
 # 🚀 How to Run the Website
 
-GoMigo uses HTML, CSS, and browser-side JavaScript. No package installation is needed.
+Use Node.js 18 or later. The account API and web pages must run from the same server; opening an HTML file directly or using a static-only server will not support sign-in.
 
 ### Clone the Repository
 
@@ -275,23 +276,17 @@ Navigate into the project:
 cd GoMigo
 ```
 
-### Run Using a Browser
+### Start the local account server
 
-Open one of the page files from the project root.
-
-For example:
-
-```text
-landing_page.html
+```bash
+npm start
 ```
 
-### Run Using VS Code
+Open `http://localhost:3000`. For automatic restarts while editing, use `npm run dev`.
 
-For development, we recommend using **Visual Studio Code** with the **Live Server** extension.
+Account records and trip details are written to the ignored runtime file `data/accounts.json`. Passwords are stored as salted scrypt hashes; the server never stores the submitted password. Session cookies are HttpOnly and SameSite. Sessions end when the server restarts, while accounts and trip data remain on that server.
 
-1. Clone the repository.
-2. Open the GoMigo folder in VS Code.
-3. Open `landing_page.html` in Live Server. The other pages are linked from the sign-in and app navigation.
+The local server is a course-project implementation. A public deployment still needs HTTPS, a production database with backups, and account recovery and email verification before it should be used for real users.
 
 ---
 
@@ -360,20 +355,17 @@ GoMigo can be expanded with additional features in future versions, including:
 * 🌤️ Weather information
 * 💰 Real-time travel cost estimation
 * 📍 Location-based recommendations
-* 🔐 Complete user authentication
-* 💾 Cloud-based trip storage
 * 📱 Responsive mobile application
-* 🗄️ Backend and database integration
+* ✉️ Email verification and account recovery
+* 🗄️ Hosted database, backups, and production deployment
 
 ---
 
 # 📌 Project Status
 
-🚧 **Connected front-end prototype in development**
+🚧 **Full-stack course prototype in development**
 
-The pages share one stylesheet and one JavaScript file. Demo sign-in, trip saving, saved destinations, and profile preferences use this browser's local storage; there is no real authentication service or backend yet.
-
-Future development can add itinerary generation, backend services, and persistent accounts when those features are in scope.
+The pages share one stylesheet and browser script, with a same-origin Node.js API for account creation, sign-in, account-specific trips, saved places, and profile preferences. Account data persists on the server; active sessions use HttpOnly cookies. The local JSON store and in-memory sessions are intended for this course prototype, not production hosting.
 
 ---
 

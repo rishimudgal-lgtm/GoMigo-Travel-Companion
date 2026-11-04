@@ -49,7 +49,10 @@
             <label for="profile-name">Name</label>
             <input id="profile-name" name="name" autocomplete="name" required>
             <label for="profile-email">Email</label>
-            <input id="profile-email" name="email" type="email" autocomplete="email">
+            <div class="profile-email-field">
+                <input id="profile-email" name="email" type="email" autocomplete="email" readonly aria-describedby="profile-email-note">
+                <small class="profile-email-note" id="profile-email-note">Account email cannot be changed here.</small>
+            </div>
             <label for="profile-home">Home city (optional)</label>
             <input id="profile-home" name="home" autocomplete="address-level2" placeholder="e.g. Mumbai">
             <label for="profile-style">Travel style</label>
