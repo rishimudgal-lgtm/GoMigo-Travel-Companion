@@ -1,155 +1,119 @@
-# GoMigo — Full-Stack Travel Companion & Trip Planner
+# GoMigo — Travel Planner
 
-**GoMigo** is a full-stack web application built with **Node.js, Express, Handlebars (HBS), and MongoDB Atlas**. Designed to simplify travel discovery, itinerary planning, and INR budget management, GoMigo dynamically renders 100+ curated destinations and provides complete CRUD (Create, Read, Update, Delete) functionality for personalized trip planning.
+GoMigo is a student web project for discovering destinations and organizing personalized trips. Visitors can explore a curated destination catalog, enter trip details, review saved plans, and see a simple INR budget breakdown.
 
-## Live Application Screenshots
+The app uses server-rendered pages and a light, teal travel-focused design. It is a course prototype, not a production booking service.
 
-> **Note:** Save your screenshots inside a `docs/screenshots/` folder in your repository using the filenames below so they render automatically on GitHub.
+## Screenshots
 
-### 1. Landing Page & Destination Discovery (`/destinations` & `/explore`)
+### Destination discovery
 
+Browse popular places and search or filter the destination catalog.
 
-*Server-side rendered destination catalog powered by MongoDB Atlas with live search and category filtering.*
+![GoMigo destination discovery page](docs/screenshots/destinations.png)
 
-### 2. Trip Planner (`/trip-planner`)
+### Trip planner
 
+Enter a destination, dates, trip length, group size, budget, and travel style.
 
-*Interactive trip planning form with destination selection, travel style customization, and INR budget input.*
+![GoMigo trip planner page](docs/screenshots/trip-planner.png)
 
-### 3. My Trips & Saved Itineraries (`/my-trips` & `/saved`)
+### My trips
 
+Review saved plans and open an itinerary or manage a trip.
 
-*Dynamic dashboard displaying user-planned trips with quick actions to inspect itineraries, bookmark favorites, or delete trips.*
+![GoMigo My Trips page](docs/screenshots/my-trips.png)
 
-### 4. Personalized Itinerary & INR Budget Breakdown (`/itinerary/:id`)
+### Itinerary and budget
 
+View trip details with estimated per-day and per-traveller budget figures.
 
-*Detailed trip view featuring automated daily spend (`₹/day`) and per-person split (`₹/person`) calculations, alongside an inline update form.*
+![GoMigo itinerary details page](docs/screenshots/itinerary-detail.png)
 
-### 5. MongoDB Atlas Cloud Database (`gomigo`)
+## Features
 
+- Destination catalog with category filtering and local destination photography
+- Trip creation, editing, bookmarking, and deletion
+- My Trips and Saved pages backed by MongoDB
+- Itinerary view with estimated daily and per-traveller INR costs
+- Landing, Explore, Travel Guide, Profile, Sign In, and Sign Up pages
+- Responsive layouts built with HTML, CSS, and vanilla JavaScript
 
-*Live MongoDB Atlas cluster storing `destinations` (103+ documents), `trips`, and `users` collections.*
+## Technology
 
-## Key Features
+- Node.js and Express
+- Handlebars templates (`.hbs`)
+- MongoDB and Mongoose
+- HTML, CSS, and vanilla JavaScript
 
-* **Dynamic Destination Catalog:** Seeded with 103+ global and Indian destinations stored in MongoDB Atlas (`destinations` collection) and rendered dynamically via Handlebars `{{#each}}` templates.
+## Run locally
 
-* **Complete Trip CRUD Operations:**
+### Requirements
 
-  * **Create:** Plan new trips via `/trip-planner` (`POST /trips`) with destination, dates, duration, traveller count, INR budget, and travel style.
+- Node.js and npm
+- A MongoDB database, such as MongoDB Atlas
 
-  * **Read:** View all planned trips (`/my-trips`), bookmarked trips (`/saved`), and detailed single-trip views (`/itinerary/:id`).
+### Setup
 
-  * **Update:** Modify trip budgets, travel styles, and personal notes (`POST /trips/:id/update`), or toggle saved bookmarks (`POST /trips/:id/save`).
+1. Install dependencies:
 
-  * **Delete:** Remove unwanted trips permanently from MongoDB (`POST /trips/:id/delete`).
-
-* **Smart INR Budget Breakdown:** Automatically computes **Estimated Daily Spend (`₹/day`)** and **Per-Person Share (`₹/person`)** on every trip itinerary page.
-
-* **User Authentication Persistence:** Wires login (`/login`) and registration (`/signup`) forms directly to the MongoDB `users` collection.
-
-## Tech Stack
-
-* **Backend Runtime & Framework:** Node.js, Express.js
-
-* **Templating Engine:** Handlebars (`hbs`) — Server-Side Rendering (SSR)
-
-* **Database & ODM:** MongoDB Atlas, Mongoose
-
-* **Frontend:** HTML5, CSS3 (Custom Teal Theme), Vanilla JavaScript
-
-* **Environment & Dev Tools:** `dotenv`, `nodemon`
-
-## Project Architecture (MVC)
-
-```
-GoMigo-Travel-Companion/
-├── config/
-│   └── db.js                 # MongoDB Atlas connection setup
-├── controllers/
-│   └── mainController.js     # Business logic for pages, auth, & Trip CRUD
-├── models/
-│   ├── Destination.js        # Mongoose schema for seeded destinations
-│   ├── Trip.js               # Mongoose schema for user trip plans
-│   └── User.js               # Mongoose schema for user accounts
-├── public/
-│   ├── js/site.js            # Client-side UI interactivity & filters
-│   ├── explore_assets/       # Destination photography
-│   ├── main-menu-assets/     # App branding & sidebar icons
-│   └── site.css              # Core stylesheet
-├── routes/
-│   └── appRoutes.js          # Express GET and POST route definitions
-├── views/                    # Dynamic Handlebars (.hbs) templates
-│   ├── landing_page.hbs
-│   ├── login.hbs & signup.hbs
-│   ├── main-menu.hbs
-│   ├── destinations.hbs & explore-app.hbs
-│   ├── trip-planner.hbs
-│   ├── my-trips.hbs & saved.hbs
-│   └── itinerary.hbs
-├── seed.js                   # Database seeding script for destinations
-├── server.js                 # Express application entry point
-└── package.json
-
-```
-
-## Routes & API Endpoints
-
-| Method | Endpoint | Description | 
-| ----- | ----- | ----- | 
-| `GET` | `/` | Renders the GoMigo landing page | 
-| `GET` | `/login`, `/signup` | Renders authentication pages | 
-| `POST` | `/login`, `/signup` | Authenticates/persists user data in MongoDB `users` | 
-| `GET` | `/main-menu` | Renders the authenticated user dashboard | 
-| `GET` | `/destinations`, `/explore` | Fetches and renders all seeded destinations from MongoDB | 
-| `GET` | `/trip-planner` | Renders the interactive trip creation form | 
-| `POST` | `/trips` | **Create:** Saves a new trip document to MongoDB | 
-| `GET` | `/my-trips` | **Read:** Displays all planned trips from MongoDB | 
-| `GET` | `/saved` | **Read:** Displays bookmarked (`isSaved: true`) trips | 
-| `GET` | `/itinerary/:id` | **Read:** Displays single trip details & INR cost breakdown | 
-| `POST` | `/trips/:id/update` | **Update:** Updates trip budget, style, and notes | 
-| `POST` | `/trips/:id/save` | **Update:** Toggles trip bookmark status | 
-| `POST` | `/trips/:id/delete` | **Delete:** Deletes a trip from MongoDB | 
-
-## Local Setup & Installation
-
-1. **Clone the repository:**
-
-   ```
-   git clone https://github.com/rishimudgal-lgtm/GoMigo-Travel-Companion.git
-   cd GoMigo-Travel-Companion
-   
-   ```
-
-2. **Install dependencies:**
-
-   ```
+   ```bash
    npm install
-   
    ```
 
-3. **Configure environment variables:**
-   Create a `.env` file in the root directory and add your MongoDB Atlas connection string:
+2. Create a `.env` file in the project root:
 
-   ```
+   ```env
    PORT=3000
    MONGO_URI=mongodb+srv://<username>:<password>@<cluster-url>/gomigo?retryWrites=true&w=majority
-   
    ```
 
-4. **Seed the destinations database (Optional):**
+3. Seed the destination catalog if the database is empty:
 
-   ```
+   ```bash
    node seed.js
-   
    ```
 
-5. **Start the development server:**
+4. Start the app:
 
-   ```
+   ```bash
    npm run dev
-   
    ```
 
-   Open `http://localhost:3000` in your browser.
+5. Open [http://localhost:3000](http://localhost:3000).
+
+`npm start` runs the server without watch mode. Keep `.env` private and do not commit database credentials.
+
+## Main pages and trip routes
+
+| Method | Path | Purpose |
+| --- | --- | --- |
+| `GET` | `/` | Landing page |
+| `GET` | `/destinations` | Public destination catalog |
+| `GET` | `/explore` | App destination discovery page |
+| `GET` | `/trip-planner` | Trip planning form |
+| `POST` | `/trips` | Create a trip |
+| `GET` | `/my-trips` | List trips |
+| `GET` | `/saved` | List bookmarked trips |
+| `GET` | `/itinerary/:id` | View an itinerary and budget estimates |
+| `POST` | `/trips/:id/update` | Update a trip |
+| `POST` | `/trips/:id/save` | Toggle a trip bookmark |
+| `POST` | `/trips/:id/delete` | Delete a trip |
+
+## Project structure
+
+```text
+config/          MongoDB connection
+controllers/     Page rendering and trip actions
+models/          Mongoose models for destinations, trips, and users
+public/          Stylesheets, browser JavaScript, and image assets
+routes/          Express page and form routes
+views/           Handlebars page templates
+docs/screenshots/README screenshots
+seed.js          Destination catalog seeding script
+server.js        Express application entry point
+```
+
+## Prototype note
+
+The Sign In and Sign Up routes are demonstration flows; they do not implement session-based authentication or password hashing. Use fictional demo credentials only. Trip records are not tied to individual user accounts.
