@@ -34,7 +34,7 @@ function setup(values = {}, failWrites = false) {
     };
     document.body.classList = { contains: () => false };
     const window = {
-        location: { search: '', href: 'trip-planner.html' },
+        location: { search: '', href: '/trip-planner' },
         localStorage: {
             getItem: (key) => storage.get(key) ?? null,
             setItem: (key, value) => { if (failWrites) throw Error('Storage full'); storage.set(key, value); }
@@ -53,7 +53,7 @@ function setup(values = {}, failWrites = false) {
     let run = setup(values);
     vm.runInContext('initPlanner()', run.context);
     run.form.events.submit({ preventDefault() {} });
-    assert.equal(run.window.location.href, 'my-trips.html');
+    assert.equal(run.window.location.href, '/my-trips');
     let trips = JSON.parse(storage.get('gomigo.trips'));
     assert.equal(trips[0].destination, 'Jaipur');
     assert.equal(trips[0].budget, 5000);
@@ -87,7 +87,7 @@ function setup(values = {}, failWrites = false) {
     run = setup(values, true);
     vm.runInContext('initPlanner()', run.context);
     run.form.events.submit({ preventDefault() {} });
-    assert.equal(run.window.location.href, 'trip-planner.html');
+    assert.equal(run.window.location.href, '/trip-planner');
     assert(run.toasts.some((message) => message.includes('could not be saved')));
     console.log('PASS: planner → JSON storage → My Trips; reload, multiple trips, requests, removal, cross-tab refresh, corrupt storage, and failed-save handling.');
 })().catch((error) => { console.error(error); process.exitCode = 1; });

@@ -8,26 +8,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="site.css">
-    <script src="site.js" defer></script>
 </head>
 <body class="auth-page login-page">
     <header class="auth-topbar">
-        <a href="landing_page.html" class="auth-logo"><img src="landing_assets/GoMigo-removebg-preview 1.svg" alt="GoMigo"></a>
+        <a href="/" class="auth-logo"><img src="landing_assets/GoMigo-removebg-preview 1.svg" alt="GoMigo"></a>
         <nav class="auth-nav-links" aria-label="Main navigation">
-            <a href="landing_page.html">Home</a>
-            <a href="landing_page.html#how-it-works">Explore</a>
-            <a href="destinations.html">Destinations</a>
-            <a href="travel-guide-preview.html">Travel Guide</a>
-            <a href="login.html?next=my-trips.html" aria-current="page">My Trips</a>
+            <a href="/">Home</a>
+            <a href="/#how-it-works">Explore</a>
+            <a href="/destinations">Destinations</a>
+            <a href="/travel-guide-preview">Travel Guide</a>
+            <a href="/my-trips" aria-current="page">My Trips</a>
         </nav>
-        <a href="signup.html" class="auth-switch-link">Create account</a>
+        <a href="/signup" class="auth-switch-link">Create account</a>
     </header>
     <main class="auth-layout">
         <section class="auth-card">
             <p class="content-eyebrow">WELCOME BACK</p>
             <h1>Sign in to your travel space.</h1>
             <p class="auth-intro">Pick up your plans, revisit saved places, and keep your travel details together.</p>
-            <form id="login-form" data-auth-form="login">
+            <form id="login-form" data-auth-form="login" action="/login" method="POST">
                 <label for="login-email">Email</label>
                 <input id="login-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
                 <label for="login-password">Password</label>
@@ -35,7 +34,7 @@
                 <button class="auth-submit" type="submit">Sign in →</button>
             </form>
             <p class="auth-note">Your account is stored on the GoMigo server. Passwords are protected with salted password hashing.</p>
-            <p class="auth-bottom-link">New to GoMigo? <a href="signup.html">Create an account</a></p>
+            <p class="auth-bottom-link">New to GoMigo? <a href="/signup">Create an account</a></p>
         </section>
         <aside class="auth-art" aria-label="Travel inspiration">
             <div><span>GO AT YOUR PACE</span><h2>Your next story starts with a plan.</h2></div>

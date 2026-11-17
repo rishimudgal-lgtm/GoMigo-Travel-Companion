@@ -8,26 +8,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="site.css">
-    <script src="site.js" defer></script>
 </head>
 <body class="auth-page signup-page">
     <header class="auth-topbar">
-        <a href="landing_page.html" class="auth-logo"><img src="landing_assets/GoMigo-removebg-preview 1.svg" alt="GoMigo"></a>
+        <a href="/" class="auth-logo"><img src="landing_assets/GoMigo-removebg-preview 1.svg" alt="GoMigo"></a>
         <nav class="auth-nav-links" aria-label="Main navigation">
-            <a href="landing_page.html">Home</a>
-            <a href="landing_page.html#how-it-works">Explore</a>
-            <a href="destinations.html">Destinations</a>
-            <a href="travel-guide-preview.html">Travel Guide</a>
-            <a href="login.html?next=my-trips.html">My Trips</a>
+            <a href="/">Home</a>
+            <a href="/#how-it-works">Explore</a>
+            <a href="/destinations">Destinations</a>
+            <a href="/travel-guide-preview">Travel Guide</a>
+            <a href="/my-trips">My Trips</a>
         </nav>
-        <a href="login.html" class="auth-switch-link">Sign in</a>
+        <a href="/login" class="auth-switch-link">Sign in</a>
     </header>
     <main class="auth-layout">
         <section class="auth-card">
             <p class="content-eyebrow">YOUR NEXT TRIP, YOUR WAY</p>
             <h1>Create your GoMigo account.</h1>
             <p class="auth-intro">Start saving your ideas and shape a trip around what matters to you.</p>
-            <form id="signup-form" data-auth-form="signup">
+            <form id="signup-form" data-auth-form="signup" action="/signup" method="POST">
                 <label for="signup-name">Name</label>
                 <input id="signup-name" name="name" autocomplete="name" placeholder="Your name" required>
                 <label for="signup-email">Email</label>
@@ -39,7 +38,7 @@
                 <button class="auth-submit" type="submit">Create account →</button>
             </form>
             <p class="auth-note">A salted password hash protects your sign-in. Trips and preferences stay with this account.</p>
-            <p class="auth-bottom-link">Already have an account? <a href="login.html">Sign in</a></p>
+            <p class="auth-bottom-link">Already have an account? <a href="/login">Sign in</a></p>
         </section>
         <aside class="auth-art" aria-label="Travel inspiration">
             <div><span>MAKE SPACE FOR WONDER</span><h2>Start with the places you dream about.</h2></div>

@@ -11,7 +11,7 @@ assert len(catalog) == 100, f'Expected 100 places, got {len(catalog)}'
 assert len({p['name'] for p in catalog}) == 100
 assert all((ROOT / p['image']).exists() for p in catalog)
 esc = lambda value: html.escape(value, quote=True)
-page = ROOT / 'destinations.html'
+page = ROOT / '/destinations'
 text = page.read_text(encoding='utf-8')
 start = text.index('      <div class="destination-grid" id="destination-grid">')
 end = text.index('      <p class="empty-state"', start)
@@ -22,7 +22,7 @@ assert len(activities) == 3
 cards = []
 for p in catalog:
     name = esc(p['name'])
-    target = 'login.html?next=trip-planner.html&amp;destination=' + urllib.parse.quote(p['name'])
+    target = '/trip-planner&amp;destination=' + urllib.parse.quote(p['name'])
     cards.append(f'''        <article class="destination-card" data-tags="{esc(p['tags'])}" data-search="{esc(p['name'] + ' ' + p['country'] + ' ' + p['aliases'])}">
           <img src="{esc(p['image'])}" alt="{esc(p['alt'])}" loading="lazy" decoding="async" width="960" height="640">
           <span class="explore-place-name">{name}<small>{esc(p['country'])}</small></span>
@@ -49,7 +49,7 @@ assert marker in js
 js = re.sub(r'    // Local Wikimedia destination catalog;[\s\S]*?(?=    const memoryStore = new Map\(\);)', '', js)
 public_fields=['name','country','image','alt','description','photoSource','author','license','licenseUrl']
 data=[{k:p[k] for k in public_fields} for p in catalog]
-addition='''    // Local Wikimedia destination catalog; photo credits live in destinations.html.
+addition='''    // Local Wikimedia destination catalog; photo credits live in /destinations.
     const destinationCatalog = %s;
     destinationCatalog.forEach((place) => {
         const existing = destinations.find((item) => item.name === place.name);

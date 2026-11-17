@@ -8,23 +8,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="site.css">
-    <script src="site.js" defer></script>
+    <script src="/js/site.js" defer></script>
 </head>
 <body class="app-page saved-page">
 <div class="page">
     <aside class="sidebar">
-        <a class="sidebar-logo" href="main-menu.html" aria-label="GoMigo home"><img src="main-menu-assets/gomigo-logo.png" alt="GoMigo"></a>
+        <a class="sidebar-logo" href="/main-menu" aria-label="GoMigo home"><img src="main-menu-assets/gomigo-logo.png" alt="GoMigo"></a>
         <nav class="sidebar-nav" aria-label="GoMigo navigation">
-            <a href="main-menu.html" class="nav-button" data-nav="home">Home</a>
-            <a href="trip-planner.html" class="nav-button" data-nav="plan">Plan Trip</a>
-            <a href="my-trips.html" class="nav-button" data-nav="trips">My Trips</a>
-            <a href="explore-app.html" class="nav-button" data-nav="explore">Explore</a>
-            <a href="saved.html" class="nav-button active" data-nav="saved">Saved</a>
-            <a href="travel-guide.html" class="nav-button" data-nav="guide">Travel Guide</a>
-            <a href="profile.html" class="nav-button" data-nav="profile">Profile</a>
+            <a href="/main-menu" class="nav-button" data-nav="home">Home</a>
+            <a href="/trip-planner" class="nav-button" data-nav="plan">Plan Trip</a>
+            <a href="/my-trips" class="nav-button" data-nav="trips">My Trips</a>
+            <a href="/explore" class="nav-button" data-nav="explore">Explore</a>
+            <a href="/saved" class="nav-button active" data-nav="saved">Saved</a>
+            <a href="//travel-guide" class="nav-button" data-nav="guide">Travel Guide</a>
+            <a href="/profile" class="nav-button" data-nav="profile">Profile</a>
         </nav>
         <div class="sidebar-quote">Good<br>Trips<br>Happen<br>Here ♡</div>
-        <a class="sidebar-profile" href="profile.html">
+        <a class="sidebar-profile" href="/profile">
             <img src="main-menu-assets/profile.png" alt="">
             <div class="profile-text"><h4 data-user-name>Hey, Explorer!</h4><p>Profile &amp; preferences</p></div>
         </a>
@@ -36,7 +36,7 @@
             <p class="content-eyebrow">PLACES TO COME BACK TO</p>
             <h1>Saved places &amp; trips</h1>
             <p>Places you bookmarked and trip plans you created.</p>
-            <a class="content-primary-link" href="explore-app.html">Explore destinations →</a>
+            <a class="content-primary-link" href="/explore">Explore destinations →</a>
         </header>
         <section class="destination-page-grid" id="saved-grid" aria-live="polite" aria-label="Saved destinations"></section>
         <section class="saved-trip-section" aria-labelledby="saved-trip-heading">
@@ -51,9 +51,20 @@
                     <button type="submit" aria-label="Apply budget range">Go</button>
                 </form>
             </div>
-            <div class="saved-trip-list" id="saved-trip-list" aria-live="polite"></div>
-            <p class="saved-trip-empty" id="saved-trip-empty">Your trip plans will appear here after you create one.</p>
-        </section>
+            <div class="saved-trip-list" id="saved-trip-list" aria-live="polite">
+  {{#each trips}}
+    <div class="trip-card">
+      <h3>{{this.destination}}</h3>
+      <p><strong>Date:</strong> {{this.dates}} • <strong>Duration:</strong> {{this.duration}}</p>
+      <p><strong>Travellers:</strong> {{this.travellers}} • <strong>Style:</strong> {{this.travelStyle}}</p>
+      <p><strong>Total Budget:</strong> ₹{{this.budgetInr}}</p>
+      <a href="/itinerary/{{this._id}}">View Itinerary & Budget</a>
+    </div>
+  {{else}}
+    <p class="saved-trip-empty" id="saved-trip-empty">Your saved trip plans will appear here. <a href="/my-trips">Bookmark a trip from My Trips!</a></p>
+  {{/each}}
+</div>
+</section>
     </main>
 </div>
 </body>

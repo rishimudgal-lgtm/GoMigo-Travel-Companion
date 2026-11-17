@@ -2,7 +2,7 @@
 
 The existing vanilla JavaScript in `site.js` saves the trip planner form to the
 `gomigo.trips` browser-local storage key as a JSON array. After a successful save,
-the planner opens `my-trips.html`, which reads the same key and renders the trips,
+the planner opens `/my-trips`, which reads the same key and renders the trips,
 newest first. Existing saved trips are preserved.
 
 Each trip stores an ID, destination, dates, duration, travelers, daily budget in

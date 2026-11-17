@@ -1,379 +1,155 @@
-# 🌍 GoMigo — Your Travel Companion
+# GoMigo — Full-Stack Travel Companion & Trip Planner
 
-## ✈️ About GoMigo
+**GoMigo** is a full-stack web application built with **Node.js, Express, Handlebars (HBS), and MongoDB Atlas**. Designed to simplify travel discovery, itinerary planning, and INR budget management, GoMigo dynamically renders 100+ curated destinations and provides complete CRUD (Create, Read, Update, Delete) functionality for personalized trip planning.
 
-**GoMigo** is a travel companion website designed to make travel planning simple, personalized, and enjoyable.
+## Live Application Screenshots
 
-The platform provides users with a complete travel experience — starting from discovering GoMigo, signing into their account, exploring destinations, planning their trips, managing saved trips, and maintaining their personal profile.
+> **Note:** Save your screenshots inside a `docs/screenshots/` folder in your repository using the filenames below so they render automatically on GitHub.
 
-GoMigo brings different parts of the travel planning process together in one convenient platform, helping users spend less time organizing and more time enjoying their journey.
+### 1. Landing Page & Destination Discovery (`/destinations` & `/explore`)
 
----
 
-# 🎯 Our Goal
+*Server-side rendered destination catalog powered by MongoDB Atlas with live search and category filtering.*
 
-The goal of GoMigo is to simplify the travel planning experience by providing users with a single platform where they can:
+### 2. Trip Planner (`/trip-planner`)
 
-* 🌎 Discover new destinations
-* 🔐 Create and access their account
-* 🧭 Explore places and travel ideas
-* 🗺️ Plan trips according to their preferences
-* 💰 Set a suitable travel budget
-* 📅 Organize travel dates and duration
-* 🧳 Manage their planned trips
-* 👤 Manage their personal profile and preferences
 
----
+*Interactive trip planning form with destination selection, travel style customization, and INR budget input.*
 
-# 🔄 Website Flow
+### 3. My Trips & Saved Itineraries (`/my-trips` & `/saved`)
 
-The current browser prototype follows this flow:
 
-```text
-Landing page ── Explore → public Explore Destinations page (no sign-in required)
-      ├─ Destinations → public destination discovery
-      ├─ Travel Guide → public travel guide preview
-      ├─ My Trips → Sign In → My Trips page
-      ├─ Login → Sign In page
-      ├─ Get Started → Create Account page
-      └─ Plan Your Trip → Trip Planner
+*Dynamic dashboard displaying user-planned trips with quick actions to inspect itineraries, bookmark favorites, or delete trips.*
 
-Signed-in sidebar: Home · Plan Trip · My Trips · Explore · Saved · Travel Guide · Profile
-Signed-in Explore opens a separate app page with 12 additional destinations; signed-in Travel Guide has its own app page.
+### 4. Personalized Itinerary & INR Budget Breakdown (`/itinerary/:id`)
+
+
+*Detailed trip view featuring automated daily spend (`₹/day`) and per-person split (`₹/person`) calculations, alongside an inline update form.*
+
+### 5. MongoDB Atlas Cloud Database (`gomigo`)
+
+
+*Live MongoDB Atlas cluster storing `destinations` (103+ documents), `trips`, and `users` collections.*
+
+## Key Features
+
+* **Dynamic Destination Catalog:** Seeded with 103+ global and Indian destinations stored in MongoDB Atlas (`destinations` collection) and rendered dynamically via Handlebars `{{#each}}` templates.
+
+* **Complete Trip CRUD Operations:**
+
+  * **Create:** Plan new trips via `/trip-planner` (`POST /trips`) with destination, dates, duration, traveller count, INR budget, and travel style.
+
+  * **Read:** View all planned trips (`/my-trips`), bookmarked trips (`/saved`), and detailed single-trip views (`/itinerary/:id`).
+
+  * **Update:** Modify trip budgets, travel styles, and personal notes (`POST /trips/:id/update`), or toggle saved bookmarks (`POST /trips/:id/save`).
+
+  * **Delete:** Remove unwanted trips permanently from MongoDB (`POST /trips/:id/delete`).
+
+* **Smart INR Budget Breakdown:** Automatically computes **Estimated Daily Spend (`₹/day`)** and **Per-Person Share (`₹/person`)** on every trip itinerary page.
+
+* **User Authentication Persistence:** Wires login (`/login`) and registration (`/signup`) forms directly to the MongoDB `users` collection.
+
+## Tech Stack
+
+* **Backend Runtime & Framework:** Node.js, Express.js
+
+* **Templating Engine:** Handlebars (`hbs`) — Server-Side Rendering (SSR)
+
+* **Database & ODM:** MongoDB Atlas, Mongoose
+
+* **Frontend:** HTML5, CSS3 (Custom Teal Theme), Vanilla JavaScript
+
+* **Environment & Dev Tools:** `dotenv`, `nodemon`
+
+## Project Architecture (MVC)
+
+```
+GoMigo-Travel-Companion/
+├── config/
+│   └── db.js                 # MongoDB Atlas connection setup
+├── controllers/
+│   └── mainController.js     # Business logic for pages, auth, & Trip CRUD
+├── models/
+│   ├── Destination.js        # Mongoose schema for seeded destinations
+│   ├── Trip.js               # Mongoose schema for user trip plans
+│   └── User.js               # Mongoose schema for user accounts
+├── public/
+│   ├── js/site.js            # Client-side UI interactivity & filters
+│   ├── explore_assets/       # Destination photography
+│   ├── main-menu-assets/     # App branding & sidebar icons
+│   └── site.css              # Core stylesheet
+├── routes/
+│   └── appRoutes.js          # Express GET and POST route definitions
+├── views/                    # Dynamic Handlebars (.hbs) templates
+│   ├── landing_page.hbs
+│   ├── login.hbs & signup.hbs
+│   ├── main-menu.hbs
+│   ├── destinations.hbs & explore-app.hbs
+│   ├── trip-planner.hbs
+│   ├── my-trips.hbs & saved.hbs
+│   └── itinerary.hbs
+├── seed.js                   # Database seeding script for destinations
+├── server.js                 # Express application entry point
+└── package.json
+
 ```
 
----
-
-# 📄 Website Pages
-
-The page descriptions below outline the broader product vision. The current prototype gives the main signed-in tabs their own pages and shares one sidebar across them.
-
-## 01 — 🏠 Home Page
-
-The **Home Page** is the entry point of the GoMigo website.
-
-It introduces visitors to the platform, communicates the purpose of GoMigo, and encourages users to begin their travel journey.
-
-### Key sections include:
-
-* Navigation Bar
-* Hero Section
-* Introduction to GoMigo
-* How It Works
-* Travel Inspiration
-* Featured Destinations
-* Call-to-Action Sections
-* Footer
-
-The main purpose of this page is to answer:
-
-> **"What is GoMigo and how can it help me?"**
-
-From the Home Page, users can proceed to the **Login Page** to access the complete travel experience.
-
----
-
-## 02 — 🔐 Login Page
-
-The **Login Page** allows users to securely access their GoMigo account.
-
-It acts as the gateway between the public-facing website and the personalized travel experience.
-
-The page can provide:
-
-* Email / Username
-* Password
-* Login button
-* Sign-up option
-* Forgot password option
-
-After logging in, users can access the different features of GoMigo, including destination exploration, trip planning, saved trips, and their profile.
-
----
-
-## 03 — 🧭 Explore Destinations
-
-The **Explore Destinations Page** helps users discover places they may want to visit.
-
-This section is designed to provide inspiration before users begin planning their trip.
-
-Users can explore:
-
-* Popular destinations
-* Travel inspiration
-* Places to visit
-* Destination highlights
-* Different travel experiences
-* Destination information
-
-The main purpose of this page is to answer:
-
-> **"Where do I want to go?"**
-
-Once users find a destination they are interested in, they can move to the **Trip Planner** and start organizing their journey.
-
----
-
-## 04 — 🗺️ Trip Planner
-
-The **Trip Planner** is one of the core features of GoMigo.
-
-It allows users to provide their travel requirements and preferences so that they can organize their trip in a structured way.
-
-Users can specify information such as:
-
-* 📍 Destination
-* 📅 Travel dates
-* ⏱️ Trip duration
-* 💰 Budget
-* 🧳 Travel preferences
-* 👥 Trip requirements
-
-The planning process helps users answer:
-
-> **"How do I want to experience my trip?"**
-
-The information entered into the Trip Planner can be used to organize and save the user's journey under **My Trips**.
-
----
-
-## 05 — 🧳 My Trips
-
-The **My Trips Page** provides users with a centralized place to view and manage their planned journeys.
-
-Instead of having to recreate their travel plans every time, users can access their previously created trips from one location.
-
-This section can include:
-
-* Upcoming trips
-* Previous trips
-* Saved trips
-* Trip destinations
-* Travel dates
-* Trip duration
-* Budget information
-* Trip details
-* Options to edit or manage trips
-
-The main purpose of this page is to answer:
-
-> **"What trips have I planned?"**
-
----
-
-## 06 — 👤 Profile Page
-
-The **Profile Page** gives users a personalized space to manage their account and travel preferences.
-
-Users can manage information such as:
-
-* Personal details
-* Profile information
-* Travel preferences
-* Preferred destinations
-* Account settings
-* Other personalization options
-
-The profile information can help GoMigo provide a more personalized experience for the user.
-
-The main purpose of this page is to answer:
-
-> **"Who am I as a traveler, and what are my preferences?"**
-
----
-
-# 📁 Project Structure
-
-The current prototype keeps its pages, shared styling, and shared interactions at the project root.
-
-```text
-GoMigo/
-│
-├── README.md
-├── landing_page.html
-├── login.html
-├── signup.html
-├── main-menu.html
-├── trip-planner.html
-├── destinations.html
-├── explore.html
-├── explore-app.html
-├── my-trips.html
-├── saved.html
-├── travel-guide.html
-├── travel-guide-preview.html
-├── profile.html
-├── site.css
-├── site.js
-├── landing_assets/
-├── main-menu-assets/
-└── trip-planner-assets/
-```
-
-### 📌 Asset Management
-
-Page-specific images remain in their existing asset folders. All pages now load the shared `site.css` and `site.js` files.
-
-For example:
-
-```text
-landing_assets/
-main-menu-assets/
-trip-planner-assets/
-```
-
-Page-specific images, icons, illustrations, and other visual resources should be stored inside the corresponding folder.
-
-This keeps the project organized and prevents assets from different pages from being mixed together.
-
----
-
-# 🛠️ Technologies Used
-
-The current frontend implementation uses:
-
-* **HTML5** — Structure and content
-* **CSS3** — Shared responsive styling in `site.css`
-* **JavaScript** — Client-side interactions in `site.js` and a small Node.js account API in `server.js`
-* **Node.js built-ins** — Password hashing, session cookies, and account data storage without runtime packages
-* **Git** — Version control
-* **GitHub** — Team collaboration and code management
-* **Figma** — UI/UX design and prototyping
-
----
-
-# 🎨 Design Approach
-
-GoMigo follows a clean, modern, and travel-focused design approach.
-
-The website focuses on:
-
-* 🌿 A welcoming travel-oriented visual style
-* 🧭 Simple and intuitive navigation
-* 🎨 Consistent color palette
-* ✨ Clear typography
-* 🖼️ Engaging travel imagery
-* 📱 User-friendly layouts
-* 🔄 Consistency across all pages
-
-The visual design is kept consistent throughout the user journey so that users feel they are interacting with one connected platform rather than separate webpages.
-
----
-
-# 🚀 How to Run the Website
-
-Use Node.js 18 or later. The account API and web pages must run from the same server; opening an HTML file directly or using a static-only server will not support sign-in.
-
-### Clone the Repository
-
-```bash
-git clone <repository-url>
-```
-
-Navigate into the project:
-
-```bash
-cd GoMigo
-```
-
-### Start the local account server
-
-```bash
-npm start
-```
-
-Open `http://localhost:3000`. For automatic restarts while editing, use `npm run dev`.
-
-Account records and trip details are written to the ignored runtime file `data/accounts.json`. Passwords are stored as salted scrypt hashes; the server never stores the submitted password. Session cookies are HttpOnly and SameSite. Sessions end when the server restarts, while accounts and trip data remain on that server.
-
-The local server is a course-project implementation. A public deployment still needs HTTPS, a production database with backups, and account recovery and email verification before it should be used for real users.
-
----
-
-# 🔀 GitHub Collaboration
-
-GoMigo is being developed collaboratively by a team of three members.
-
-To avoid conflicts, team members should work using separate branches and merge their completed work into the `main` branch.
-
-### Get the latest code
-
-```bash
-git pull origin main
-```
-
-### Create a branch
-
-```bash
-git checkout -b your-branch-name
-```
-
-### Add changes
-
-```bash
-git add .
-```
-
-### Commit changes
-
-```bash
-git commit -m "Add changes"
-```
-
-### Push the branch
-
-```bash
-git push origin your-branch-name
-```
-
-After pushing the branch, create a **Pull Request** on GitHub and merge it into `main` after reviewing the changes.
-
----
-
-# 👥 Team
-
-GoMigo is developed collaboratively by a team of four members.
-
-| Team Member     | Contribution                 |
-
-| Rishi Mudgal    |Team Lead|
-| Khushboo Kapoor |  Frontend Development |
-| Prakhar Jain    | Backend Development |
-| Rishabh         | UI/UX |
-
----
-
-# 🔮 Future Scope
-
-GoMigo can be expanded with additional features in future versions, including:
-
-* 🤖 AI-powered travel recommendations
-* 🗺️ Interactive maps
-* 🧳 Automatic itinerary generation
-* 🏨 Hotel recommendations
-* ✈️ Flight information
-* 🌤️ Weather information
-* 💰 Real-time travel cost estimation
-* 📍 Location-based recommendations
-* 📱 Responsive mobile application
-* ✉️ Email verification and account recovery
-* 🗄️ Hosted database, backups, and production deployment
-
----
-
-# 📌 Project Status
-
-🚧 **Full-stack course prototype in development**
-
-The pages share one stylesheet and browser script, with a same-origin Node.js API for account creation, sign-in, account-specific trips, saved places, and profile preferences. Account data persists on the server; active sessions use HttpOnly cookies. The local JSON store and in-memory sessions are intended for this course prototype, not production hosting.
-
----
-
-# 🌟 Vision
-
-> **"Plan less. Explore more."**
-
-GoMigo aims to become a complete travel companion that takes users through the entire travel planning journey — from discovering a destination to planning, saving, and managing their trips.
-
-**Explore. Plan. Travel. GoMigo.** 🌍✈️
-
+## Routes & API Endpoints
+
+| Method | Endpoint | Description | 
+| ----- | ----- | ----- | 
+| `GET` | `/` | Renders the GoMigo landing page | 
+| `GET` | `/login`, `/signup` | Renders authentication pages | 
+| `POST` | `/login`, `/signup` | Authenticates/persists user data in MongoDB `users` | 
+| `GET` | `/main-menu` | Renders the authenticated user dashboard | 
+| `GET` | `/destinations`, `/explore` | Fetches and renders all seeded destinations from MongoDB | 
+| `GET` | `/trip-planner` | Renders the interactive trip creation form | 
+| `POST` | `/trips` | **Create:** Saves a new trip document to MongoDB | 
+| `GET` | `/my-trips` | **Read:** Displays all planned trips from MongoDB | 
+| `GET` | `/saved` | **Read:** Displays bookmarked (`isSaved: true`) trips | 
+| `GET` | `/itinerary/:id` | **Read:** Displays single trip details & INR cost breakdown | 
+| `POST` | `/trips/:id/update` | **Update:** Updates trip budget, style, and notes | 
+| `POST` | `/trips/:id/save` | **Update:** Toggles trip bookmark status | 
+| `POST` | `/trips/:id/delete` | **Delete:** Deletes a trip from MongoDB | 
+
+## Local Setup & Installation
+
+1. **Clone the repository:**
+
+   ```
+   git clone https://github.com/rishimudgal-lgtm/GoMigo-Travel-Companion.git
+   cd GoMigo-Travel-Companion
+   
+   ```
+
+2. **Install dependencies:**
+
+   ```
+   npm install
+   
+   ```
+
+3. **Configure environment variables:**
+   Create a `.env` file in the root directory and add your MongoDB Atlas connection string:
+
+   ```
+   PORT=3000
+   MONGO_URI=mongodb+srv://<username>:<password>@<cluster-url>/gomigo?retryWrites=true&w=majority
+   
+   ```
+
+4. **Seed the destinations database (Optional):**
+
+   ```
+   node seed.js
+   
+   ```
+
+5. **Start the development server:**
+
+   ```
+   npm run dev
+   
+   ```
+
+   Open `http://localhost:3000` in your browser.

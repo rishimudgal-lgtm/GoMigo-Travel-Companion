@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Trips | GoMigo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
+    <script src="/js/site.js" defer></script>
+</head>
+<body class="app-page trips-page">
+<div class="page">
+    <aside class="sidebar">
+        <a class="sidebar-logo" href="/main-menu" aria-label="GoMigo home"><img src="main-menu-assets/gomigo-logo.png" alt="GoMigo"></a>
+        <nav class="sidebar-nav" aria-label="GoMigo navigation">
+            <a href="/main-menu" class="nav-button" data-nav="home">Home</a>
+            <a href="/trip-planner" class="nav-button" data-nav="plan">Plan Trip</a>
+            <a href="/my-trips" class="nav-button active" data-nav="trips">My Trips</a>
+            <a href="/explore" class="nav-button" data-nav="explore">Explore</a>
+            <a href="/saved" class="nav-button" data-nav="saved">Saved</a>
+            <a href="/travel-guide" class="nav-button" data-nav="guide">Travel Guide</a>
+            <a href="/profile" class="nav-button" data-nav="profile">Profile</a>
+        </nav>
+        <div class="sidebar-quote">Good<br>Trips<br>Happen<br>Here ♡</div>
+        <a class="sidebar-profile" href="/profile">
+            <img src="main-menu-assets/profile.png" alt="">
+            <div class="profile-text"><h4 data-user-name>Hey, Explorer!</h4><p>Profile &amp; preferences</p></div>
+        </a>
+        <button class="sign-out-button" type="button" data-sign-out>Sign out</button>
+    </aside>
+
+    <main class="main-content content-page">
+        <header class="content-page-header">
+            <p class="content-eyebrow">YOUR TRAVEL PLANS</p>
+            <h1>My Trips</h1>
+            <p>Keep the trips you’re looking forward to in one place.</p>
+            <a class="content-primary-link" href="/trip-planner">Plan a new trip →</a>
+        </header>
+        <section class="trip-list" id="trip-list" aria-live="polite" aria-label="Saved trips">
+            {{#each trips}}
+    <div class="trip-card">
+      <h3>{{this.destination}}</h3>
+      <p><strong>Date:</strong> {{this.dates}} • <strong>Duration:</strong> {{this.duration}}</p>
+      <p><strong>Travellers:</strong> {{this.travellers}} • <strong>Style:</strong> {{this.travelStyle}}</p>
+      <p><strong>Total Budget:</strong> ₹{{this.budgetInr}}</p>
+
+      <div class="trip-actions">
+        <a href="/itinerary/{{this._id}}">View Itinerary & Budget</a>
+
+        <form action="/trips/{{this._id}}/save" method="POST" style="display:inline;">
+          <button type="submit">{{#if this.isSaved}}Saved ★{{else}}Save ☆{{/if}}</button>
+        </form>
+
+        <form action="/trips/{{this._id}}/delete" method="POST" style="display:inline;">
+          <button type="submit">Delete</button>
+        </form>
+      </div>
+    </div>
+  {{else}}
+    <p>No trips planned yet. <a href="/trip-planner">Plan your first trip!</a></p>
+  {{/each}}
+        </section>
+    </main>
+</div>
+</body>
+</html>

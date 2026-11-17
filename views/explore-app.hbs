@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eaf8f0">
+  <title>Explore | GoMigo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+  <script src="/js/site.js" defer></script>
+</head>
+<body class="app-page explore-page-theme">
+  <div class="page">
+    <aside class="sidebar">
+      <a class="sidebar-logo" href="/main-menu" aria-label="GoMigo home"><img src="main-menu-assets/gomigo-logo.png" alt="GoMigo"></a>
+      <nav class="sidebar-nav" aria-label="GoMigo navigation">
+        <a href="/main-menu" class="nav-button" data-nav="home">Home</a>
+        <a href="/trip-planner" class="nav-button" data-nav="plan">Plan Trip</a>
+        <a href="/my-trips" class="nav-button" data-nav="trips">My Trips</a>
+        <a href="/explore" class="nav-button" data-nav="explore">Explore</a>
+        <a href="/saved" class="nav-button" data-nav="saved">Saved</a>
+        <a href="//travel-guide" class="nav-button" data-nav="guide">Travel Guide</a>
+        <a href="/profile" class="nav-button" data-nav="profile">Profile</a>
+      </nav>
+      <div class="sidebar-quote">Good<br>Trips<br>Happen<br>Here ♡</div>
+      <a class="sidebar-profile" href="/profile"><img src="main-menu-assets/profile.png" alt=""><span class="profile-text"><strong data-user-name>Hey, Explorer!</strong><small>Profile &amp; preferences</small></span></a>
+      <button class="sign-out-button" type="button" data-sign-out>Sign out</button>
+    </aside>
+    <main class="main-content explore-app-main">
+      <header class="hero app-explore-hero" id="top">
+        <div class="hero-copy">
+          <p class="app-explore-kicker">A FRESH COLLECTION FOR YOUR NEXT ADVENTURE</p>
+          <h1>Explore somewhere new.</h1>
+          <p class="app-explore-intro">Discover places to spark your next GoMigo plan.</p>
+          <label class="search-box"><span aria-hidden="true">⌕</span><input id="destination-search" type="search" placeholder="Search destinations, cities or countries…" aria-label="Search destinations"><kbd>Ctrl K</kbd></label>
+          <div class="filters" role="group" aria-label="Filter destinations">
+            <button class="filter active" data-filter="all">All places</button><button class="filter" data-filter="beach">Beach</button><button class="filter" data-filter="mountains">Mountains</button><button class="filter" data-filter="culture">Culture</button><button class="filter" data-filter="adventure">Adventure</button><button class="filter" data-filter="city">City</button>
+          </div>
+        </div>
+      </header>
+      <section class="popular section-wrap app-destinations-section" id="popular">
+        <div class="section-heading"><div><p class="eyebrow green">YOUR NEXT CHAPTER</p><h2>Places to discover</h2><p class="section-subtitle">Search, save a favorite, or start a trip plan.</p></div></div>
+        <div class="destination-grid app-destination-grid" id="destination-grid">
+          {{#each destinations}}
+  <article class="destination-card" data-tags="{{this.category}}" data-search="{{this.name}} {{this.state}}">
+    <img src="{{this.imageUrl}}" alt="{{this.name}}, {{this.state}}: destination photograph" loading="lazy" decoding="async" width="960" height="640">
+    <span class="explore-place-name">{{this.name}}<small>{{this.state}} • ₹{{this.dailyBudgetInr}}/day</small></span>
+    <a class="destination-hitarea" href="/trip-planner?destination={{this.name}}" aria-label="Plan a trip to {{this.name}}"></a>
+    <button class="save-destination" type="button" data-favorite-toggle data-destination="{{this.name}}" aria-label="Save {{this.name}}" aria-pressed="false">♡</button>
+  </article>
+{{/each}}
+                </div>
+        <div class="explore-more-wrap"><button type="button" class="explore-more-button" id="explore-more" aria-controls="destination-grid">Explore more <span aria-hidden="true">↓</span></button><p id="explore-progress" aria-live="polite">Showing 9 places</p></div>
+        <p class="empty-state" id="empty-state" hidden>No destinations match that search. Try another place or category.</p>
+      </section>
+      <footer class="workspace-footer"><span>GoMigo · Plan less. Explore more.</span><span>Save any destination to your Saved page</span></footer>
+    </main>
+  </div>
+</body>
+</html>

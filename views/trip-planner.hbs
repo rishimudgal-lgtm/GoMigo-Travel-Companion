@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="site.css">
-    <script src="site.js" defer></script>
+    <link rel="stylesheet" href="/site.css">
+    <link rel="stylesheet" href="/trip-planner.css">                
+    <script src="/js/site.js" defer></script>
 </head>
 
 
@@ -25,20 +26,20 @@
         <aside class="sidebar">
 
             <!-- Logo -->
-            <a class="sidebar-logo" href="main-menu.html" aria-label="GoMigo home">
-                <img src="main-menu-assets/gomigo-logo.png" alt="GoMigo">
+            <a class="sidebar-logo" href="/main-menu" aria-label="GoMigo home">
+                <img src="/main-menu-assets/gomigo-logo.png" alt="GoMigo">
             </a>
 
 
             <!-- Navigation -->
             <nav class="sidebar-nav" aria-label="GoMigo navigation">
-                <a href="main-menu.html" class="nav-button" data-nav="home">Home</a>
-                <a href="trip-planner.html" class="nav-button active" data-nav="plan">Plan Trip</a>
-                <a href="my-trips.html" class="nav-button" data-nav="trips">My Trips</a>
-                <a href="explore-app.html" class="nav-button" data-nav="explore">Explore</a>
-                <a href="saved.html" class="nav-button" data-nav="saved">Saved</a>
-                <a href="travel-guide.html" class="nav-button" data-nav="guide">Travel Guide</a>
-                <a href="profile.html" class="nav-button" data-nav="profile">Profile</a>
+                <a href="/main-menu" class="nav-button" data-nav="home">Home</a>
+                <a href="/trip-planner" class="nav-button active" data-nav="plan">Plan Trip</a>
+                <a href="/my-trips" class="nav-button" data-nav="trips">My Trips</a>
+                <a href="/explore" class="nav-button" data-nav="explore">Explore</a>
+                <a href="/saved" class="nav-button" data-nav="saved">Saved</a>
+                <a href="//travel-guide" class="nav-button" data-nav="guide">Travel Guide</a>
+                <a href="/profile" class="nav-button" data-nav="profile">Profile</a>
             </nav>
 
 
@@ -52,7 +53,7 @@
 
 
             <!-- Profile -->
-            <a class="sidebar-profile" href="profile.html">
+            <a class="sidebar-profile" href="/profile">
                 <img src="main-menu-assets/profile.png" alt="">
                 <div class="profile-text">
                     <h4 data-user-name>Hey, Explorer!</h4>
@@ -78,7 +79,7 @@
 
                 <!-- Background image -->
                 <img
-                    src="trip-planner-assets/trip-planner-background.png"
+                    src="/trip-planner-assets/trip-planner-background.png"
                     alt="Travel destination"
                     class="planner-hero-background"
                 >
@@ -102,8 +103,7 @@
                      TRIP FORM
                 ================================================== -->
 
-                <form class="trip-form" id="trip-form">
-
+                <form class="trip-form" id="trip-form" action="/trips" method="POST">
                     <div class="edit-existing-trip-control" id="edit-existing-trip-control" hidden>
                         <label for="edit-existing-trip">Edit one of your trips</label>
                         <div class="edit-existing-trip-row">
@@ -253,7 +253,7 @@
 
                                 <div class="input-box select-box">
 
-                                    <select id="travelers" name="travelers">
+                                    <select id="travelers" name="travellers">
                                         <option>2 Travelers</option>
                                         <option>1 Traveler</option>
                                         <option>3 Travelers</option>
@@ -288,7 +288,7 @@
 
                                 <div class="input-box select-box">
 
-                                    <select id="travel-style" name="style">
+                                    <select id="travel-style" name="travelStyle">
                                         <option>Balanced (Sightseeing + Relaxation)</option>
                                         <option>Adventure</option>
                                         <option>Relaxation</option>
@@ -348,7 +348,7 @@
                             <input
                                 type="number"
                                 id="daily-budget"
-                                name="budget"
+                                name="budgetInr"
                                 min="100"
                                 step="1"
                                 value="5000"
@@ -445,7 +445,7 @@
                         <textarea
                             maxlength="300"
                             id="trip-requests"
-                            name="requests"
+                            name="notes"
                             placeholder="E.g., include local experiences, family-friendly places, fewer crowds, etc."
                         ></textarea>
 
@@ -462,11 +462,7 @@
                          CREATE TRIP BUTTON
                     ================================================== -->
 
-                    <button class="create-trip-button" type="submit">
-
-                        ✦ &nbsp; Create My Trip &nbsp; →
-
-                    </button>
+                    <button class="create-trip-button" type="submit">Create my trip</button>
 
 
                     <!-- Security text -->

@@ -26,11 +26,11 @@ The Classic conversations also describe destination discovery, itinerary plannin
 
 The project currently contains these implementation files:
 
-- `landing_page.html`
-- `main-menu.html`
-- `trip-planner.html`
-- `destinations.html`, `explore.html`, `explore-app.html`, `my-trips.html`, `saved.html`, `travel-guide.html`, `travel-guide-preview.html`, and `profile.html`
-- `login.html` and `signup.html`
+- `/`
+- `/main-menu`
+- `/trip-planner`
+- `/destinations`, `/explore`, `/explore`, `/my-trips`, `/saved`, `//travel-guide`, `//travel-guide-preview`, and `/profile`
+- `/login` and `/signup`
 - `site.css` — shared stylesheet for all pages
 - `site.js` — shared client-side interactions
 - `landing_assets/`, `main-menu-assets/`, and `trip-planner-assets/`
@@ -38,7 +38,7 @@ The project currently contains these implementation files:
 
 Demo sign-in, saved trips, saved destinations, and profile preferences use browser storage. There is no real authentication service or backend.
 
-**Existing local work was preserved.** Before import, Git reported `landing_page.html` as modified on branch `main`. This import did not edit the website code, revert the modification, or create a commit.
+**Existing local work was preserved.** Before import, Git reported `/` as modified on branch `main`. This import did not edit the website code, revert the modification, or create a commit.
 
 ## Classic export included here
 
@@ -49,8 +49,8 @@ Demo sign-in, saved trips, saved destinations, and profile preferences use brows
 
 ## Current implementation notes
 
-- Landing-page Explore scrolls to `#how-it-works` on the landing page. The complete former public Explore design now lives at `destinations.html`; legacy `explore.html` sends visitors to the landing-page How it works section.
-- The signed-in pages share one sidebar; its Explore item opens `explore-app.html` with 12 additional destinations. The landing-page Travel Guide opens `travel-guide-preview.html` as a full public page even when signed in; it does not redirect into the sidebar workspace. The sidebar still has its separate signed-in Travel Guide page.
+- Landing-page Explore scrolls to `#how-it-works` on the landing page. The complete former public Explore design now lives at `/destinations`; legacy `/explore` sends visitors to the landing-page How it works section.
+- The signed-in pages share one sidebar; its Explore item opens `/explore` with 12 additional destinations. The landing-page Travel Guide opens `//travel-guide-preview` as a full public page even when signed in; it does not redirect into the sidebar workspace. The sidebar still has its separate signed-in Travel Guide page.
 - The public Destinations gallery has 100 searchable places with local Wikimedia photos and per-photo credits, plus three Adventure activity cards. See `docs/DESTINATION_CATALOG.md` for sources and maintenance.
 - The planner saves form submissions to browser storage and shows them on My Trips. Destination hearts populate Saved; profile preferences are also stored locally.
 - `CLASSIC_CONVERSATIONS.md` remains a historical archive. The user’s current requests and this updated handoff define active scope.

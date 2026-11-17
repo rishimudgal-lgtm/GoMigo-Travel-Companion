@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#eaf8f0"><title>{{trip.destination}} | GoMigo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/site.css">
+</head>
+<body class="app-page itinerary-detail-page">
+  <div class="page">
+    <aside class="sidebar">
+      <a class="sidebar-logo" href="/main-menu" aria-label="GoMigo home"><img src="/main-menu-assets/gomigo-logo.png" alt="GoMigo"></a>
+      <nav class="sidebar-nav" aria-label="GoMigo navigation">
+        <a href="/main-menu" class="nav-button" data-nav="home">Home</a>
+        <a href="/trip-planner" class="nav-button" data-nav="plan">Plan Trip</a>
+        <a href="/my-trips" class="nav-button active" data-nav="trips">My Trips</a>
+        <a href="/explore" class="nav-button" data-nav="explore">Explore</a>
+        <a href="/saved" class="nav-button" data-nav="saved">Saved</a>
+        <a href="/travel-guide" class="nav-button" data-nav="guide">Travel Guide</a>
+        <a href="/profile" class="nav-button" data-nav="profile">Profile</a>
+      </nav>
+      <div class="sidebar-quote">Good<br>Trips<br>Happen<br>Here ♡</div>
+      <a class="sidebar-profile" href="/profile"><img src="/main-menu-assets/profile.png" alt=""><div class="profile-text"><h4 data-user-name>Hey, Explorer!</h4><p>Profile & preferences</p></div></a>
+      <a class="sign-out-button" href="/login" style="text-align:center; text-decoration:none; display:block;">Sign out</a>
+    </aside>
+
+    <main class="main-content content-page itinerary-detail-main">
+      <a class="itinerary-back-link" href="/my-trips" style="display:inline-block; margin-bottom:12px; color:#eaf8f0; font-weight:600; text-decoration:none;">← Back to My Trips</a>
+      <header class="itinerary-detail-header">
+        <p class="content-eyebrow">YOUR GO MIGO DAY</p>
+        <h1 id="itinerary-title">{{trip.destination}}</h1>
+        <p id="itinerary-summary">A personalized travel plan shaped around your schedule and INR budget.</p>
+      </header>
+
+      <div id="itinerary-content" aria-live="polite" style="background:#ffffff; border-radius:24px; padding:28px 32px; color:#102a27; box-shadow:0 12px 32px rgba(0,0,0,0.08); max-width:760px;">
+        <div style="display:flex; flex-wrap:wrap; gap:16px; padding-bottom:18px; border-bottom:1px solid #e5ecea; margin-bottom:20px;">
+          <div style="flex:1; min-width:140px;">
+            <small style="color:#52706c; font-weight:600; text-transform:uppercase;">Start Date</small>
+            <p style="margin:4px 0 0; font-size:1.05rem; font-weight:700;">{{trip.dates}}</p>
+          </div>
+          <div style="flex:1; min-width:120px;">
+            <small style="color:#52706c; font-weight:600; text-transform:uppercase;">Duration</small>
+            <p style="margin:4px 0 0; font-size:1.05rem; font-weight:700;">{{trip.duration}} Days</p>
+          </div>
+          <div style="flex:1; min-width:120px;">
+            <small style="color:#52706c; font-weight:600; text-transform:uppercase;">Travellers</small>
+            <p style="margin:4px 0 0; font-size:1.05rem; font-weight:700;">{{trip.travellers}}</p>
+          </div>
+          <div style="flex:1; min-width:180px;">
+            <small style="color:#52706c; font-weight:600; text-transform:uppercase;">Travel Style</small>
+            <p style="margin:4px 0 0; font-size:1.05rem; font-weight:700;">{{trip.travelStyle}}</p>
+          </div>
+        </div>
+
+        <div class="budget-summary" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:14px; background:#eaf8f0; border-radius:16px; padding:18px; margin-bottom:24px;">
+          <div>
+            <small style="color:#0d5c52; font-weight:600;">Total Budget</small>
+            <p style="margin:4px 0 0; font-size:1.35rem; font-weight:800; color:#0d5c52;">₹{{trip.budgetInr}}</p>
+          </div>
+          <div>
+            <small style="color:#0d5c52; font-weight:600;">Estimated Daily Spend</small>
+            <p style="margin:4px 0 0; font-size:1.35rem; font-weight:800; color:#0d5c52;">₹{{perDayInr}} / day</p>
+          </div>
+          <div>
+            <small style="color:#0d5c52; font-weight:600;">Per-Person Share</small>
+            <p style="margin:4px 0 0; font-size:1.35rem; font-weight:800; color:#0d5c52;">₹{{perPersonInr}} / person</p>
+          </div>
+        </div>
+
+        <h3 style="margin:0 0 14px; font-size:1.15rem;">Edit Trip Budget or Notes</h3>
+        <form action="/trips/{{trip._id}}/update" method="POST">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;">
+            <div>
+              <label style="display:block; font-size:0.9rem; font-weight:600; margin-bottom:6px;">Update Budget (₹)</label>
+              <input type="number" name="budgetInr" value="{{trip.budgetInr}}" min="100" required style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #cbd5d3; font-size:0.95rem; box-sizing:border-box;" />
+            </div>
+            <div>
+              <label style="display:block; font-size:0.9rem; font-weight:600; margin-bottom:6px;">Update Travel Style</label>
+              <input type="text" name="travelStyle" value="{{trip.travelStyle}}" style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #cbd5d3; font-size:0.95rem; box-sizing:border-box;" />
+            </div>
+          </div>
+
+          <div style="margin-bottom:16px;">
+            <label style="display:block; font-size:0.9rem; font-weight:600; margin-bottom:6px;">Trip Notes</label>
+            <textarea name="notes" rows="3" placeholder="Add sightseeing notes, hotel ideas, or reminders..." style="width:100%; padding:10px 12px; border-radius:10px; border:1px solid #cbd5d3; font-size:0.95rem; font-family:inherit; box-sizing:border-box;">{{trip.notes}}</textarea>
+          </div>
+
+          <button type="submit" style="padding:11px 22px; border-radius:999px; background:#0d5c52; color:#ffffff; border:none; font-weight:700; font-size:0.95rem; cursor:pointer;">Save Changes</button>
+        </form>
+      </div>
+
+      <p class="itinerary-estimate-note" style="margin-top:16px;">Stay, meals and transport are INR budget estimates, not live hotel quotes.</p>
+    </main>
+  </div>
+</body>
+</html>

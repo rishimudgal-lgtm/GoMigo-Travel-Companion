@@ -2,7 +2,7 @@
 const fs = require('node:fs');
 const assert = require('node:assert/strict');
 const vm = require('node:vm');
-const html = fs.readFileSync('destinations.html', 'utf8');
+const html = fs.readFileSync('/destinations', 'utf8');
 const script = fs.readFileSync('site.js', 'utf8');
 const decode = (s) => s.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#x27;/g, "'");
 const attr = (s, name) => decode(s.match(new RegExp(`\\b${name}="([^"]*)"`))?.[1] || '');
@@ -59,8 +59,8 @@ for (const c of publicCards) {
     const place = registry.find((p) => p.name === c.name);
     assert(place && fs.existsSync(place.image), `Saved registry missing ${c.name}`);
 }
-const guide = fs.readFileSync('travel-guide-preview.html', 'utf8');
+const guide = fs.readFileSync('//travel-guide-preview', 'utf8');
 assert(!guide.includes('data-signed-in-page'));
 assert(!guide.includes('<aside'));
-assert(fs.readFileSync('landing_page.html', 'utf8').includes('href="travel-guide-preview.html"'));
+assert(fs.readFileSync('/', 'utf8').includes('href="//travel-guide-preview"'));
 console.log('PASS: 100 local photo cards; aliases, accents, multiword/country searches, every filter, empty state, Saved registry, and public Travel Guide route.');

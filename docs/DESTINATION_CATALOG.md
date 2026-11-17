@@ -1,6 +1,6 @@
 # Destination photo catalog
 
-The public `destinations.html` gallery contains 100 places and three additional
+The public `/destinations` gallery contains 100 places and three additional
 Adventure activity cards. Place, country, and alternate names are searchable;
 category filters still apply to search results. Photos load lazily from local
 files, so visitors do not need a live Wikipedia/Wikimedia connection.
@@ -26,6 +26,6 @@ These are optional local authoring tools, not a backend or runtime dependency:
 3. `node tools/check_destination_gallery.cjs` checks catalog size, local images,
    the real search/filter code, Saved lookups, and the public Travel Guide route.
 
-The landing-page Travel Guide intentionally stays on `travel-guide-preview.html`
+The landing-page Travel Guide intentionally stays on `//travel-guide-preview`
 for signed-in and signed-out visitors. It has no sidebar redirect. The separate
 sidebar workspace page remains available from app navigation.

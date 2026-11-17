@@ -6,29 +6,29 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=K2D:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="site.css">
-  <script src="site.js" defer></script>
+  <link rel="stylesheet" href="/site.css">
+  <script src="/js/site.js" defer></script>
 </head>
 <body class="app-page itineraries-page">
   <div class="page">
     <aside class="sidebar">
-      <a class="sidebar-logo" href="main-menu.html" aria-label="GoMigo home"><img src="main-menu-assets/gomigo-logo.png" alt="GoMigo"></a>
+      <a class="sidebar-logo" href="/main-menu" aria-label="GoMigo home"><img src="main-menu-assets/gomigo-logo.png" alt="GoMigo"></a>
       <nav class="sidebar-nav" aria-label="GoMigo navigation">
-        <a href="main-menu.html" class="nav-button" data-nav="home">Home</a>
-        <a href="trip-planner.html" class="nav-button" data-nav="plan">Plan Trip</a>
-        <a href="my-trips.html" class="nav-button" data-nav="trips">My Trips</a>
-        <a href="explore-app.html" class="nav-button" data-nav="explore">Explore</a>
-        <a href="saved.html" class="nav-button" data-nav="saved">Saved</a>
-        <a href="travel-guide.html" class="nav-button" data-nav="guide">Travel Guide</a>
-        <a href="profile.html" class="nav-button" data-nav="profile">Profile</a>
+        <a href="/main-menu" class="nav-button" data-nav="home">Home</a>
+        <a href="/trip-planner" class="nav-button" data-nav="plan">Plan Trip</a>
+        <a href="/my-trips" class="nav-button" data-nav="trips">My Trips</a>
+        <a href="/explore" class="nav-button" data-nav="explore">Explore</a>
+        <a href="/saved" class="nav-button" data-nav="saved">Saved</a>
+        <a href="/travel-guide" class="nav-button" data-nav="guide">Travel Guide</a>
+        <a href="/profile" class="nav-button" data-nav="profile">Profile</a>
       </nav>
       <div class="sidebar-quote">Good<br>Trips<br>Happen<br>Here ♡</div>
-      <a class="sidebar-profile" href="profile.html"><img src="main-menu-assets/profile.png" alt=""><span class="profile-text"><strong data-user-name>Hey, Explorer!</strong><small>Profile &amp; preferences</small></span></a>
+      <a class="sidebar-profile" href="/profile"><img src="main-menu-assets/profile.png" alt=""><span class="profile-text"><strong data-user-name>Hey, Explorer!</strong><small>Profile &amp; preferences</small></span></a>
       <button class="sign-out-button" type="button" data-sign-out>Sign out</button>
     </aside>
 
     <main class="main-content content-page main-panel">
-      <header class="welcome-row"><div><p class="eyebrow">YOUR JOURNEY, ALL IN ONE PLACE</p><h1>Trips &amp; itineraries</h1><p class="welcome-copy">Plan a new escape, keep your ideas close, and pick up where you left off.</p></div><a class="explore-link" href="explore-app.html">Find inspiration <span>↗</span></a></header>
+      <header class="welcome-row"><div><p class="eyebrow">YOUR JOURNEY, ALL IN ONE PLACE</p><h1>Trips &amp; itineraries</h1><p class="welcome-copy">Plan a new escape, keep your ideas close, and pick up where you left off.</p></div><a class="explore-link" href="/explore">Find inspiration <span>↗</span></a></header>
       <nav class="workspace-tabs" role="tablist" aria-label="Trip workspace">
         <button id="tab-plan" class="tab-button" type="button" role="tab" aria-controls="panel-plan" data-tab="plan"><span>✧</span> Plan a trip</button>
         <button id="tab-saved" class="tab-button" type="button" role="tab" aria-controls="panel-saved" data-tab="saved"><span>♡</span> Saved <b class="tab-count" id="saved-count">0</b></button>
@@ -51,9 +51,9 @@
       </section>
 
       <section class="tab-panel saved-panel" id="panel-saved" role="tabpanel" aria-labelledby="tab-saved" hidden>
-        <div class="panel-heading"><div><p class="eyebrow">YOUR LITTLE LIST OF MAYBES</p><h2>Saved for later</h2><p>Places you’ve bookmarked from Explore and your GoMigo home page.</p></div><a href="explore-app.html" class="outline-link">Explore places <span>↗</span></a></div>
+        <div class="panel-heading"><div><p class="eyebrow">YOUR LITTLE LIST OF MAYBES</p><h2>Saved for later</h2><p>Places you’ve bookmarked from Explore and your GoMigo home page.</p></div><a href="/explore" class="outline-link">Explore places <span>↗</span></a></div>
         <div class="saved-grid" id="saved-grid"></div>
-        <div class="empty-state" id="saved-empty"><span class="empty-icon">♡</span><h3>Your saved places will live here</h3><p>Tap the heart on a destination card to keep it close while you decide where to go.</p><a class="primary-button" href="explore-app.html">Explore destinations <span>→</span></a></div>
+        <div class="empty-state" id="saved-empty"><span class="empty-icon">♡</span><h3>Your saved places will live here</h3><p>Tap the heart on a destination card to keep it close while you decide where to go.</p><a class="primary-button" href="/explore">Explore destinations <span>→</span></a></div>
       </section>
 
       <section class="tab-panel trips-panel" id="panel-trips" role="tabpanel" aria-labelledby="tab-trips" hidden>

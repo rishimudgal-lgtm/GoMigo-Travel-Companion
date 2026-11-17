@@ -9602,7 +9602,7 @@ GoMigo/
 │
 ├── index.html
 ├── planning.html
-├── profile.html
+├── /profile
 │
 ├── css/
 │   ├── style.css
@@ -9644,7 +9644,7 @@ GoMigo
    ↓
 index.html
 planning.html
-profile.html
+/profile
 css
 images
 js
@@ -9749,7 +9749,7 @@ GoMigo
 
 ├── index.html
 ├── planning.html
-├── profile.html
+├── /profile
 ├── css/
 ├── images/
 └── js/
@@ -9822,7 +9822,7 @@ Your changes are now on GitHub.
 They work on:
 
 ```text
-profile.html
+/profile
 ```
 
 Before starting work, they should run:
@@ -10210,7 +10210,7 @@ They'll now have:
 GoMigo/
 ├── index.html
 ├── planning.html
-├── profile.html
+├── /profile
 ├── css/
 ├── images/
 └── js/
@@ -10435,7 +10435,7 @@ GoMigo
 │
 ├── index.html
 ├── planning.html
-├── profile.html
+├── /profile
 │
 ├── css
 │   ├── style.css
@@ -10606,7 +10606,7 @@ Suppose your teammate is responsible for the profile page.
 They create:
 
 ```text
-profile.html
+/profile
 ```
 
 or perhaps:
@@ -10655,7 +10655,7 @@ That file is uploaded to **your GitHub repository**.
 
 You're working on your GoMigo project.
 
-Your teammate has just pushed `profile.html`.
+Your teammate has just pushed `/profile`.
 
 You open your VS Code terminal.
 
@@ -10934,7 +10934,7 @@ GoMigo/
 ├── style.css
 ├── planning.html
 ├── planning.css
-├── profile.html
+├── /profile
 ├── profile.css
 │
 ├── assets/
@@ -11103,7 +11103,7 @@ GoMigo/
 ├── index.html              ← Home
 ├── planning.html          ← Trip Planning
 ├── inspiration.html       ← Inspiration
-├── profile.html            ← Profile
+├── /profile            ← Profile
 ├── about.html              ← About / How it works
 │
 ├── css/
@@ -11146,7 +11146,7 @@ For example:
 and:
 
 ```html
-<a href="profile.html">My Profile</a>
+<a href="/profile">My Profile</a>
 ```
 
 So when your sir opens the website, it behaves like an actual website rather than five unrelated HTML files.
@@ -11531,7 +11531,7 @@ GoMigo/
 │
 ├── index.html          ← Home
 ├── planning.html       ← Planning
-├── profile.html        ← Profile
+├── /profile        ← Profile
 │
 ├── style.css           ← Common CSS
 │
@@ -11552,7 +11552,7 @@ For example:
 and:
 
 ```html
-<a href="profile.html">My Profile</a>
+<a href="/profile">My Profile</a>
 ```
 
 So your sir can click around the website normally.
@@ -11769,7 +11769,7 @@ index.html
      ├──────────────→ planning.html
      │                     │
      │                     ↓
-     └──────────────── profile.html
+     └──────────────── /profile
 ```
 
 No JavaScript.
@@ -12054,7 +12054,7 @@ Since you want **HTML + CSS only**, we'll keep it simple:
 - No Bootstrap
 - No Tailwind
 
-And later we can add `planning.html` and `profile.html` and connect them with ordinary HTML links.
+And later we can add `planning.html` and `/profile` and connect them with ordinary HTML links.
 
 ---
 
@@ -13479,7 +13479,7 @@ GoMigo/
 │
 ├── index.html
 ├── planning.html
-├── profile.html
+├── /profile
 ├── style.css
 │
 └── assets/
@@ -13829,7 +13829,7 @@ For now, because you specifically don't want JavaScript, we'll use normal HTML l
 and:
 
 ```html
-<a href="profile.html">Profile</a>
+<a href="/profile">Profile</a>
 ```
 
 So **yes, you can now copy the code I give you into VS Code**.
@@ -13899,7 +13899,7 @@ Create a file called **`index.html`** inside your GoMigo folder and paste this e
 
                 <a href="#destinations">Destinations</a>
 
-                <a href="#travel-guide">Travel Guide</a>
+                <a href="#/travel-guide">Travel Guide</a>
 
                 <a href="#my-trips">My Trips</a>
 
@@ -13908,7 +13908,7 @@ Create a file called **`index.html`** inside your GoMigo folder and paste this e
             <!-- Login / Get Started -->
             <div class="nav-actions">
 
-                <a href="login.html" class="login-link">
+                <a href="/login" class="login-link">
                     Login
                 </a>
 
@@ -14116,7 +14116,7 @@ Create a file called **`index.html`** inside your GoMigo folder and paste this e
          GOMIGO FEATURES
     ====================================================== -->
 
-    <section class="features" id="travel-guide">
+    <section class="features" id="/travel-guide">
 
         <div class="section-heading">
 
@@ -19103,7 +19103,7 @@ See these files and a screenshot of your code's result as you can see the form i
 - Attachment: [profile.png](main-menu-assets\profile.png)
 - Attachment: [trip-planner-background.png](docs/classic-import/assets/trip-planner-background.png)
 - Attachment: [Screenshot 2026-09-10 104651.png](docs/classic-import/assets/Screenshot 2026-09-10 104651.png)
-- Attachment: `trip-planner.html` (text/html, 15616 bytes; file payload not available in the ZIP)
+- Attachment: `/trip-planner` (text/html, 15616 bytes; file payload not available in the ZIP)
 - Attachment: `Pasted code.css` (text/plain, 15113 bytes; file payload not available in the ZIP)
 
 ### Assistant — 2026-09-10 05:22 UTC

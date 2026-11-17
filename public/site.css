@@ -3191,10 +3191,10 @@ body.public-explore-page .explore-place-name small {
 /* Travel Guide uses its own landscape in GoMigo's teal-green palette. */
 body.guide-preview-page { background: #eaf8f0; }
 body.guide-preview-page .guide-preview-hero {
-    background-image: linear-gradient(100deg, rgba(4, 55, 70, .76), rgba(6, 82, 91, .20)), url("explore_assets/travel-guide-background.png");
+    background-image: linear-gradient(100deg, rgba(4, 55, 70, .76), rgba(6, 82, 91, .20)), url("explore_assets//travel-guide-background.png");
 }
 body.guide-page .main-content {
-    background: linear-gradient(180deg, rgba(4, 55, 70, .60), rgba(6, 82, 91, .24)), url("explore_assets/travel-guide-background.png") center / cover no-repeat;
+    background: linear-gradient(180deg, rgba(4, 55, 70, .60), rgba(6, 82, 91, .24)), url("explore_assets//travel-guide-background.png") center / cover no-repeat;
 }
 body.guide-page .content-page-header h1,
 body.guide-page .content-page-header .content-eyebrow,

@@ -1443,8 +1443,8 @@
             const redirectParams = new URLSearchParams(window.location.search);
             const requestedTarget = redirectParams.get("next") || "";
             const requestedPage = requestedTarget.split("?", 1)[0];
-            const safePages = ["main-menu.html", "my-trips.html", "trip-planner.html", "itinerary.html", "itineraries.html", "explore-app.html", "destinations.html", "saved.html", "travel-guide.html", "profile.html"];
-            let destination = safePages.includes(requestedPage) ? requestedPage : "main-menu.html";
+            const safePages = ["/main-menu", "/my-trips", "/trip-planner", "/my-trips", "/my-trips", "/explore", "/destinations", "/saved", "//travel-guide", "/profile"];
+            let destination = safePages.includes(requestedPage) ? requestedPage : "/main-menu";
             if (requestedTarget.includes("?")) destination += "?" + requestedTarget.split("?").slice(1).join("?");
             return destination;
         }
@@ -1535,17 +1535,17 @@
         setSidebarProfilePhoto(profile.photo || profile.photoData);
 
         const pageMap = {
-            "main-menu.html": "home",
-            "trip-planner.html": "plan",
-            "my-trips.html": "trips",
-            "itinerary.html": "trips",
-            "explore-app.html": "explore",
-            "itineraries.html": "trips",
-            "saved.html": "saved",
-            "travel-guide.html": "guide",
-            "profile.html": "profile"
+            "/main-menu": "home",
+            "/trip-planner": "plan",
+            "/my-trips": "trips",
+            "/my-trips": "trips",
+            "/explore": "explore",
+            "/my-trips": "trips",
+            "/saved": "saved",
+            "//travel-guide": "guide",
+            "/profile": "profile"
         };
-        const currentPage = window.location.pathname.split("/").pop() || "main-menu.html";
+        const currentPage = window.location.pathname.split("/").pop() || "/main-menu";
         const activePage = pageMap[currentPage] || "home";
         document.querySelectorAll("[data-nav]").forEach((link) => {
             const active = link.dataset.nav === activePage;
@@ -1559,14 +1559,14 @@
                 button.disabled = true;
                 try { await apiRequest("/api/auth/logout", { method: "POST", body: "{}" }); } catch { /* Clear this browser's cached account data either way. */ }
                 clearAccountCache();
-                window.location.href = "landing_page.html";
+                window.location.href = "/";
             });
         });
         takeFlashMessage();
     }
 
     function initPlanner() {
-        const form = document.querySelector("#trip-form");
+/*        const form = document.querySelector("#trip-form");
         if (!form) return;
 
         const budget = form.querySelector("#daily-budget");
@@ -1607,7 +1607,7 @@
                     existingTripSelect.focus();
                     return;
                 }
-                window.location.href = "trip-planner.html?edit=" + encodeURIComponent(existingTripSelect.value);
+                window.location.href = "/trip-planner?edit=" + encodeURIComponent(existingTripSelect.value);
             });
         }
 
@@ -1781,8 +1781,10 @@
             }
             removeStored(keys.plannerDraft);
             writeJSON(keys.flash, editingTrip ? trip.destination + " trip changes are saved." : "Your " + trip.destination + " trip is saved in My Trips.");
-            window.location.href = "itinerary.html?id=" + encodeURIComponent(trip.id);
-        });
+            window.location.href = "/my-trips?id=" + encodeURIComponent(trip.id);
+            });
+            */
+           return;
     }
 
     function createDestinationCard(destination, saved) {
@@ -1813,7 +1815,7 @@
         const description = document.createElement("p");
         description.textContent = destination.description;
         const planLink = document.createElement("a");
-        planLink.href = "trip-planner.html?destination=" + encodeURIComponent(destination.name);
+        planLink.href = "/trip-planner?destination=" + encodeURIComponent(destination.name);
         planLink.textContent = "Plan a trip →";
         info.append(heading, description, planLink);
         card.append(imageWrap, info);
@@ -1842,7 +1844,7 @@
             empty.className = "empty-state";
             empty.append("No saved places yet. ");
             const link = document.createElement("a");
-            link.href = "explore-app.html";
+            link.href = "/explore";
             link.textContent = "Explore destinations";
             empty.append(link, " and tap a heart to keep one here.");
             grid.append(empty);
@@ -1880,8 +1882,8 @@
             const details = document.createElement("p");
             details.textContent = [trip.dates, trip.duration ? `${trip.duration} days` : "", `₹${Number(trip.budget || 0).toLocaleString("en-IN")}/day`].filter(Boolean).join(" · ");
             const actions = document.createElement("div"); actions.className = "saved-trip-actions";
-            const link = document.createElement("a"); link.href = "itinerary.html?id=" + encodeURIComponent(trip.id); link.className = "content-primary-link"; link.textContent = "View itinerary →";
-            const edit = document.createElement("a"); edit.href = "trip-planner.html?edit=" + encodeURIComponent(trip.id); edit.className = "saved-trip-edit"; edit.textContent = "Edit trip";
+            const link = document.createElement("a"); link.href = "/my-trips?id=" + encodeURIComponent(trip.id); link.className = "content-primary-link"; link.textContent = "View itinerary →";
+            const edit = document.createElement("a"); edit.href = "/trip-planner?edit=" + encodeURIComponent(trip.id); edit.className = "saved-trip-edit"; edit.textContent = "Edit trip";
             actions.append(link, edit);
             card.append(cardTop, details, actions); return card;
         }));
@@ -1958,7 +1960,7 @@
                 const country = document.createElement("p"); country.className = "app-destination-country"; country.textContent = place.country;
                 const heading = document.createElement("h2"); heading.textContent = place.name;
                 const description = document.createElement("p"); description.textContent = place.description || `Explore ${place.name}, ${place.country}.`;
-                const link = document.createElement("a"); link.href = "trip-planner.html?destination=" + encodeURIComponent(place.name); link.textContent = "Plan a trip →";
+                const link = document.createElement("a"); link.href = "/trip-planner?destination=" + encodeURIComponent(place.name); link.textContent = "Plan a trip →";
                 copy.append(country, heading, description, link); card.append(imageWrap, copy);
                 cardsByCategory.get(category).push(card);
             });
@@ -2107,7 +2109,7 @@
                 empty.className = "empty-state";
                 empty.append("No trips saved yet. ");
                 const link = document.createElement("a");
-                link.href = "trip-planner.html";
+                link.href = "/trip-planner";
                 link.textContent = "Plan your first trip";
                 empty.append(link, " and your plan will appear here.");
                 list.append(empty);
@@ -2149,11 +2151,11 @@
                 }
 
                 const itineraryLink = document.createElement("a");
-                itineraryLink.href = "itinerary.html?id=" + encodeURIComponent(trip.id);
+                itineraryLink.href = "/my-trips?id=" + encodeURIComponent(trip.id);
                 itineraryLink.className = "content-primary-link";
                 itineraryLink.textContent = "View day itinerary →";
                 const editLink = document.createElement("a");
-                editLink.href = "trip-planner.html?edit=" + encodeURIComponent(trip.id);
+                editLink.href = "/trip-planner?edit=" + encodeURIComponent(trip.id);
                 editLink.className = "trip-edit-link";
                 editLink.textContent = "Edit trip";
                 const tripActions = document.createElement("div");
@@ -2271,7 +2273,7 @@
         if (!trip || !content) {
             document.querySelector("#itinerary-title").textContent = "We couldn’t find that trip plan";
             document.querySelector("#itinerary-summary").textContent = "Create a trip plan and it will be saved in your browser.";
-            const link = document.createElement("a"); link.href = "trip-planner.html"; link.className = "primary-button"; link.textContent = "Plan a trip →"; content.append(link);
+            const link = document.createElement("a"); link.href = "/trip-planner"; link.className = "primary-button"; link.textContent = "Plan a trip →"; content.append(link);
             return;
         }
         const place = destinationCatalog.find((item) => item.name.toLowerCase() === trip.destination.trim().toLowerCase())
@@ -2629,12 +2631,12 @@
             if (dateField?.value) values.set("date", dateField.value);
             if (travelersField?.value) values.set("travelers", travelersField.value);
             const query = values.toString();
-            window.location.href = "trip-planner.html" + (query ? "?" + query : "");
+            window.location.href = "/trip-planner" + (query ? "?" + query : "");
         });
 
         document.querySelector("[data-surprise]")?.addEventListener("click", () => {
             const destination = destinations[Math.floor(Math.random() * destinations.length)];
-            window.location.href = "trip-planner.html?destination=" + encodeURIComponent(destination.name);
+            window.location.href = "/trip-planner?destination=" + encodeURIComponent(destination.name);
         });
 
     }
@@ -2665,11 +2667,11 @@
     }
 
     function destinationAfterSignIn() {
-        const safePages = new Set(["main-menu.html", "my-trips.html", "trip-planner.html", "itinerary.html", "itineraries.html", "explore-app.html", "destinations.html", "saved.html", "travel-guide.html", "profile.html"]);
-        const requested = new URLSearchParams(window.location.search).get("next") || "main-menu.html";
+        const safePages = new Set(["/main-menu", "/my-trips", "/trip-planner", "/my-trips", "/my-trips", "/explore", "/destinations", "/saved", "//travel-guide", "/profile"]);
+        const requested = new URLSearchParams(window.location.search).get("next") || "/main-menu";
         const requestedUrl = new URL(requested, window.location.href);
         const page = requestedUrl.pathname.split("/").pop();
-        if (!safePages.has(page)) return "main-menu.html";
+        if (!safePages.has(page)) return "/main-menu";
         return page + requestedUrl.search;
     }
 
@@ -2717,7 +2719,7 @@
         } else if (isAppPage) {
             clearAccountCache();
             const currentPath = window.location.pathname.split("/").pop() + window.location.search;
-            window.location.replace("login.html?next=" + encodeURIComponent(currentPath));
+            window.location.replace("/login?next=" + encodeURIComponent(currentPath));
             return;
         }
 
