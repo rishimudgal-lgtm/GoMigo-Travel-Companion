@@ -20,7 +20,7 @@
             <a href="/my-trips" class="nav-button" data-nav="trips">My Trips</a>
             <a href="/explore" class="nav-button" data-nav="explore">Explore</a>
             <a href="/saved" class="nav-button active" data-nav="saved">Saved</a>
-            <a href="//travel-guide" class="nav-button" data-nav="guide">Travel Guide</a>
+            <a href="/travel-guide" class="nav-button" data-nav="guide">Travel Guide</a>
             <a href="/profile" class="nav-button" data-nav="profile">Profile</a>
         </nav>
         <div class="sidebar-quote">Good<br>Trips<br>Happen<br>Here ♡</div>
@@ -52,12 +52,12 @@
                 </form>
             </div>
             <div class="saved-trip-list" id="saved-trip-list" aria-live="polite">
-  {{#each trips}}
+  {{#each savedTrips}}
     <div class="trip-card">
       <h3>{{this.destination}}</h3>
       <p><strong>Date:</strong> {{this.dates}} • <strong>Duration:</strong> {{this.duration}}</p>
       <p><strong>Travellers:</strong> {{this.travellers}} • <strong>Style:</strong> {{this.travelStyle}}</p>
-      <p><strong>Total Budget:</strong> ₹{{this.budgetInr}}</p>
+      <p><strong>Total Budget:</strong> ₹{{this.displayBudgetInr}}</p>
       <a href="/itinerary/{{this._id}}">View Itinerary & Budget</a>
     </div>
   {{else}}

@@ -41,13 +41,14 @@
         <section class="trip-list" id="trip-list" aria-live="polite" aria-label="Saved trips">
             {{#each trips}}
     <div class="trip-card">
+      <img class="trip-card-image" src="{{this.imageUrl}}" alt="A view of {{this.destination}}" loading="lazy">
       <h3>{{this.destination}}</h3>
       <p><strong>Date:</strong> {{this.dates}} • <strong>Duration:</strong> {{this.duration}}</p>
       <p><strong>Travellers:</strong> {{this.travellers}} • <strong>Style:</strong> {{this.travelStyle}}</p>
-      <p><strong>Total Budget:</strong> ₹{{this.budgetInr}}</p>
+      <p><strong>Total Budget:</strong> ₹{{this.displayBudgetInr}}</p>
 
       <div class="trip-actions">
-        <a href="/itinerary/{{this._id}}">View Itinerary & Budget</a>
+        <a href="/itinerary/{{this._id}}">View Itinerary &amp; Budget</a>
 
         <form action="/trips/{{this._id}}/save" method="POST" style="display:inline;">
           <button type="submit">{{#if this.isSaved}}Saved ★{{else}}Save ☆{{/if}}</button>

@@ -38,7 +38,7 @@
                 <a href="/my-trips" class="nav-button" data-nav="trips">My Trips</a>
                 <a href="/explore" class="nav-button" data-nav="explore">Explore</a>
                 <a href="/saved" class="nav-button" data-nav="saved">Saved</a>
-                <a href="//travel-guide" class="nav-button" data-nav="guide">Travel Guide</a>
+                <a href="/travel-guide" class="nav-button" data-nav="guide">Travel Guide</a>
                 <a href="/profile" class="nav-button" data-nav="profile">Profile</a>
             </nav>
 
@@ -129,7 +129,7 @@
                                 Destination
                             </label>
 
-                            <div class="input-box">
+                            <div class="input-box destination-input-box">
 
                                 <input
                                     type="text"
@@ -138,9 +138,12 @@
                                     placeholder="Enter a destination"
                                     required
                                     autocomplete="off"
-                                    list="destination-suggestions"
+                                    role="combobox"
+                                    aria-autocomplete="list"
+                                    aria-controls="destination-suggestions"
+                                    aria-expanded="false"
                                 >
-                                <datalist id="destination-suggestions"></datalist>
+                                <div id="destination-suggestions" class="destination-suggestions" role="listbox" aria-label="Destination suggestions" hidden></div>
 
                                 <button class="clear-button" type="button" data-clear-destination aria-label="Clear destination">
                                     ×
@@ -214,7 +217,7 @@
 
                                 <div class="input-box select-box">
 
-                                    <input type="number" id="trip-duration" name="duration" placeholder="Enter days" aria-label="Trip duration in days">
+                                    <input type="number" id="trip-duration" name="duration" min="1" max="60" step="1" placeholder="Enter days" aria-label="Trip duration in days">
 
                                     <span class="dropdown-arrow">
                                         ˅
@@ -339,7 +342,7 @@
                                 id="daily-budget-slider"
                                 min="100"
                                 max="100000"
-                                step="1"
+                                step="100"
                                 value="5000"
                                 class="budget-slider"
                                 aria-label="Adjust daily budget with slider"
@@ -350,7 +353,7 @@
                                 id="daily-budget"
                                 name="budgetInr"
                                 min="100"
-                                step="1"
+                                step="100"
                                 value="5000"
                                 class="budget-amount-input"
                                 aria-label="Daily budget"

@@ -22,12 +22,13 @@
       </nav>
       <div class="sidebar-quote">Good<br>Trips<br>Happen<br>Here ♡</div>
       <a class="sidebar-profile" href="/profile"><img src="/main-menu-assets/profile.png" alt=""><div class="profile-text"><h4 data-user-name>Hey, Explorer!</h4><p>Profile & preferences</p></div></a>
-      <a class="sign-out-button" href="/login" style="text-align:center; text-decoration:none; display:block;">Sign out</a>
+      <a class="sign-out-button" href="/logout" style="text-align:center; text-decoration:none; display:block;">Sign out</a>
     </aside>
 
-    <main class="main-content content-page itinerary-detail-main">
-      <a class="itinerary-back-link" href="/my-trips" style="display:inline-block; margin-bottom:12px; color:#eaf8f0; font-weight:600; text-decoration:none;">← Back to My Trips</a>
+    <main class="main-content content-page itinerary-detail-main" style="--itinerary-backdrop: url('{{trip.imageUrl}}')">
+      <a class="itinerary-back-link" href="/my-trips" style="display:inline-block; margin-bottom:12px; color:#28786e; font-weight:600; text-decoration:none;">← Back to My Trips</a>
       <header class="itinerary-detail-header">
+        <img class="itinerary-destination-image" src="{{trip.imageUrl}}" alt="A view of {{trip.destination}}" fetchpriority="high">
         <p class="content-eyebrow">YOUR GO MIGO DAY</p>
         <h1 id="itinerary-title">{{trip.destination}}</h1>
         <p id="itinerary-summary">A personalized travel plan shaped around your schedule and INR budget.</p>
@@ -88,10 +89,12 @@
 
           <button type="submit" style="padding:11px 22px; border-radius:999px; background:#0d5c52; color:#ffffff; border:none; font-weight:700; font-size:0.95rem; cursor:pointer;">Save Changes</button>
         </form>
+        <div id="itinerary-plan" aria-live="polite"></div>
       </div>
 
       <p class="itinerary-estimate-note" style="margin-top:16px;">Stay, meals and transport are INR budget estimates, not live hotel quotes.</p>
     </main>
   </div>
+  <script src="/js/site.js"></script>
 </body>
 </html>

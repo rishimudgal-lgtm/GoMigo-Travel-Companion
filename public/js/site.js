@@ -1181,6 +1181,7 @@
         "Grindelwald": ["First Cliff Walk", "Grindelwald village", "Bachalpsee trail", "Gletscherschlucht gorge", "Wengen village", "Lauterbrunnen valley"],
         "Chamonix": ["Aiguille du Midi", "Montenvers and Mer de Glace", "Chamonix town centre", "Les Praz", "Lac des Gaillands", "Argentière village"],
         "Dolomites": ["Tre Cime di Lavaredo", "Lago di Braies", "Ortisei village", "Seceda viewpoint", "Passo Gardena", "Cortina d’Ampezzo"],
+        "Switzerland": ["Old Town Lucerne", "Lake Lucerne promenade", "Höhematte Park", "Harder Kulm", "Grindelwald village", "Chapel Bridge"],
         "Bergen": ["Bryggen Wharf", "Fløibanen and Mount Fløyen", "Bergen Fish Market", "Bergenhus Fortress", "Nordnes peninsula", "Ulriken viewpoint"],
         "Lofoten": ["Reine village", "Hamnøy bridge viewpoint", "Å village", "Haukland Beach", "Nusfjord fishing village", "Ramberg Beach"],
         "Stockholm": ["Gamla Stan", "Vasa Museum", "Royal Palace Stockholm", "Skansen", "Djurgården waterfront", "Södermalm"],
@@ -1438,13 +1439,16 @@
         const loginForm = document.querySelector("#login-form");
         const signupForm = document.querySelector("#signup-form");
         if (!loginForm && !signupForm) return;
+        const authError = new URLSearchParams(window.location.search).get("error");
+        if (authError) showToast(authError);
 
         function postAuthDestination() {
             const redirectParams = new URLSearchParams(window.location.search);
             const requestedTarget = redirectParams.get("next") || "";
             const requestedPage = requestedTarget.split("?", 1)[0];
-            const safePages = ["/main-menu", "/my-trips", "/trip-planner", "/my-trips", "/my-trips", "/explore", "/destinations", "/saved", "//travel-guide", "/profile"];
-            let destination = safePages.includes(requestedPage) ? requestedPage : "/main-menu";
+            const safePages = ["/main-menu", "/my-trips", "/trip-planner", "/explore", "/destinations", "/saved", "/travel-guide", "/profile"];
+            const safeItinerary = /^\/itinerary\/[a-f\d]{24}$/i.test(requestedPage);
+            let destination = safePages.includes(requestedPage) || safeItinerary ? requestedPage : "/main-menu";
             if (requestedTarget.includes("?")) destination += "?" + requestedTarget.split("?").slice(1).join("?");
             return destination;
         }
@@ -1535,15 +1539,13 @@
         setSidebarProfilePhoto(profile.photo || profile.photoData);
 
         const pageMap = {
-            "/main-menu": "home",
-            "/trip-planner": "plan",
-            "/my-trips": "trips",
-            "/my-trips": "trips",
-            "/explore": "explore",
-            "/my-trips": "trips",
-            "/saved": "saved",
-            "//travel-guide": "guide",
-            "/profile": "profile"
+            "main-menu": "home",
+            "trip-planner": "plan",
+            "my-trips": "trips",
+            "explore": "explore",
+            "saved": "saved",
+            "travel-guide": "guide",
+            "profile": "profile"
         };
         const currentPage = window.location.pathname.split("/").pop() || "/main-menu";
         const activePage = pageMap[currentPage] || "home";
@@ -1557,7 +1559,13 @@
         document.querySelectorAll("[data-sign-out]").forEach((button) => {
             button.addEventListener("click", async () => {
                 button.disabled = true;
-                try { await apiRequest("/api/auth/logout", { method: "POST", body: "{}" }); } catch { /* Clear this browser's cached account data either way. */ }
+                try {
+                    await apiRequest("/api/auth/logout", { method: "POST", body: "{}" });
+                } catch {
+                    clearAccountCache();
+                    window.location.href = "/logout";
+                    return;
+                }
                 clearAccountCache();
                 window.location.href = "/";
             });
@@ -1566,6 +1574,225 @@
     }
 
     function initPlanner() {
+        const form = document.querySelector("#trip-form");
+        if (!form) return;
+
+        const destinationField = form.querySelector("#destination");
+        const suggestionList = form.querySelector("#destination-suggestions");
+        let activeSuggestion = -1;
+        const plannerParams = new URLSearchParams(window.location.search);
+        const suggestedDestination = plannerParams.get("destination");
+        if (destinationField && suggestedDestination) destinationField.value = suggestedDestination;
+
+        function closeDestinationSuggestions() {
+            if (!suggestionList || !destinationField) return;
+            suggestionList.hidden = true;
+            destinationField.setAttribute("aria-expanded", "false");
+            destinationField.removeAttribute("aria-activedescendant");
+            activeSuggestion = -1;
+        }
+
+        function selectDestination(place) {
+            destinationField.value = place.name;
+            destinationField.setCustomValidity("");
+            closeDestinationSuggestions();
+            destinationField.focus();
+        }
+
+        function setActiveSuggestion(index) {
+            if (!suggestionList) return;
+            const options = Array.from(suggestionList.querySelectorAll("[role=option]"));
+            if (!options.length) return;
+            activeSuggestion = (index + options.length) % options.length;
+            options.forEach((option, optionIndex) => {
+                const selected = optionIndex === activeSuggestion;
+                option.setAttribute("aria-selected", String(selected));
+                if (selected) {
+                    destinationField.setAttribute("aria-activedescendant", option.id);
+                    option.scrollIntoView({ block: "nearest" });
+                }
+            });
+        }
+
+        function renderDestinationSuggestions() {
+            if (!destinationField || !suggestionList) return;
+            const query = destinationField.value.trim().toLocaleLowerCase();
+            if (!query) {
+                closeDestinationSuggestions();
+                return;
+            }
+
+            const matches = destinationCatalog
+                .map((place) => {
+                    const name = place.name.toLocaleLowerCase();
+                    const country = String(place.country || "").toLocaleLowerCase();
+                    const combined = `${name} ${country}`;
+                    const rank = name.startsWith(query) ? 0 : country.startsWith(query) ? 1 : combined.includes(query) ? 2 : -1;
+                    return { place, rank };
+                })
+                .filter((match) => match.rank >= 0)
+                .sort((left, right) => left.rank - right.rank || left.place.name.localeCompare(right.place.name))
+                .slice(0, 8);
+
+            suggestionList.replaceChildren();
+            activeSuggestion = -1;
+            matches.forEach(({ place }, index) => {
+                const option = document.createElement("button");
+                option.type = "button";
+                option.id = `destination-option-${index}`;
+                option.className = "destination-suggestion-option";
+                option.setAttribute("role", "option");
+                option.setAttribute("aria-selected", "false");
+                const copy = document.createElement("span");
+                copy.className = "destination-suggestion-copy";
+                const name = document.createElement("strong");
+                name.textContent = place.name;
+                const country = document.createElement("small");
+                country.textContent = place.country || "Destination";
+                copy.append(name, country);
+                const marker = document.createElement("span");
+                marker.className = "destination-suggestion-marker";
+                marker.setAttribute("aria-hidden", "true");
+                marker.textContent = "↗";
+                option.append(copy, marker);
+                option.addEventListener("mousedown", (event) => event.preventDefault());
+                option.addEventListener("click", () => selectDestination(place));
+                suggestionList.append(option);
+            });
+            suggestionList.hidden = matches.length === 0;
+            destinationField.setAttribute("aria-expanded", String(matches.length > 0));
+            destinationField.removeAttribute("aria-activedescendant");
+        }
+
+        if (destinationField && suggestionList) {
+            destinationField.addEventListener("input", renderDestinationSuggestions);
+            destinationField.addEventListener("focus", () => {
+                if (destinationField.value.trim()) renderDestinationSuggestions();
+            });
+            destinationField.addEventListener("keydown", (event) => {
+                if (event.key === "ArrowDown" && !suggestionList.hidden) {
+                    event.preventDefault();
+                    setActiveSuggestion(activeSuggestion + 1);
+                } else if (event.key === "ArrowUp" && !suggestionList.hidden) {
+                    event.preventDefault();
+                    setActiveSuggestion(activeSuggestion < 0 ? suggestionList.children.length - 1 : activeSuggestion - 1);
+                } else if (event.key === "Enter" && !suggestionList.hidden && activeSuggestion >= 0) {
+                    event.preventDefault();
+                    const selected = destinationCatalog.find((place) => place.name === suggestionList.children[activeSuggestion]?.querySelector("strong")?.textContent);
+                    if (selected) selectDestination(selected);
+                } else if (event.key === "Escape") {
+                    closeDestinationSuggestions();
+                }
+            });
+            document.addEventListener("click", (event) => {
+                if (!event.target.closest(".destination-input-box")) closeDestinationSuggestions();
+            });
+        }
+
+        form.querySelector("[data-clear-destination]")?.addEventListener("click", () => {
+            if (!destinationField) return;
+            destinationField.value = "";
+            closeDestinationSuggestions();
+            destinationField.focus();
+        });
+
+        const budget = form.querySelector("#daily-budget");
+        const budgetSlider = form.querySelector("#daily-budget-slider");
+        const budgetText = form.querySelector(".budget-heading strong");
+        const budgetMinLabel = form.querySelector("[data-budget-min]");
+        const budgetMaxLabel = form.querySelector("[data-budget-max]");
+        if (budget && budgetSlider && budgetText) {
+            const min = Number(budgetSlider.min) || 100;
+            const formatRupees = (value) => "₹" + Number(value).toLocaleString("en-IN");
+
+            function updateBudgetLabels() {
+                const minimum = Number(budgetSlider.min) || min;
+                const maximum = Number(budgetSlider.max) || 100000;
+                if (budgetMinLabel) budgetMinLabel.textContent = formatRupees(minimum);
+                if (budgetMaxLabel) budgetMaxLabel.textContent = formatRupees(maximum) + "+";
+                budget.max = String(maximum);
+                const range = maximum - minimum;
+                const progress = range > 0 ? ((Number(budgetSlider.value) - minimum) / range) * 100 : 0;
+                budgetSlider.style.setProperty("--budget-progress", `${Math.max(0, Math.min(100, progress))}%`);
+            }
+
+            function updateBudgetText() {
+                budgetText.textContent = budget.value ? `${formatRupees(budget.value)}/day` : "Enter budget";
+            }
+
+            function expandBudgetSlider(amount) {
+                const currentMax = Number(budgetSlider.max);
+                if (amount > currentMax) {
+                    const expandedMax = Math.max(100000, Math.ceil(amount / 10000) * 10000);
+                    budgetSlider.max = String(expandedMax);
+                    updateBudgetLabels();
+                }
+            }
+
+            budgetSlider.addEventListener("input", () => {
+                budget.value = budgetSlider.value;
+                updateBudgetText();
+                updateBudgetLabels();
+            });
+            budget.addEventListener("input", () => {
+                const amount = Number(budget.value);
+                if (Number.isFinite(amount) && amount >= min) {
+                    expandBudgetSlider(amount);
+                    budgetSlider.value = String(amount);
+                    budget.value = budgetSlider.value;
+                    updateBudgetLabels();
+                }
+                updateBudgetText();
+            });
+            budget.addEventListener("blur", () => {
+                const amount = Number(budget.value);
+                if (!Number.isFinite(amount) || amount < min) budget.value = String(min);
+                budgetSlider.value = budget.value;
+                budget.value = budgetSlider.value;
+                updateBudgetText();
+                updateBudgetLabels();
+            });
+
+            budgetSlider.value = budget.value || String(min);
+            budget.value = budgetSlider.value;
+            updateBudgetLabels();
+            updateBudgetText();
+        }
+
+        const travelDateField = form.querySelector("#travel-dates");
+        if (travelDateField) {
+            const dateRange = constrainTripDateField(travelDateField);
+            const requestedDate = plannerParams.get("date");
+            if (requestedDate && requestedDate >= dateRange.min && requestedDate <= dateRange.max) travelDateField.value = requestedDate;
+        }
+
+        const requests = form.querySelector("#trip-requests");
+        const counter = form.querySelector(".character-count");
+        if (requests && counter) {
+            const updateCounter = () => { counter.textContent = `${requests.value.length}/${requests.maxLength}`; };
+            requests.addEventListener("input", updateCounter);
+            updateCounter();
+        }
+
+        form.querySelectorAll("[data-interest]").forEach((button) => {
+            button.setAttribute("aria-pressed", String(button.classList.contains("selected")));
+            button.addEventListener("click", () => {
+                const selected = button.classList.toggle("selected");
+                button.setAttribute("aria-pressed", String(selected));
+            });
+        });
+        form.addEventListener("submit", () => {
+            form.querySelectorAll("input[data-interest-value]").forEach((input) => input.remove());
+            form.querySelectorAll("[data-interest].selected").forEach((button) => {
+                const interest = document.createElement("input");
+                interest.type = "hidden";
+                interest.name = "interests";
+                interest.value = button.textContent.trim();
+                interest.dataset.interestValue = "";
+                form.append(interest);
+            });
+        });
+
 /*        const form = document.querySelector("#trip-form");
         if (!form) return;
 
@@ -1849,7 +2076,7 @@
             empty.append(link, " and tap a heart to keep one here.");
             grid.append(empty);
         } else savedNames.forEach((name) => {
-            const destination = destinations.find((item) => item.name === name);
+            const destination = destinationCatalog.find((item) => item.name === name) || destinations.find((item) => item.name === name);
             if (destination) grid.append(createDestinationCard(destination, true));
         });
 
@@ -1858,11 +2085,14 @@
         const budgetRangeForm = document.querySelector("#saved-budget-range");
         if (!tripList) return;
         const trips = readArray(keys.trips);
+        const savedTrips = trips.filter((trip) => trip.isSaved);
         const minimumBudget = Number(document.querySelector("#saved-budget-min")?.value || 0);
         const maximumInput = document.querySelector("#saved-budget-max")?.value;
         const maximumBudget = maximumInput === "" || maximumInput === undefined ? Number.POSITIVE_INFINITY : Number(maximumInput);
-        const visibleTrips = trips.filter((trip) => {
-            const budget = Number(trip.budget) || 0;
+        const visibleTrips = savedTrips.filter((trip) => {
+            const totalBudget = Number(trip.budget) || 0;
+            const days = Math.max(1, Number.parseInt(trip.duration, 10) || 1);
+            const budget = Math.round(totalBudget / days);
             return budget >= minimumBudget && budget <= maximumBudget;
         });
         tripList.replaceChildren(...visibleTrips.map((trip) => {
@@ -1880,15 +2110,16 @@
             cardTop.className = "saved-trip-card-top";
             cardTop.append(title, remove);
             const details = document.createElement("p");
-            details.textContent = [trip.dates, trip.duration ? `${trip.duration} days` : "", `₹${Number(trip.budget || 0).toLocaleString("en-IN")}/day`].filter(Boolean).join(" · ");
+            const days = Math.max(1, Number.parseInt(trip.duration, 10) || 1);
+            details.textContent = [trip.dates, trip.duration ? `${trip.duration} days` : "", `₹${Math.round(Number(trip.budget || 0) / days).toLocaleString("en-IN")}/day`].filter(Boolean).join(" · ");
             const actions = document.createElement("div"); actions.className = "saved-trip-actions";
-            const link = document.createElement("a"); link.href = "/my-trips?id=" + encodeURIComponent(trip.id); link.className = "content-primary-link"; link.textContent = "View itinerary →";
-            const edit = document.createElement("a"); edit.href = "/trip-planner?edit=" + encodeURIComponent(trip.id); edit.className = "saved-trip-edit"; edit.textContent = "Edit trip";
+            const link = document.createElement("a"); link.href = "/itinerary/" + encodeURIComponent(trip.id); link.className = "content-primary-link"; link.textContent = "View itinerary →";
+            const edit = document.createElement("a"); edit.href = "/itinerary/" + encodeURIComponent(trip.id); edit.className = "saved-trip-edit"; edit.textContent = "Edit trip";
             actions.append(link, edit);
             card.append(cardTop, details, actions); return card;
         }));
         if (tripEmpty) {
-            tripEmpty.textContent = trips.length ? "No saved plans match this daily budget range." : "Your trip plans will appear here after you create one.";
+            tripEmpty.textContent = savedTrips.length ? "No saved plans match this daily budget range." : "Save a trip from My Trips and it will appear here.";
             tripEmpty.hidden = visibleTrips.length > 0;
         }
         if (budgetRangeForm) budgetRangeForm.onsubmit = (event) => {
@@ -2119,11 +2350,25 @@
             trips.forEach((trip) => {
                 const card = document.createElement("article");
                 card.className = "trip-card";
+                const place = destinationCatalog.find((item) => item.name.toLowerCase() === String(trip.destination || "").trim().toLowerCase())
+                    || destinationCatalog.find((item) => String(trip.destination || "").trim().toLowerCase().startsWith(item.name.toLowerCase() + ","))
+                    || destinations.find((item) => item.name.toLowerCase() === String(trip.destination || "").trim().toLowerCase());
+                const image = document.createElement("img");
+                image.className = "trip-card-image";
+                const imagePath = place?.image || "/explore_assets/explore-hero.png";
+                image.src = imagePath.startsWith("/") ? imagePath : `/${imagePath}`;
+                image.alt = `A view of ${trip.destination}`;
+                image.loading = "lazy";
+                card.append(image);
                 const heading = document.createElement("h2");
                 heading.textContent = trip.destination;
                 card.append(heading);
 
-                const details = [trip.dates, trip.duration, trip.travelers].filter(Boolean).join(" · ");
+                const details = [
+                    trip.dates || "Flexible dates",
+                    trip.duration ? `${trip.duration} days` : "",
+                    `${trip.travelers || 1} ${Number(trip.travelers || 1) === 1 ? "traveler" : "travelers"}`
+                ].filter(Boolean).join(" · ");
                 if (details) {
                     const detailLine = document.createElement("p");
                     detailLine.textContent = details;
@@ -2131,7 +2376,7 @@
                 }
 
                 const budgetLine = document.createElement("p");
-                budgetLine.textContent = "₹" + Number(trip.budget).toLocaleString("en-IN") + " per day · " + trip.style;
+                budgetLine.textContent = "₹" + Number(trip.budget).toLocaleString("en-IN") + " total budget · " + trip.style;
                 card.append(budgetLine);
                 if (trip.interests && trip.interests.length) {
                     const interests = document.createElement("p");
@@ -2151,16 +2396,23 @@
                 }
 
                 const itineraryLink = document.createElement("a");
-                itineraryLink.href = "/my-trips?id=" + encodeURIComponent(trip.id);
+                itineraryLink.href = "/itinerary/" + encodeURIComponent(trip.id);
                 itineraryLink.className = "content-primary-link";
                 itineraryLink.textContent = "View day itinerary →";
                 const editLink = document.createElement("a");
-                editLink.href = "/trip-planner?edit=" + encodeURIComponent(trip.id);
+                editLink.href = "/itinerary/" + encodeURIComponent(trip.id);
                 editLink.className = "trip-edit-link";
                 editLink.textContent = "Edit trip";
                 const tripActions = document.createElement("div");
                 tripActions.className = "trip-card-actions";
-                tripActions.append(itineraryLink, editLink);
+                const saveForm = document.createElement("form");
+                saveForm.action = "/trips/" + encodeURIComponent(trip.id) + "/save";
+                saveForm.method = "POST";
+                const saveButton = document.createElement("button");
+                saveButton.type = "submit";
+                saveButton.textContent = trip.isSaved ? "Saved ★" : "Save ☆";
+                saveForm.append(saveButton);
+                tripActions.append(itineraryLink, editLink, saveForm);
                 card.append(tripActions);
 
                 const remove = document.createElement("button");
@@ -2267,21 +2519,28 @@
 
     function initItineraryDetail() {
         if (!document.body.classList.contains("itinerary-detail-page")) return;
-        const content = document.querySelector("#itinerary-content");
-        const tripId = new URLSearchParams(window.location.search).get("id");
-        const trip = readArray(keys.trips).find((item) => item.id === tripId);
-        if (!trip || !content) {
-            document.querySelector("#itinerary-title").textContent = "We couldn’t find that trip plan";
-            document.querySelector("#itinerary-summary").textContent = "Create a trip plan and it will be saved in your browser.";
-            const link = document.createElement("a"); link.href = "/trip-planner"; link.className = "primary-button"; link.textContent = "Plan a trip →"; content.append(link);
+        const plan = document.querySelector("#itinerary-plan");
+        const pathId = window.location.pathname.match(/\/itinerary\/([^/]+)/)?.[1];
+        const tripId = new URLSearchParams(window.location.search).get("id") || (pathId ? decodeURIComponent(pathId) : "");
+        const trip = readArray(keys.trips).find((item) => String(item.id) === tripId);
+        if (!trip || !plan) {
+            const title = document.querySelector("#itinerary-title");
+            const summary = document.querySelector("#itinerary-summary");
+            if (title) title.textContent = "We couldn’t find that trip plan";
+            if (summary) summary.textContent = "Return to My Trips and open a saved plan, or create a new trip.";
+            if (plan) {
+                const link = document.createElement("a"); link.href = "/trip-planner"; link.className = "primary-button"; link.textContent = "Plan a trip →"; plan.replaceChildren(link);
+            }
             return;
         }
         const place = destinationCatalog.find((item) => item.name.toLowerCase() === trip.destination.trim().toLowerCase())
-            || destinationCatalog.find((item) => trip.destination.trim().toLowerCase().startsWith(item.name.toLowerCase() + ","));
-        document.body.style.setProperty("--itinerary-backdrop", `url("${place?.image || "explore_assets/destinations/udaipur.jpg"}")`);
+            || destinationCatalog.find((item) => trip.destination.trim().toLowerCase().startsWith(item.name.toLowerCase() + ","))
+            || destinations.find((item) => item.name.toLowerCase() === trip.destination.trim().toLowerCase());
+        if (place?.image) document.body.style.setProperty("--itinerary-backdrop", `url("${place.image}")`);
         const routeName = place?.name || trip.destination;
-        const budget = Math.max(0, Number(trip.budget) || 0);
         const dayCount = Math.max(1, Number.parseInt(trip.duration, 10) || 1);
+        const totalBudget = Math.max(0, Number(trip.budget) || 0);
+        const budget = totalBudget / dayCount;
         const money = (amount) => "₹" + Math.round(amount).toLocaleString("en-IN");
         document.title = `${trip.destination} itinerary | GoMigo`;
         document.querySelector("#itinerary-title").textContent = `${dayCount === 1 ? "A day" : `${dayCount} days`} in ${trip.destination}`;
@@ -2338,8 +2597,8 @@
             dayHeading.append(titleWrap, spendBadge); daySection.append(dayHeading);
             const timeline = document.createElement("ol"); timeline.className = "itinerary-timeline";
             const timelineItems = [
-                { time: "7:30 – 8:30", title: "Breakfast", detail: `Start close to your stay in ${routeName}.`, cost: budget * .05 },
-                ...(stops[0] ? [{ time: "9:00 – 11:30", title: stops[0], detail: `Morning visit to ${stops[0]} in ${routeName}. Check opening hours before setting out.`, stop: stops[0] }] : [{ time: "9:00 – 11:30", title: extraIdea, detail: `Choose a free or low-cost version of this new local experience in ${routeName}; it does not repeat a listed landmark.`, cost: 0 }]),
+                { time: "7:00 – 7:45", title: "Breakfast", detail: `Start close to your stay in ${routeName}.`, cost: budget * .05 },
+                ...(stops[0] ? [{ time: "8:00 – 10:30", title: stops[0], detail: `Morning visit to ${stops[0]} in ${routeName}. Check opening hours before setting out.`, stop: stops[0] }] : [{ time: "8:00 – 10:30", title: extraIdea, detail: `Choose a free or low-cost version of this new local experience in ${routeName}; it does not repeat a listed landmark.`, cost: 0 }]),
                 { time: "12:00 – 13:00", title: "Lunch nearby", detail: `Choose a local café${stops[0] ? ` around ${stops[0]}` : ` in ${routeName}`}.`, cost: budget * .07 },
                 ...(stops[1] ? [{ time: "13:30 – 15:30", title: stops[1], detail: `Continue to ${stops[1]} as a separate stop for this day.`, stop: stops[1] }] : [{ time: "13:30 – 15:30", title: "Free time", detail: `Keep this time flexible for rest or a new neighbourhood in ${routeName}.`, cost: 0 }]),
                 { time: "16:00 – 18:00", title: stops.length ? "Rest and explore nearby" : "Unplanned time", detail: stops.length ? `Take a break near ${stops[stops.length - 1]}; no previously scheduled attraction is repeated.` : `Use this time for a relaxed, unscheduled part of ${routeName}.`, cost: 0 },
@@ -2370,7 +2629,7 @@
         }
         const balance = document.createElement("p"); balance.className = "itinerary-budget-balance";
         balance.textContent = `Estimated daily stay, meals and local transport allowance: ${money(budget * .58)}. Listed ticket prices for this itinerary: ${money(totalTicketSpend)} total across ${dayCount} ${dayCount === 1 ? "day" : "days"}. Some attractions require checking current fees at their official ticket page or venue.`;
-        content.replaceChildren(overview, hotels, ...schedules, balance);
+        plan.replaceChildren(overview, hotels, ...schedules, balance);
     }
 
     function initLegacyItinerariesPage() {
@@ -2667,12 +2926,12 @@
     }
 
     function destinationAfterSignIn() {
-        const safePages = new Set(["/main-menu", "/my-trips", "/trip-planner", "/my-trips", "/my-trips", "/explore", "/destinations", "/saved", "//travel-guide", "/profile"]);
+        const safePages = new Set(["main-menu", "my-trips", "trip-planner", "explore", "destinations", "saved", "travel-guide", "profile"]);
         const requested = new URLSearchParams(window.location.search).get("next") || "/main-menu";
         const requestedUrl = new URL(requested, window.location.href);
         const page = requestedUrl.pathname.split("/").pop();
         if (!safePages.has(page)) return "/main-menu";
-        return page + requestedUrl.search;
+        return requestedUrl.pathname + requestedUrl.search;
     }
 
     async function startSite() {
@@ -2718,7 +2977,7 @@
             }
         } else if (isAppPage) {
             clearAccountCache();
-            const currentPath = window.location.pathname.split("/").pop() + window.location.search;
+            const currentPath = window.location.pathname + window.location.search;
             window.location.replace("/login?next=" + encodeURIComponent(currentPath));
             return;
         }
